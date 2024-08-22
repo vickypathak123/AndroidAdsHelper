@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.ads.helper.new_.demo.test.app-mergeDebugAndroidTestResources-2:/values-v21/values-v21.xml",
+            "map": [
+                {
+                    "source": "/Users/android/.gradle/caches/transforms-4/48b26c08bacd1cd0ecb8b7fda1900bd3/transformed/core-1.6.1/res/values-v21/values.xml",
+                    "from": {
+                        "startLines": "4,13",
+                        "startColumns": "0,0",
+                        "startOffsets": "146,621",
+                        "endLines": "12,21",
+                        "endColumns": "8,8",
+                        "endOffsets": "620,1093"
+                    },
+                    "to": {
+                        "startLines": "2,11",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,534",
+                        "endLines": "10,19",
+                        "endColumns": "8,8",
+                        "endOffsets": "529,1006"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+com.example.app.ads.helper.revenuecat.test.revenueCat-appcompat-1.7.0-0 /Users/android/.gradle/caches/transforms-4/020589b847a6d60ed4a46f927d49fcfa/transformed/appcompat-1.7.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-lifecycle-livedata-core-2.6.2-1 /Users/android/.gradle/caches/transforms-4/04670ea0c051cd43e040361f602bfc09/transformed/lifecycle-livedata-core-2.6.2/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-drawerlayout-1.1.1-2 /Users/android/.gradle/caches/transforms-4/137d57a36d46b5696131c2b1e8f54a1a/transformed/drawerlayout-1.1.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-viewpager2-1.0.0-3 /Users/android/.gradle/caches/transforms-4/1fb907aa6a0a332d5fb24acdb2ba7e0c/transformed/viewpager2-1.0.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-recyclerview-1.1.0-4 /Users/android/.gradle/caches/transforms-4/21c2c44599960c579bda94437e706093/transformed/recyclerview-1.1.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-lifecycle-process-2.6.2-5 /Users/android/.gradle/caches/transforms-4/2e3a9f666e203c72a58fb68b5cc03f53/transformed/lifecycle-process-2.6.2/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-profileinstaller-1.3.1-6 /Users/android/.gradle/caches/transforms-4/2e9cd846f3aa9c82746587a150284398/transformed/profileinstaller-1.3.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-ads-adservices-java-1.0.0-beta05-7 /Users/android/.gradle/caches/transforms-4/33b59aa9a9be5384bca917f4994dd219/transformed/ads-adservices-java-1.0.0-beta05/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-play-services-ads-23.3.0-8 /Users/android/.gradle/caches/transforms-4/3d930e180987266e9537a8e50a38493f/transformed/play-services-ads-23.3.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-annotation-experimental-1.4.0-9 /Users/android/.gradle/caches/transforms-4/3fe55a73a9bcf080188f3d6d6c24dffe/transformed/annotation-experimental-1.4.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-core-ktx-1.13.1-10 /Users/android/.gradle/caches/transforms-4/434bebb20ebc2bc3743a3e7c7188f025/transformed/core-ktx-1.13.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-constraintlayout-2.1.4-11 /Users/android/.gradle/caches/transforms-4/4638a6e960393d6329491bcb0e0cab54/transformed/constraintlayout-2.1.4/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-core-1.6.1-12 /Users/android/.gradle/caches/transforms-4/48b26c08bacd1cd0ecb8b7fda1900bd3/transformed/core-1.6.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-lifecycle-viewmodel-savedstate-2.6.2-13 /Users/android/.gradle/caches/transforms-4/4f0e84fb3b87b8e6b8af76a724e0b910/transformed/lifecycle-viewmodel-savedstate-2.6.2/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-play-services-ads-lite-23.3.0-14 /Users/android/.gradle/caches/transforms-4/7331282cec29d420c1b8c9e6b8754a8b/transformed/play-services-ads-lite-23.3.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-play-services-basement-18.4.0-15 /Users/android/.gradle/caches/transforms-4/748bddb535a6829495eddcca508714fe/transformed/play-services-basement-18.4.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-emoji2-views-helper-1.3.0-16 /Users/android/.gradle/caches/transforms-4/74c60eb28e460d9b46f40a3d11268daa/transformed/emoji2-views-helper-1.3.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-startup-runtime-1.1.1-17 /Users/android/.gradle/caches/transforms-4/7beaa51eff38e076d839a82bceba1c1c/transformed/startup-runtime-1.1.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-ssp-android-1.1.1-18 /Users/android/.gradle/caches/transforms-4/87c4c7dfd30575159165e4cba842df65/transformed/ssp-android-1.1.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-work-runtime-2.7.0-19 /Users/android/.gradle/caches/transforms-4/8bf68980f4cdd382d948aeb0a89c3a2e/transformed/work-runtime-2.7.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-core-runtime-2.2.0-20 /Users/android/.gradle/caches/transforms-4/8cd42f3472da29c61771240322ab82a4/transformed/core-runtime-2.2.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-emoji2-1.3.0-21 /Users/android/.gradle/caches/transforms-4/904733052799a8e8f2a1ccc0dafc7be9/transformed/emoji2-1.3.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-lifecycle-livedata-2.6.2-22 /Users/android/.gradle/caches/transforms-4/93f480d79f23d23bed4c4002a40bdbf7/transformed/lifecycle-livedata-2.6.2/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-billing-7.0.0-23 /Users/android/.gradle/caches/transforms-4/9b0feffb7b10fe0d945866430982be28/transformed/billing-7.0.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-purchases-8.4.0-24 /Users/android/.gradle/caches/transforms-4/9b45c7c9ff169c184f5ab24c0d980525/transformed/purchases-8.4.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-play-services-base-18.3.0-25 /Users/android/.gradle/caches/transforms-4/a8881673aecb667742bfdd2c0ec4773f/transformed/play-services-base-18.3.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-activity-1.9.1-26 /Users/android/.gradle/caches/transforms-4/ab5b0375074ab7867b4ed3f83ea8cb9e/transformed/activity-1.9.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-appcompat-resources-1.7.0-27 /Users/android/.gradle/caches/transforms-4/affce07b3a4a6b03032297095dfe9523/transformed/appcompat-resources-1.7.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-transition-1.5.0-28 /Users/android/.gradle/caches/transforms-4/b854b156d12c9f7e3c7a75901425a957/transformed/transition-1.5.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-core-1.13.1-29 /Users/android/.gradle/caches/transforms-4/b91c333680a6e79de14483a495d954d3/transformed/core-1.13.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-coordinatorlayout-1.1.0-30 /Users/android/.gradle/caches/transforms-4/c62505d89cdc3374843da85a05b74319/transformed/coordinatorlayout-1.1.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-tracing-1.1.0-31 /Users/android/.gradle/caches/transforms-4/c8c65efe0a69edf25cbeae599d0ed8f1/transformed/tracing-1.1.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-material-1.12.0-32 /Users/android/.gradle/caches/transforms-4/cb4ee465295683cc8e9a664409be2e9c/transformed/material-1.12.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-webkit-1.11.0-alpha02-33 /Users/android/.gradle/caches/transforms-4/d0f9306fde0fbf6cc9a1007493a8c598/transformed/webkit-1.11.0-alpha02/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-lifecycle-viewmodel-2.6.2-34 /Users/android/.gradle/caches/transforms-4/d48bf8e455819b8e89c58bd5d5135e27/transformed/lifecycle-viewmodel-2.6.2/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-shimmer-0.5.0-35 /Users/android/.gradle/caches/transforms-4/d5dd518349e5e8afc86847d757959a8a/transformed/shimmer-0.5.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-savedstate-1.2.1-36 /Users/android/.gradle/caches/transforms-4/d68639d3b23e75a0b63cbdd8d1500c8d/transformed/savedstate-1.2.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-cardview-1.0.0-37 /Users/android/.gradle/caches/transforms-4/debd3fc651fb6216d811a0354ed8bbfb/transformed/cardview-1.0.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-fragment-1.5.4-38 /Users/android/.gradle/caches/transforms-4/e73e7aee8cb09150b4cf15898cb0c9a0/transformed/fragment-1.5.4/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-ads-adservices-1.0.0-beta05-39 /Users/android/.gradle/caches/transforms-4/ec7f1888b766ea53da6b9cd3b9e89c33/transformed/ads-adservices-1.0.0-beta05/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-browser-1.8.0-40 /Users/android/.gradle/caches/transforms-4/ed5bbef38c37f9db94e09c1406349104/transformed/browser-1.8.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-lifecycle-service-2.6.2-41 /Users/android/.gradle/caches/transforms-4/f32a8e8d06c1efa6874c84325ac477e5/transformed/lifecycle-service-2.6.2/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-viewpagerindicator-1.2.3-42 /Users/android/.gradle/caches/transforms-4/f40f5bffbb9f5290d3257de24fee2760/transformed/viewpagerindicator-1.2.3/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-sdp-android-1.1.1-43 /Users/android/.gradle/caches/transforms-4/f6dbf8790d1016672184590d53b79750/transformed/sdp-android-1.1.1/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-lifecycle-runtime-2.6.2-44 /Users/android/.gradle/caches/transforms-4/f712005cf0028decf6ca6bbadbc24509/transformed/lifecycle-runtime-2.6.2/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-lottie-6.3.0-45 /Users/android/.gradle/caches/transforms-4/ff4b1ec8388afb1bb081394c0ae09fb1/transformed/lottie-6.3.0/res
+com.example.app.ads.helper.revenuecat.test.revenueCat-debug-46 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/packaged_res/debug/packageDebugResources
+com.example.app.ads.helper.revenuecat.test.revenueCat-androidTest-47 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/generated/res/resValues/androidTest/debug
+com.example.app.ads.helper.revenuecat.test.revenueCat-mergeDebugAndroidTestResources-48 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.example.app.ads.helper.revenuecat.test.revenueCat-mergeDebugAndroidTestResources-49 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.example.app.ads.helper.revenuecat.test.revenueCat-debugAndroidTest-50 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources
+com.example.app.ads.helper.revenuecat.test.revenueCat-debug-51 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/packaged_res/debug/packageDebugResources

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <string-array name="banner_ad_size_list">
+        <item>Banner</item>
+        <item>LargeBanner</item>
+        <item>MediumRectangle</item>
+        <item>FullBanner</item>
+        <item>Leaderboard</item>
+        <item>AdaptiveBanner</item>
+    </string-array>
+    <string-array name="banner_ad_type_list">
+        <item>Normal</item>
+        <item>CollapsibleBottom</item>
+        <item>CollapsibleTop</item>
+    </string-array>
+    <string-array name="banner_placeholder_type_list">
+        <item>None</item>
+        <item>Shimmer</item>
+        <item>Text</item>
+        <item>Custom</item>
+    </string-array>
+    <string-array name="subscription_plan_button_animation_name">
+        <item>DecelerateInterpolator</item>
+        <item>LinearInterpolator</item>
+        <item>AccelerateInterpolator</item>
+        <item>BounceInterpolator</item>
+        <item>OvershootInterpolator</item>
+    </string-array>
+    <string-array name="subscription_screen_language">
+        <item>en</item>
+        <item>gu</item>
+        <item>hi</item>
+        <item>ur</item>
+    </string-array>
+    <color name="color_accent">#03A9F4</color>
+    <color name="color_primary">#4FC3F7</color>
+    <color name="color_primary_dark">#0288D1</color>
+    <string name="app_name" translatable="false">Ads contacts 2.0</string>
+    <string name="banner_ads" translatable="false">Banner Ads</string>
+    <string name="dialog_messages" translatable="false">Run-Time Permission</string>
+    <string name="dialog_title" translatable="false">other_dialogs</string>
+    <string name="no" translatable="false">No</string>
+    <string name="yes" translatable="false">Yes</string>
+    <style name="AlertDialogTheme" parent="android:Theme.Material.Light.Dialog.Alert">
+        <item name="android:buttonBarNegativeButtonStyle">@style/Theme.Custom_Dialog_Text</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/Theme.Custom_Dialog_Text</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/Theme.Custom_Dialog_Text</item>
+    </style>
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/top_round_16_dp</item>
+    </style>
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
+    <style name="Theme.AdsHelper20" parent="Theme.Material3.Light.NoActionBar">
+        
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="colorControlActivated">@color/color_accent</item>
+
+        <item name="android:windowDisablePreview">true</item>
+
+        <item name="android:forceDarkAllowed" ns1:targetApi="q">false</item>
+        <item name="android:windowBackground">@android:color/white</item>
+
+        
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <item name="android:statusBarColor">@color/color_primary</item>
+
+        <item name="android:windowLightNavigationBar" ns1:targetApi="o_mr1">false</item>
+        
+        <item name="android:navigationBarColor">@color/color_primary</item>
+
+        
+        
+
+        <item name="android:timePickerDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:datePickerDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
+
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+
+        <item name="native_ads_main_color">#9C27B0</item>
+        <item name="native_ads_body_text_color">#673AB7</item>
+        <item name="native_ads_background_color">#CDDC39</item>
+        <item name="native_ads_label_text_color">#FBC02D</item>
+    </style>
+    <style name="Theme.Custom_Dialog_Text" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/color_accent</item>
+    </style>
+    <style name="base_theme_dialog_animation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+    <style name="splash_screen_theme" parent="Theme.AdsHelper20">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/ic_launcher_background</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" ns1:targetApi="o_mr1">shortEdges</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+    <style name="top_round_16_dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+    </style>
+</resources>

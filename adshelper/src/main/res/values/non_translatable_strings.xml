@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+    ToDo: This is test app ads id from {@link 'https://developers.google.com/admob/android/quick-start'}
+
+        Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+
+    ToDo: This is test ads id from {@link 'https://developers.google.com/admob/android/test-ads#demo_ad_units'}
+
+        Interstitial ca-app-pub-3940256099942544/1033173712
+        Interstitial Video ca-app-pub-3940256099942544/8691691433
+        Native Advanced ca-app-pub-3940256099942544/2247696110
+        Native Advanced Video ca-app-pub-3940256099942544/1044960115
+        Rewarded ca-app-pub-3940256099942544/5224354917
+        Rewarded Interstitial ca-app-pub-3940256099942544/5354046379
+        App Open ca-app-pub-3940256099942544/9257395921
+        Adaptive Banner ca-app-pub-3940256099942544/9214589741
+        Fixed Size Banner ca-app-pub-3940256099942544/6300978111
+-->
+
+<resources>
+    <!--ToDo: Google Test Ads id [@updated 05 Jul 2024 by Akshay Harsoda]-->
+    <string name="test_admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="test_admob_interstitial_ad_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="test_admob_interstitial_video_ad_id" translatable="false">ca-app-pub-3940256099942544/8691691433</string>
+    <string name="test_admob_native_advanced_ad_id" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="test_admob_native_advanced_video_ad_id" translatable="false">ca-app-pub-3940256099942544/1044960115</string>
+    <string name="test_admob_reward_video_ad_id" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="test_admob_reward_interstitial_ad_id" translatable="false">ca-app-pub-3940256099942544/5354046379</string>
+    <string name="test_admob_open_ad_id" translatable="false">ca-app-pub-3940256099942544/9257395921</string>
+    <string name="test_admob_banner_ad_id" translatable="false">ca-app-pub-3940256099942544/2014213617</string>
+    <string name="test_admob_adaptive_banner_ad_id" translatable="false">ca-app-pub-3940256099942544/9214589741</string>
+    <string name="test_admob_fixed_size_banner_ad_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+
+    <!--ToDo: Ads Module Strings-->
+    <string name="ads_by_developer" translatable="false">Ads by developer</string>
+    <string name="ad_attribution" translatable="false">Ad</string>
+
+    <string name="ad_advertiser_title" translatable="false">\u25CF Advertiser</string>
+    <string name="ad_body_title" translatable="false">\u25CF Body</string>
+    <string name="ad_headline_title" translatable="false">\u25CF Headline</string>
+    <string name="ad_price_title" translatable="false">\u25CF Price</string>
+    <string name="ad_store_title" translatable="false">\u25CF Store</string>
+    <string name="ad_star_rating_title" translatable="false">\u25CF Star Rating</string>
+    <string name="ad_icon_title" translatable="false">\u25CF Icon</string>
+    <string name="ad_bg_image_title" translatable="false">\u25CF Blur Image</string>
+    <string name="ad_media_content_title" translatable="false">\u25CF Media Content</string>
+    <string name="ad_call_to_action_title" translatable="false">\u25CF Call To Action</string>
+    <string name="ad_call_to_close_title" translatable="false">\u25CF Call To Close</string>
+
+    <string name="ad_advertiser_id" translatable="false">ad_advertiser</string>
+    <string name="ad_body_id" translatable="false">ad_body</string>
+    <string name="ad_headline_id" translatable="false">ad_headline</string>
+    <string name="ad_price_id" translatable="false">ad_price</string>
+    <string name="ad_store_id" translatable="false">ad_store</string>
+    <string name="ad_star_rating_id" translatable="false">ad_stars</string>
+    <string name="ad_txt_rating_id" translatable="false">ad_txt_rating</string>
+    <string name="ad_icon_id" translatable="false">ad_app_icon</string>
+    <string name="ad_bg_image_id" translatable="false">ad_bg_main_image</string>
+    <string name="ad_media_container_id" translatable="false">native_ad_media_container\n(Use Only FrameLayout)</string>
+    <string name="ad_media_content_id" translatable="false">ad_media\n(Use Only MediaView)</string>
+    <string name="ad_call_to_action_id" translatable="false">ad_call_to_action</string>
+    <string name="ad_call_to_close_id" translatable="false">ad_call_to_close</string>
+
+    <!--ToDo: Subscription Module Strings-->
+    <string name="error_user_canceled" translatable="false">You\'ve cancelled the Google play billing process</string>
+    <string name="error_billing_unavailable" translatable="false">Item not found or Google play billing error</string>
+    <string name="error_billing_client_not_ready" translatable="false">The billing client is not ready</string>
+    <string name="error_billing_client_null" translatable="false">The billing client is NULL</string>
+
+    <string name="str_1_str_2" translatable="false">%1s %2s</string>
+    <string name="price_slash_period" translatable="false">%1s/%2s</string>
+    <string name="instant_access_hint_dot" translatable="false">• %1s</string>
+
+    <string name="free_trial_ending_soon" translatable="false">Free Trial Ending Soon</string>
+    <string name="you_will_be_charged_after_period" translatable="false">You will be charged after %1s, Cancel anytime before.</string>
+</resources>

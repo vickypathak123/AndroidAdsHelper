@@ -1,0 +1,13 @@
+#Thu Aug 22 09:48:14 IST 2024
+base.0=/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/dex/debugAndroidTest/mergeExtDexDebugAndroidTest/classes.dex
+base.1=/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
+base.2=/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/14/classes.dex
+base.3=/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/5/classes.dex
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=14/classes.dex
+path.3=5/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
+renamed.3=classes4.dex

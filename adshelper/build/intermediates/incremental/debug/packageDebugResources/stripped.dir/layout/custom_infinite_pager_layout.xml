@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_height="wrap_content">
+
+    <com.example.app.ads.helper.purchase.widget.SubscriptionRatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:emptyDrawable="@drawable/ic_subscribe_star_rating_svg"
+        app:filledDrawable="@drawable/ic_subscribe_star_rating_svg"
+        app:isIndicator="true"
+        app:layout_constraintBottom_toTopOf="@+id/txt_rating_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:minAllowedStars="0"
+        app:numStars="5"
+        app:starSize="@dimen/_20sdp"
+        app:starSpacing="@dimen/_5sdp"
+        app:stepSize="0.5"
+        tools:progressBackgroundTint="@color/default_view_more_plan_rating_place_holder_color"
+        tools:progressTint="@color/default_view_more_plan_rating_color"
+        tools:rating="3.5" />
+
+    <TextView
+        android:id="@+id/txt_rating_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_rating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rating_bar"
+        tools:text="@string/rating_header"
+        tools:textColor="@color/default_view_more_plan_sub_header_color" />
+
+    <TextView
+        android:id="@+id/txt_rating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
+        android:gravity="center"
+        android:lineSpacingExtra="@dimen/_1sdp"
+        android:maxLines="3"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_rating_by"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rating_header"
+        tools:text="@tools:sample/lorem/random"
+        tools:textColor="@color/default_view_more_plan_close_icon_color" />
+
+    <TextView
+        android:id="@+id/txt_rating_by"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
+        android:gravity="center_vertical|end"
+        android:textSize="@dimen/_11sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rating"
+        tools:text="@string/rating_by"
+        tools:textColor="@color/default_view_more_plan_close_icon_color" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

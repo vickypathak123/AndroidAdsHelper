@@ -1,0 +1,57 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="theme_interstitial_native_ad_activity" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">#E9E9E9</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="windowActionBar">false</item>
+
+
+        <!--                <item name="android:windowTranslucentNavigation">true</item>-->
+    </style>
+
+    <style name="theme_subscription_activity" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="full_round_4_dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="full_round_6_dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">6dp</item>
+    </style>
+
+    <style name="full_round_10_dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="full_round" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="full_round_16_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_11sdp</item>
+    </style>
+
+    <style name="top_round_16_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/_10sdp</item>
+        <item name="cornerSizeTopRight">@dimen/_10sdp</item>
+    </style>
+
+    <style name="bottom_round_16_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">@dimen/_10sdp</item>
+        <item name="cornerSizeBottomRight">@dimen/_10sdp</item>
+    </style>
+</resources>

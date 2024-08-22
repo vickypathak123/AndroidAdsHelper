@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    strings.xml-->
+
+    <string name="one_time_purchase">One Time Purchase</string>
+    <string name="period_day">Day</string>
+    <string name="period_days">Days</string>
+    <string name="period_week">Week</string>
+    <string name="period_weeks">Weeks</string>
+    <string name="period_month">Month</string>
+    <string name="period_months">Months</string>
+    <string name="period_year">Year</string>
+    <string name="period_years">Years</string>
+
+    <string name="have_doubts">Have Doubts?</string>
+    <string name="start_with_a_free_trial">Start with a free trial</string>
+    <string name="now">Now</string>
+    <string name="unlock_all_the_features">Unlock all the features.</string>
+    <string name="today_get_instant_access">Today: Get Instant Access</string>
+    <string name="day_title">Day %1s:</string>
+    <string name="trial_reminder">Trial Reminder</string>
+    <string name="trial_reminder_hint">Get a reminder about when your free trial will end. Cancel anytime in 15 seconds.</string>
+    <string name="premium_begins">Premium Begins</string>
+    <string name="premium_begins_hint">Your trial will convert to full price unless cancelled.</string>
+    <string name="free_then_per_period">%1s free, then %2s per %3s</string>
+    <string name="pay_nothing_now">Pay Nothing Now</string>
+    <string name="view_all_plans"><u>View All Plans</u></string>
+
+    <string name="unlock_all_features">Unlock All Features</string>
+    <string name="lifetime_purchase">Lifetime Purchase</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">Payment is charged after %1s, cancel anytime.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Subscription will auto-renew, Cancel anytime.</string>
+
+    <string name="best_value">BEST VALUE</string>
+    <string name="save_percentage">SAVE %1s%%</string>
+    <string name="most_popular">MOST POPULAR</string>
+
+    <string name="lifetime">Lifetime</string>
+    <string name="yearly">Yearly</string>
+    <string name="monthly">Monthly</string>
+    <string name="weekly">Weekly</string>
+
+    <string name="purchase_1">1 Purchase</string>
+    <string name="period_free">%1s free</string>
+    <string name="upto_period">upto %1s</string>
+
+    <string name="continue_">Continue</string>
+    <string name="start_my_free_trial">START MY FREE TRIAL</string>
+    <string name="try_period_for_price">Try %1s for %2s</string>
+
+    <string name="cancel_anytime_secure_with_play_store">Cancel anytime. Secure with Play Store</string>
+    <string name="price_for_period_use">%1s for %2s use</string>
+    <string name="price_upto_period_then_price_slash_period">%1s upto %2s, then %3s</string>
+
+    <string name="terms_of_use">Terms of Use</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+    <string name="instant_access_hint_1">Distance Measurement</string>
+    <string name="instant_access_hint_2">Field Area Measurement</string>
+    <string name="instant_access_hint_3">Geo Timestamp Camera</string>
+    <string name="instant_access_hint_4">Route Planning</string>
+    <string name="instant_access_hint_5">Data Cloud Sync</string>
+    <string name="instant_access_hint_6">Ads Free</string>
+
+    <string name="rating_header">Excellent app for Convert Text</string>
+    <string name="rating_sub_header">The app is good app really need to work on the sequence of scanned image, some contents are missing and some are shuffled. App needs improvement</string>
+    <string name="rating_by">by %1s</string>
+    <string name="rating_user">Akshay Harsoda</string>
+</resources>

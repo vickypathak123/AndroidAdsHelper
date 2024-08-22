@@ -1,0 +1,81 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+}
+
+android {
+    namespace 'com.example.ads.helper.new_.demo'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.ads.helper.new_.demo"
+//        applicationId "com.contacts.number.add.sim.phone.recent.details"
+//        applicationId "com.gps.photo.geo.capture.location.map.time.stamp"
+//        applicationId "com.voice.gps.navigation.map.location.route"
+//        applicationId "com.voice.changer.sound.effects.girl.call"
+        minSdk 23
+        //noinspection OldTargetApi
+        targetSdk 34
+        versionCode 1
+        versionName "$dependencies_version"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+    lintOptions {
+        disable += ['SetTextI18n', 'ContentDescription', 'HardcodedText', 'SimpleDateFormat']
+    }
+}
+
+dependencies {
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
+    implementation libs.androidx.constraintlayout
+    implementation project(':revenueCat')
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+    //region Multidex support
+    implementation libs.androidx.multidex
+    //endregion
+
+    //region Google Gson to Json
+    implementation libs.google.gson
+    //endregion
+
+    //region Lottie Animation
+    implementation libs.lottie.animation
+    //endregion
+
+    //region SSP-SDP Dimension
+    implementation libs.intuit.sdp
+    implementation libs.intuit.ssp
+    //endregion
+
+    //region Run-Time Permission
+    implementation libs.akspermission.android
+    //endregion
+
+    implementation libs.colorslider
+}

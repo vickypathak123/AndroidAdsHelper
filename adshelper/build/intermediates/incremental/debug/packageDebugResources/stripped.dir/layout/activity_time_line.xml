@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:background="@android:color/holo_red_light"
+    tools:context=".purchase.activity.TimeLineActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@android:color/holo_green_light">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            tools:background="@android:color/holo_blue_light">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.92" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.03" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.97" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_top_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="@dimen/_40sdp" />
+
+            <!--<editor-fold desc="For Top Side View">-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_close"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/_6sdp"
+                android:src="@drawable/ic_subscription_close"
+                android:theme="@style/Theme.Material3.DayNight"
+                android:tint="@color/default_time_line_close_icon_color"
+                app:layout_constraintBottom_toBottomOf="@id/txt_have_doubts"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/gl_end_1"
+                app:layout_constraintTop_toTopOf="@id/txt_have_doubts"
+                app:layout_constraintVertical_bias="0.0" />
+
+<!--                android:layout_marginTop="@dimen/_40sdp"-->
+            <TextView
+                android:id="@+id/txt_have_doubts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_black"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:textColor="@color/default_time_line_main_color"
+                android:textSize="@dimen/_19ssp"
+                app:layout_constraintEnd_toStartOf="@id/iv_close"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/gl_start_1"
+                app:layout_constraintTop_toTopOf="@id/gl_top_1"
+                tools:text="@string/have_doubts" />
+
+            <TextView
+                android:id="@+id/txt_start_with_a_free_trial"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_heavy"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/default_time_line_main_color"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_have_doubts"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_have_doubts"
+                app:layout_constraintTop_toBottomOf="@id/txt_have_doubts"
+                tools:text="@string/start_with_a_free_trial" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_time_line_icon_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="end"
+                app:constraint_referenced_ids="iv_check_now, iv_unlock_today" />
+
+            <com.example.app.ads.helper.purchase.widget.SquareLayout
+                android:id="@+id/squareView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@id/iv_premium_begins"
+                app:layout_constraintEnd_toEndOf="@id/view_center_vertical_check_now"
+                app:layout_constraintStart_toStartOf="@id/view_center_vertical_check_now"
+                app:layout_constraintTop_toTopOf="@id/view_center_horizontal_check_now"
+                tools:visibility="gone">
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/time_line_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_6sdp"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:rotation="90"
+                    android:theme="@style/Theme.Material3.DayNight"
+                    android:value="40.0"
+                    android:valueFrom="0.0"
+                    android:valueTo="100.0"
+                    app:labelBehavior="gone"
+                    app:thumbElevation="0dp"
+                    app:thumbHeight="0dp"
+                    app:thumbTrackGapSize="0dp"
+                    app:thumbWidth="0dp"
+                    app:tickVisible="false"
+                    app:trackColorActive="@color/default_time_line_main_color"
+                    app:trackColorInactive="@color/default_time_line_track_inactive_color"
+                    app:trackHeight="@dimen/_4sdp"
+                    app:trackInsideCornerSize="0dp"
+                    app:trackStopIndicatorSize="0dp" />
+
+            </com.example.app.ads.helper.purchase.widget.SquareLayout>
+
+            <View
+                android:id="@+id/view_center_vertical_check_now"
+                android:layout_width="0.1dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@id/iv_check_now"
+                app:layout_constraintEnd_toEndOf="@id/iv_check_now"
+                app:layout_constraintStart_toStartOf="@id/iv_check_now"
+                app:layout_constraintTop_toTopOf="@id/iv_check_now" />
+
+            <View
+                android:id="@+id/view_center_horizontal_check_now"
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@id/iv_check_now"
+                app:layout_constraintEnd_toEndOf="@id/iv_check_now"
+                app:layout_constraintStart_toStartOf="@id/iv_check_now"
+                app:layout_constraintTop_toTopOf="@id/iv_check_now" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_check_now"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="0dp"
+                android:background="@color/default_time_line_main_color"
+                android:src="@drawable/ic_subscription_check"
+                android:theme="@style/Theme.Material3.DayNight"
+                app:contentPadding="@dimen/_8sdp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="@id/gl_start_1"
+                app:layout_constraintTop_toTopOf="@id/txt_now"
+                app:shapeAppearance="@style/full_round" />
+
+            <TextView
+                android:id="@+id/txt_now"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/avenir_heavy"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:textColor="@color/default_time_line_main_color"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/barrier_time_line_icon_end"
+                app:layout_constraintTop_toBottomOf="@id/txt_start_with_a_free_trial"
+                tools:text="@string/now" />
+
+            <TextView
+                android:id="@+id/txt_unlock_all_the_features"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/default_time_line_hint_text_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_now"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_now"
+                app:layout_constraintTop_toBottomOf="@id/txt_now"
+                tools:text="@string/unlock_all_the_features" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_time_line_now_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="iv_check_now, txt_now, txt_unlock_all_the_features" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_unlock_today_bg"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_unlock_today"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/iv_unlock_today"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/iv_unlock_today"
+                app:layout_constraintTop_toTopOf="@id/iv_unlock_today"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/lottie_subscription_unlock_today_bg"
+                app:shapeAppearance="@style/full_round"
+                app:tint="@android:color/black" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_unlock_today_bg"
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="0dp"
+                android:alpha="0.1"
+                android:background="@color/default_time_line_main_color"
+                android:theme="@style/Theme.Material3.DayNight"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/iv_unlock_today"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/iv_unlock_today"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/iv_unlock_today"
+                app:layout_constraintTop_toTopOf="@id/iv_unlock_today"
+                app:shapeAppearance="@style/full_round" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_unlock_today"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/default_time_line_main_color"
+                android:src="@drawable/ic_subscription_unlock_today"
+                android:theme="@style/Theme.Material3.DayNight"
+                app:contentPadding="@dimen/_8sdp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/iv_check_now"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/iv_check_now"
+                app:layout_constraintTop_toTopOf="@id/txt_today_get_instant_access"
+                app:shapeAppearance="@style/full_round" />
+
+            <TextView
+                android:id="@+id/txt_today_get_instant_access"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/avenir_heavy"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/default_time_line_main_color"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_now"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_now"
+                app:layout_constraintTop_toTopOf="@id/barrier_time_line_now_bottom"
+                tools:text="@string/today_get_instant_access" />
+
+            <TextView
+                android:id="@+id/txt_instant_access_hint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="@dimen/_2sdp"
+                android:textColor="@color/default_time_line_instant_access_hint_text_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_now"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_now"
+                app:layout_constraintTop_toBottomOf="@id/txt_today_get_instant_access"
+                tools:maxLines="5"
+                tools:text="@tools:sample/lorem/random" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_time_line_instant_access_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="iv_unlock_today_bg, iv_unlock_today, txt_today_get_instant_access, txt_instant_access_hint" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_trial_reminder"
+                android:layout_width="@dimen/_26sdp"
+                android:layout_height="0dp"
+                android:background="@color/default_time_line_track_inactive_color"
+                android:src="@drawable/ic_subscription_trial_reminder"
+                android:theme="@style/Theme.Material3.DayNight"
+                android:tint="@color/default_time_line_main_color"
+                app:contentPadding="@dimen/_6sdp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/iv_check_now"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/iv_check_now"
+                app:layout_constraintTop_toTopOf="@id/txt_trial_reminder"
+                app:shapeAppearance="@style/full_round" />
+
+            <TextView
+                android:id="@+id/txt_trial_reminder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/avenir_heavy"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/default_time_line_main_color"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_now"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_now"
+                app:layout_constraintTop_toTopOf="@id/barrier_time_line_instant_access_bottom"
+                tools:text="@string/trial_reminder" />
+
+            <TextView
+                android:id="@+id/txt_trial_reminder_hint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
+                android:includeFontPadding="false"
+                android:maxLines="3"
+                android:textColor="@color/default_time_line_hint_text_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_now"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_now"
+                app:layout_constraintTop_toBottomOf="@id/txt_trial_reminder"
+                tools:text="@string/trial_reminder_hint" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_time_line_trial_reminder_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="iv_trial_reminder, txt_trial_reminder, txt_trial_reminder_hint" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_premium_begins"
+                android:layout_width="@dimen/_26sdp"
+                android:layout_height="0dp"
+                android:background="@color/default_time_line_track_inactive_color"
+                android:src="@drawable/ic_subscription_premium_begins"
+                android:theme="@style/Theme.Material3.DayNight"
+                android:tint="@color/default_time_line_main_color"
+                app:contentPadding="@dimen/_6sdp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/iv_check_now"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/iv_check_now"
+                app:layout_constraintTop_toTopOf="@id/txt_premium_begins"
+                app:shapeAppearance="@style/full_round" />
+
+            <TextView
+                android:id="@+id/txt_premium_begins"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/avenir_heavy"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/default_time_line_main_color"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_now"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_now"
+                app:layout_constraintTop_toTopOf="@id/barrier_time_line_trial_reminder_bottom"
+                tools:text="@string/premium_begins" />
+
+            <TextView
+                android:id="@+id/txt_premium_begins_hint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
+                android:includeFontPadding="false"
+                android:maxLines="3"
+                android:textColor="@color/default_time_line_hint_text_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_now"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_now"
+                app:layout_constraintTop_toBottomOf="@id/txt_premium_begins"
+                tools:text="@string/premium_begins_hint" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_time_line_premium_begins_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="iv_premium_begins, txt_premium_begins, txt_premium_begins_hint" />
+            <!--</editor-fold>-->
+
+            <!--<editor-fold desc="For Center Side View">-->
+            <include
+                android:id="@+id/ly_secure_with_play_store"
+                layout="@layout/layout_secure_with_play_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintBottom_toTopOf="@id/txt_free_then_per_period"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
+                app:layout_constraintStart_toStartOf="@id/gl_start_2"
+                app:layout_constraintTop_toBottomOf="@id/barrier_time_line_premium_begins_bottom"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_goneMarginBottom="@dimen/_20sdp" />
+
+            <TextView
+                android:id="@+id/txt_free_then_per_period"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:fontFamily="@font/avenir_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/default_time_line_main_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toTopOf="@id/ly_subscribe_button"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
+                app:layout_constraintStart_toStartOf="@id/gl_start_2"
+                app:layout_constraintTop_toBottomOf="@+id/ly_secure_with_play_store"
+                app:layout_goneMarginTop="@dimen/_20sdp"
+                tools:text="@string/free_then_per_period" />
+            <!--</editor-fold>-->
+
+            <!--<editor-fold desc="For Bottom View">-->
+            <include
+                android:id="@+id/ly_subscribe_button"
+                layout="@layout/layout_subscribe_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                app:layout_constraintBottom_toTopOf="@id/txt_pay_nothing_now"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
+                app:layout_constraintStart_toStartOf="@id/gl_start_2" />
+
+            <TextView
+                android:id="@+id/txt_pay_nothing_now"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:elevation="@dimen/_4sdp"
+                android:fontFamily="@font/avenir_heavy"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:shadowColor="#2B000000"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="2"
+                android:textColor="@color/default_time_line_main_color"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toTopOf="@id/txt_view_all_plans"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/pay_nothing_now" />
+
+            <TextView
+                android:id="@+id/txt_view_all_plans"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:fontFamily="@font/avenir_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/default_time_line_hint_text_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toTopOf="@id/txt_terms_of_use"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/view_all_plans" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:background="#1A000000"
+                app:layout_constraintBottom_toTopOf="@id/txt_terms_of_use"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_terms_of_use"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textColor="@color/default_time_line_hint_text_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txt_privacy_policy"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/terms_of_use" />
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="0dp"
+                android:background="#1A000000"
+                app:layout_constraintBottom_toBottomOf="@id/txt_privacy_policy"
+                app:layout_constraintEnd_toStartOf="@id/txt_privacy_policy"
+                app:layout_constraintStart_toEndOf="@id/txt_terms_of_use"
+                app:layout_constraintTop_toTopOf="@id/txt_privacy_policy" />
+
+            <TextView
+                android:id="@+id/txt_privacy_policy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
+                android:gravity="center_vertical|end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:textColor="@color/default_time_line_hint_text_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/txt_terms_of_use"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_terms_of_use"
+                tools:text="@string/privacy_policy" />
+            <!--</editor-fold>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

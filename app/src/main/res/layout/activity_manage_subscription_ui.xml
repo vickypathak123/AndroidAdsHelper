@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.ManageSubscriptionUiActivity">
+
+    <include
+        android:id="@+id/layout_header"
+        layout="@layout/all_screen_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_top"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/cl_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:background="@android:color/holo_green_light">
+
+                <TextView
+                    android:id="@+id/txt_animation_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="8dp"
+                    android:text="Animation Name :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toStartOf="@id/sp_animation_name"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <Spinner
+                    android:id="@+id/sp_animation_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:entries="@array/subscription_plan_button_animation_name"
+                    android:gravity="center_vertical"
+                    android:text="Update Ad Size :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_animation_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/txt_animation_name"
+                    app:layout_constraintTop_toTopOf="@id/txt_animation_name" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/animation_time_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:theme="@style/Theme.Material3.DayNight"
+                    android:value="500.0"
+                    android:valueFrom="100.0"
+                    android:valueTo="2000.0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_animation_name"
+                    app:trackColorActive="@color/default_time_line_main_color"
+                    app:trackColorInactive="@color/default_time_line_track_inactive_color" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_bottom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_top"
+                tools:background="@android:color/holo_red_light">
+
+                <TextView
+                    android:id="@+id/txt_language"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="8dp"
+                    android:text="Language :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/switch_privacy_policy"
+                    app:layout_constraintEnd_toStartOf="@id/sp_language"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <Spinner
+                    android:id="@+id/sp_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:entries="@array/subscription_screen_language"
+                    android:gravity="center_vertical"
+                    android:text="Update Ad Size :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_language"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/txt_language"
+                    app:layout_constraintTop_toTopOf="@id/txt_language" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_privacy_policy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="Privacy Policy :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/et_privacy_policy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_language" />
+
+                <EditText
+                    android:id="@+id/et_privacy_policy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Privacy Policy Link"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    app:layout_constraintBottom_toTopOf="@id/switch_terms_of_use"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_privacy_policy" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_terms_of_use"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="Terms Of Use :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/et_terms_of_use"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_privacy_policy" />
+
+                <EditText
+                    android:id="@+id/et_terms_of_use"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Terms Of Use Link"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    app:layout_constraintBottom_toTopOf="@id/switch_show_only_view_all_plans"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_terms_of_use" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_show_only_view_all_plans"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="Show Only View All Plans :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/switch_time_line_screen_ui"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_terms_of_use" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_time_line_screen_ui"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="Time Line Screen UI :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/cl_time_line_screen_ui"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_show_only_view_all_plans" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_time_line_screen_ui"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="8dp"
+                    app:layout_constraintBottom_toTopOf="@id/switch_view_all_plans_screen_ui"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_time_line_screen_ui"
+                    tools:background="@android:color/holo_blue_dark"
+                    tools:visibility="gone">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_time_line_instant_access_animation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="Is With Instant Access Animation :-"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintBottom_toTopOf="@id/switch_time_line_slider_animation"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_time_line_slider_animation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="Is With Slider Animation :-"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_main_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/switch_time_line_instant_access_animation" />
+
+                    <include
+                        android:id="@+id/ly_time_line_main_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_header_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/switch_time_line_slider_animation" />
+
+                    <include
+                        android:id="@+id/ly_time_line_header_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_close_icon_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_time_line_main_color" />
+
+                    <include
+                        android:id="@+id/ly_time_line_close_icon_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_track_inactive_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_time_line_header_color" />
+
+                    <include
+                        android:id="@+id/ly_time_line_track_inactive_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_hint_text_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_time_line_close_icon_color" />
+
+                    <include
+                        android:id="@+id/ly_time_line_hint_text_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_instant_access_hint_text_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_time_line_track_inactive_color" />
+
+                    <include
+                        android:id="@+id/ly_time_line_instant_access_hint_text_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_secure_with_play_store_text_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_time_line_hint_text_color" />
+
+                    <include
+                        android:id="@+id/ly_time_line_secure_with_play_store_text_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_secure_with_play_store_background_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_time_line_instant_access_hint_text_color" />
+
+                    <include
+                        android:id="@+id/ly_time_line_secure_with_play_store_background_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_time_line_button_continue_text_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_time_line_secure_with_play_store_text_color" />
+
+                    <include
+                        android:id="@+id/ly_time_line_button_continue_text_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_time_line_secure_with_play_store_background_color" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_view_all_plans_screen_ui"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="View All Plans Screen UI :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/cl_view_all_plans_screen_ui"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl_time_line_screen_ui" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_view_all_plans_screen_ui"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:paddingHorizontal="8dp"
+                    app:layout_constraintBottom_toTopOf="@id/btn_test"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_view_all_plans_screen_ui"
+                    tools:background="@android:color/holo_green_light"
+                    tools:visibility="gone">
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_header_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_sub_header_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_sub_header_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_close_icon_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_header_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_close_icon_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_rating_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_sub_header_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_rating_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_rating_place_holder_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_close_icon_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_rating_place_holder_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_rating_indicator_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_rating_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_rating_indicator_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_unselected_item_data_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_rating_place_holder_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_unselected_item_data_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_selected_item_data_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_rating_indicator_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_selected_item_data_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_pay_nothing_now_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_unselected_item_data_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_pay_nothing_now_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_secure_with_play_store_text_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_selected_item_data_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_secure_with_play_store_text_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_secure_with_play_store_background_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_pay_nothing_now_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_secure_with_play_store_background_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_item_box_background_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_secure_with_play_store_text_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_item_box_background_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_selected_sku_background_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_secure_with_play_store_background_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_selected_sku_background_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/ly_view_all_plans_unselected_sku_background_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_item_box_background_color" />
+
+                    <include
+                        android:id="@+id/ly_view_all_plans_unselected_sku_background_color"
+                        layout="@layout/item_switch_with_color_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ly_view_all_plans_selected_sku_background_color" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/btn_test"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="1dp"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_update"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="1dp"
+        android:text="Update"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@id/btn_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_cancel"
+        app:layout_constraintTop_toTopOf="@id/btn_cancel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

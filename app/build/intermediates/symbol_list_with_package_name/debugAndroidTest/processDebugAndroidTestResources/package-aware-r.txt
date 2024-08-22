@@ -1,0 +1,3 @@
+com.example.ads.helper.new_.demo.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

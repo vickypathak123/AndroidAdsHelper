@@ -1,0 +1,166 @@
+[
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/raw_blast_gift.json.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/raw/blast_gift.json"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.ads.helper.new_.demo.app-pngs-47:/drawable-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable_ic_new_header_back.png.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/drawable/ic_new_header_back.png"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-pngs-47:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_dialog_update_banner.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/dialog_update_banner.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_manage_subscription_ui.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_manage_subscription_ui.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.ads.helper.new_.demo.app-pngs-47:/drawable-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_native_ads_medium.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_native_ads_medium.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/raw_gift.json.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/raw/gift.json"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_native_ads_big.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_native_ads_big.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_dialog_bottom_sheet.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/dialog_bottom_sheet.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_item_switch_with_color_slider.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/item_switch_with_color_slider.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.ads.helper.new_.demo.app-pngs-47:/drawable-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.ads.helper.new_.demo.app-pngs-47:/drawable-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_view_gift_ad.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/view_gift_ad.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_all_screen_header.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/all_screen_header.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_banner_update.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_banner_update.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_dialog_update_subscription.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/dialog_update_subscription.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_startup.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_startup.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_main.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_banner_type.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_banner_type.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.ads.helper.new_.demo.app-pngs-47:/drawable-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable_ic_share_blue.png.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/drawable/ic_share_blue.png"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_layout_google_native_ad_custom_sample.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/layout_google_native_ad_custom_sample.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/drawable-ldpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.ads.helper.new_.demo.app-pngs-47:/drawable-ldpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/xml_backup_rules.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_custom_native_ads.xml.flat",
+        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_custom_native_ads.xml"
+    }
+]

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:background="@android:color/holo_red_light"
+    tools:context=".purchase.activity.ViewAllPlansActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@android:color/holo_green_light">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            tools:background="@android:color/holo_blue_light">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.92" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.03" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.97" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_top_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="@dimen/_40sdp" />
+
+            <!--<editor-fold desc="For Top Side View">-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_close"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:src="@drawable/ic_subscription_close"
+                android:theme="@style/Theme.Material3.DayNight"
+                app:layout_constraintBottom_toBottomOf="@id/txt_unlock_all_features"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/gl_end_1"
+                app:layout_constraintTop_toTopOf="@id/txt_unlock_all_features"
+                app:layout_constraintVertical_bias="0.0"
+                tools:tint="@color/default_view_more_plan_close_icon_color" />
+
+            <!--                android:layout_marginTop="@dimen/_40sdp"-->
+            <TextView
+                android:id="@+id/txt_unlock_all_features"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textSize="@dimen/_18ssp"
+                app:layout_constraintEnd_toStartOf="@id/iv_close"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/gl_start_1"
+                app:layout_constraintTop_toTopOf="@id/gl_top_1"
+                tools:text="@string/unlock_all_features"
+                tools:textColor="@color/default_view_more_plan_header_color" />
+
+            <TextView
+                android:id="@+id/txt_start_with_a_free_trial"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:includeFontPadding="false"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/txt_unlock_all_features"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txt_unlock_all_features"
+                app:layout_constraintTop_toBottomOf="@id/txt_unlock_all_features"
+                tools:text="@string/payment_is_charged_after_period_cancel_anytime"
+                tools:textColor="@color/default_view_more_plan_sub_header_color" />
+
+            <include
+                android:id="@+id/ly_item_1"
+                layout="@layout/layout_subscribe_item_box"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintEnd_toStartOf="@+id/ly_item_2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_start_with_a_free_trial" />
+
+            <include
+                android:id="@+id/ly_item_2"
+                layout="@layout/layout_subscribe_item_box"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="@id/ly_item_1"
+                app:layout_constraintEnd_toStartOf="@+id/ly_item_3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ly_item_1"
+                app:layout_constraintTop_toTopOf="@id/ly_item_1" />
+
+            <include
+                android:id="@+id/ly_item_3"
+                layout="@layout/layout_subscribe_item_box"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@id/ly_item_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ly_item_2"
+                app:layout_constraintTop_toTopOf="@id/ly_item_1" />
+
+            <include
+                android:id="@+id/ly_item_4"
+                layout="@layout/layout_subscribe_item_box"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="@+id/ly_item_1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/ly_item_1"
+                app:layout_constraintTop_toBottomOf="@id/ly_item_1" />
+
+            <include
+                android:id="@+id/ly_item_5"
+                layout="@layout/layout_subscribe_item_box"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/ly_item_4"
+                app:layout_constraintEnd_toEndOf="@+id/ly_item_2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/ly_item_2"
+                app:layout_constraintTop_toTopOf="@id/ly_item_4" />
+
+            <include
+                android:id="@+id/ly_item_6"
+                layout="@layout/layout_subscribe_item_box"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/ly_item_4"
+                app:layout_constraintEnd_toEndOf="@+id/ly_item_3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/ly_item_3"
+                app:layout_constraintTop_toTopOf="@id/ly_item_4" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/infiniteViewPager"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
+                app:layout_constraintStart_toStartOf="@id/gl_start_2"
+                app:layout_constraintTop_toBottomOf="@id/ly_item_4" />
+
+            <com.zhpan.indicator.IndicatorView
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@id/infiniteViewPager"
+                app:layout_constraintStart_toStartOf="@id/infiniteViewPager"
+                app:layout_constraintTop_toBottomOf="@id/infiniteViewPager"
+                app:layout_constraintVertical_bias="0"
+                app:vpi_orientation="horizontal"
+                app:vpi_slide_mode="worm"
+                tools:vpi_slider_checked_color="@color/default_view_more_plan_rating_indicator_color"
+                app:vpi_slider_normal_color="@color/default_view_more_plan_rating_place_holder_color"
+                app:vpi_slider_radius="@dimen/_3sdp"
+                app:vpi_style="circle" />
+            <!--</editor-fold>-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_plan"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                app:layout_constraintBottom_toTopOf="@id/txt_free_then_per_period"
+                app:layout_constraintDimensionRatio="328.4:500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dots_indicator"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintWidth_percent="0.3" />
+
+            <include
+                android:id="@+id/ly_lifetime_plan"
+                layout="@layout/layout_subscribe_sku_item"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@id/cl_plan"
+                app:layout_constraintDimensionRatio="300:380"
+                app:layout_constraintEnd_toStartOf="@+id/ly_yearly_plan"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="1" />
+
+            <include
+                android:id="@+id/ly_yearly_plan"
+                layout="@layout/layout_subscribe_sku_item"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="@id/cl_plan"
+                app:layout_constraintDimensionRatio="328:456"
+                app:layout_constraintEnd_toStartOf="@+id/ly_monthly_plan"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ly_lifetime_plan"
+                app:layout_constraintVertical_bias="1" />
+
+            <include
+                android:id="@+id/ly_monthly_plan"
+                layout="@layout/layout_subscribe_sku_item"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@id/cl_plan"
+                app:layout_constraintDimensionRatio="300:380"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ly_yearly_plan"
+                app:layout_constraintVertical_bias="1" />
+
+            <!--<editor-fold desc="For Bottom View">-->
+            <TextView
+                android:id="@+id/txt_free_then_per_period"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toTopOf="@id/ly_subscribe_button"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
+                app:layout_constraintStart_toStartOf="@id/gl_start_2"
+                app:layout_constraintTop_toBottomOf="@id/cl_plan"
+                tools:text="@string/free_then_per_period"
+                tools:textColor="@color/default_view_more_plan_close_icon_color" />
+
+            <include
+                android:id="@+id/ly_subscribe_button"
+                layout="@layout/layout_subscribe_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                app:layout_constraintBottom_toTopOf="@id/txt_pay_nothing_now"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
+                app:layout_constraintStart_toStartOf="@id/gl_start_2"
+                app:layout_constraintTop_toBottomOf="@id/txt_free_then_per_period"
+                app:layout_goneMarginBottom="@dimen/_8sdp" />
+
+            <TextView
+                android:id="@+id/txt_pay_nothing_now"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:elevation="@dimen/_4sdp"
+                android:fontFamily="@font/avenir_heavy"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:shadowColor="#2B000000"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="2"
+                tools:textColor="@color/default_view_more_plan_pay_nothing_now_color"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toTopOf="@id/ly_secure_with_play_store"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/pay_nothing_now" />
+
+            <include
+                android:id="@+id/ly_secure_with_play_store"
+                layout="@layout/layout_secure_with_play_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                app:layout_constraintBottom_toTopOf="@id/txt_terms_of_use"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_terms_of_use"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txt_privacy_policy"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/terms_of_use"
+                tools:textColor="@color/default_view_more_plan_close_icon_color" />
+
+            <TextView
+                android:id="@+id/txt_privacy_policy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:gravity="center_vertical|end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/txt_terms_of_use"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_terms_of_use"
+                tools:text="@string/privacy_policy"
+                tools:textColor="@color/default_view_more_plan_close_icon_color" />
+
+
+            <!--</editor-fold>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

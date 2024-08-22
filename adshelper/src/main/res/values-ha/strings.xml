@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">Sai Lokaci Daya</string>
+    <string name="period_day">Ranar </string>
+    <string name="period_days"> Kwanaki </string>
+    <string name="period_week">Mako </string>
+    <string name="period_weeks">Makonni </string>
+    <string name="period_month">wata</string>
+    <string name="period_months"> Watanni </string>
+    <string name="period_year">Shekara</string>
+    <string name="period_years">Shekaru</string>
+
+    <string name="have_doubts">Shin Akwai Shakku?</string>
+    <string name="start_with_a_free_trial">Fara da gwaji kyauta</string>
+    <string name="now">Yanzu</string>
+    <string name="unlock_all_the_features">Buɗe duk fasalulluka.</string>
+    <string name="today_get_instant_access">Yau: Samun Shiga Nan take</string>
+    <string name="day_title">Ranar %1s:</string>
+    <string name="trial_reminder"> Tunatarwa na gwaji </string>
+    <string name="trial_reminder_hint">Samu tunatarwa game da lokacin da gwajin ku na kyauta zai ƙare. Soke kowane lokaci a cikin daƙiƙa 15.</string>
+    <string name="premium_begins">Ana Farawa Kyauta </string>
+    <string name="premium_begins_hint">Tsarin ku zai canza zuwa cikakken farashi sai dai idan an soke shi.</string>
+    <string name="free_then_per_period">%1s kyauta, sannan %2s kowace %3s</string>
+    <string name="pay_nothing_now">Baya Komai Yanzu</string>
+    <string name="view_all_plans"><u>Duba Duk Tsare-tsare </u></string>
+
+    <string name="unlock_all_features">Buɗe Duk Fasaloli</string>
+    <string name="lifetime_purchase">Sayen Rayuwar Rayuwa</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">ana cajin biya bayan %1s, soke kowane lokaci.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Subscribe zai sabunta ta atomatik, soke kowane lokaci.</string>
+
+    <string name="best_value"> MAFI KYAU </string>
+    <string name="save_percentage"> Ajiye %1s% </string>
+    <string name="most_popular">MAFI SHARHI</string>
+
+    <string name="lifetime">Rayuwa</string>
+    <string name="yearly">Shekaru</string>
+    <string name="monthly">Na wata </string>
+    <string name="weekly">Makowa</string>
+
+    <string name="purchase_1">1 Sayi</string>
+    <string name="period_free">%1s kyauta</string>
+    <string name="upto_period">har zuwa %1s</string>
+
+    <string name="continue_">Ci gaba</string>
+    <string name="start_my_free_trial"> Fara gwaji NA KYAUTA</string>
+    <string name="try_period_for_price"> Gwada %1s na %2s</string>
+
+    <string name="cancel_anytime_secure_with_play_store">Soke kowane lokaci. Amintacce da Play Store</string>
+    <string name="price_for_period_use">%1s don amfani %2s</string>
+    <string name="price_upto_period_then_price_slash_period">%1s har zuwa %2s, sannan %3s</string>
+
+    <string name="terms_of_use">Sharuɗɗan Amfani</string>
+    <string name="privacy_policy">Manufar Kerewa</string>
+
+    <string name="instant_access_hint_1"> Auna Nisa</string>
+    <string name="instant_access_hint_2"> Ma\'aunin Yanki</string>
+    <string name="instant_access_hint_3">Geo Timestamp Kamara</string>
+    <string name="instant_access_hint_4"> Tsare-tsaren Hanya</string>
+    <string name="instant_access_hint_5">Data Cloud Sync</string>
+    <string name="instant_access_hint_6">Tallace-tallacen Kyauta</string>
+
+    <string name="rating_header">Kyakkyawan app don Maida Rubutu</string>
+    <string name="rating_sub_header">App yana da kyau da gaske yana buƙatar yin aiki akan jerin hoton da aka bincika, wasu abubuwan da ke ciki sun ɓace wasu kuma an canza su. App yana buƙatar haɓakawa</string>
+    <string name="rating_by">da %1s</string>
+    <string name="rating_user">Akshay Harsoda </string>
+</resources>

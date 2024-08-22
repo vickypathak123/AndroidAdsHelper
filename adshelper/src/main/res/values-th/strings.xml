@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">ซื้อครั้งเดียว</string>
+    <string name="period_day">วัน</string>
+    <string name="period_days">วัน</string>
+    <string name="period_week">สัปดาห์</string>
+    <string name="period_weeks">สัปดาห์</string>
+    <string name="period_month">เดือน</string>
+    <string name="period_months">เดือน</string>
+    <string name="period_year">ปี</string>
+    <string name="period_years">ปี</string>
+
+    <string name="have_doubts">มีข้อสงสัยใช่หรือไม่?</string>
+    <string name="start_with_a_free_trial">เริ่มด้วยการทดลองใช้งานฟรี</string>
+    <string name="now">ตอนนี้</string>
+    <string name="unlock_all_the_features">ปลดล็อกคุณสมบัติทั้งหมด</string>
+    <string name="today_get_instant_access">วันนี้: เข้าถึงได้ทันที</string>
+    <string name="day_title">วันที่ %1:</string>
+    <string name="trial_reminder">คำเตือนการทดลองใช้งาน</string>
+    <string name="trial_reminder_hint">รับคำเตือนเมื่อการทดลองใช้งานฟรีของคุณจะสิ้นสุด ยกเลิกได้ทุกเมื่อภายใน 15 วินาที</string>
+    <string name="premium_begins">Premium Begins</string>
+    <string name="premium_begins_hint">ช่วงทดลองใช้งานจะแปลงเป็นราคาเต็ม เว้นแต่จะยกเลิก</string>
+    <string name="free_then_per_period">ฟรี 1 วินาที จากนั้น 2 วินาทีต่อ 3 วินาที</string>
+    <string name="pay_nothing_now">ไม่ต้องจ่ายอะไรเลยตอนนี้</string>
+    <string name="view_all_plans"><u>ดูแผนทั้งหมด</u></string>
+
+    <string name="unlock_all_features">ปลดล็อคคุณสมบัติทั้งหมด</string>
+    <string name="lifetime_purchase">ซื้อตลอดชีพ</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">ชำระเงินหลังจาก %1 วินาที ยกเลิกได้ตลอดเวลา</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">สมัครสมาชิกจะต่ออายุอัตโนมัติ ยกเลิกได้ตลอดเวลา</string>
+
+    <string name="best_value">คุ้มค่าที่สุด</string>
+    <string name="save_percentage">ประหยัด %1s%%</string>
+    <string name="most_popular">นิยมมากที่สุด</string>
+
+    <string name="lifetime">ตลอดชีพ</string>
+    <string name="yearly">รายปี</string>
+    <string name="monthly">รายเดือน</string>
+    <string name="weekly">รายสัปดาห์</string>
+
+    <string name="purchase_1">1 ซื้อ</string>
+    <string name="period_free">%1s ฟรี</string>
+    <string name="upto_period">สูงสุด %1s</string>
+
+    <string name="continue_">ดำเนินการต่อ</string>
+    <string name="start_my_free_trial">เริ่มทดลองใช้งานฟรี</string>
+    <string name="try_period_for_price">ทดลองใช้ %1 วินาทีในราคา %2 วินาที</string>
+
+    <string name="cancel_anytime_secure_with_play_store">ยกเลิกได้ทุกเมื่อ ปลอดภัยด้วย Play Store</string>
+    <string name="price_for_period_use">%1s สำหรับการใช้งาน %2s</string>
+    <string name="price_upto_period_then_price_slash_period">%1s สูงสุด %2s จากนั้น %3s</string>
+
+    <string name="terms_of_use">เงื่อนไขการใช้งาน</string>
+    <string name="privacy_policy">นโยบายความเป็นส่วนตัว</string>
+
+    <string name="instant_access_hint_1">การวัดระยะทาง</string>
+    <string name="instant_access_hint_2">การวัดพื้นที่ภาคสนาม</string>
+    <string name="instant_access_hint_3">กล้องบันทึกเวลาทางภูมิศาสตร์</string>
+    <string name="instant_access_hint_4">การวางแผนเส้นทาง</string>
+    <string name="instant_access_hint_5">การซิงค์ข้อมูลบนคลาวด์</string>
+    <string name="instant_access_hint_6">ไม่มีโฆษณา</string>
+
+    <string name="rating_header">แอปที่ยอดเยี่ยมสำหรับการแปลงข้อความ</string>
+    <string name="rating_sub_header">แอปนี้เป็นแอปที่ดีจริงๆ จำเป็นต้องทำงานกับลำดับของภาพที่สแกน เนื้อหาบางส่วนหายไปและบางส่วนถูกสับเปลี่ยน แอปต้องได้รับการปรับปรุง</string>
+    <string name="rating_by">โดย %1s</string>
+    <string name="rating_user">อักษัย ฮาร์โซดา</string>
+</resources>

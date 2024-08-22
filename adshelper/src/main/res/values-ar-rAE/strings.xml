@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">شراء لمرة واحدة</string>
+    <string name="period_day">يوم</string>
+    <string name="period_days">أيام</string>
+    <string name="period_week">أسبوع</string>
+    <string name="period_weeks">أسابيع</string>
+    <string name="period_month">شهر</string>
+    <string name="period_months">أشهر</string>
+    <string name="period_year">سنة</string>
+    <string name="period_years">سنوات</string>
+
+    <string name="have_doubts">هل لديك شكوك؟</string>
+    <string name="start_with_a_free_trial">ابدأ بفترة تجريبية مجانية</string>
+    <string name="now">الآن</string>
+    <string name="unlock_all_the_features">افتح جميع الميزات.</string>
+    <string name="today_get_instant_access">اليوم: احصل على وصول فوري</string>
+    <string name="day_title">اليوم %1s:</string>
+    <string name="trial_reminder">تذكير بالفترة التجريبية</string>
+    <string name="trial_reminder_hint">احصل على تذكير بموعد انتهاء الفترة التجريبية المجانية. يمكنك الإلغاء في أي وقت خلال 15 ثانية.</string>
+    <string name="premium_begins">تبدأ النسخة المميزة</string>
+    <string name="premium_begins_hint">سيتم تحويل النسخة التجريبية إلى السعر الكامل ما لم يتم إلغاؤها.</string>
+    <string name="free_then_per_period">%1s مجانًا، ثم %2s لكل %3s</string>
+    <string name="pay_nothing_now">لا تدفع أي شيء الآن</string>
+    <string name="view_all_plans"><u>عرض جميع الخطط</u></string>
+
+    <string name="unlock_all_features">إلغاء قفل جميع الميزات</string>
+    <string name="lifetime_purchase">شراء مدى الحياة</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">يتم تحصيل الدفع بعد %1s، ويمكنك الإلغاء في أي وقت.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">سيتم تجديد الاشتراك تلقائيًا، ويمكنك الإلغاء في أي وقت.</string>
+
+    <string name="best_value">أفضل قيمة</string>
+    <string name="save_percentage">وفر %1s%%</string>
+    <string name="most_popular">الأكثر شعبية</string>
+
+    <string name="lifetime">مدى الحياة</string>
+    <string name="yearly">سنوي</string>
+    <string name="monthly">شهري</string>
+    <string name="weekly">أسبوعي</string>
+
+    <string name="purchase_1">1 عملية شراء</string>
+    <string name="period_free">%1s مجانية</string>
+    <string name="upto_period">حتى %1s</string>
+
+    <string name="continue_">استمر</string>
+    <string name="start_my_free_trial">ابدأ تجربتي المجانية</string>
+    <string name="try_period_for_price">جرب %1s مقابل %2s</string>
+
+    <string name="cancel_anytime_secure_with_play_store">يمكنك إلغاء الاشتراك في أي وقت. يمكنك تأمين حسابك باستخدام متجر Play Store</string>
+    <string name="price_for_period_use">%1s مقابل %2s للاستخدام</string>
+    <string name="price_upto_period_then_price_slash_period">%1s حتى %2s، ثم %3s</string>
+
+    <string name="terms_of_use">شروط الاستخدام</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+
+    <string name="instant_access_hint_1">قياس المسافة</string>
+    <string name="instant_access_hint_2">قياس مساحة الحقل</string>
+    <string name="instant_access_hint_3">كاميرا الطابع الزمني الجغرافي</string>
+    <string name="instant_access_hint_4">تخطيط المسار</string>
+    <string name="instant_access_hint_5">مزامنة البيانات السحابية</string>
+    <string name="instant_access_hint_6">بدون إعلانات</string>
+
+    <string name="rating_header">تطبيق ممتاز لتحويل النص</string>
+    <string name="rating_sub_header">التطبيق جيد، ويحتاج حقًا إلى العمل على تسلسل الصور الممسوحة ضوئيًا، فبعض المحتويات مفقودة وبعضها الآخر مُختلط. يحتاج التطبيق إلى تحسين</string>
+    <string name="rating_by">بواسطة %1s</string>
+    <string name="rating_user">أكشاي هارسودا</string>
+</resources>

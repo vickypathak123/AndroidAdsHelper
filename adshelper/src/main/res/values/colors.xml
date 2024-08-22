@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="shimmer_placeholder">#DDDDDD</color>
+
+    <color name="default_native_ads_main_color">#4CAF50</color>
+    <color name="default_native_ads_label_text_color">#E91E63</color>
+    <color name="default_native_ads_body_text_color">#673AB7</color>
+    <color name="default_native_ads_background_color">#CE93D8</color>
+
+    <color name="default_time_line_main_color">#1B79FF</color>
+    <color name="default_time_line_close_icon_color">#DADBDB</color>
+    <color name="default_time_line_track_inactive_color">#EBF1EF</color>
+    <color name="default_time_line_hint_text_color">#6C7379</color>
+    <color name="default_time_line_instant_access_hint_text_color">#1E2128</color>
+    <color name="default_secure_with_play_store_text_color">#424242</color>
+    <color name="default_secure_with_play_store_background_color">#F1F5F4</color>
+
+    <color name="default_view_more_plan_header_color">#5344D7</color>
+    <color name="default_view_more_plan_sub_header_color">#28353F</color>
+    <color name="default_view_more_plan_close_icon_color">#A0A4A6</color>
+    <color name="default_view_more_plan_rating_color">#FCAF2A</color>
+    <color name="default_view_more_plan_rating_place_holder_color">#E2E2E2</color>
+    <color name="default_view_more_plan_rating_indicator_color">#008EFF</color>
+    <color name="default_view_more_plan_unselected_item_data_color">#838485</color>
+    <color name="default_view_more_plan_selected_item_data_color">#343537</color>
+    <color name="default_view_more_plan_pay_nothing_now_color">#456EFE</color>
+    <color name="default_view_more_plan_secure_with_play_store_text_color">#424A4E</color>
+    <color name="default_view_more_plan_item_box_background_color">#F2F8FF</color>
+    <color name="default_view_more_plan_selected_sku_background_color">#F6F6FF</color>
+    <color name="default_view_more_plan_unselected_sku_background_color">#F8F8F8</color>
+
+</resources>

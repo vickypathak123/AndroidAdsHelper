@@ -1,0 +1,5 @@
+com.example.ads.helper.new_.demo.test.app-core-1.6.1-0 /Users/android/.gradle/caches/transforms-4/48b26c08bacd1cd0ecb8b7fda1900bd3/transformed/core-1.6.1/res
+com.example.ads.helper.new_.demo.test.app-androidTest-1 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/generated/res/resValues/androidTest/debug
+com.example.ads.helper.new_.demo.test.app-mergeDebugAndroidTestResources-2 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.example.ads.helper.new_.demo.test.app-mergeDebugAndroidTestResources-3 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.example.ads.helper.new_.demo.test.app-debugAndroidTest-4 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources

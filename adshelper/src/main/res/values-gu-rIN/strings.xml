@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">એક વખતની ખરીદી</string>
+    <string name="period_day">દિવસ</string>
+    <string name="period_days">દિવસ</string>
+    <string name="period_week">અઠવાડિયું</string>
+    <string name="period_weeks">અઠવાડિયા</string>
+    <string name="period_month">મહિનો</string>
+    <string name="period_months">મહિના</string>
+    <string name="period_year">વર્ષ</string>
+    <string name="period_years">વર્ષ</string>
+
+    <string name="have_doubts">શંકા છે?</string>
+    <string name="start_with_a_free_trial">મફત અજમાયશ સાથે પ્રારંભ કરો</string>
+    <string name="now">હવે</string>
+    <string name="unlock_all_the_features">બધી સુવિધાઓને અનલોક કરો.</string>
+    <string name="today_get_instant_access">આજે: ઝટપટ ઍક્સેસ મેળવો</string>
+    <string name="day_title">દિવસ %1s:</string>
+    <string name="trial_reminder">અજમાયશ રીમાઇન્ડર</string>
+    <string name="trial_reminder_hint">તમારી મફત અજમાયશ ક્યારે સમાપ્ત થશે તે વિશે રીમાઇન્ડર મેળવો. 15 સેકન્ડમાં ગમે ત્યારે રદ કરો.</string>
+    <string name="premium_begins">પ્રીમિયમ શરૂ થાય છે</string>
+    <string name="premium_begins_hint">જ્યાં સુધી રદ કરવામાં ન આવે ત્યાં સુધી તમારી અજમાયશ સંપૂર્ણ કિંમતમાં કન્વર્ટ થશે.</string>
+    <string name="free_then_per_period">%1s મફત, પછી %2s પ્રતિ %3s</string>
+    <string name="pay_nothing_now">હવે કંઈ ચૂકવશો નહીં</string>
+    <string name="view_all_plans"><u>બધી યોજનાઓ જુઓ</u></string>
+
+    <string name="unlock_all_features">બધી સુવિધાઓને અનલોક કરો</string>
+    <string name="lifetime_purchase">આજીવન ખરીદી</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">ચુકવણી %1s પછી લેવામાં આવે છે, ગમે ત્યારે રદ કરો.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">સબ્સ્ક્રિપ્શન ઑટો-રિન્યૂ થશે, ગમે ત્યારે રદ કરો.</string>
+
+    <string name="best_value">શ્રેષ્ઠ મૂલ્ય</string>
+    <string name="save_percentage">%1s%% સાચવો</string>
+    <string name="most_popular">સૌથી વધુ લોકપ્રિય</string>
+
+    <string name="lifetime">આજીવન</string>
+    <string name="yearly">વાર્ષિક</string>
+    <string name="monthly">માસિક</string>
+    <string name="weekly">સાપ્તાહિક</string>
+
+    <string name="purchase_1">1 ખરીદી</string>
+    <string name="period_free">%1s મફત</string>
+    <string name="upto_period">%1s સુધી</string>
+
+    <string name="continue_">ચાલુ રાખો</string>
+    <string name="start_my_free_trial">મારી મફત અજમાયશ શરૂ કરો</string>
+    <string name="try_period_for_price">%2s માટે %1s અજમાવી જુઓ</string>
+
+    <string name="cancel_anytime_secure_with_play_store">કોઈપણ સમયે રદ કરો. પ્લે સ્ટોર સાથે સુરક્ષિત</string>
+    <string name="price_for_period_use">%1s %2s ઉપયોગ માટે</string>
+    <string name="price_upto_period_then_price_slash_period">%1s થી %2s, પછી %3s</string>
+
+    <string name="terms_of_use">ઉપયોગની શરતો</string>
+    <string name="privacy_policy">ગોપનીયતા નીતિ</string>
+
+    <string name="instant_access_hint_1">અંતર માપન</string>
+    <string name="instant_access_hint_2">ક્ષેત્ર ક્ષેત્રનું માપન</string>
+    <string name="instant_access_hint_3">જિયો ટાઇમસ્ટેમ્પ કેમેરા</string>
+    <string name="instant_access_hint_4">રૂટ પ્લાનિંગ</string>
+    <string name="instant_access_hint_5">ડેટા ક્લાઉડ સિંક</string>
+    <string name="instant_access_hint_6">જાહેરાતો મુક્ત</string>
+
+    <string name="rating_header">કન્વર્ટ ટેક્સ્ટ માટે ઉત્તમ એપ</string>
+    <string name="rating_sub_header">એપ સારી છે એપને ખરેખર સ્કેન કરેલી ઇમેજના ક્રમ પર કામ કરવાની જરૂર છે, કેટલીક સામગ્રી ખૂટે છે અને કેટલીક શફલ કરેલી છે. એપ્લિકેશનને સુધારણાની જરૂર છે</string>
+    <string name="rating_by">%1s દ્વારા</string>
+    <string name="rating_user">અક્ષય હરસોડા</string>
+</resources>

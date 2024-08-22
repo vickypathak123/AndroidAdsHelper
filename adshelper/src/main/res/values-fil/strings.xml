@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">One Time Purchase</string>
+    <string name="period_day">Araw</string>
+    <string name="period_days">Mga Araw</string>
+    <string name="period_week">Linggo</string>
+    <string name="period_weeks">Linggo</string>
+    <string name="period_month">Buwan</string>
+    <string name="period_months">Mga Buwan</string>
+    <string name="period_year">Taon</string>
+    <string name="period_years">Taon</string>
+
+    <string name="have_doubts">May mga Pagdududa?</string>
+    <string name="start_with_a_free_trial">Magsimula sa isang libreng pagsubok</string>
+    <string name="now">Ngayon</string>
+    <string name="unlock_all_the_features">I-unlock ang lahat ng feature.</string>
+    <string name="today_get_instant_access">Ngayon: Kumuha ng Instant Access</string>
+    <string name="day_title">Araw %1s:</string>
+    <string name="trial_reminder">Trial Reminder</string>
+    <string name="trial_reminder_hint">Makakuha ng paalala tungkol sa kung kailan matatapos ang iyong libreng pagsubok. Kanselahin anumang oras sa loob ng 15 segundo.</string>
+    <string name="premium_begins">Nagsisimula ang Premium</string>
+    <string name="premium_begins_hint">Iko-convert sa buong presyo ang iyong pagsubok maliban kung kinansela.</string>
+    <string name="free_then_per_period">%1s libre, pagkatapos ay %2s bawat %3s</string>
+    <string name="pay_nothing_now">Walang Magbayad Ngayon</string>
+    <string name="view_all_plans"><u>Tingnan ang Lahat ng Plano</u></string>
+
+    <string name="unlock_all_features">I-unlock ang Lahat ng Features</string>
+    <string name="lifetime_purchase">Panghabambuhay na Pagbili</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">Sisingilin ang pagbabayad pagkatapos ng %1s, kanselahin anumang oras.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Awtomatikong magre-renew ang subscription, Magkansela anumang oras.</string>
+
+    <string name="best_value">BEST VALUE</string>
+    <string name="save_percentage">SAVE %1s%%</string>
+    <string name="most_popular">PINAKASIKAT</string>
+
+    <string name="lifetime">Habang buhay</string>
+    <string name="yearly">Taun-taon</string>
+    <string name="monthly">Buwanang</string>
+    <string name="weekly">Lingguhan</string>
+
+    <string name="purchase_1">1 Bumili</string>
+    <string name="period_free">%1s libre</string>
+    <string name="upto_period">hanggang %1s</string>
+
+    <string name="continue_">Magpatuloy</string>
+    <string name="start_my_free_trial">SIMULAN ANG AKING LIBRENG PAGSUBOK</string>
+    <string name="try_period_for_price">Subukan ang %1s para sa %2s</string>
+
+    <string name="cancel_anytime_secure_with_play_store">Kanselahin anumang oras. Secure sa Play Store</string>
+    <string name="price_for_period_use">%1s para sa %2s na paggamit</string>
+    <string name="price_upto_period_then_price_slash_period">%1s hanggang %2s, pagkatapos ay %3s</string>
+
+    <string name="terms_of_use">Mga Tuntunin ng Paggamit</string>
+    <string name="privacy_policy">Patakaran sa Privacy</string>
+
+    <string name="instant_access_hint_1">Pagsukat ng Distansya</string>
+    <string name="instant_access_hint_2">Pagsukat ng Field Area</string>
+    <string name="instant_access_hint_3">Geo Timestamp Camera</string>
+    <string name="instant_access_hint_4">Pagpaplano ng Ruta</string>
+    <string name="instant_access_hint_5">Data Cloud Sync</string>
+    <string name="instant_access_hint_6">Mga Ad Libre</string>
+
+    <string name="rating_header">Mahusay na app para sa Convert Text</string>
+    <string name="rating_sub_header">Ang app ay mahusay na app ay talagang kailangang gumana sa pagkakasunud-sunod ng na-scan na larawan, ang ilang nilalaman ay nawawala at ang ilan ay na-shuffle. Ang app ay nangangailangan ng pagpapabuti</string>
+    <string name="rating_by">ng %1s</string>
+    <string name="rating_user">Akshay Harsoda</string>
+</resources>

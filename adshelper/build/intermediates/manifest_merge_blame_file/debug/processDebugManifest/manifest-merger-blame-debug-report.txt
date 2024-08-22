@@ -1,0 +1,80 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:tools="http://schemas.android.com/tools"
+4    package="com.example.app.ads.helper" >
+5
+6    <uses-sdk android:minSdkVersion="23" />
+7
+8    <uses-permission android:name="android.permission.INTERNET" />
+8-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:5:5-67
+8-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:5:22-64
+9    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+9-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:6:5-79
+9-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:6:22-76
+10    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+10-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:7:5-79
+10-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:7:22-76
+11    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+11-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:8:5-79
+11-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:8:22-76
+12
+13    <application
+13-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:10:5-39:19
+14        android:enableOnBackInvokedCallback="true"
+14-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:11:9-51
+15        android:hardwareAccelerated="true"
+15-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:12:9-43
+16        android:supportsRtl="true"
+16-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:13:9-35
+17        tools:targetApi="tiramisu" >
+17-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:14:9-35
+18        <activity
+18-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:15:9-19:45
+19            android:name="com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity"
+19-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:16:13-67
+20            android:screenOrientation="portrait"
+20-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:17:13-49
+21            android:theme="@style/theme_subscription_activity"
+21-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:18:13-63
+22            tools:ignore="DiscouragedApi" />
+22-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:19:13-42
+23        <activity
+23-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:20:9-25:45
+24            android:name="com.example.app.ads.helper.purchase.activity.TimeLineActivity"
+24-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:21:13-63
+25            android:exported="false"
+25-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:22:13-37
+26            android:screenOrientation="portrait"
+26-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:23:13-49
+27            android:theme="@style/theme_subscription_activity"
+27-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:24:13-63
+28            tools:ignore="DiscouragedApi" />
+28-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:25:13-42
+29        <activity
+29-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:26:9-34:72
+30            android:name="com.example.app.ads.helper.activity.InterstitialNativeAdActivity"
+30-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:27:13-66
+31            android:configChanges="keyboardHidden|orientation|screenSize"
+31-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:28:13-74
+32            android:exported="true"
+32-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:29:13-36
+33            android:hardwareAccelerated="true"
+33-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:30:13-47
+34            android:largeHeap="true"
+34-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:31:13-37
+35            android:screenOrientation="portrait"
+35-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:32:13-49
+36            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"
+36-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:33:13-74
+37            tools:ignore="DiscouragedApi, LockedOrientationActivity" />
+37-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:34:13-69
+38
+39        <meta-data
+39-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:36:9-38:37
+40            android:name="com.google.android.gms.ads.flag.NATIVE_AD_DEBUGGER_ENABLED"
+40-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:37:13-86
+41            android:value="false" />
+41-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:38:13-34
+42    </application>
+43
+44</manifest>

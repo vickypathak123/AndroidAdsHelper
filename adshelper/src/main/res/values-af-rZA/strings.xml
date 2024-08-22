@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">Eenmalige aankoop</string>
+    <string name="period_day">Dag</string>
+    <string name="period_days">Dae</string>
+    <string name="period_week">Week</string>
+    <string name="period_weeks">Weke</string>
+    <string name="period_month">Maand</string>
+    <string name="period_months">Maande</string>
+    <string name="period_year">Jaar</string>
+    <string name="period_years">Jare</string>
+
+    <string name="have_doubts">Het jy twyfel?</string>
+    <string name="start_with_a_free_trial">Begin met \'n gratis proeflopie</string>
+    <string name="now">Nou</string>
+    <string name="unlock_all_the_features">Ontsluit al die kenmerke.</string>
+    <string name="today_get_instant_access">Vandag: Kry Onmiddellike Toegang</string>
+    <string name="day_title">Dag %1s:</string>
+    <string name="trial_reminder">Proefherinnering</string>
+    <string name="trial_reminder_hint">Kry \'n herinnering oor wanneer jou gratis proeftydperk sal eindig. Kanselleer enige tyd oor 15 sekondes.</string>
+    <string name="premium_begins">Premium begin</string>
+    <string name="premium_begins_hint">Jou proeflopie sal na volle prys omskakel, tensy gekanselleer.</string>
+    <string name="free_then_per_period">%1s gratis, dan %2s per %3s</string>
+    <string name="pay_nothing_now">Betaal niks nou nie</string>
+    <string name="view_all_plans"><u>Bekyk alle planne</u></string>
+
+    <string name="unlock_all_features">Ontsluit alle kenmerke</string>
+    <string name="lifetime_purchase">Lewenslange aankoop</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">Betaling word na %1s gehef, kanselleer enige tyd.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Intekening sal outomaties hernu, enige tyd kanselleer.</string>
+
+    <string name="best_value">BESTE WAARDE</string>
+    <string name="save_percentage">STOOR %1s%%</string>
+    <string name="most_popular">GEWILDSTE</string>
+
+    <string name="lifetime">Leeftyd</string>
+    <string name="yearly">Jaarliks</string>
+    <string name="monthly">Maandeliks</string>
+    <string name="weekly">Weekliks</string>
+
+    <string name="purchase_1">1 aankoop</string>
+    <string name="period_free">%1s gratis</string>
+    <string name="upto_period">tot %1s</string>
+
+    <string name="continue_">Gaan voort</string>
+    <string name="start_my_free_trial">BEGIN MY GRATIS PROEFTYD</string>
+    <string name="try_period_for_price">Probeer %1s vir %2s</string>
+
+    <string name="cancel_anytime_secure_with_play_store">Kanselleer enige tyd. Veilig met Play Winkel</string>
+    <string name="price_for_period_use">%1s vir %2s gebruik</string>
+    <string name="price_upto_period_then_price_slash_period">%1s tot %2s, dan %3s</string>
+
+    <string name="terms_of_use">Gebruiksbepalings</string>
+    <string name="privacy_policy">Privaatheidsbeleid</string>
+
+    <string name="instant_access_hint_1">Afstandmeting</string>
+    <string name="instant_access_hint_2">Veldareameting</string>
+    <string name="instant_access_hint_3">Geo-tydstempelkamera</string>
+    <string name="instant_access_hint_4">Roetebeplanning</string>
+    <string name="instant_access_hint_5">Datawolk-sinkronisering</string>
+    <string name="instant_access_hint_6">Advertensies gratis</string>
+
+    <string name="rating_header">Uitstekende toepassing om teks om te skakel</string>
+    <string name="rating_sub_header">Die toepassing is \'n goeie toepassing moet regtig aan die volgorde van geskandeerde prent werk, sommige inhoud ontbreek en sommige is geskommel. Program moet verbeter word</string>
+    <string name="rating_by">deur %1s</string>
+    <string name="rating_user">Akshay Harsoda</string>
+</resources>
