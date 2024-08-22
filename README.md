@@ -34,9 +34,4 @@ dependencies {
 }
 ```
 
-#### Note:
-
-1. Your App-Application Class Compulsory Extend [AppOpenApplication](https://github.com/vickypathak123/Android-Ads-Helper/blob/master/adshelper/src/main/java/com/example/app/ads/helper/openad/AppOpenApplication.kt) Class.
-2. If You Don't Pass Any Ad-ID Through [VasuAdsConfig](https://github.com/vickypathak123/Android-Ads-Helper/blob/master/adshelper/src/main/java/com/example/app/ads/helper/VasuAdsConfig.kt), It will take Test ID of this ad Automatically.
-
 # Check [AdMob Error Codes & Logs](https://support.google.com/admob/thread/3494603/admob-error-codes-logs?hl=en)
