@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.voice.gps.navigation.map.location.route"
+    package="com.example.ads.helper.new_.demo"
     android:versionCode="1"
-    android:versionName="2.0.3" >
+    android:versionName="1.0.0" >
 
     <uses-sdk
         android:minSdkVersion="23"
@@ -23,30 +23,21 @@
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <queries>
         <intent>
-            <action android:name="android.intent.action.SEND" />
+            <action android:name="com.android.vending.billing.InAppBillingService.BIND" />
         </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-
-            <category android:name="android.intent.category.BROWSABLE" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.SEND" />
-
-            <data android:mimeType="*/*" />
-        </intent>
+        <!-- For browser content -->
         <intent>
             <action android:name="android.intent.action.VIEW" />
 
             <category android:name="android.intent.category.BROWSABLE" />
 
             <data android:scheme="https" />
-        </intent>
-        <intent>
-            <action android:name="com.android.vending.billing.InAppBillingService.BIND" />
         </intent> <!-- End of browser content -->
         <!-- For CustomTabsService -->
         <intent>
@@ -54,9 +45,6 @@
         </intent>
     </queries>
 
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-    <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_TOPICS" />
@@ -64,10 +52,10 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <permission
-        android:name="com.voice.gps.navigation.map.location.route.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.example.ads.helper.new_.demo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.voice.gps.navigation.map.location.route.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.example.ads.helper.new_.demo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:name="com.example.ads.helper.new_.demo.AppApplication"
@@ -86,7 +74,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.AdsHelper20" >
         <activity
             android:name="com.example.ads.helper.new_.demo.activitys.ManageSubscriptionUiActivity"
@@ -186,7 +173,7 @@
 
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:authorities="com.voice.gps.navigation.map.location.route.mobileadsinitprovider"
+            android:authorities="com.example.ads.helper.new_.demo.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
@@ -222,7 +209,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.voice.gps.navigation.map.location.route.androidx-startup"
+            android:authorities="com.example.ads.helper.new_.demo.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

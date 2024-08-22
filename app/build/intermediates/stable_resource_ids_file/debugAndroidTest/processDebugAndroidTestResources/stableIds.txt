@@ -1,2 +1,2 @@
-com.voice.gps.navigation.map.location.route.test:style/WhiteBackgroundTheme = 0x7f010001
-com.voice.gps.navigation.map.location.route.test:style/WhiteBackgroundDialogTheme = 0x7f010000
+com.example.ads.helper.new_.demo.test:style/WhiteBackgroundTheme = 0x7f010001
+com.example.ads.helper.new_.demo.test:style/WhiteBackgroundDialogTheme = 0x7f010000

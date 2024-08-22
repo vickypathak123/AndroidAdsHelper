@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.voice.gps.navigation.map.location.route.test" >
+    package="com.example.ads.helper.new_.demo.test" >
 
     <uses-sdk
         android:minSdkVersion="23"
@@ -10,8 +10,8 @@
         android:name="androidx.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for com.voice.gps.navigation.map.location.route"
-        android:targetPackage="com.voice.gps.navigation.map.location.route" />
+        android:label="Tests for com.example.ads.helper.new_.demo"
+        android:targetPackage="com.example.ads.helper.new_.demo" />
 
     <queries>
         <package android:name="androidx.test.orchestrator" />

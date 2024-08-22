@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.voice.gps.navigation.map.location.route",
+  "applicationId": "com.example.ads.helper.new_.demo",
   "variantName": "debug",
   "elements": []
 }
