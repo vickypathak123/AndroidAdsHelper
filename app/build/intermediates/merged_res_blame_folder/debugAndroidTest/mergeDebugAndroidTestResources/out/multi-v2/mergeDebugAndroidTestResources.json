@@ -4,7 +4,7 @@
             "outputFile": "com.example.ads.helper.new_.demo.test.app-debugAndroidTest-4:/values-v28_values-v28.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/android/.gradle/caches/transforms-4/33615c175447fcd1aebd1b1003be0615/transformed/core-1.6.1/res/values-v28/values.xml",
+                    "source": "/Users/android/.gradle/caches/transforms-4/562f5be59ec0f1e889fc435526a50cbb/transformed/jetified-core-1.6.1/res/values-v28/values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",
@@ -28,7 +28,7 @@
             "outputFile": "com.example.ads.helper.new_.demo.test.app-debugAndroidTest-4:/values-v18_values-v18.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/android/.gradle/caches/transforms-4/33615c175447fcd1aebd1b1003be0615/transformed/core-1.6.1/res/values-v18/values.xml",
+                    "source": "/Users/android/.gradle/caches/transforms-4/562f5be59ec0f1e889fc435526a50cbb/transformed/jetified-core-1.6.1/res/values-v18/values.xml",
                     "from": {
                         "startLines": "4,12",
                         "startColumns": "0,0",
@@ -52,7 +52,7 @@
             "outputFile": "com.example.ads.helper.new_.demo.test.app-debugAndroidTest-4:/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/android/.gradle/caches/transforms-4/33615c175447fcd1aebd1b1003be0615/transformed/core-1.6.1/res/values/values.xml",
+                    "source": "/Users/android/.gradle/caches/transforms-4/562f5be59ec0f1e889fc435526a50cbb/transformed/jetified-core-1.6.1/res/values/values.xml",
                     "from": {
                         "startLines": "4,11",
                         "startColumns": "0,0",
@@ -76,7 +76,7 @@
             "outputFile": "com.example.ads.helper.new_.demo.test.app-debugAndroidTest-4:/values-v21_values-v21.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/android/.gradle/caches/transforms-4/33615c175447fcd1aebd1b1003be0615/transformed/core-1.6.1/res/values-v21/values.xml",
+                    "source": "/Users/android/.gradle/caches/transforms-4/562f5be59ec0f1e889fc435526a50cbb/transformed/jetified-core-1.6.1/res/values-v21/values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",

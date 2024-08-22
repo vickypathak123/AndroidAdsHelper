@@ -1,4 +1,4 @@
-com.example.ads.helper.new_.demo.test.app-core-1.6.1-0 /Users/android/.gradle/caches/transforms-4/33615c175447fcd1aebd1b1003be0615/transformed/core-1.6.1/res
+com.example.ads.helper.new_.demo.test.app-jetified-core-1.6.1-0 /Users/android/.gradle/caches/transforms-4/562f5be59ec0f1e889fc435526a50cbb/transformed/jetified-core-1.6.1/res
 com.example.ads.helper.new_.demo.test.app-androidTest-1 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/generated/res/resValues/androidTest/debug
 com.example.ads.helper.new_.demo.test.app-mergeDebugAndroidTestResources-2 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
 com.example.ads.helper.new_.demo.test.app-mergeDebugAndroidTestResources-3 /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
