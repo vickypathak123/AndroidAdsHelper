@@ -13,8 +13,8 @@ import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInters
 import com.example.app.ads.helper.isOnline
 import com.example.app.ads.helper.openad.AppOpenAdHelper
 import com.example.app.ads.helper.openad.AppOpenAdHelper.showAppOpenAd
-import com.example.app.ads.helper.purchase.AdsManager
-import com.example.app.ads.helper.purchase.ProductPurchaseHelper
+import com.example.app.ads.helper.purchase.product.AdsManager
+import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
 import com.example.app.ads.helper.revenuecat.initRevenueCatProductList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

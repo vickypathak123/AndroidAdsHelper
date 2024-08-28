@@ -104,10 +104,6 @@
         "source": "com.example.ads.helper.new_.demo.app-main-53:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_dialog_update_subscription.xml.flat",
-        "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/dialog_update_subscription.xml"
-    },
-    {
         "merged": "com.example.ads.helper.new_.demo.app-debug-51:/layout_activity_startup.xml.flat",
         "source": "com.example.ads.helper.new_.demo.app-main-53:/layout/activity_startup.xml"
     },

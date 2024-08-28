@@ -5,7 +5,6 @@ package com.example.app.ads.helper.purchase.utils
  * @since 20 Aug 2024
  */
 enum class SubscriptionEventType {
-    NONE,
     TIME_LINE_SCREEN_OPEN,
     VIEW_ALL_PLANS_SCREEN_OPEN,
     TIME_LINE_SCREEN_CLOSE,

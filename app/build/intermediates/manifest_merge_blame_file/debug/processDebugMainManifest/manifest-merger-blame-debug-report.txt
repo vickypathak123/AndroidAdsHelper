@@ -2,7 +2,7 @@
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.example.ads.helper.new_.demo"
 4    android:versionCode="1"
-5    android:versionName="1.0.0" >
+5    android:versionName="1.0.1" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="23"
@@ -242,16 +242,16 @@
 126-->[com.github.AkshayHarsoda:AksPermission-Android:v1.1.0] /Users/android/.gradle/caches/transforms-4/87d0a46ee5c539cad3e5f7b224ef80db/transformed/jetified-AksPermission-Android-v1.1.0/AndroidManifest.xml:14:13-63
 127        <activity
 127-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:18:9-22:45
-128            android:name="com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity"
-128-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-93
+128            android:name="com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity"
+128-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-100
 129            android:screenOrientation="portrait"
 129-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:13-49
 130            android:theme="@style/theme_subscription_activity" />
 130-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-63
 131        <activity
 131-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:9-28:45
-132            android:name="com.example.app.ads.helper.purchase.activity.TimeLineActivity"
-132-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:13-89
+132            android:name="com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity"
+132-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:13-98
 133            android:exported="false"
 133-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:25:13-37
 134            android:screenOrientation="portrait"

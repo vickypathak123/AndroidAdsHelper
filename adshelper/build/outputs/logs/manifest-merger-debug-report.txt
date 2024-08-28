@@ -34,7 +34,7 @@ ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/mai
 		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:14:9-35
 	android:enableOnBackInvokedCallback
 		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:11:9-51
-activity#com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity
+activity#com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity
 ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:15:9-19:45
 	android:screenOrientation
 		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:17:13-49
@@ -43,8 +43,8 @@ ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/mai
 	android:theme
 		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:18:13-63
 	android:name
-		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:16:13-67
-activity#com.example.app.ads.helper.purchase.activity.TimeLineActivity
+		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:16:13-74
+activity#com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
 ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:20:9-25:45
 	android:screenOrientation
 		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:23:13-49
@@ -55,7 +55,7 @@ ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/mai
 	android:theme
 		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:24:13-63
 	android:name
-		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:21:13-63
+		ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:21:13-72
 activity#com.example.app.ads.helper.activity.InterstitialNativeAdActivity
 ADDED from /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/src/main/AndroidManifest.xml:26:9-34:72
 	android:screenOrientation

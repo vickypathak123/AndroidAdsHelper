@@ -533,7 +533,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] /U
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] /Users/android/.gradle/caches/transforms-4/bc19d111f986874f94a64e10bdf9860c/transformed/jetified-play-services-measurement-sdk-api-20.1.2/AndroidManifest.xml:26:5-79
 	android:name
 		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:22-76
-activity#com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity
+activity#com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity
 ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:18:9-22:45
 	android:screenOrientation
 		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:13-49
@@ -542,8 +542,8 @@ ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adsh
 	android:theme
 		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-63
 	android:name
-		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-93
-activity#com.example.app.ads.helper.purchase.activity.TimeLineActivity
+		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-100
+activity#com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
 ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:9-28:45
 	android:screenOrientation
 		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:26:13-49
@@ -554,7 +554,7 @@ ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adsh
 	android:theme
 		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:27:13-63
 	android:name
-		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:13-89
+		ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:13-98
 activity#com.example.app.ads.helper.activity.InterstitialNativeAdActivity
 ADDED from [:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:29:9-37:72
 	android:screenOrientation

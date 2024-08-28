@@ -16,12 +16,12 @@
         android:supportsRtl="true"
         tools:targetApi="tiramisu" >
         <activity
-            android:name="com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity"
+            android:name="com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name="com.example.app.ads.helper.purchase.activity.TimeLineActivity"
+            android:name="com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity"

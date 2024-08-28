@@ -3,24 +3,24 @@
 3    package="com.example.ads.helper.new_.demo.test" >
 4
 5    <uses-sdk
-5-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:5:5-74
+5-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:5:5-74
 6        android:minSdkVersion="23"
-6-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:5:15-41
+6-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:5:15-41
 7        android:targetSdkVersion="34" />
-7-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:5:42-71
+7-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:5:42-71
 8
 9    <instrumentation
-9-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:11:5-15:82
+9-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:11:5-15:82
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:11:22-76
+10-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:11:22-76
 11        android:functionalTest="false"
-11-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:14:22-52
+11-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:14:22-52
 12        android:handleProfiling="false"
-12-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:13:22-53
+12-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:13:22-53
 13        android:label="Tests for com.example.ads.helper.new_.demo"
-13-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:15:22-80
+13-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:15:22-80
 14        android:targetPackage="com.example.ads.helper.new_.demo" />
-14-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:12:22-78
+14-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:12:22-78
 15
 16    <queries>
 16-->[androidx.test:runner:1.6.1] /Users/android/.gradle/caches/transforms-4/cc920cfb3b67a23a7240a398b4f80fb9/transformed/runner-1.6.1/AndroidManifest.xml:24:5-28:15
@@ -40,12 +40,12 @@
 22-->[androidx.test:core:1.6.1] /Users/android/.gradle/caches/transforms-4/562f5be59ec0f1e889fc435526a50cbb/transformed/jetified-core-1.6.1/AndroidManifest.xml:24:22-69
 23
 24    <application
-24-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:7:5-9:19
+24-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:7:5-9:19
 25        android:debuggable="true"
 26        android:extractNativeLibs="false" >
 27        <uses-library android:name="android.test.runner" />
-27-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:8:9-60
-27-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4579597986578863099.xml:8:23-57
+27-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:8:9-60
+27-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest59532687740239302.xml:8:23-57
 28
 29        <activity
 29-->[androidx.test:core:1.6.1] /Users/android/.gradle/caches/transforms-4/562f5be59ec0f1e889fc435526a50cbb/transformed/jetified-core-1.6.1/AndroidManifest.xml:27:9-34:20

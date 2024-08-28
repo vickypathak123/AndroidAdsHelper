@@ -136,6 +136,18 @@ public final class ActivityManageSubscriptionUiBinding implements ViewBinding {
   public final Spinner spLanguage;
 
   @NonNull
+  public final SwitchCompat switchCloseAdForTimeLineScreen;
+
+  @NonNull
+  public final SwitchCompat switchCloseAdForViewAllPlansScreen;
+
+  @NonNull
+  public final SwitchCompat switchCloseAdForViewAllPlansScreenAfterSplash;
+
+  @NonNull
+  public final SwitchCompat switchIsFromSplash;
+
+  @NonNull
   public final SwitchCompat switchPrivacyPolicy;
 
   @NonNull
@@ -192,8 +204,11 @@ public final class ActivityManageSubscriptionUiBinding implements ViewBinding {
       @NonNull ItemSwitchWithColorSliderBinding lyViewAllPlansUnselectedItemDataColor,
       @NonNull ItemSwitchWithColorSliderBinding lyViewAllPlansUnselectedSkuBackgroundColor,
       @NonNull ConstraintLayout main, @NonNull Spinner spAnimationName, @NonNull Spinner spLanguage,
-      @NonNull SwitchCompat switchPrivacyPolicy, @NonNull SwitchCompat switchShowOnlyViewAllPlans,
-      @NonNull SwitchCompat switchTermsOfUse,
+      @NonNull SwitchCompat switchCloseAdForTimeLineScreen,
+      @NonNull SwitchCompat switchCloseAdForViewAllPlansScreen,
+      @NonNull SwitchCompat switchCloseAdForViewAllPlansScreenAfterSplash,
+      @NonNull SwitchCompat switchIsFromSplash, @NonNull SwitchCompat switchPrivacyPolicy,
+      @NonNull SwitchCompat switchShowOnlyViewAllPlans, @NonNull SwitchCompat switchTermsOfUse,
       @NonNull SwitchCompat switchTimeLineInstantAccessAnimation,
       @NonNull SwitchCompat switchTimeLineScreenUi,
       @NonNull SwitchCompat switchTimeLineSliderAnimation,
@@ -237,6 +252,10 @@ public final class ActivityManageSubscriptionUiBinding implements ViewBinding {
     this.main = main;
     this.spAnimationName = spAnimationName;
     this.spLanguage = spLanguage;
+    this.switchCloseAdForTimeLineScreen = switchCloseAdForTimeLineScreen;
+    this.switchCloseAdForViewAllPlansScreen = switchCloseAdForViewAllPlansScreen;
+    this.switchCloseAdForViewAllPlansScreenAfterSplash = switchCloseAdForViewAllPlansScreenAfterSplash;
+    this.switchIsFromSplash = switchIsFromSplash;
     this.switchPrivacyPolicy = switchPrivacyPolicy;
     this.switchShowOnlyViewAllPlans = switchShowOnlyViewAllPlans;
     this.switchTermsOfUse = switchTermsOfUse;
@@ -517,6 +536,30 @@ public final class ActivityManageSubscriptionUiBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.switch_close_ad_for_time_line_screen;
+      SwitchCompat switchCloseAdForTimeLineScreen = ViewBindings.findChildViewById(rootView, id);
+      if (switchCloseAdForTimeLineScreen == null) {
+        break missingId;
+      }
+
+      id = R.id.switch_close_ad_for_view_all_plans_screen;
+      SwitchCompat switchCloseAdForViewAllPlansScreen = ViewBindings.findChildViewById(rootView, id);
+      if (switchCloseAdForViewAllPlansScreen == null) {
+        break missingId;
+      }
+
+      id = R.id.switch_close_ad_for_view_all_plans_screen_after_splash;
+      SwitchCompat switchCloseAdForViewAllPlansScreenAfterSplash = ViewBindings.findChildViewById(rootView, id);
+      if (switchCloseAdForViewAllPlansScreenAfterSplash == null) {
+        break missingId;
+      }
+
+      id = R.id.switch_is_from_splash;
+      SwitchCompat switchIsFromSplash = ViewBindings.findChildViewById(rootView, id);
+      if (switchIsFromSplash == null) {
+        break missingId;
+      }
+
       id = R.id.switch_privacy_policy;
       SwitchCompat switchPrivacyPolicy = ViewBindings.findChildViewById(rootView, id);
       if (switchPrivacyPolicy == null) {
@@ -589,9 +632,11 @@ public final class ActivityManageSubscriptionUiBinding implements ViewBinding {
           binding_lyViewAllPlansSelectedSkuBackgroundColor, binding_lyViewAllPlansSubHeaderColor,
           binding_lyViewAllPlansUnselectedItemDataColor,
           binding_lyViewAllPlansUnselectedSkuBackgroundColor, main, spAnimationName, spLanguage,
-          switchPrivacyPolicy, switchShowOnlyViewAllPlans, switchTermsOfUse,
-          switchTimeLineInstantAccessAnimation, switchTimeLineScreenUi,
-          switchTimeLineSliderAnimation, switchViewAllPlansScreenUi, txtAnimationName, txtLanguage);
+          switchCloseAdForTimeLineScreen, switchCloseAdForViewAllPlansScreen,
+          switchCloseAdForViewAllPlansScreenAfterSplash, switchIsFromSplash, switchPrivacyPolicy,
+          switchShowOnlyViewAllPlans, switchTermsOfUse, switchTimeLineInstantAccessAnimation,
+          switchTimeLineScreenUi, switchTimeLineSliderAnimation, switchViewAllPlansScreenUi,
+          txtAnimationName, txtLanguage);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

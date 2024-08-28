@@ -27,10 +27,24 @@
         <item>OvershootInterpolator</item>
     </string-array>
     <string-array name="subscription_screen_language">
-        <item>en</item>
-        <item>gu</item>
-        <item>hi</item>
-        <item>ur</item>
+        <item>English (en)</item>
+        <item>Afrikaans (af)</item>
+        <item>Arabic (ar)</item>
+        <item>Danish (da)</item>
+        <item>Spanish (es)</item>
+        <item>Filipino (fil)</item>
+        <item>French (fr)</item>
+        <item>Gujarati (gu)</item>
+        <item>Hausa (ha)</item>
+        <item>Hindi (hi)</item>
+        <item>Italian (it)</item>
+        <item>Japanese (ja)</item>
+        <item>Korean (ko)</item>
+        <item>Portuguese (pt)</item>
+        <item>Russian (ru)</item>
+        <item>Thai (th)</item>
+        <item>Urdu (ur)</item>
+        <item>Chinese (zh)</item>
     </string-array>
     <color name="color_accent">#03A9F4</color>
     <color name="color_primary">#4FC3F7</color>

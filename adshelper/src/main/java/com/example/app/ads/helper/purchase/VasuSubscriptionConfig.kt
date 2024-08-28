@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.example.app.ads.helper.purchase
 
 import android.app.Activity
@@ -15,15 +17,16 @@ import com.example.app.ads.helper.clearAll
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_CHANNEL_ID
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_CHANNEL_NAME
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_ID
-import com.example.app.ads.helper.purchase.activity.TimeLineActivity
-import com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity
-import com.example.app.ads.helper.purchase.utils.BoxItem
-import com.example.app.ads.helper.purchase.utils.RattingItem
-import com.example.app.ads.helper.purchase.utils.SelectorColorItem
-import com.example.app.ads.helper.purchase.utils.SelectorDrawableItem
+import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
+import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
+import com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity
+import com.example.app.ads.helper.purchase.sixbox.utils.BoxItem
+import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
+import com.example.app.ads.helper.purchase.sixbox.utils.SelectorColorItem
+import com.example.app.ads.helper.purchase.sixbox.utils.SelectorDrawableItem
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
-import com.example.app.ads.helper.purchase.utils.TimeLineScreenDataModel
-import com.example.app.ads.helper.purchase.utils.ViewAllPlansScreenDataModel
+import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
+import com.example.app.ads.helper.purchase.sixbox.utils.ViewAllPlansScreenDataModel
 import java.io.Serializable
 import java.lang.ref.WeakReference
 

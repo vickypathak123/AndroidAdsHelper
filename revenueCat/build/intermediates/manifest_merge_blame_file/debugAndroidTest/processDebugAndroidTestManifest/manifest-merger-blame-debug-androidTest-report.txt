@@ -3,24 +3,24 @@
 3    package="com.example.app.ads.helper.revenuecat.test" >
 4
 5    <uses-sdk
-5-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:5:5-74
+5-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:5:5-74
 6        android:minSdkVersion="23"
-6-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:5:15-41
+6-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:5:15-41
 7        android:targetSdkVersion="34" />
-7-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:5:42-71
+7-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:5:42-71
 8
 9    <instrumentation
-9-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:11:5-15:92
+9-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:11:5-15:92
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:11:22-76
+10-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:11:22-76
 11        android:functionalTest="false"
-11-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:14:22-52
+11-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:14:22-52
 12        android:handleProfiling="false"
-12-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:13:22-53
+12-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:13:22-53
 13        android:label="Tests for com.example.app.ads.helper.revenuecat.test"
-13-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:15:22-90
+13-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:15:22-90
 14        android:targetPackage="com.example.app.ads.helper.revenuecat.test" />
-14-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:12:22-88
+14-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:12:22-88
 15
 16    <uses-permission android:name="android.permission.INTERNET" />
 16-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:5-67
@@ -110,7 +110,7 @@
 54-->[androidx.core:core:1.13.1] /Users/android/.gradle/caches/transforms-4/348e43ade9914d616dca82e7ee59e26e/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 55
 56    <application
-56-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:7:5-9:19
+56-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:7:5-9:19
 57        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 57-->[androidx.core:core:1.13.1] /Users/android/.gradle/caches/transforms-4/348e43ade9914d616dca82e7ee59e26e/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 58        android:debuggable="true"
@@ -122,21 +122,21 @@
 62        android:supportsRtl="true" >
 62-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:9-35
 63        <uses-library android:name="android.test.runner" />
-63-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:8:9-60
-63-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest2930124350305522911.xml:8:23-57
+63-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:8:9-60
+63-->/Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/revenueCat/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest4701166162922347863.xml:8:23-57
 64
 65        <activity
 65-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:18:9-22:45
-66            android:name="com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity"
-66-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-93
+66            android:name="com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity"
+66-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-100
 67            android:screenOrientation="portrait"
 67-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:13-49
 68            android:theme="@style/theme_subscription_activity" />
 68-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-63
 69        <activity
 69-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:9-28:45
-70            android:name="com.example.app.ads.helper.purchase.activity.TimeLineActivity"
-70-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:13-89
+70            android:name="com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity"
+70-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:13-98
 71            android:exported="false"
 71-->[:adshelper] /Volumes/Extra/WorkSpace/Common Code/Ads-Helper-2_0/adshelper/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:25:13-37
 72            android:screenOrientation="portrait"

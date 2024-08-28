@@ -4259,15 +4259,6 @@ id collapsible_bottom
 id collapsible_top
 id color
 id color_piker
-id color_piker_button_continue_text_color
-id color_piker_close_icon
-id color_piker_instant_access_hint_text_color
-id color_piker_secure_with_play_store_background_color
-id color_piker_secure_with_play_store_text_color
-id color_piker_time_line_header_color
-id color_piker_time_line_hint_text_color
-id color_piker_time_line_main_color
-id color_piker_track_inactive
 id color_slider
 id compress
 id confirm_button
@@ -4733,6 +4724,10 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switch_close_ad_for_time_line_screen
+id switch_close_ad_for_view_all_plans_screen
+id switch_close_ad_for_view_all_plans_screen_after_splash
+id switch_is_from_splash
 id switch_item
 id switch_privacy_policy
 id switch_show_only_view_all_plans
@@ -4805,13 +4800,11 @@ id txt_bg_image_title
 id txt_body_id
 id txt_body_title
 id txt_btn_continue
-id txt_button_continue_text_color
 id txt_call_to_action_id
 id txt_call_to_action_title
 id txt_call_to_close_id
 id txt_call_to_close_title
 id txt_cb_banner
-id txt_close_icon_color
 id txt_ct_banner
 id txt_free_then_per_period
 id txt_full_banner
@@ -4822,7 +4815,6 @@ id txt_headline_title
 id txt_icon_id
 id txt_icon_title
 id txt_instant_access_hint
-id txt_instant_access_hint_text_color
 id txt_language
 id txt_large_banner
 id txt_leader_board
@@ -4849,8 +4841,6 @@ id txt_rating
 id txt_rating_by
 id txt_rating_header
 id txt_secure_with_play_store
-id txt_secure_with_play_store_background_color
-id txt_secure_with_play_store_text_color
 id txt_size_hint
 id txt_stars_id
 id txt_stars_title
@@ -4858,11 +4848,7 @@ id txt_start_with_a_free_trial
 id txt_store_id
 id txt_store_title
 id txt_terms_of_use
-id txt_time_line_header_color
-id txt_time_line_hint_text_color
-id txt_time_line_main_color
 id txt_today_get_instant_access
-id txt_track_inactive_color
 id txt_trial_reminder
 id txt_trial_reminder_hint
 id txt_txt_rating_id
@@ -4874,7 +4860,6 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id use_instant_access_lottie_file
 id vertical
 id vertical_only
 id view_app_icon_height
@@ -4893,7 +4878,6 @@ id west
 id wide
 id withText
 id with_icon
-id with_slider_animation
 id withinBounds
 id worm
 id wrap
@@ -5050,7 +5034,6 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_bottom_sheet
 layout dialog_update_banner
-layout dialog_update_subscription
 layout dp_example
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity

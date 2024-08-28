@@ -16,23 +16,28 @@ class AdTimer(
     @Suppress("PrivatePropertyName")
     private val TAG: String = javaClass.simpleName
 
-    var isRunning: Boolean = false
+    private var _isRunning: Boolean = false
+    var isRunning: Boolean
+        get() = _isRunning
+        set(value) {
+            _isRunning = value
+        }
 
     override fun onTick(millisUntilFinished: Long) {
         val lCountDownTime = (millisUntilFinished / 1000)
         val formattedSeconds = String.format(Locale.getDefault(), "%02d", lCountDownTime)
         logE(TAG, "onTick: Formatted Time Number is $formattedSeconds")
-        isRunning = true
+        _isRunning = true
         onTick.invoke(lCountDownTime)
     }
 
     override fun onFinish() {
-        isRunning = false
+        _isRunning = false
         onFinish.invoke()
     }
 
     fun cancelTimer() {
-        isRunning = false
+        _isRunning = false
         this.cancel()
     }
 }

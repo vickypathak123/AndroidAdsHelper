@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:background="@android:color/holo_red_light"
-    tools:context=".purchase.activity.TimeLineActivity">
+    tools:context=".purchase.timeline.activity.TimeLineActivity">
 
     <ScrollView
         android:layout_width="0dp"

@@ -127,6 +127,7 @@
                     android:id="@+id/sp_language"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:spinnerMode="dialog"
                     android:entries="@array/subscription_screen_language"
                     android:gravity="center_vertical"
                     android:text="Update Ad Size :-"
@@ -192,11 +193,72 @@
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:maxLines="1"
-                    app:layout_constraintBottom_toTopOf="@id/switch_show_only_view_all_plans"
+                    app:layout_constraintBottom_toTopOf="@id/switch_is_from_splash"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/switch_terms_of_use" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_is_from_splash"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:checked="true"
+                    android:text="Open Like After Splash Flow :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/switch_close_ad_for_time_line_screen"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_terms_of_use" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_close_ad_for_time_line_screen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="Show Close Ad For Time Line Screen :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/switch_close_ad_for_view_all_plans_screen_after_splash"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_is_from_splash" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_close_ad_for_view_all_plans_screen_after_splash"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="Show Close Ad For View All Plan Screen Open After Splash :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/switch_close_ad_for_view_all_plans_screen"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_close_ad_for_time_line_screen" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_close_ad_for_view_all_plans_screen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="Show Close Ad For View All Plan Screen :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/switch_show_only_view_all_plans"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_close_ad_for_view_all_plans_screen_after_splash" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_show_only_view_all_plans"
@@ -211,7 +273,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_terms_of_use" />
+                    app:layout_constraintTop_toBottomOf="@id/switch_close_ad_for_view_all_plans_screen" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_time_line_screen_ui"

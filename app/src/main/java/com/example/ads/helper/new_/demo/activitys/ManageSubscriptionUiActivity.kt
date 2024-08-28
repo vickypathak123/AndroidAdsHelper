@@ -117,7 +117,7 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
 
                     VasuSubscriptionConfig.with(fActivity = mActivity)
                         .enableTestPurchase(false)
-                        .setAppLanguageCode(fCode = spLanguage.selectedItem.toString().takeIf { it.isNotEmpty() } ?: "en")
+                        .setAppLanguageCode(fCode = spLanguage.selectedItem.toString().substringAfter("(").substringBefore(")").takeIf { it.isNotEmpty() } ?: "en")
                         .setPrivacyPolicy(fLink = etPrivacyPolicy.text.toString().trim().takeIf { it.isNotEmpty() && switchPrivacyPolicy.isChecked } ?: "https://www.freeprivacypolicy.com/blog/privacy-policy-url/")
                         .setTermsOfUse(fLink = etTermsOfUse.text.toString().trim().takeIf { it.isNotEmpty() && switchTermsOfUse.isChecked } ?: "https://policies.google.com/privacy?hl=en-US")
                         .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
@@ -175,10 +175,10 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                             }
                         }
                         .launchScreen(
-                            isFromSplash = true,
-                            showCloseAdForTimeLineScreen = true,
-                            showCloseAdForViewAllPlanScreenOpenAfterSplash = true,
-                            showCloseAdForViewAllPlanScreen = true,
+                            isFromSplash = switchIsFromSplash.isChecked,
+                            showCloseAdForTimeLineScreen = switchCloseAdForTimeLineScreen.isChecked,
+                            showCloseAdForViewAllPlanScreenOpenAfterSplash = switchCloseAdForViewAllPlansScreenAfterSplash.isChecked,
+                            showCloseAdForViewAllPlanScreen = switchCloseAdForViewAllPlansScreen.isChecked,
                             directShowMorePlanScreen = switchShowOnlyViewAllPlans.isChecked,
                             onSubscriptionEvent = { eventType ->
                                 Log.e(TAG, "onClick: Admob_ Akshay_ eventType::-> $eventType")

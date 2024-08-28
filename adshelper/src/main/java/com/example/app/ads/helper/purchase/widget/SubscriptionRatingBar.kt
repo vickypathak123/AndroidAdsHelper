@@ -265,7 +265,7 @@ class SubscriptionRatingBar : View {
             selectedAmount = mMaxCount.toFloat()
         }
 
-        setRating(selectedAmount, true)
+        setRating(selectedAmount)
         true
     }
 
@@ -295,14 +295,20 @@ class SubscriptionRatingBar : View {
         return selectedAmount
     }
 
-    private fun setRating(newRating: Float, fromUser: Boolean = false) {
-        var mod = newRating % mStepSize
+    /**
+     * Sets the current rating, if a rating is set that is not an interval of step size
+     * (e.g. 1.2 if stepSize is .5) then we round down to nearest step size
+     *
+     * @param rating the rating to be set must be positive or 0
+     */
+    fun setRating(rating: Float) {
+        var mod = rating % mStepSize
 
         // patch up precision issue where this calculation results in a remainder that incorrectly subtracts off the rating.
         if (mod < mStepSize) {
             mod = 0f
         }
-        mRating = newRating - mod
+        mRating = rating - mod
         if (mRating < mMinSelectionAllowed) {
             mRating = mMinSelectionAllowed.toFloat()
         } else if (mRating > mMaxCount) {
@@ -311,15 +317,6 @@ class SubscriptionRatingBar : View {
         postInvalidate()
     }
 
-    /**
-     * Sets the current rating, if a rating is set that is not an interval of step size
-     * (e.g. 1.2 if stepSize is .5) then we round down to nearest step size
-     *
-     * @param rating the rating to be set must be positive or 0
-     */
-    fun setRating(rating: Float) {
-        setRating(rating, false)
-    }
     fun setProgressTint(@ColorRes fColor: Int) {
         if (progressTintColor != context.getColorStateRes(fColor)) {
             progressTintColor = context.getColorStateRes(fColor)

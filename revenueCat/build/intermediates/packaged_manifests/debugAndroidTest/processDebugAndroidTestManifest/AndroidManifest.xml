@@ -63,11 +63,11 @@
         <uses-library android:name="android.test.runner" />
 
         <activity
-            android:name="com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity"
+            android:name="com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity" />
         <activity
-            android:name="com.example.app.ads.helper.purchase.activity.TimeLineActivity"
+            android:name="com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity" />

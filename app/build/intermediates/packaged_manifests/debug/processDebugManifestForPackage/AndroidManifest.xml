@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ads.helper.new_.demo"
     android:versionCode="1"
-    android:versionName="1.0.0" >
+    android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="23"
@@ -125,11 +125,11 @@
             android:name="com.akshay.harsoda.permission.helper.activity.PermissionActivity"
             android:theme="@style/PermissionTheme.Transparent" />
         <activity
-            android:name="com.example.app.ads.helper.purchase.activity.ViewAllPlansActivity"
+            android:name="com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity" />
         <activity
-            android:name="com.example.app.ads.helper.purchase.activity.TimeLineActivity"
+            android:name="com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity" />

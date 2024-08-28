@@ -6,7 +6,7 @@ import android.content.Context
 import com.example.app.ads.helper.base.utils.getStringRes
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper
 import com.example.app.ads.helper.openad.AppOpenAdHelper
-import com.example.app.ads.helper.purchase.ProductPurchaseHelper
+import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

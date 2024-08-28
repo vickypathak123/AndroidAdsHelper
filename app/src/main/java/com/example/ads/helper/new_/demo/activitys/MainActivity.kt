@@ -23,10 +23,9 @@ import com.example.ads.helper.new_.demo.base.utils.setSelection
 import com.example.ads.helper.new_.demo.base.utils.shareApp
 import com.example.ads.helper.new_.demo.databinding.ActivityMainBinding
 import com.example.ads.helper.new_.demo.triggerRebirth
-import com.example.ads.helper.new_.demo.widget.UpdateSubscriptionDialog
 import com.example.app.ads.helper.activity.showFullScreenNativeAdActivity
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
-import com.example.app.ads.helper.purchase.AdsManager
+import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.reward.RewardedInterstitialAdHelper
 import com.example.app.ads.helper.reward.RewardedInterstitialAdHelper.showRewardedInterstitialAd
 import com.example.app.ads.helper.reward.RewardedVideoAdHelper
@@ -62,62 +61,11 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                 ivHeaderRightIcon.setImageDrawable(mActivity.getDrawableRes(R.drawable.ic_share_blue))
             }
         }
-
-        /*SUBSCRIPTION_DATA_LANGUAGE_CODE = Locale.ENGLISH.language
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> OTP -> ${"OTP".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "hi"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> OTP -> ${"OTP".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "gu"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> OTP -> ${"OTP".getFullBillingPeriod(mActivity)}")
-
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = Locale.ENGLISH.language
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1D -> ${"P1D".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2D -> ${"P2D".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "hi"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1D -> ${"P1D".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2D -> ${"P2D".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "gu"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1D -> ${"P1D".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2D -> ${"P2D".getFullBillingPeriod(mActivity)}")
-
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = Locale.ENGLISH.language
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1W -> ${"P1W".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2W -> ${"P2W".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "hi"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1W -> ${"P1W".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2W -> ${"P2W".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "gu"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1W -> ${"P1W".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2W -> ${"P2W".getFullBillingPeriod(mActivity)}")
-
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = Locale.ENGLISH.language
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1M -> ${"P1M".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2M -> ${"P2M".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "hi"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1M -> ${"P1M".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2M -> ${"P2M".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "gu"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1M -> ${"P1M".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2M -> ${"P2M".getFullBillingPeriod(mActivity)}")
-
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = Locale.ENGLISH.language
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1Y -> ${"P1Y".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2Y -> ${"P2Y".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "hi"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1Y -> ${"P1Y".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2Y -> ${"P2Y".getFullBillingPeriod(mActivity)}")
-        SUBSCRIPTION_DATA_LANGUAGE_CODE = "gu"
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P1Y -> ${"P1Y".getFullBillingPeriod(mActivity)}")
-        Log.e(TAG, "initView: ${SUBSCRIPTION_DATA_LANGUAGE_CODE} -> P2Y -> ${"P2Y".getFullBillingPeriod(mActivity)}")*/
     }
 
     override fun setDefaultAdUI() {
         super.setDefaultAdUI()
         with(mBinding) {
-//            showInterstitialAds.apply {
-//                this.alpha = 0.5f
-//                this.isEnabled = false
-//            }
             showRewardVideoAds.apply {
                 this.alpha = 0.5f
                 this.isEnabled = false
@@ -133,23 +81,6 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
         super.initAds()
 
         with(mBinding) {
-
-            //<editor-fold desc="Interstitial Ad Work">
-//            InterstitialAdHelper.loadAd(
-//                fContext = mActivity,
-////                onAdLoaded = {
-////                    if (it) {
-////                        Log.e(TAG, "Admob_ initAds: AdLoaded")
-////                        showInterstitialAds.alpha = 1.0f
-////                        showInterstitialAds.isEnabled = true
-////                    } else {
-////                        showInterstitialAds.alpha = 0.5f
-////                        showInterstitialAds.isEnabled = false
-////                    }
-////                }
-//            )
-            //</editor-fold>
-
             //<editor-fold desc="Reward Video Ad Work">
             RewardedVideoAdHelper.loadAd(
                 fContext = mActivity,
@@ -186,12 +117,6 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
         super.initViewListener()
 
         with(mBinding) {
-            adsSwitch.setOnCheckedChangeListener { _, _ ->
-//                if (NativeAdvancedModelHelper.getNativeAd != null) {
-//                    NativeAdvancedModelHelper.destroy()
-//                }
-            }
-
             openAdsSwitch.setOnCheckedChangeListener { _, _ ->
                 mActivity.save(IS_OPEN_ADS_ENABLE, !(mActivity.getBoolean(IS_OPEN_ADS_ENABLE, true)))
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -259,9 +184,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
             }
 
             mBinding.showCustomNativeAds -> {
-//                mActivity.showInterstitialAd { _, _ ->
                 launchActivity(getActivityIntent<CustomNativeAdsActivity> { putBoolean("is_add_video_options", mBinding.adsSwitch.isChecked) })
-//                }
             }
 
             mBinding.showRunTimePermission -> {
@@ -300,68 +223,8 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
 
             mBinding.showSubscriptionScreen -> {
                 launchActivity(getActivityIntent<ManageSubscriptionUiActivity>())
-                /*VasuSubscriptionConfig.with(fActivity = mActivity)
-                    .launchScreen {
-                        Log.e(TAG, "onClick: Akshay_ Screen Finished")
-                    }*/
-
-                /*mUpdateSubscriptionDialog.show {
-                        fLanguageCode,
-                        useInstantAccessLottieFile,
-                        isWithSliderAnimation,
-                        fTimeLineMainColor,
-                        fTimeLineHeaderColor,
-                        fTimeLineCloseIconColor,
-                        fTimeLineTrackInactiveColor,
-                        fTimeLineHintTextColor,
-                        fTimeLineInstantAccessHintTextColor,
-                        fSecureWithPlayStoreTextColor,
-                        fSecureWithPlayStoreBackgroundColor,
-                        fButtonContinueTextColor,
-                    ->
-                    VasuSubscriptionConfig.with(fActivity = mActivity)
-                        .setAppLanguageCode(fCode = fLanguageCode.takeIf { it.isNotEmpty() } ?: "en")
-                        .setPrivacyPolicy(fLink = "https://www.freeprivacypolicy.com/blog/privacy-policy-url/")
-                        .setTermsOfUse(fLink = "https://policies.google.com/privacy?hl=en-US")
-                        .setTimeLineScreenData { fTimeLineScreenData ->
-                            with(fTimeLineScreenData) {
-                                this.setWithInstantAccessAnimation(isAnimated = useInstantAccessLottieFile)
-//                                this.setInstantAccessLottieFile(fLottieFile = (1).takeIf { useInstantAccessLottieFile } ?: (-1))
-                                this.setWithSliderAnimation(isAnimated = isWithSliderAnimation)
-                                this.mainColor(fColors = fTimeLineMainColor)
-                                this.headerColor(fColors = fTimeLineHeaderColor)
-                                this.closeIconColor(fColors = fTimeLineCloseIconColor)
-                                this.trackInactiveColor(fColors = fTimeLineTrackInactiveColor)
-                                this.hintTextColor(fColors = fTimeLineHintTextColor)
-                                this.instantAccessHintTextColor(fColors = fTimeLineInstantAccessHintTextColor)
-                                this.secureWithPlayStoreTextColor(fColors = fSecureWithPlayStoreTextColor)
-                                this.secureWithPlayStoreBackgroundColor(fColors = fSecureWithPlayStoreBackgroundColor)
-                                this.buttonContinueTextColor(fColors = fButtonContinueTextColor)
-
-                                this.setInstantAccessHint(
-                                    R.string.dialog_title
-                                )
-                            }
-                        }
-                        .setViewAllPlansScreenData { fViewAllPlansScreenData ->
-                            with(fViewAllPlansScreenData) {
-//                                this.setPlanSelector(SelectorDrawableItem(
-//                                    selectedDrawableRes = R.drawable.ic_launcher_background
-//                                ))
-                            }
-
-                        }
-
-                        .launchScreen { isUserPurchaseAnyPlan ->
-                            Log.e(TAG, "onClick: Akshay_ Screen Finished isUserPurchaseAnyPlan::-> $isUserPurchaseAnyPlan")
-                        }
-                }*/
             }
         }
-    }
-
-    private val mUpdateSubscriptionDialog: UpdateSubscriptionDialog by lazy {
-        UpdateSubscriptionDialog(mActivity)
     }
 
     private fun doNotAskAgain(fMessage: String) {
