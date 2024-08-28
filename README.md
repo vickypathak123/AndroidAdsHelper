@@ -24,6 +24,8 @@ allprojects {
 android {
     defaultConfig {
         multiDexEnabled true
+//        add below line if you face any issue with localization of Subscription Screen
+        resConfigs "en", "af-rZA", "ar-rAE", "da-rDK", "es-rES", "fil", "fr-rFR", "gu-rIN", "ha", "hi-rIN", "it-rIT", "ja", "ko", "pt-rBR", "ru-rRU", "th", "ur-rIN", "zh-rCN"
     }
 }
 
