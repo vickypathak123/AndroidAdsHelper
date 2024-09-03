@@ -63,4 +63,4 @@ Note: in all apps, subscription-related JSON must look like this, no need to rem
 
 ### Subscription Screen UI
 
-<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/timeline_subscription_screen.jpg" height="auto" width="300"/>    <img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/four_plan_subscription_screen.jpg" height="auto" width="300"/>    <img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/siz_box_subscription_screen.jpg" height="auto" width="300"/>
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/timeline_subscription_screen.jpg" height="auto" width="200"/>    <img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/four_plan_subscription_screen.jpg" height="auto" width="200"/>    <img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/siz_box_subscription_screen.jpg" height="auto" width="200"/>
