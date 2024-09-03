@@ -13,7 +13,14 @@
         android:supportsRtl="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".purchase.fourplan.activity.FourPlanActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/theme_subscription_activity"
+            tools:ignore="DiscouragedApi" />
+        <activity
             android:name=".purchase.sixbox.activity.ViewAllPlansActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity"
             tools:ignore="DiscouragedApi" />

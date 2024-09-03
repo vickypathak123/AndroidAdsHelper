@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.viewbinding.ViewBinding
-import com.example.ads.helper.new_.demo.base.BaseFragment
 
 /**
  * @author Akshay Harsoda

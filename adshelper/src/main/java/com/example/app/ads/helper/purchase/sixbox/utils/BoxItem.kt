@@ -6,9 +6,9 @@ import androidx.annotation.StringRes
 
 data class BoxItem(
     @ColorInt
-    var backgroundColor: Int,
+    var backgroundColor: Int = 0,
     @ColorInt
-    var foregroundColor: Int,
+    var foregroundColor: Int = 0,
     @StringRes
     var itemName: Int,
     @DrawableRes

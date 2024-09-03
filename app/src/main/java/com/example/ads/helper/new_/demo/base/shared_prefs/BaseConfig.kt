@@ -1,8 +1,6 @@
 package com.example.ads.helper.new_.demo.base.shared_prefs
 
 import android.content.Context
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 
 //const val YOUR_SHARED_PREF_KEY: String = "your_shared_pref_key"

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/_100sdp">
+
+    <com.example.app.ads.helper.purchase.widget.SquareLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_stroke_four_plan_item_box"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/full_round_18_sdp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_foreground"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_1sdp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_four_plan_item_box"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/full_round_18_sdp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_icon_stroke"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/txt_name"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:shapeAppearance="@style/full_round" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_cloud_backup"
+                android:padding="@dimen/_1sdp"
+                android:src="@drawable/aa_cloud_backup"
+                app:layout_constraintBottom_toBottomOf="@id/iv_icon_stroke"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/iv_icon_stroke"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/iv_icon_stroke"
+                app:layout_constraintTop_toTopOf="@id/iv_icon_stroke"
+                app:shapeAppearance="@style/full_round" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_star_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="-3dp"
+                android:layout_marginTop="3dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_four_plan_item_star"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/iv_icon_stroke"
+                app:layout_constraintTop_toTopOf="@id/iv_icon_stroke"
+                app:layout_constraintWidth_percent="0.08"
+                app:shapeAppearance="@style/full_round" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_star_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="-3dp"
+                android:layout_marginBottom="3dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_four_plan_item_star"
+                app:layout_constraintBottom_toBottomOf="@id/iv_icon_stroke"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/iv_icon_stroke"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_percent="0.08"
+                app:shapeAppearance="@style/full_round" />
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:ellipsize="end"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLines="2"
+                android:clickable="false"
+                android:longClickable="false"
+                android:focusableInTouchMode="false"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_icon_stroke"
+                tools:text="@string/rating_user" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.example.app.ads.helper.purchase.widget.SquareLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

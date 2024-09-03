@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    strings.xml-->
+    <!--    strings.xml-->
 
     <string name="one_time_purchase">One Time Purchase</string>
     <string name="period_day">Day</string>
@@ -66,4 +66,18 @@
     <string name="rating_sub_header">The app is good app really need to work on the sequence of scanned image, some contents are missing and some are shuffled. App needs improvement</string>
     <string name="rating_by">by %1s</string>
     <string name="rating_user">Akshay Harsoda</string>
+
+
+    <string name="satisfied_customer">Satisfied Customer</string>
+    <string name="rating">Rating</string>
+
+    <string name="pay_once_enjoy_forever">Pay once, enjoy forever</string>
+    <string name="percentage_off">%1s%% OFF</string>
+    <string name="price_per_period">%1s per %2s</string>
+    <string name="enjoy_forever">Enjoy forever</string>
+    <string name="recommend">Recommend</string>
+
+    <string name="exit_dialog_negative_button_text">Go Back</string>
+    <string name="exit_dialog_positive_button_text">Exit App</string>
+    <string name="exit_dialog_title">Are you sure, you want to exit ?</string>
 </resources>

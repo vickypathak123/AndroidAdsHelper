@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@android:color/holo_red_light"
+    tools:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_end_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_start_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:elevation="@dimen/_4sdp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="343:114"
+        app:layout_constraintEnd_toEndOf="@id/gl_end_2"
+        app:layout_constraintStart_toStartOf="@id/gl_start_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/full_round_16_sdp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background"
+        app:layout_constraintEnd_toEndOf="@id/iv_background"
+        app:layout_constraintStart_toStartOf="@id/iv_background"
+        app:layout_constraintTop_toTopOf="@id/iv_background">
+
+        <!--<editor-fold desc="quotes related">-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_quotes_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.83" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_quotes_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.93" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_quotes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_four_plan_rating_quotes"
+            app:layout_constraintBottom_toBottomOf="@id/gl_quotes_horizontal"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@id/gl_quotes_vertical"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="@id/gl_quotes_vertical"
+            app:layout_constraintTop_toTopOf="@id/gl_quotes_horizontal" />
+        <!--</editor-fold>-->
+
+        <!--<editor-fold desc="review related">-->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_of_review_views"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="txt_review_header, txt_review, txt_review_by" />
+
+        <TextView
+            android:id="@+id/txt_review_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_review"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/rating_header" />
+
+        <TextView
+            android:id="@+id/txt_review"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/_1sdp"
+            android:maxLines="3"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:textColor="#7C8184"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_review_by"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_review_header"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/txt_review_by"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:gravity="center_vertical|end"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:textColor="#24272C"
+            android:textSize="@dimen/_11sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_review"
+            tools:text="@string/rating_by" />
+        <!--</editor-fold>-->
+
+        <!--<editor-fold desc="customer count related">-->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_of_customer_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="iv_like, bg_girl, iv_girl, txt_emoji, cl_customer_count, txt_satisfied_customer" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_like"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_8sdp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_four_plan_rating_like"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bg_girl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/bg_test_image_girl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/right_round_16_sdp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_girl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/aa_test_image_girl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/right_round_16_sdp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_emoji_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <TextView
+            android:id="@+id/txt_emoji"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_6sdp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/apple_color_emoji"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:rotation="14.97"
+            android:text="😍"
+            app:layout_constraintBottom_toBottomOf="@id/gl_emoji_horizontal"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/iv_girl"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="@id/iv_girl"
+            app:layout_constraintTop_toTopOf="@id/gl_emoji_horizontal"
+            tools:ignore="HardcodedText"
+            tools:targetApi="o" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_customer_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/txt_satisfied_customer"
+            app:layout_constraintEnd_toStartOf="@id/txt_emoji"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/iv_like"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/bg_customer_count"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="#263238"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/full_round_10_dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_customer_count"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_four_plan_customer_count"
+                app:layout_constraintBottom_toBottomOf="@id/txt_customer_count"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/txt_customer_count"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txt_customer_count" />
+
+            <TextView
+                android:id="@+id/txt_customer_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:fontFamily="@font/plus_jakarta_sans_extra_bold"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="@dimen/_4sdp"
+                android:text="1,00,000"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_customer_count_plus"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_customer_count"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_customer_count_plus"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:adjustViewBounds="true"
+                android:padding="@dimen/_4sdp"
+                android:src="@drawable/ic_four_plan_plus_icon"
+                app:layout_constraintBottom_toBottomOf="@id/txt_customer_count"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_customer_count"
+                app:layout_constraintTop_toTopOf="@id/txt_customer_count" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txt_satisfied_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_4sdp"
+            android:fontFamily="@font/plus_jakarta_sans_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/satisfied_customer"
+            android:textColor="#263238"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/cl_customer_count"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/cl_customer_count"
+            app:layout_constraintTop_toBottomOf="@+id/cl_customer_count" />
+        <!--</editor-fold>-->
+
+        <!--<editor-fold desc="rating related">-->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_of_app_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="iv_rating_frame, iv_rating_star, txt_app_rating_count, txt_app_rating_hint, txt_best_app_header, txt_best_app_sub_header" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_rating_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_8sdp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_four_plan_rating_frame"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_rating_star"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_four_plan_rating_star"
+            app:layout_constraintBottom_toBottomOf="@id/iv_rating_frame"
+            app:layout_constraintEnd_toEndOf="@id/iv_rating_frame"
+            app:layout_constraintStart_toStartOf="@id/iv_rating_frame"
+            app:layout_constraintTop_toTopOf="@id/iv_rating_frame" />
+
+        <TextView
+            android:id="@+id/txt_app_rating_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/outfit_semibold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:text="4.6"
+            android:textColor="#0B0B0B"
+            android:textSize="@dimen/_22ssp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_app_rating_hint"
+            app:layout_constraintEnd_toEndOf="@id/iv_rating_frame"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/iv_rating_frame"
+            app:layout_constraintTop_toTopOf="@id/iv_rating_frame"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/txt_app_rating_hint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/outfit_semibold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:text="@string/rating"
+            android:textColor="#0B0B0B"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_rating_frame"
+            app:layout_constraintEnd_toEndOf="@id/txt_app_rating_count"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/txt_app_rating_count"
+            app:layout_constraintTop_toBottomOf="@+id/txt_app_rating_count" />
+
+        <TextView
+            android:id="@+id/txt_best_app_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:fontFamily="@font/plus_jakarta_sans_extra_bold"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_best_app_sub_header"
+            app:layout_constraintStart_toEndOf="@id/iv_rating_frame"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@string/rating_header" />
+
+        <TextView
+            android:id="@+id/txt_best_app_sub_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="@dimen/_1sdp"
+            android:maxLines="2"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:textColor="#7C8184"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/txt_best_app_header"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/txt_best_app_header"
+            app:layout_constraintTop_toBottomOf="@+id/txt_best_app_header"
+            tools:text="@tools:sample/lorem/random" />
+        <!--</editor-fold>-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

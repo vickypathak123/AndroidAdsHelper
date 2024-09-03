@@ -38,7 +38,7 @@
         <activity
             android:name=".activitys.ManageSubscriptionUiActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.NativeAdsMediumActivity"
             android:exported="false"

@@ -6,9 +6,9 @@ import com.example.ads.helper.new_.demo.base.BaseActivity
 import com.example.ads.helper.new_.demo.base.BaseDialog
 import com.example.ads.helper.new_.demo.base.utils.inflater
 import com.example.ads.helper.new_.demo.databinding.DialogUpdateBannerBinding
+import com.example.app.ads.helper.PlaceHolderType
 import com.example.app.ads.helper.banner.BannerAdSize
 import com.example.app.ads.helper.banner.BannerAdType
-import com.example.app.ads.helper.PlaceHolderType
 
 class UpdateBannerDialog(fActivity: BaseActivity) : BaseDialog<DialogUpdateBannerBinding>(fActivity = fActivity) {
     override fun setBinding(): DialogUpdateBannerBinding = DialogUpdateBannerBinding.inflate(fActivity.inflater)

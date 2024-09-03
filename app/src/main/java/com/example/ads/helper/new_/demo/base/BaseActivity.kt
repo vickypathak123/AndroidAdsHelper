@@ -32,15 +32,16 @@ import androidx.core.view.marginTop
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.ads.helper.new_.demo.R
 import com.example.ads.helper.new_.demo.base.shared_prefs.BaseConfig
 import com.example.ads.helper.new_.demo.base.utils.isTiramisuPlus
 import com.example.ads.helper.new_.demo.isNeedToLoadAd
 import com.example.ads.helper.new_.demo.utils.AppTimer
-import com.example.ads.helper.new_.demo.widget.BottomSheetDialog
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
 import com.example.app.ads.helper.isAppForeground
 import com.example.app.ads.helper.isInternetAvailable
 import com.example.app.ads.helper.isOnline
+import com.example.app.ads.helper.widget.ExitDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -287,6 +288,14 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View.OnClickL
             }
         }
         return v
+    }
+
+    open fun View.setEdgeToEdgeMargin(fMargin: Int): View {
+        this.setEdgeToEdgeLeftMargin(fLeftMargin = fMargin)
+        this.setEdgeToEdgeTopMargin(fTopMargin = fMargin)
+        this.setEdgeToEdgeRightMargin(fRightMargin = fMargin)
+        this.setEdgeToEdgeBottomMargin(fBottomMargin = fMargin)
+        return this
     }
 
     open fun View.setEdgeToEdgeMargin(fLeftMargin: Int, fTopMargin: Int, fRightMargin: Int, fBottomMargin: Int): View {
@@ -616,14 +625,32 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View.OnClickL
         }
     }
 
-    private val mExitDialog: BottomSheetDialog by lazy { BottomSheetDialog(mActivity) }
+    //    private val mExitDialog: BottomSheetDialog by lazy { BottomSheetDialog(mActivity) }
+    private val mExitDialog: ExitDialog by lazy {
+        ExitDialog(
+            fActivity = mActivity,
+            isForTesting = false,
+            backgroundColor = R.color.exit_background,
+            iconColor = R.color.exit_icon,
+            iconLineColor = R.color.exit_icon_line,
+            titleTextColor = R.color.exit_title_text,
+            subTitleTextColor = R.color.exit_sub_title_text,
+            buttonTextColor = R.color.exit_button_text,
+            buttonBackgroundColor = R.color.exit_button_background,
+            buttonStrokeColor = R.color.exit_button_text
+        )
+    }
 
     fun backFroExit() {
         //            mExitDialog.show {
         //                exitApplication()
         //            }
 
-        mExitDialog.show()
+//        mExitDialog.show()
+        mExitDialog.show(
+            fLanguageCode = "en",
+            subTitleId = com.example.app.ads.helper.R.string.rating_sub_header
+        )
 
 //        if (doubleBackToExitPressedOnce) {
 //            exitApplication()

@@ -64,4 +64,17 @@
     <string name="rating_sub_header">App yana da kyau da gaske yana buƙatar yin aiki akan jerin hoton da aka bincika, wasu abubuwan da ke ciki sun ɓace wasu kuma an canza su. App yana buƙatar haɓakawa</string>
     <string name="rating_by">da %1s</string>
     <string name="rating_user">Akshay Harsoda </string>
+
+    <string name="satisfied_customer"> Abokin ciniki mai gamsarwa </string>
+    <string name="rating">Rating</string>
+
+    <string name="pay_once_enjoy_forever">Biya sau daya, ji dadin har abada</string>
+    <string name="percentage_off">%1s%% KASHE</string>
+    <string name="price_per_period">%1s a kowace %2s</string>
+    <string name="enjoy_forever">Aji daɗin har abada</string>
+    <string name="recommend">Nabawa </string>
+
+    <string name="exit_dialog_negative_button_text">Komawa</string>
+    <string name="exit_dialog_positive_button_text">Fita App</string>
+    <string name="exit_dialog_title">Ka tabbata, kana son fita?</string>
 </resources>

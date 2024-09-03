@@ -29,4 +29,10 @@
     <color name="default_view_more_plan_selected_sku_background_color">#F6F6FF</color>
     <color name="default_view_more_plan_unselected_sku_background_color">#F8F8F8</color>
 
+    <color name="default_four_plan_unselected_sku_border_color">#DFE4EB</color>
+    <color name="default_four_plan_selected_life_time_sku_border_color">#00B364</color>
+    <color name="default_four_plan_selected_yearly_sku_border_color">#FF4050</color>
+    <color name="default_four_plan_selected_monthly_sku_border_color">#1DB2F3</color>
+    <color name="default_four_plan_selected_weekly_sku_border_color">#174D95</color>
+
 </resources>

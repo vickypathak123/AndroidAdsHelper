@@ -64,4 +64,17 @@
     <string name="rating_sub_header">L\'app è buona, ma bisogna davvero lavorare sulla sequenza delle immagini scansionate, alcuni contenuti mancano e altri sono mescolati. L\'app ha bisogno di miglioramenti</string>
     <string name="rating_by">di %1s</string>
     <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Cliente soddisfatto</string>
+    <string name="rating">Valutazione</string>
+
+    <string name="pay_once_enjoy_forever">Paga una volta, divertiti per sempre</string>
+    <string name="percentage_off">%1s%% DI SCONTO</string>
+    <string name="price_per_period">%1s ogni %2s</string>
+    <string name="enjoy_forever">Divertiti per sempre</string>
+    <string name="recommend">Consiglia</string>
+
+    <string name="exit_dialog_negative_button_text">Torna indietro</string>
+    <string name="exit_dialog_positive_button_text">Esci dall\'app</string>
+    <string name="exit_dialog_title">Sei sicuro, vuoi uscire?</string>
 </resources>

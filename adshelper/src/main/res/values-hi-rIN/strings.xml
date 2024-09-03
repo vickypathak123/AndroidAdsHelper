@@ -64,4 +64,17 @@
     <string name="rating_sub_header">ऐप अच्छा है, ऐप को स्कैन की गई इमेज के अनुक्रम पर वाकई काम करने की ज़रूरत है, कुछ कंटेंट गायब हैं और कुछ शफल हैं। ऐप में सुधार की ज़रूरत है</string>
     <string name="rating_by">%1s द्वारा</string>
     <string name="rating_user">अक्षय हरसोडा</string>
+
+    <string name="satisfied_customer">संतुष्ट ग्राहक</string>
+    <string name="rating">रेटिंग</string>
+
+    <string name="pay_once_enjoy_forever">एक बार भुगतान करें, हमेशा के लिए आनंद लें</string>
+    <string name="percentage_off">%1s%% छूट</string>
+    <string name="price_per_period">%1s प्रति %2s</string>
+    <string name="enjoy_forever">हमेशा के लिए आनंद लें</string>
+    <string name="recommend">अनुशंसा करें</string>
+
+    <string name="exit_dialog_negative_button_text">वापस जाएँ</string>
+    <string name="exit_dialog_positive_button_text">ऐप से बाहर निकलें</string>
+    <string name="exit_dialog_title">क्या आप वाकई बाहर निकलना चाहते हैं ?</string>
 </resources>

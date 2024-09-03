@@ -791,12 +791,12 @@ class NativeAdView : FrameLayout {
         val inflatedView = when (mPlaceHolderType) {
             PlaceHolderType.NONE -> null
             PlaceHolderType.SHIMMER -> {
-                mBinding.cvAdContainer.setCardBackgroundColor(setColorAlpha(baseColor = context.getColor(R.color.shimmer_placeholder)))
+                mBinding.cvAdContainer.setCardBackgroundColor(setColorAlpha(baseColor = context.getColor(R.color.shimmer_placeholder), alpha = 0.1f))
                 inflateAdViewWithShimmer
             }
 
             PlaceHolderType.TEXT -> {
-                mBinding.cvAdContainer.setCardBackgroundColor(setColorAlpha(baseColor = context.getColor(R.color.shimmer_placeholder)))
+                mBinding.cvAdContainer.setCardBackgroundColor(setColorAlpha(baseColor = context.getColor(R.color.shimmer_placeholder), alpha = 0.1f))
                 placeHolderBinding.root
             }
 

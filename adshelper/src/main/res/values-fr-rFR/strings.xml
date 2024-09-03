@@ -64,4 +64,17 @@
     <string name="rating_sub_header">L\'application est bonne, il faut vraiment travailler sur la séquence d\'images numérisées, certains contenus manquent et certains sont mélangés. L\'application doit être améliorée</string>
     <string name="rating_by">par %1s</string>
     <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Client satisfait</string>
+    <string name="rating">Note</string>
+
+    <string name="pay_once_enjoy_forever">Payez une fois, profitez pour toujours</string>
+    <string name="percentage_off">%1s%% DE RÉDUCTION</string>
+    <string name="price_per_period">%1s par %2s</string>
+    <string name="enjoy_forever">Profitez pour toujours</string>
+    <string name="recommend">Recommander</string>
+
+    <string name="exit_dialog_negative_button_text">Retour</string>
+    <string name="exit_dialog_positive_button_text">Quitter l\'application</string>
+    <string name="exit_dialog_title">Êtes-vous sûr de vouloir quitter ?</string>
 </resources>

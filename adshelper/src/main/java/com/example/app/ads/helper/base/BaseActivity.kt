@@ -37,6 +37,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.app.ads.helper.base.utils.isTiramisuPlus
 import com.example.app.ads.helper.base.utils.makeText
+import com.example.app.ads.helper.exitTheApp
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
 import com.example.app.ads.helper.isAppForeground
 import com.example.app.ads.helper.isInternetAvailable
@@ -45,7 +46,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
-import kotlin.system.exitProcess
 
 /**
  * @author Akshay Harsoda
@@ -296,6 +296,14 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
             }
         }
         return v
+    }
+
+    open fun View.setEdgeToEdgeMargin(fMargin: Int): View {
+        this.setEdgeToEdgeLeftMargin(fLeftMargin = fMargin)
+        this.setEdgeToEdgeTopMargin(fTopMargin = fMargin)
+        this.setEdgeToEdgeRightMargin(fRightMargin = fMargin)
+        this.setEdgeToEdgeBottomMargin(fBottomMargin = fMargin)
+        return this
     }
 
     open fun View.setEdgeToEdgeMargin(fLeftMargin: Int, fTopMargin: Int, fRightMargin: Int, fBottomMargin: Int): View {
@@ -657,7 +665,8 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
     }
 
     @UiThread
-    open fun onScreenFinishing() {}
+    open fun onScreenFinishing() {
+    }
 
     fun directBack() {
         mActivity.runOnUiThread {
@@ -669,8 +678,7 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
     }
 
     open fun exitApplication() {
-        finishAffinity()
-        exitProcess(0)
+        mActivity.exitTheApp()
     }
 
     override fun onResume() {

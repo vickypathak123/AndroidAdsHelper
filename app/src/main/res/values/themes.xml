@@ -54,13 +54,13 @@
         <item name="windowActionBar">false</item>
     </style>
 
-<!--    <style name="AppTranslucent" parent="android:Theme.NoTitleBar.Fullscreen">-->
-<!--        <item name="android:windowBackground">@drawable/ic_launcher_background</item>-->
-<!--        <item name="windowActionBar">false</item>-->
-<!--        <item name="windowNoTitle">true</item>-->
-<!--        <item name="android:windowFullscreen">true</item>-->
-<!--        <item name="android:windowContentOverlay">@null</item>-->
-<!--    </style>-->
+    <!--    <style name="AppTranslucent" parent="android:Theme.NoTitleBar.Fullscreen">-->
+    <!--        <item name="android:windowBackground">@drawable/ic_launcher_background</item>-->
+    <!--        <item name="windowActionBar">false</item>-->
+    <!--        <item name="windowNoTitle">true</item>-->
+    <!--        <item name="android:windowFullscreen">true</item>-->
+    <!--        <item name="android:windowContentOverlay">@null</item>-->
+    <!--    </style>-->
 
     <style name="AlertDialogTheme" parent="android:Theme.Material.Light.Dialog.Alert">
         <item name="android:buttonBarNegativeButtonStyle">@style/Theme.Custom_Dialog_Text</item>

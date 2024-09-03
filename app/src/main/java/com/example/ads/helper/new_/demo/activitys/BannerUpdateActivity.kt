@@ -51,7 +51,7 @@ class BannerUpdateActivity : BaseBindingActivity<ActivityBannerUpdateBinding>() 
             when (v) {
                 layoutHeader.ivHeaderBack -> customOnBackPressed()
                 layoutHeader.ivHeaderRightIcon -> {
-                    mUpdateBannerDialog.show {fAdSize, fAdType, fPlaceHolderType, fPlaceholderTextColor, isCustomPlaceholder ->
+                    mUpdateBannerDialog.show { fAdSize, fAdType, fPlaceHolderType, fPlaceholderTextColor, isCustomPlaceholder ->
                         mUpdateBannerDialog.dismiss()
                         val updateBuilder = BannerAdHelper.with(bannerAdView)
 

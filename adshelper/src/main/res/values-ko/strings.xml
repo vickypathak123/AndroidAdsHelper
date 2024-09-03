@@ -64,4 +64,17 @@
     <string name="rating_sub_header">앱은 좋은 앱이지만 스캔한 이미지의 시퀀스를 정말 잘 처리해야 합니다. 일부 콘텐츠가 누락되었고 일부는 섞여 있습니다. 앱 개선이 필요합니다.</string>
     <string name="rating_by">by %1s</string>
     <string name="rating_user">악샤이 하르소다</string>
+
+    <string name="satisfied_customer">만족스러운 고객</string>
+    <string name="rating">평가</string>
+
+    <string name="pay_once_enjoy_forever">한 번 지불하고 영원히 즐기세요</string>
+    <string name="percentage_off">%1s%% 할인</string>
+    <string name="price_per_period">%2초당 %1s</string>
+    <string name="enjoy_forever">영원히 즐기세요</string>
+    <string name="recommend">추천</string>
+
+    <string name="exit_dialog_negative_button_text">뒤로 돌아가기</string>
+    <string name="exit_dialog_positive_button_text">앱 종료</string>
+    <string name="exit_dialog_title">정말 종료하시겠습니까?</string>
 </resources>

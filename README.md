@@ -37,3 +37,33 @@ dependencies {
 ```
 
 # Check [AdMob Error Codes & Logs](https://support.google.com/admob/thread/3494603/admob-error-codes-logs?hl=en)
+
+### Remote Config Json For Subscription
+Note: in all apps, subscription-related JSON must look like this, no need to remove old remote config data just add this new one and use it.
+
+```json
+{
+  "vasu_subscription_config": {
+    "initial_subscription_open_flow": [1, 1, 1],
+    "purchase_button_text_index": 0,
+    "initial_subscription_time_line_close_ad": true,
+    "initial_subscription_more_plan_close_ad": false,
+    "in_app_subscription_ad_close": true,
+    "more_plan_screen_type": "six_box_screen / four_plan_screen",
+    "life_time_plan_discount_percentage": 80
+  }
+}
+```
+
+## Subscription Screen Reference
+
+#### Exit Dialog UI
+
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/exit_dialog_with_ad.jpg" height="auto" width="300"/>
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/exit_dialog_without_ad.jpg" height="auto" width="300"/>
+
+#### Subscription Screen UI
+
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/timeline_subscription_screen.jpg" height="auto" width="200"/>
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/four_plan_subscription_screen.jpg" height="auto" width="200"/>
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/siz_box_subscription_screen.jpg" height="auto" width="200"/>

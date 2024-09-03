@@ -12,7 +12,6 @@ import androidx.annotation.StyleRes
 import androidx.annotation.UiThread
 import androidx.viewbinding.ViewBinding
 import com.example.ads.helper.new_.demo.R
-import com.example.ads.helper.new_.demo.base.BaseActivity
 import com.example.ads.helper.new_.demo.base.utils.displayWidth
 
 abstract class BaseDialog<VB : ViewBinding>(

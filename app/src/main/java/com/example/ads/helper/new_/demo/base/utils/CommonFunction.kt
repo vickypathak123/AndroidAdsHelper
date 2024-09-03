@@ -127,12 +127,15 @@ fun ViewGroup.setSelection() {
                 is CheckBox -> {
                     view.isSelected = true
                 }
+
                 is RadioButton -> {
                     view.isSelected = true
                 }
+
                 is Button -> {
                     view.isSelected = true
                 }
+
                 is TextView -> {
                     view.isSelected = true
                 }

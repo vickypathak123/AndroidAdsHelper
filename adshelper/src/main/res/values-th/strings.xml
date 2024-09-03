@@ -64,4 +64,17 @@
     <string name="rating_sub_header">แอปนี้เป็นแอปที่ดีจริงๆ จำเป็นต้องทำงานกับลำดับของภาพที่สแกน เนื้อหาบางส่วนหายไปและบางส่วนถูกสับเปลี่ยน แอปต้องได้รับการปรับปรุง</string>
     <string name="rating_by">โดย %1s</string>
     <string name="rating_user">อักษัย ฮาร์โซดา</string>
+
+    <string name="satisfied_customer">ลูกค้าพึงพอใจ</string>
+    <string name="rating">คะแนน</string>
+
+    <string name="pay_once_enjoy_forever">จ่ายครั้งเดียว เพลิดเพลินตลอดไป</string>
+    <string name="percentage_off">ส่วนลด %1%%</string>
+    <string name="price_per_period">%1s ต่อ %2s</string>
+    <string name="enjoy_forever">เพลิดเพลินตลอดไป</string>
+    <string name="recommend">แนะนำ</string>
+
+    <string name="exit_dialog_negative_button_text">ย้อนกลับ</string>
+    <string name="exit_dialog_positive_button_text">ออกจากแอป</string>
+    <string name="exit_dialog_title">คุณแน่ใจหรือไม่ คุณต้องการออกจากแอป ?</string>
 </resources>

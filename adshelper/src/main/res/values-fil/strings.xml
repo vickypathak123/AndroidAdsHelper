@@ -64,4 +64,17 @@
     <string name="rating_sub_header">Ang app ay mahusay na app ay talagang kailangang gumana sa pagkakasunud-sunod ng na-scan na larawan, ang ilang nilalaman ay nawawala at ang ilan ay na-shuffle. Ang app ay nangangailangan ng pagpapabuti</string>
     <string name="rating_by">ng %1s</string>
     <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Satisfied Customer</string>
+    <string name="rating">Rating</string>
+
+    <string name="pay_once_enjoy_forever">Magbayad ng isang beses, mag-enjoy magpakailanman</string>
+    <string name="percentage_off">%1s%% Bawas</string>
+    <string name="price_per_period">%1s bawat %2s</string>
+    <string name="enjoy_forever">Enjoy forever</string>
+    <string name="recommend">Recommend</string>
+
+    <string name="exit_dialog_negative_button_text">Bumalik</string>
+    <string name="exit_dialog_positive_button_text">Lumabas sa App</string>
+    <string name="exit_dialog_title">Sigurado ka ba, gusto mong lumabas ?</string>
 </resources>

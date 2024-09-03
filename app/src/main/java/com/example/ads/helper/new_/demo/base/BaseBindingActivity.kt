@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.ViewTreeObserver
 import androidx.annotation.UiThread
 import androidx.viewbinding.ViewBinding
-import com.example.ads.helper.new_.demo.base.BaseActivity
 
 /**
  * @author Akshay Harsoda

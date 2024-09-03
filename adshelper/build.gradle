@@ -85,7 +85,7 @@ dependencies {
     implementation libs.facebook.shimmer
     //endregion
 
-    implementation libs.dotsindicator
+    implementation libs.zhpanvip.dotsindicator
 }
 
 afterEvaluate {

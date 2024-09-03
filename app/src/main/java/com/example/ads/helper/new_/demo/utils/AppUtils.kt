@@ -24,7 +24,6 @@ const val GPS_MAP_CAMERA_MONTHLY_SKU = "com.gps.photo.geo.capture.monthly"
 const val GPS_MAP_CAMERA_YEARLY_SKU = "com.gps.photo.geo.capture.yearly"
 
 
-
 private val SKU_KEY_LIST: ArrayList<SkuData> = arrayListOf(
     SkuData(
         applicationId = CONTACTS_BACKUP_APPLICATION_ID,

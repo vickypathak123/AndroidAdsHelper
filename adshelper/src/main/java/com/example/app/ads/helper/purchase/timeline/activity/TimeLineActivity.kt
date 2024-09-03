@@ -30,9 +30,14 @@ import com.example.app.ads.helper.launcher.Launcher
 import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.notification.NotificationDataModel
 import com.example.app.ads.helper.notification.scheduleNotification
-import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
+import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_PRIVACY_POLICY
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_TERMS_OF_USE
+import com.example.app.ads.helper.purchase.VasuSubscriptionConfig.NotificationData
+import com.example.app.ads.helper.purchase.fireSubscriptionEvent
+import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getBillingPeriodCount
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getBillingPeriodName
@@ -41,13 +46,8 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getSKU
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isMonthlySKU
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isWeeklySKU
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isYearlySKU
-import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN
-import com.example.app.ads.helper.purchase.SUBSCRIPTION_PRIVACY_POLICY
-import com.example.app.ads.helper.purchase.SUBSCRIPTION_TERMS_OF_USE
-import com.example.app.ads.helper.purchase.VasuSubscriptionConfig.NotificationData
-import com.example.app.ads.helper.purchase.fireSubscriptionEvent
-import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
+import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -419,6 +419,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         with(mBinding) {
             setClickListener(
                 ivClose,
+                txtPayNothingNow,
                 txtViewAllPlans,
                 txtTermsOfUse,
                 txtPrivacyPolicy,
@@ -431,6 +432,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         super.onClick(v)
         with(mBinding) {
             when (v) {
+                txtPayNothingNow,
                 ivClose -> customOnBackPressed()
 
                 txtTermsOfUse -> {

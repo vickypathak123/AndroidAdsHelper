@@ -2,12 +2,14 @@
 
 package com.example.app.ads.helper
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import android.text.TextUtils
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
+import androidx.annotation.StringRes
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
@@ -15,6 +17,7 @@ import com.google.android.gms.ads.RequestConfiguration
 import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.system.exitProcess
 
 /**
  * @author Akshay Harsoda
@@ -78,7 +81,7 @@ internal inline val dataLocale: Locale get() = Locale(SUBSCRIPTION_DATA_LANGUAGE
 internal inline fun <reified T> getLocalizedString(
     context: Context,
     fLocale: Locale = dataLocale,
-    resourceId: Int,
+    @StringRes resourceId: Int,
     vararg formatArgs: T = emptyArray()
 ): String {
     val configuration = Configuration(context.resources.configuration)
@@ -89,6 +92,13 @@ internal inline fun <reified T> getLocalizedString(
     } else {
         localizedContext.resources.getString(resourceId)
     }
+}
+
+internal fun Activity.exitTheApp() {
+    this.setResult(Activity.RESULT_CANCELED)
+    this.finishAffinity()
+    this.finishAfterTransition()
+    exitProcess(0)
 }
 
 

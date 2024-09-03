@@ -327,6 +327,7 @@ class SubscriptionRatingBar : View {
             postInvalidate()
         }
     }
+
     fun setProgressTint(fColorStateList: ColorStateList) {
         if (progressTintColor != fColorStateList) {
             progressTintColor = fColorStateList
@@ -337,6 +338,7 @@ class SubscriptionRatingBar : View {
             postInvalidate()
         }
     }
+
     fun setProgressBackgroundTintColor(@ColorRes fColor: Int) {
         if (progressBackgroundTintColor != context.getColorStateRes(fColor)) {
             progressBackgroundTintColor = context.getColorStateRes(fColor)
@@ -347,6 +349,7 @@ class SubscriptionRatingBar : View {
             postInvalidate()
         }
     }
+
     fun setProgressBackgroundTintColor(fColorStateList: ColorStateList) {
         if (progressBackgroundTintColor != fColorStateList) {
             progressBackgroundTintColor = fColorStateList

@@ -22,3 +22,9 @@ internal fun fireSubscriptionEvent(fEventType: SubscriptionEventType) {
         triggerSubscriptionEvent.invoke(fEventType)
     }
 }
+
+val String.getCurrencySymbol: String get() = this.replace("[\\d\\s.,]+".toRegex(), "")
+
+//val String.removeTrailingZeros: String get() = this.replace("0+\$".toRegex(), "").replace("\\.$".toRegex(), "").replace("\\.00$".toRegex(), "")
+//val String.removeTrailingZeros: String get() = this.replace("(\\.0+)?$".toRegex(), "")
+val String.removeTrailingZeros: String get() = this.replace(Regex("(\\.\\d*?[1-9])0+$"), "$1").replace(Regex("\\.0+$"), "")

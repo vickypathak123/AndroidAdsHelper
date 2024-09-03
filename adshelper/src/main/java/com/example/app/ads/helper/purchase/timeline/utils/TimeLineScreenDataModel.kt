@@ -23,4 +23,4 @@ data class TimeLineScreenDataModel(
     var secureWithPlayStoreBackgroundColor: ColorStateList? = null,
     var buttonContinueTextColor: ColorStateList? = null,
 
-)
+    )

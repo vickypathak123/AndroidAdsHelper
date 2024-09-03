@@ -66,6 +66,11 @@
         <item>Chinese (zh)</item>
     </string-array>
 
+    <string-array name="subscription_screen_type">
+        <item>four_plan_screen</item>
+        <item>six_box_screen</item>
+    </string-array>
+
     <string-array name="subscription_plan_button_animation_name">
         <item>DecelerateInterpolator</item>
         <item>LinearInterpolator</item>

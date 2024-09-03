@@ -64,4 +64,17 @@
     <string name="rating_sub_header">ایپ اچھی ایپ ہے اسے اسکین شدہ امیج کی ترتیب پر کام کرنے کی ضرورت ہے، کچھ مواد غائب ہیں اور کچھ شفل ہیں۔ ایپ کو بہتری کی ضرورت ہے</string>
     <string name="rating_by"> بذریعہ %1s</string>
     <string name="rating_user"> اکشے ہرسودا</string>
+
+    <string name="satisfied_customer">مطمئن کسٹمر</string>
+    <string name="rating">درجہ بندی</string>
+
+    <string name="pay_once_enjoy_forever">ایک بار ادائیگی کریں، ہمیشہ کے لیے لطف اٹھائیں</string>
+    <string name="percentage_off">%1s%% آف</string>
+    <string name="price_per_period">%1s فی %2s</string>
+    <string name="enjoy_forever">ہمیشہ کے لیے لطف اٹھائیں</string>
+    <string name="recommend">تجویز کریں</string>
+
+    <string name="exit_dialog_negative_button_text">واپس جائیں</string>
+    <string name="exit_dialog_positive_button_text">ایپ سے باہر نکلیں</string>
+    <string name="exit_dialog_title">کیا آپ واقعی باہر نکلنا چاہتے ہیں؟</string>
 </resources>

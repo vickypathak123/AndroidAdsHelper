@@ -64,4 +64,17 @@
     <string name="rating_sub_header">Приложение хорошее, но нужно поработать над последовательностью отсканированных изображений, часть содержимого отсутствует, а часть перемешана. Приложение нуждается в улучшении</string>
     <string name="rating_by">от %1s</string>
     <string name="rating_user">Акшай Харсода</string>
+
+    <string name="satisfied_customer">Довольный клиент</string>
+    <string name="rating">Рейтинг</string>
+
+    <string name="pay_once_enjoy_forever">Оплатите один раз, наслаждайтесь вечно</string>
+    <string name="percentage_off">%1s%% СКИДКА</string>
+    <string name="price_per_period">%1s за %2s</string>
+    <string name="enjoy_forever">Наслаждайтесь вечно</string>
+    <string name="recommend">Рекомендовать</string>
+
+    <string name="exit_dialog_negative_button_text">Вернуться</string>
+    <string name="exit_dialog_positive_button_text">Выйти из приложения</string>
+    <string name="exit_dialog_title">Вы уверены, что хотите выйти?</string>
 </resources>

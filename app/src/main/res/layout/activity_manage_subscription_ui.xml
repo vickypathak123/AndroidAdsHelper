@@ -32,77 +32,15 @@
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_top"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@id/cl_bottom"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed"
-                tools:background="@android:color/holo_green_light">
-
-                <TextView
-                    android:id="@+id/txt_animation_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:paddingVertical="8dp"
-                    android:text="Animation Name :-"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                    android:textColor="@android:color/black"
-                    app:layout_constraintEnd_toStartOf="@id/sp_animation_name"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
-                    app:layout_constraintVertical_chainStyle="packed" />
-
-                <Spinner
-                    android:id="@+id/sp_animation_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:entries="@array/subscription_plan_button_animation_name"
-                    android:gravity="center_vertical"
-                    android:text="Update Ad Size :-"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                    android:textColor="@android:color/black"
-                    app:layout_constraintBottom_toBottomOf="@id/txt_animation_name"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@id/txt_animation_name"
-                    app:layout_constraintTop_toTopOf="@id/txt_animation_name" />
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/animation_time_slider"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:theme="@style/Theme.Material3.DayNight"
-                    android:value="500.0"
-                    android:valueFrom="100.0"
-                    android:valueTo="2000.0"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txt_animation_name"
-                    app:trackColorActive="@color/default_time_line_main_color"
-                    app:trackColorInactive="@color/default_time_line_track_inactive_color" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_bottom"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cl_top"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:background="@android:color/holo_red_light">
 
                 <TextView
@@ -114,7 +52,7 @@
                     android:text="Language :-"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="@android:color/black"
-                    app:layout_constraintBottom_toTopOf="@id/switch_privacy_policy"
+                    app:layout_constraintBottom_toTopOf="@id/txt_screen_type"
                     app:layout_constraintEnd_toStartOf="@id/sp_language"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_chainStyle="packed"
@@ -127,10 +65,9 @@
                     android:id="@+id/sp_language"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:spinnerMode="dialog"
                     android:entries="@array/subscription_screen_language"
                     android:gravity="center_vertical"
-                    android:text="Update Ad Size :-"
+                    android:spinnerMode="dialog"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="@id/txt_language"
@@ -138,6 +75,37 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@id/txt_language"
                     app:layout_constraintTop_toTopOf="@id/txt_language" />
+
+                <TextView
+                    android:id="@+id/txt_screen_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="8dp"
+                    android:text="More Plan Screen Type :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/switch_privacy_policy"
+                    app:layout_constraintEnd_toStartOf="@id/sp_screen_type"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_language" />
+
+                <Spinner
+                    android:id="@+id/sp_screen_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:entries="@array/subscription_screen_type"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dialog"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_screen_type"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/txt_screen_type"
+                    app:layout_constraintTop_toTopOf="@id/txt_screen_type" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_privacy_policy"
@@ -152,7 +120,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txt_language" />
+                    app:layout_constraintTop_toBottomOf="@id/txt_screen_type" />
 
                 <EditText
                     android:id="@+id/et_privacy_policy"
@@ -203,9 +171,9 @@
                     android:id="@+id/switch_is_from_splash"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:gravity="center_vertical"
                     android:includeFontPadding="false"
-                    android:checked="true"
                     android:text="Open Like After Splash Flow :-"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="@android:color/black"

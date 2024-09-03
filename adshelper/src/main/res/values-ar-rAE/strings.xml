@@ -64,4 +64,17 @@
     <string name="rating_sub_header">التطبيق جيد، ويحتاج حقًا إلى العمل على تسلسل الصور الممسوحة ضوئيًا، فبعض المحتويات مفقودة وبعضها الآخر مُختلط. يحتاج التطبيق إلى تحسين</string>
     <string name="rating_by">بواسطة %1s</string>
     <string name="rating_user">أكشاي هارسودا</string>
+
+    <string name="satisfied_customer">عميل راضٍ</string>
+    <string name="rating">التقييم</string>
+
+    <string name="pay_once_enjoy_forever">ادفع مرة واحدة واستمتع إلى الأبد</string>
+    <string name="percentage_off">خصم %1s%%</string>
+    <string name="price_per_period">%1s لكل %2s</string>
+    <string name="enjoy_forever">استمتع إلى الأبد</string>
+    <string name="recommend">توصية</string>
+
+    <string name="exit_dialog_negative_button_text">العودة</string>
+    <string name="exit_dialog_positive_button_text">الخروج من التطبيق</string>
+    <string name="exit_dialog_title">هل أنت متأكد، هل تريد الخروج؟</string>
 </resources>

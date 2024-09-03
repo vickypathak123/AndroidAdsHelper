@@ -12,9 +12,9 @@ import androidx.work.WorkerParameters
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.getStringRes
 import com.example.app.ads.helper.base.utils.isOreoPlus
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFullBillingPeriod
-import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 
 class NotificationWorker(
     private val fContext: Context,

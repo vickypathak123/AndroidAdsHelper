@@ -64,4 +64,17 @@
     <string name="rating_sub_header">એપ સારી છે એપને ખરેખર સ્કેન કરેલી ઇમેજના ક્રમ પર કામ કરવાની જરૂર છે, કેટલીક સામગ્રી ખૂટે છે અને કેટલીક શફલ કરેલી છે. એપ્લિકેશનને સુધારણાની જરૂર છે</string>
     <string name="rating_by">%1s દ્વારા</string>
     <string name="rating_user">અક્ષય હરસોડા</string>
+
+    <string name="satisfied_customer">સંતુષ્ટ ગ્રાહક</string>
+    <string name="rating"> રેટિંગ</string>
+
+    <string name="pay_once_enjoy_forever">એકવાર ચૂકવણી કરો, હંમેશ માટે આનંદ કરો</string>
+    <string name="percentage_off">%1s%% છૂટ</string>
+    <string name="price_per_period">%1s પ્રતિ %2s</string>
+    <string name="enjoy_forever">હંમેશ માટે આનંદ માણો</string>
+    <string name="recommend"> ભલામણ કરો</string>
+
+    <string name="exit_dialog_negative_button_text">પાછા જાઓ</string>
+    <string name="exit_dialog_positive_button_text">એપમાંથી બહાર નીકળો</string>
+    <string name="exit_dialog_title">શું તમે ખરેખર બહાર નીકળવા માંગો છો?</string>
 </resources>

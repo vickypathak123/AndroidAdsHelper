@@ -63,4 +63,17 @@
     <string name="rating_sub_header">La aplicación es buena, pero realmente necesita mejorar la secuencia de imágenes escaneadas. Faltan algunos contenidos y otros están desordenados. La aplicación necesita mejorar.</string>
     <string name="rating_by">por %1s</string>
     <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Cliente satisfecho</string>
+    <string name="rating">Calificación</string>
+
+    <string name="pay_once_enjoy_forever">Paga una vez, disfruta para siempre</string>
+    <string name="percentage_off">%1s%% DE DESCUENTO</string>
+    <string name="price_per_period">%1s por %2s</string>
+    <string name="enjoy_forever">Disfruta para siempre</string>
+    <string name="recommend">Recomendar</string>
+
+    <string name="exit_dialog_negative_button_text">Volver</string>
+    <string name="exit_dialog_positive_button_text">Salir de la aplicación</string>
+    <string name="exit_dialog_title">¿Está seguro de que desea salir?</string>
 </resources>

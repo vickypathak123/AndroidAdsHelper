@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="@style/full_round_16_sdp"
+        app:shapeAppearance="@style/full_round_11_sdp"
         tools:background="@drawable/bg_subscribe_selected_sku" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,7 +55,7 @@
             app:layout_constraintEnd_toEndOf="@id/txt_plan_price_percentage"
             app:layout_constraintStart_toStartOf="@id/txt_plan_price_percentage"
             app:layout_constraintTop_toTopOf="@id/txt_plan_price_percentage"
-            app:shapeAppearance="@style/top_round_16_sdp"
+            app:shapeAppearance="@style/top_round_10_sdp"
             app:strokeWidth="0dp"
             tools:background="@drawable/bg_subscribe_selected_sku" />
 
@@ -67,6 +67,7 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:paddingVertical="@dimen/_4sdp"
+            android:textAllCaps="true"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -153,7 +154,7 @@
         app:layout_constraintEnd_toEndOf="@id/txt_plan_price"
         app:layout_constraintStart_toStartOf="@id/txt_plan_price"
         app:layout_constraintTop_toTopOf="@id/txt_plan_price"
-        app:shapeAppearance="@style/bottom_round_16_sdp"
+        app:shapeAppearance="@style/bottom_round_10_sdp"
         tools:background="@color/default_view_more_plan_selected_sku_background_color" />
 
     <TextView

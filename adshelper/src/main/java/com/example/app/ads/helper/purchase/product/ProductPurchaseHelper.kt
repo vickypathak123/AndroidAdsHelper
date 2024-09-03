@@ -33,6 +33,7 @@ import com.example.app.ads.helper.isPurchaseHistoryLogEnable
 import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.logI
 import com.example.app.ads.helper.logW
+import com.example.app.ads.helper.purchase.getCurrencySymbol
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -544,9 +545,11 @@ object ProductPurchaseHelper {
             BillingClient.ProductType.INAPP -> {
                 AdsManager(context).onProductPurchased()
             }
+
             BillingClient.ProductType.SUBS -> {
                 AdsManager(context).onProductSubscribed()
             }
+
             "Test Purchase" -> {
                 AdsManager(context).onProductTestPurchase()
             }
@@ -905,8 +908,6 @@ object ProductPurchaseHelper {
             PurchaseHelperText.NOT_FOUND.value
         }
     }
-
-    val String.getCurrencySymbol: String get() = this.replace("[\\d\\s.,]+".toRegex(), "")
     //</editor-fold>
 
     //<editor-fold desc="Price Discount">
@@ -1110,7 +1111,7 @@ object ProductPurchaseHelper {
     }
 
     interface ProductPurchaseListener {
-//        fun onPurchasedSuccess(purchase: Purchase) {}
+        //        fun onPurchasedSuccess(purchase: Purchase) {}
         fun onPurchasedSuccess() {}
         fun onProductAlreadyOwn() {}
         fun onBillingSetupFinished()

@@ -64,4 +64,17 @@
     <string name="rating_sub_header">このアプリは良いですが、スキャンした画像のシーケンスには本当に取り組む必要があります。一部のコンテンツが欠落していたり​​、シャッフルされていたりします。アプリの改善が必要です</string>
     <string name="rating_by">%1s による</string>
     <string name="rating_user">アクシャイ・ハルソーダ</string>
+
+    <string name="satisfied_customer">満足した顧客</string>
+    <string name="rating">評価</string>
+
+    <string name="pay_once_enjoy_forever">一度支払えば、永遠に楽しめます</string>
+    <string name="percentage_off">%1%% の</string>
+    <string name="price_per_period">%1s/%2s</string>
+    <string name="enjoy_forever">永遠に楽しめます</string>
+    <string name="recommend">おすすめ</string>
+
+    <string name="exit_dialog_negative_button_text">戻る</string>
+    <string name="exit_dialog_positive_button_text">アプリを終了</string>
+    <string name="exit_dialog_title">本当に終了しますか?</string>
 </resources>

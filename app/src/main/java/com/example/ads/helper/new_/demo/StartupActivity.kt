@@ -8,13 +8,16 @@ import com.example.ads.helper.new_.demo.base.BaseBindingActivity
 import com.example.ads.helper.new_.demo.base.shared_prefs.getBoolean
 import com.example.ads.helper.new_.demo.databinding.ActivityStartupBinding
 import com.example.ads.helper.new_.demo.utils.AppTimer
+import com.example.ads.helper.new_.demo.utils.REVENUE_CAT_ID
+import com.example.app.ads.helper.VasuSplashConfig
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper
-import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
 import com.example.app.ads.helper.isOnline
+import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.openad.AppOpenAdHelper
-import com.example.app.ads.helper.openad.AppOpenAdHelper.showAppOpenAd
+import com.example.app.ads.helper.purchase.VasuSubscriptionConfig
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
+import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
 import com.example.app.ads.helper.revenuecat.initRevenueCatProductList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -56,23 +59,27 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         CoroutineScope(Dispatchers.IO).launch {
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {
-                    initRevenueCatProductList(fContext = mActivity) {
-                        Log.e(TAG, "onBillingSetupFinished: Akshay_ All Data Sated")
-//                    ProductPurchaseHelper.initProductsKeys(fContext = mActivity) {
+                    val action: () -> Unit = {
                         CoroutineScope(Dispatchers.Main).launch {
                             mActivity.runOnUiThread {
                                 loadAdWithTimer()
                             }
                         }
                     }
+
+                    if (REVENUE_CAT_ID.isNotEmpty()) {
+                        initRevenueCatProductList(fContext = mActivity, onInitializationComplete = action)
+                    } else {
+                        ProductPurchaseHelper.initProductsKeys(fContext = mActivity, onInitializationComplete = action)
+                    }
                 }
             })
 
             ProductPurchaseHelper.initBillingClient(fContext = mActivity)
         }
-        
+
         AdsManager.isShowAds.observe(mActivity) {
-            Log.e(TAG, "initView: AdsManager needToShowAds::-> $it")
+            logE(TAG, "initView: AdsManager needToShowAds::-> $it")
         }
     }
 
@@ -83,14 +90,6 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
             if (isFirstTime) {
                 isFirstTime = false
                 if (this.getBoolean(IS_OPEN_ADS_ENABLE, true)) {
-                    /*AppOpenAdHelper.loadAd(mActivity, onAdLoaded = { isNewAdLoaded ->
-                        if (isNewAdLoaded) {
-                            Log.e(TAG, "Admob_ onOpenAdLoad: ")
-                            isAdLoaded = true
-                            checkAndLaunchScreenWithAd()
-                        }
-                    })*/
-
                     AppOpenAdHelper.setOnAppOpenAdLoadListener(fListener = object : AppOpenAdHelper.OnAppOpenAdLoadListener {
                         override fun onAdLoaded() {
                             Log.e(TAG, "Admob_ onOpenAdLoad: ")
@@ -99,14 +98,6 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                         }
                     })
                 } else {
-                    /*InterstitialAdHelper.loadAd(fContext = mActivity) { isNewAdLoaded ->
-                        if (isNewAdLoaded) {
-                            Log.e(TAG, "Admob_ onInterstitialAdLoad: ")
-                            isAdLoaded = true
-                            checkAndLaunchScreenWithAd()
-                        }
-                    }*/
-
                     InterstitialAdHelper.setOnInterstitialAdLoadListener(fListener = object : InterstitialAdHelper.OnInterstitialAdLoadListener {
                         override fun onAdLoaded() {
                             Log.e(TAG, "Admob_Inte onInterstitialAdLoad: ")
@@ -127,11 +118,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         mTimer = AppTimer(
             millisInFuture = millisInFuture,
             countDownInterval = countDownInterval,
-            onTick = {
-                Log.e(TAG, "Admob_Inte startTimer: onTick: $it")
-            },
             onFinish = {
-                Log.e(TAG, "Admob_Inte startTimer: onFinish: ")
                 checkAndLaunchScreenWithAd()
             }
         )
@@ -152,7 +139,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         mTimer = null
         isLaunchScreenWithAd = true
 
-        if (this.getBoolean(IS_OPEN_ADS_ENABLE, true)) {
+        /*if (this.getBoolean(IS_OPEN_ADS_ENABLE, true)) {
             if (!isLaunchNextScreen) {
                 Log.e(TAG, "openActivityWithAd: Call With or With-Out Open Ad")
                 mActivity.showAppOpenAd {
@@ -166,6 +153,34 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                     checkAndLaunchNextScreen()
                 }
             }
+        }*/
+
+        if (!isLaunchNextScreen) {
+            VasuSplashConfig.showSplashFlow(
+                fActivity = mActivity,
+                listOfInitialSubscriptionOpenFlow = intArrayOf(0, 1, 4, 2, 5, 3),
+                onOpenSubscriptionScreen = {
+                    VasuSubscriptionConfig.with(fActivity = mActivity)
+                        .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
+                            this.setNotificationIcon(id = R.drawable.ic_share_blue)
+                        })
+                        .launchScreen(
+                            morePlanScreenType = MorePlanScreenType.FOUR_PLAN_SCREEN,
+                            isFromSplash = true,
+                            showCloseAdForTimeLineScreen = true,
+                            showCloseAdForViewAllPlanScreenOpenAfterSplash = true,
+                            showCloseAdForViewAllPlanScreen = true,
+                            directShowMorePlanScreen = false,
+                            onSubscriptionEvent = {},
+                            onScreenFinish = {
+                                checkAndLaunchNextScreen()
+                            }
+                        )
+                },
+                onNextAction = {
+                    checkAndLaunchNextScreen()
+                }
+            )
         }
     }
 

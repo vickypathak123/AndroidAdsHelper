@@ -54,8 +54,12 @@ internal fun Context.sdpToPx(@DimenRes id: Int) = resources.getDimensionPixelSiz
 
 internal fun Context.dpToPx(dp: Float) = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics)
 
-internal fun Context.getPixelValueForDP(dp: Int): Int =  this.dpToPx(dp = dp.toFloat()).toInt()
+internal fun Context.getPixelValueForDP(dp: Int): Int = this.dpToPx(dp = dp.toFloat()).toInt()
 //</editor-fold>
+
+internal fun TextView.setTextSizeDimension(@DimenRes id: Int) {
+    this.setTextSize(TypedValue.COMPLEX_UNIT_PX, this.context.getDimensionRes(id))
+}
 
 internal fun ViewGroup.inflateLayout(@LayoutRes resource: Int, attachToRoot: Boolean = false): View = this.context.inflater.inflate(resource, this, attachToRoot)
 

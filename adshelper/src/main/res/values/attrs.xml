@@ -56,7 +56,7 @@
     <attr name="native_interstitial_type" format="enum">
         <enum name="website" value="0" />
         <enum name="app_store" value="1" />
-<!--        <enum name="full_screen" value="2" />-->
+        <!--        <enum name="full_screen" value="2" />-->
     </attr>
 
     <declare-styleable name="NativeAdView">
@@ -86,14 +86,14 @@
     <declare-styleable name="SubscriptionRatingBar">
         <attr name="filledDrawable" format="integer" />
         <attr name="emptyDrawable" format="integer" />
-        <attr name="rating" format="float"/>
-        <attr name="numStars" format="integer"/>
-        <attr name="minAllowedStars" format="integer"/>
-        <attr name="starSize" format="dimension"/>
-        <attr name="starSpacing" format="dimension"/>
-        <attr name="isIndicator" format="boolean"/>
-        <attr name="stepSize" format="float"/>
-        <attr name="selectTheTappedRating" format="boolean"/>
+        <attr name="rating" format="float" />
+        <attr name="numStars" format="integer" />
+        <attr name="minAllowedStars" format="integer" />
+        <attr name="starSize" format="dimension" />
+        <attr name="starSpacing" format="dimension" />
+        <attr name="isIndicator" format="boolean" />
+        <attr name="stepSize" format="float" />
+        <attr name="selectTheTappedRating" format="boolean" />
         <attr name="progressBackgroundTint" format="color" />
         <attr name="progressTint" format="color" />
     </declare-styleable>

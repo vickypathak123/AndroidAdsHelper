@@ -17,16 +17,21 @@ import com.example.app.ads.helper.clearAll
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_CHANNEL_ID
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_CHANNEL_NAME
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_ID
+import com.example.app.ads.helper.purchase.fourplan.activity.FourPlanActivity
+import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
+import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanScreenDataModel
+import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanUserItem
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
-import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
 import com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity
 import com.example.app.ads.helper.purchase.sixbox.utils.BoxItem
 import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
 import com.example.app.ads.helper.purchase.sixbox.utils.SelectorColorItem
 import com.example.app.ads.helper.purchase.sixbox.utils.SelectorDrawableItem
-import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
-import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.sixbox.utils.ViewAllPlansScreenDataModel
+import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
+import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
+import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
+import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import java.io.Serializable
 import java.lang.ref.WeakReference
 
@@ -47,6 +52,7 @@ object VasuSubscriptionConfig {
 
         private var mTimeLineScreenData: TimeLineScreenData = TimeLineScreenData(fActivity = fActivity)
         private var mViewAllPlansScreenData: ViewAllPlansScreenData = ViewAllPlansScreenData(fActivity = fActivity)
+        private var mFourPlanScreenData: FourPlanScreenData = FourPlanScreenData(fActivity = fActivity)
 
         private var mNotificationData: NotificationData? = null
 
@@ -83,6 +89,16 @@ object VasuSubscriptionConfig {
             action.invoke(this.mViewAllPlansScreenData)
         }
 
+        @JvmName("setFourPlanScreenData")
+        fun setFourPlanScreenData(fFourPlanScreenData: FourPlanScreenData) = this@ActivityData.apply {
+            this.mFourPlanScreenData = fFourPlanScreenData
+        }
+
+        @JvmName("setFourPlanScreenData")
+        fun setFourPlanScreenData(action: (fFourPlanScreenData: FourPlanScreenData) -> Unit) = this@ActivityData.apply {
+            action.invoke(this.mFourPlanScreenData)
+        }
+
         @JvmName("setTermsOfUse")
         fun setTermsOfUse(fLink: String) = this@ActivityData.apply {
             this.mTermsOfUse = fLink
@@ -104,6 +120,7 @@ object VasuSubscriptionConfig {
         }
 
         fun launchScreen(
+            morePlanScreenType: MorePlanScreenType,
             isFromSplash: Boolean = false,
             showCloseAdForTimeLineScreen: Boolean = false,
             showCloseAdForViewAllPlanScreenOpenAfterSplash: Boolean = false,
@@ -139,16 +156,21 @@ object VasuSubscriptionConfig {
                         fNotificationData = notificationData,
                         onViewAllPlans = {
                             fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_MORE_PLANS_CLICK)
-                            launchViewAllPlansScreen(isFromTimeLine = true) { isUserPurchaseAnyPlan ->
-                                if (isUserPurchaseAnyPlan) {
-                                    TimeLineActivity.onPurchaseFromMorePlanScreen.invoke()
+                            launchMorePlanScreen(
+                                fType = morePlanScreenType,
+                                isFromTimeLine = true,
+                                onScreenFinish = { isUserPurchaseAnyPlan ->
+                                    if (isUserPurchaseAnyPlan) {
+                                        TimeLineActivity.onPurchaseFromMorePlanScreen.invoke()
+                                    }
                                 }
-                            }
+                            )
                         },
                         onScreenFinish = lScreenFinish
                     )
                 } else {
-                    launchViewAllPlansScreen(
+                    launchMorePlanScreen(
+                        fType = morePlanScreenType,
                         isFromTimeLine = false,
                         onScreenFinish = lScreenFinish
                     )
@@ -187,7 +209,32 @@ object VasuSubscriptionConfig {
             )
         }
 
-        private fun launchViewAllPlansScreen(isFromTimeLine: Boolean, onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}) {
+        private fun launchMorePlanScreen(
+            fType: MorePlanScreenType,
+            isFromTimeLine: Boolean,
+            onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
+        ) {
+            when (fType) {
+                MorePlanScreenType.SIX_BOX_SCREEN -> {
+                    launchViewAllPlansScreen(
+                        isFromTimeLine = isFromTimeLine,
+                        onScreenFinish = onScreenFinish
+                    )
+                }
+
+                MorePlanScreenType.FOUR_PLAN_SCREEN -> {
+                    launchFourPlanScreen(
+                        isFromTimeLine = isFromTimeLine,
+                        onScreenFinish = onScreenFinish
+                    )
+                }
+            }
+        }
+
+        private fun launchViewAllPlansScreen(
+            isFromTimeLine: Boolean,
+            onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
+        ) {
             ViewAllPlansActivity.launchScreen(
                 fActivity = mActivity,
                 isFromTimeLine = isFromTimeLine,
@@ -221,6 +268,23 @@ object VasuSubscriptionConfig {
                     itemBoxBackgroundColor = mViewAllPlansScreenData.itemBoxBackgroundColor,
                     selectedSkuBackgroundColor = mViewAllPlansScreenData.selectedSkuBackgroundColor,
                     unselectedSkuBackgroundColor = mViewAllPlansScreenData.unselectedSkuBackgroundColor,
+                ),
+                onScreenFinish = onScreenFinish,
+            )
+        }
+
+        private fun launchFourPlanScreen(
+            isFromTimeLine: Boolean,
+            onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
+        ) {
+            FourPlanActivity.launchScreen(
+                fActivity = mActivity,
+                isFromTimeLine = isFromTimeLine,
+                screenDataModel = FourPlanScreenDataModel(
+                    purchaseButtonTextIndex = mFourPlanScreenData.purchaseButtonTextIndex,
+                    listOfBoxItem = mFourPlanScreenData.listOfBoxItem,
+                    listOfRattingItem = mFourPlanScreenData.listOfRattingItem,
+                    lifeTimePlanDiscountPercentage = mFourPlanScreenData.lifeTimePlanDiscountPercentage,
                 ),
                 onScreenFinish = onScreenFinish,
             )
@@ -1012,6 +1076,46 @@ object VasuSubscriptionConfig {
             return this
         }
         //</editor-fold>
+    }
+
+    class FourPlanScreenData(private val fActivity: Activity) : Serializable {
+        private var _purchaseButtonTextIndex: Int = 0
+        internal val purchaseButtonTextIndex: Int get() = _purchaseButtonTextIndex
+
+        private var _listOfBoxItem: ArrayList<FourPlanUserItem> = ArrayList()
+        internal val listOfBoxItem: ArrayList<FourPlanUserItem> get() = _listOfBoxItem
+
+        private var _listOfRattingItem: ArrayList<FourPlanRattingItem> = ArrayList()
+        internal val listOfRattingItem: ArrayList<FourPlanRattingItem> get() = _listOfRattingItem
+
+        private var _lifeTimePlanDiscountPercentage: Int = 0
+        internal val lifeTimePlanDiscountPercentage: Int get() = _lifeTimePlanDiscountPercentage
+
+        @JvmName("setPurchaseButtonTextIndex")
+        fun setPurchaseButtonTextIndex(index: Int) = this@FourPlanScreenData.apply {
+            this._purchaseButtonTextIndex = index
+            return this
+        }
+
+        @JvmName("setBoxItems")
+        fun setBoxItems(vararg listOfBoxItem: FourPlanUserItem) = this@FourPlanScreenData.apply {
+            this._listOfBoxItem.clearAll()
+            this._listOfBoxItem.addAll(listOfBoxItem)
+            return this
+        }
+
+        @JvmName("setRattingItems")
+        fun setRattingItems(vararg listOfRattingItem: FourPlanRattingItem) = this@FourPlanScreenData.apply {
+            this._listOfRattingItem.clearAll()
+            this._listOfRattingItem.addAll(listOfRattingItem)
+            return this
+        }
+
+        @JvmName("setLifeTimePlanDiscountPercentage")
+        fun setLifeTimePlanDiscountPercentage(discountPercentage: Int) = this@FourPlanScreenData.apply {
+            this._lifeTimePlanDiscountPercentage = discountPercentage
+            return this
+        }
     }
 
     class NotificationData(val intentClass: Class<*>) : Serializable {

@@ -21,6 +21,7 @@ import com.google.gson.reflect.TypeToken
 private const val KEY_LIFE_TIME_PLAN_PURCHASE = "key_life_time_plan_purchase"
 private const val KEY_ANY_PLAN_SUBSCRIBE = "key_any_plan_subscribe"
 private const val KEY_TEST_PURCHASE = "key_test_purchase"
+private const val KEY_INITIAL_SUBSCRIPTION_OPEN_FLOW_INDEX = "key_initial_subscription_open_flow_index"
 
 class AdsManager(context: Context) {
     @Suppress("PrivatePropertyName")
@@ -93,6 +94,12 @@ class AdsManager(context: Context) {
             sp.notificationData = fValue
         }
 
+    var initialSubscriptionOpenFlowIndex: Int
+        get() = sp.initialSubscriptionOpenFlowIndex
+        set(fValue) {
+            sp.initialSubscriptionOpenFlowIndex = fValue
+        }
+
     /**
      *   SharedPreferences helper class
      */
@@ -142,5 +149,14 @@ class AdsManager(context: Context) {
                     .putString(KEY_SUBSCRIPTION_NOTIFICATION_INTENT, Gson().toJson(fValue))
                     .apply()
             } // set according your preference parameter type
+
+        var initialSubscriptionOpenFlowIndex: Int
+            get() = context.getSharedPreferences(myPreferences, Context.MODE_PRIVATE).getInt(KEY_INITIAL_SUBSCRIPTION_OPEN_FLOW_INDEX, 0)
+            set(fValue) {
+                context.getSharedPreferences(myPreferences, Context.MODE_PRIVATE)
+                    .edit()
+                    .putInt(KEY_INITIAL_SUBSCRIPTION_OPEN_FLOW_INDEX, fValue)
+                    .apply()
+            }
     }
 }

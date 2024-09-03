@@ -64,4 +64,17 @@
     <string name="rating_sub_header">Die toepassing is \'n goeie toepassing moet regtig aan die volgorde van geskandeerde prent werk, sommige inhoud ontbreek en sommige is geskommel. Program moet verbeter word</string>
     <string name="rating_by">deur %1s</string>
     <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Tevrede kliënt</string>
+    <string name="rating">Gradering</string>
+
+    <string name="pay_once_enjoy_forever">Betaal een keer, geniet vir altyd</string>
+    <string name="percentage_off">%1s%% AF</string>
+    <string name="price_per_period">%1s per %2s</string>
+    <string name="enjoy_forever">Geniet vir altyd</string>
+    <string name="recommend">Beveel aan</string>
+
+    <string name="exit_dialog_negative_button_text">Gaan Terug</string>
+    <string name="exit_dialog_positive_button_text">Verlaat toepassing</string>
+    <string name="exit_dialog_title">Is jy seker, jy wil uitgaan?</string>
 </resources>

@@ -64,4 +64,17 @@
     <string name="rating_sub_header">Appen er god, appen skal virkelig arbejde på sekvensen af det scannede billede, noget indhold mangler, og noget blandes. App skal forbedres</string>
     <string name="rating_by">af %1s</string>
     <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Tilfreds kunde</string>
+    <string name="rating">Bedømmelse</string>
+
+    <string name="pay_once_enjoy_forever">Betal én gang, nyd for evigt</string>
+    <string name="percentage_off">%1s%% RABAT</string>
+    <string name="price_per_period">%1s pr. %2s</string>
+    <string name="enjoy_forever">Nyd for evigt</string>
+    <string name="recommend">Anbefal</string>
+
+    <string name="exit_dialog_negative_button_text">Gå tilbage</string>
+    <string name="exit_dialog_positive_button_text">Afslut app</string>
+    <string name="exit_dialog_title">Er du sikker på, at du vil afslutte?</string>
 </resources>

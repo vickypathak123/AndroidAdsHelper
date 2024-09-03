@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.imageview.ShapeableImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_6sdp"
+    android:layout_height="@dimen/_6sdp"
+    android:layout_margin="@dimen/_2sdp"
+    android:adjustViewBounds="true"
+    android:src="@drawable/four_plan_rating_indicator_selector"
+    app:shapeAppearance="@style/full_round" />

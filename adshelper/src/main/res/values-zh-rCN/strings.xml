@@ -64,4 +64,17 @@
     <string name="rating_sub_header">这款应用程序很不错，但确实需要对扫描图像的顺序进行改进，有些内容缺失，有些内容被打乱。应用程序需要改进</string>
     <string name="rating_by">作者 %1s</string>
     <string name="rating_user">阿克沙伊·哈索达</string>
+
+    <string name="satisfied_customer">满意的客户</string>
+    <string name="rating">评分</string>
+
+    <string name="pay_once_enjoy_forever">一次付款，永久享受</string>
+    <string name="percentage_off">%1s%% 折扣</string>
+    <string name="price_per_period">每 %2s %1s</string>
+    <string name="enjoy_forever">永久享受</string>
+    <string name="recommend">推荐</string>
+
+    <string name="exit_dialog_negative_button_text">返回</string>
+    <string name="exit_dialog_positive_button_text">退出应用</string>
+    <string name="exit_dialog_title">您确定要退出吗？</string>
 </resources>

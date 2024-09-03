@@ -30,6 +30,7 @@ fun logE(tag: String, message: String) {
         Log.e(tag, message)
     }
 }
+
 fun logW(tag: String, message: String) {
     if (isEnableDebugMode) {
         Log.w(tag, message)

@@ -3,9 +3,9 @@ package com.example.app.ads.helper.revenuecat
 import android.content.Context
 import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.logI
+import com.example.app.ads.helper.purchase.getCurrencySymbol
 import com.example.app.ads.helper.purchase.product.PlanOfferType
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
-import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getCurrencySymbol
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFullBillingPeriod
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getSKU
 import com.revenuecat.purchases.LogLevel

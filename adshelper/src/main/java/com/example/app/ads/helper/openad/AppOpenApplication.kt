@@ -139,14 +139,14 @@ abstract class AppOpenApplication : MultiDexApplication(), DefaultLifecycleObser
                         logI(tag = TAG, message = "onResume: Current Activity Is Not Ad Activity, isAnyAdOpen::$isAnyAdOpen")
                         if (!isAnyAdOpen) {
                             if (fCurrentActivity !is InterstitialNativeAdActivity) {
-                            logI(tag = TAG, message = "onResume: Need To Show Open Ad needToBlockOpenAdInternally::$need_to_block_open_ad_internally")
-                            if (!need_to_block_open_ad_internally) {
-                                val lDeveloperResumeFlag: Boolean = onResumeApp(fCurrentActivity)
-                                logI(tag = TAG, message = "onResume: Need To Show Open Ad yourResumeFlag::$lDeveloperResumeFlag")
-                                if (lDeveloperResumeFlag) {
-                                    mActivityLifecycleManager.showOpenAd()
+                                logI(tag = TAG, message = "onResume: Need To Show Open Ad needToBlockOpenAdInternally::$need_to_block_open_ad_internally")
+                                if (!need_to_block_open_ad_internally) {
+                                    val lDeveloperResumeFlag: Boolean = onResumeApp(fCurrentActivity)
+                                    logI(tag = TAG, message = "onResume: Need To Show Open Ad yourResumeFlag::$lDeveloperResumeFlag")
+                                    if (lDeveloperResumeFlag) {
+                                        mActivityLifecycleManager.showOpenAd()
+                                    }
                                 }
-                            }
                             }
                         }
                     }

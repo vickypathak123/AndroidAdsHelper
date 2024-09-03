@@ -51,6 +51,7 @@ class NativeAdsBigActivity : BaseBindingActivity<ActivityNativeAdsBigBinding>() 
                     }
                 )
             }
+
             mBinding.button -> {
                 mBinding.flNativeAdPlaceHolderBig.isVisible = !mBinding.flNativeAdPlaceHolderBig.isVisible
             }

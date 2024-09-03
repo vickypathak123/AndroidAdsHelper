@@ -22,7 +22,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/_6sdp"
         android:src="@drawable/ic_secure_with_play_store"
-        android:tint="@color/default_secure_with_play_store_text_color"
+        tools:tint="@color/default_secure_with_play_store_text_color"
         app:layout_constraintBottom_toBottomOf="@id/txt_secure_with_play_store"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"

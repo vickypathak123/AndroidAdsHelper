@@ -35,19 +35,21 @@ class AppApplication : AppOpenApplication() {
             .enableDebugMode(fIsEnable = true)
             .needToTakeAllTestAdID(fIsTakeAll = true)
             .needToBlockInterstitialAd(fIsBlock = false)
-            .enableAppOpenAdFromRemoteConfig(fIsEnable = false)
-            .enableBannerAdFromRemoteConfig(fIsEnable = false)
+            .enableAppOpenAdFromRemoteConfig(fIsEnable = true)
+            .enableBannerAdFromRemoteConfig(fIsEnable = true)
             .enableInterstitialAdFromRemoteConfig(fIsEnable = true)
-            .enableNativeAdFromRemoteConfig(fIsEnable = false)
-            .enableRewardedInterstitialAdFromRemoteConfig(fIsEnable = false)
-            .enableRewardedVideoAdFromRemoteConfig(fIsEnable = false)
+            .enableNativeAdFromRemoteConfig(fIsEnable = true)
+            .enableRewardedInterstitialAdFromRemoteConfig(fIsEnable = true)
+            .enableRewardedVideoAdFromRemoteConfig(fIsEnable = true)
             .setLifeTimeProductKey(LIFE_TIME_SKU)
             .setSubscriptionKey(WEEKLY_SKU, MONTHLY_SKU, YEARLY_SKU)
             .initialize()
 
         initMobileAds("747DD141C5DB53A9F7E3E452845C08FF")
 
-        initRevenueCat(fContext = this, revenueCatID = REVENUE_CAT_ID)
+        if (REVENUE_CAT_ID.isNotEmpty()) {
+            initRevenueCat(fContext = this, revenueCatID = REVENUE_CAT_ID)
+        }
 
         destroyAllLoadedAd()
     }

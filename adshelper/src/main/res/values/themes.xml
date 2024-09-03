@@ -18,6 +18,20 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="theme_exit_dialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/theme_bottom_sheet_shape_appearance</item>
+    </style>
+
+    <style name="theme_bottom_sheet_shape_appearance" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/top_round_16_dp</item>
+    </style>
+
+    <style name="top_round_16_dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/_16sdp</item>
+        <item name="cornerSizeTopRight">@dimen/_16sdp</item>
+    </style>
+
     <style name="full_round_4_dp" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">4dp</item>
@@ -38,20 +52,59 @@
         <item name="cornerSize">50%</item>
     </style>
 
-    <style name="full_round_16_sdp" parent="">
+    <style name="full_round_38" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/_11sdp</item>
+        <item name="cornerSize">38%</item>
     </style>
 
-    <style name="top_round_16_sdp" parent="">
+    <style name="full_round_11_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_11sdp</item>
+        <!--        <item name="cornerSize">11%</item>-->
+    </style>
+
+    <style name="full_round_10_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_10sdp</item>
+        <!--        <item name="cornerSize">11%</item>-->
+    </style>
+
+    <style name="full_round_5_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_5sdp</item>
+    </style>
+
+    <style name="top_round_10_sdp" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">@dimen/_10sdp</item>
         <item name="cornerSizeTopRight">@dimen/_10sdp</item>
     </style>
 
-    <style name="bottom_round_16_sdp" parent="">
+    <style name="bottom_round_10_sdp" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeBottomLeft">@dimen/_10sdp</item>
         <item name="cornerSizeBottomRight">@dimen/_10sdp</item>
+    </style>
+
+    <style name="bottom_round_16_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">@dimen/_16sdp</item>
+        <item name="cornerSizeBottomRight">@dimen/_16sdp</item>
+    </style>
+
+    <style name="full_round_18_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18%</item>
+    </style>
+
+    <style name="full_round_16_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="right_round_16_sdp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/_16sdp</item>
+        <item name="cornerSizeBottomRight">@dimen/_16sdp</item>
     </style>
 </resources>

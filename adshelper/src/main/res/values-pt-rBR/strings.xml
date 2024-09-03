@@ -64,4 +64,17 @@
     <string name="rating_sub_header">O aplicativo é bom, realmente precisa trabalhar na sequência de imagens digitalizadas, alguns conteúdos estão faltando e alguns estão embaralhados. O aplicativo precisa de melhorias</string>
     <string name="rating_by">por %1s</string>
     <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Cliente satisfeito</string>
+    <string name="rating">Classificação</string>
+
+    <string name="pay_once_enjoy_forever">Pague uma vez, aproveite para sempre</string>
+    <string name="percentage_off">%1s%% DE DESCONTO</string>
+    <string name="price_per_period">%1s por %2s</string>
+    <string name="enjoy_forever">Aproveite para sempre</string>
+    <string name="recommend">Recomendar</string>
+
+    <string name="exit_dialog_negative_button_text">Voltar</string>
+    <string name="exit_dialog_positive_button_text">Sair do aplicativo</string>
+    <string name="exit_dialog_title">Tem certeza de que deseja sair?</string>
 </resources>

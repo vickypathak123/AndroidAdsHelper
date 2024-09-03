@@ -11,10 +11,8 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.animation.OvershootInterpolator
-import android.widget.TextView
 import androidx.annotation.AnimRes
 import androidx.annotation.AnimatorRes
-import androidx.annotation.DimenRes
 import androidx.annotation.FontRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -32,6 +30,7 @@ import com.example.app.ads.helper.base.utils.getFontRes
 import com.example.app.ads.helper.base.utils.gone
 import com.example.app.ads.helper.base.utils.isTiramisuPlus
 import com.example.app.ads.helper.base.utils.sdpToPx
+import com.example.app.ads.helper.base.utils.setTextSizeDimension
 import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.ActivityViewAllPlansBinding
 import com.example.app.ads.helper.databinding.LayoutSubscribeItemBoxBinding
@@ -41,22 +40,22 @@ import com.example.app.ads.helper.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
-import com.example.app.ads.helper.purchase.product.PlanOfferType
-import com.example.app.ads.helper.purchase.product.ProductInfo
-import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
-import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getBillingPeriodName
-import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFullBillingPeriod
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_PRIVACY_POLICY
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_TERMS_OF_USE
 import com.example.app.ads.helper.purchase.fireSubscriptionEvent
-import com.example.app.ads.helper.purchase.utils.AdTimer
+import com.example.app.ads.helper.purchase.product.PlanOfferType
+import com.example.app.ads.helper.purchase.product.ProductInfo
+import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
+import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getBillingPeriodName
+import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFullBillingPeriod
 import com.example.app.ads.helper.purchase.sixbox.utils.BoxItem
 import com.example.app.ads.helper.purchase.sixbox.utils.InfiniteRecyclerAdapter
 import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
-import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.purchase.sixbox.utils.ViewAllPlansScreenDataModel
+import com.example.app.ads.helper.purchase.utils.AdTimer
+import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.zhpan.indicator.enums.IndicatorOrientation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -459,10 +458,6 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
     private val isFromTimeLine: Boolean get() = intent?.getBooleanExtra("isFromTimeLine", false) ?: false
 
-    private fun TextView.setDimension(@DimenRes id: Int) {
-        this.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, mActivity.getDimensionRes(id))
-    }
-
     companion object {
         private var screenDataModel: ViewAllPlansScreenDataModel? = null
 
@@ -597,12 +592,30 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
             setScreenUI()
 
-            setBoxItem(lyBoxItem = lyItem1, boxItem = listOfBoxItem[0])
-            setBoxItem(lyBoxItem = lyItem2, boxItem = listOfBoxItem[1])
-            setBoxItem(lyBoxItem = lyItem3, boxItem = listOfBoxItem[2])
-            setBoxItem(lyBoxItem = lyItem4, boxItem = listOfBoxItem[3])
-            setBoxItem(lyBoxItem = lyItem5, boxItem = listOfBoxItem[4])
-            setBoxItem(lyBoxItem = lyItem6, boxItem = listOfBoxItem[5])
+            setBoxItem(lyBoxItem = lyItem1, boxItem = listOfBoxItem[0].apply {
+                backgroundColor = backgroundColor.takeIf { it != 0 } ?: Color.parseColor("#F2F8FF")
+                foregroundColor = foregroundColor.takeIf { it != 0 } ?: Color.parseColor("#1C74FF")
+            })
+            setBoxItem(lyBoxItem = lyItem2, boxItem = listOfBoxItem[1].apply {
+                backgroundColor = backgroundColor.takeIf { it != 0 } ?: Color.parseColor("#F3EDFF")
+                foregroundColor = foregroundColor.takeIf { it != 0 } ?: Color.parseColor("#7523FF")
+            })
+            setBoxItem(lyBoxItem = lyItem3, boxItem = listOfBoxItem[2].apply {
+                backgroundColor = backgroundColor.takeIf { it != 0 } ?: Color.parseColor("#FFEDED")
+                foregroundColor = foregroundColor.takeIf { it != 0 } ?: Color.parseColor("#FF4343")
+            })
+            setBoxItem(lyBoxItem = lyItem4, boxItem = listOfBoxItem[3].apply {
+                backgroundColor = backgroundColor.takeIf { it != 0 } ?: Color.parseColor("#FFEEF8")
+                foregroundColor = foregroundColor.takeIf { it != 0 } ?: Color.parseColor("#FF4AB2")
+            })
+            setBoxItem(lyBoxItem = lyItem5, boxItem = listOfBoxItem[4].apply {
+                backgroundColor = backgroundColor.takeIf { it != 0 } ?: Color.parseColor("#FFF5EF")
+                foregroundColor = foregroundColor.takeIf { it != 0 } ?: Color.parseColor("#FF7A28")
+            })
+            setBoxItem(lyBoxItem = lyItem6, boxItem = listOfBoxItem[5].apply {
+                backgroundColor = backgroundColor.takeIf { it != 0 } ?: Color.parseColor("#E2FFF0")
+                foregroundColor = foregroundColor.takeIf { it != 0 } ?: Color.parseColor("#12CC6A")
+            })
 
             setRatingViewPager()
 
@@ -626,6 +639,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         with(mBinding) {
             setClickListener(
                 ivClose,
+                txtPayNothingNow,
                 lyYearlyPlan.root,
                 lyLifetimePlan.root,
                 lyMonthlyPlan.root,
@@ -644,7 +658,9 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         super.onClick(v)
         with(mBinding) {
             when (v) {
+                txtPayNothingNow,
                 ivClose -> customOnBackPressed()
+
                 lyYearlyPlan.root,
                 lyLifetimePlan.root,
                 lyMonthlyPlan.root -> {
@@ -974,9 +990,13 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
             onTick = {
             },
             onFinish = {
-                mBinding.infiniteViewPager.post {
-                    mBinding.infiniteViewPager.setCurrentItem(mBinding.infiniteViewPager.currentItem + 1, true)
-                    startAutoSwipeViewPagerTimer()
+                CoroutineScope(Dispatchers.Main).launch {
+                    mActivity.runOnUiThread {
+                        mBinding.infiniteViewPager.post {
+                            mBinding.infiniteViewPager.setCurrentItem(mBinding.infiniteViewPager.currentItem + 1, true)
+                            startAutoSwipeViewPagerTimer()
+                        }
+                    }
                 }
             }
         ).also { mTimer = it }
@@ -1006,27 +1026,27 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
             with(fBinding) {
                 txtPlanPricePercentage.apply {
                     this.typeface = mActivity.getFontRes(planExtraBoldFontFamily.takeIf { isPlanSelected } ?: planExtraBoldFontFamily)
-                    this.setDimension(com.intuit.ssp.R.dimen._10ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._9ssp)
+                    this.setTextSizeDimension(com.intuit.ssp.R.dimen._10ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._9ssp)
                 }
 
                 txtPlanTitle.apply {
                     this.typeface = mActivity.getFontRes(planExtraBoldFontFamily.takeIf { isPlanSelected } ?: planBoldFontFamily)
-                    this.setDimension(com.intuit.ssp.R.dimen._13ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._12ssp)
+                    this.setTextSizeDimension(com.intuit.ssp.R.dimen._13ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._12ssp)
                 }
 
                 txtPlanTrialPeriod.apply {
                     this.typeface = mActivity.getFontRes(planSemiBoldFontFamily.takeIf { isPlanSelected } ?: planMediumFontFamily)
-                    this.setDimension(com.intuit.ssp.R.dimen._11ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._11ssp)
+                    this.setTextSizeDimension(com.intuit.ssp.R.dimen._11ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._11ssp)
                 }
 
                 txtPlanReferencePrice.apply {
                     this.typeface = mActivity.getFontRes(planSemiBoldFontFamily.takeIf { isPlanSelected } ?: planSemiBoldFontFamily)
-                    this.setDimension(com.intuit.ssp.R.dimen._9ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._8ssp)
+                    this.setTextSizeDimension(com.intuit.ssp.R.dimen._9ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._8ssp)
                 }
 
                 txtPlanPrice.apply {
                     this.typeface = mActivity.getFontRes(planExtraBoldFontFamily.takeIf { isPlanSelected } ?: planSemiBoldFontFamily)
-                    this.setDimension(com.intuit.ssp.R.dimen._12ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._11ssp)
+                    this.setTextSizeDimension(com.intuit.ssp.R.dimen._12ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._11ssp)
                     this.setEdgeToEdgeTopPadding(fTopPadding = mActivity.getDimensionRes(com.intuit.ssp.R.dimen._8ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._4ssp).toInt(), isAddDefaultPadding = false)
                     this.setEdgeToEdgeBottomPadding(fBottomPadding = mActivity.getDimensionRes(com.intuit.ssp.R.dimen._9ssp.takeIf { isPlanSelected } ?: com.intuit.ssp.R.dimen._5ssp).toInt(), isAddDefaultPadding = false)
                 }
@@ -1049,25 +1069,23 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
                 fBinding.root.isSelected = isPlanSelected.takeIf { !isPlanSelected } ?: fBinding.root.isSelected
 
-                if (this.root.parent is ConstraintLayout) {
-                    val parent: ConstraintLayout = this.root.parent as ConstraintLayout
+                if (fBinding.root.parent is ConstraintLayout) {
+                    val parent: ConstraintLayout = fBinding.root.parent as ConstraintLayout
                     val constraintSet = ConstraintSet()
                     constraintSet.clone(parent)
-                    constraintSet.setDimensionRatio(this.root.id, "328.4:500".takeIf { isPlanSelected } ?: "300:400")
+                    constraintSet.setDimensionRatio(fBinding.root.id, "328.4:500".takeIf { isPlanSelected } ?: "300:400")
                     val transition = ChangeBounds().apply {
                         duration = 100 // 1000ms = 1 second
                         interpolator = OvershootInterpolator()
-//                        duration = animationDuration.roundToLong() // 1000ms = 1 second
-//                        interpolator = when(animationName) {
-//                            "LinearInterpolator" -> LinearInterpolator()
-//                            "AccelerateInterpolator" -> AccelerateInterpolator()
-//                            "BounceInterpolator" -> BounceInterpolator()
-//                            "OvershootInterpolator" -> OvershootInterpolator()
-//                            else -> DecelerateInterpolator()
-//                        }
+
+                        addTarget(fBinding.root)
                     }
                     TransitionManager.beginDelayedTransition(parent, transition)
                     constraintSet.applyTo(parent)
+
+                    mBinding.root.post {
+                        mBinding.infiniteViewPager.requestLayout()
+                    }
                 }
 
                 if (isPlanSelected && !fBinding.root.isSelected) {
