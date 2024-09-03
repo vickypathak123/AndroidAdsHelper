@@ -57,13 +57,10 @@ Note: in all apps, subscription-related JSON must look like this, no need to rem
 
 ## Subscription Screen Reference
 
-#### Exit Dialog UI
+### Exit Dialog UI
 
-<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/exit_dialog_with_ad.jpg" height="auto" width="300"/>
-<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/exit_dialog_without_ad.jpg" height="auto" width="300"/>
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/exit_dialog_with_ad.jpg" height="auto" width="300"/>    <img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/exit_dialog_without_ad.jpg" height="auto" width="300"/>
 
-#### Subscription Screen UI
+### Subscription Screen UI
 
-<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/timeline_subscription_screen.jpg" height="auto" width="200"/>
-<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/four_plan_subscription_screen.jpg" height="auto" width="200"/>
-<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/siz_box_subscription_screen.jpg" height="auto" width="200"/>
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/timeline_subscription_screen.jpg" height="auto" width="300"/>    <img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/four_plan_subscription_screen.jpg" height="auto" width="300"/>    <img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/siz_box_subscription_screen.jpg" height="auto" width="300"/>
