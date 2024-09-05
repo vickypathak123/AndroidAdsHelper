@@ -56,6 +56,11 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         super.initView()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
+//        AppProtector.with()
+//            .checkIntegrity {
+//
+//            }
+
         CoroutineScope(Dispatchers.IO).launch {
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {

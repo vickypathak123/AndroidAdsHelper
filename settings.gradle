@@ -27,3 +27,4 @@ rootProject.name = "Ads Helper 2.0"
 include ':app'
 include ':adshelper'
 include ':revenueCat'
+include ':integritycheck'

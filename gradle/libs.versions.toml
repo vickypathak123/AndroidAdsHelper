@@ -7,7 +7,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.1"
+activity = "1.9.2"
 constraintlayout = "2.1.4"
 multidex = "2.0.1"
 googleGson = "2.10.1"
@@ -23,6 +23,11 @@ android-billing = "7.0.0"
 androidx-browser = "1.8.0"
 zhpanvip-dotsindicator = "1.2.3"
 revenuecat = "8.4.0"
+integrity = "1.4.0"
+googleAuthLibraryOauth2Http = "1.23.0"
+googleApiClientJackson2 = "1.20.0"
+googleApiServicesPlayintegrity = "v1-rev20231109-2.0.0"
+userMessagingPlatform = "3.0.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -52,4 +57,9 @@ android-billing = { group = "com.android.billingclient", name = "billing-ktx", v
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "androidx-browser" }
 zhpanvip-dotsindicator = { group = "com.github.zhpanvip", name = "viewpagerindicator", version.ref = "zhpanvip-dotsindicator" }
 revenuecat = { group = "com.revenuecat.purchases", name = "purchases", version.ref = "revenuecat" }
+integrity = { group = "com.google.android.play", name = "integrity", version.ref = "integrity" }
+google-auth-library-oauth2-http = { module = "com.google.auth:google-auth-library-oauth2-http", version.ref = "googleAuthLibraryOauth2Http" }
+google-api-client-jackson2 = { module = "com.google.api-client:google-api-client-jackson2", version.ref = "googleApiClientJackson2" }
+google-api-services-playintegrity = { module = "com.google.apis:google-api-services-playintegrity", version.ref = "googleApiServicesPlayintegrity" }
+user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "userMessagingPlatform" }
 

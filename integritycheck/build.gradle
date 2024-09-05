@@ -1,12 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id 'kotlin-parcelize'
     id 'maven-publish'
 }
 
 android {
-    namespace 'com.example.app.ads.helper'
+    namespace 'com.safetynet.integritycheck'
     compileSdk 34
 
     defaultConfig {
@@ -30,10 +29,6 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    buildFeatures {
-        viewBinding true
-        buildConfig true
-    }
 }
 
 dependencies {
@@ -41,9 +36,6 @@ dependencies {
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
-    implementation libs.androidx.activity
-    implementation libs.androidx.constraintlayout
-    api project(':integritycheck')
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
@@ -52,40 +44,14 @@ dependencies {
     implementation libs.androidx.multidex
     //endregion
 
-    //region Google Gson to Json
-    implementation libs.google.gson
-    //endregion
+    implementation libs.integrity
+    implementation libs.google.auth.library.oauth2.http
+    implementation libs.google.api.client.jackson2
+    implementation (libs.google.api.services.playintegrity) {
+        exclude group: "com.google.guava", module: "guava"
+    }
 
-    //region Custom Tab
-    implementation libs.androidx.browser
-    //endregion
-
-    //region Google Gson to Json
-    implementation libs.google.play.services.ads
-    //endregion
-
-    //region Google Android Billing
-    implementation libs.android.billing
-    //endregion
-
-    //region Lottie Animation
-    implementation libs.lottie.animation
-    //endregion
-
-    //region SSP-SDP Dimension
-    implementation libs.intuit.sdp
-    implementation libs.intuit.ssp
-    //endregion
-
-    //region LifeCycle
-    implementation libs.androidx.lifecycle.extensions
-    //endregion
-
-    //region Shimmer Layout
-    implementation libs.facebook.shimmer
-    //endregion
-
-    implementation libs.zhpanvip.dotsindicator
+    implementation libs.user.messaging.platform
 }
 
 afterEvaluate {
@@ -95,7 +61,7 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.vickypathak123.AndroidAdsHelper'
-                artifactId = 'adshelper'
+                artifactId = 'integritycheck'
                 version = "$dependencies_version"
             }
         }
