@@ -46,10 +46,12 @@ class NotificationWorker(
                 SUBSCRIPTION_DATA_LANGUAGE_CODE = "en"
                 val notificationBigText: String = fContext.getStringRes(R.string.you_will_be_charged_after_period, notificationData.actualFreeTrialPeriod.getFullBillingPeriod(context = fContext))
 
+                val intentClass = Class.forName(notificationData.intentClass)
+
                 val pendingIntent = PendingIntent.getActivity(
                     fContext,
                     10,
-                    Intent(fContext, notificationData.intentClass).apply {
+                    Intent(fContext, intentClass).apply {
                         this.putExtra(KEY_SUBSCRIPTION_NOTIFICATION_INTENT, VALUE_SUBSCRIPTION_NOTIFICATION_INTENT)
                     },
                     PendingIntent.FLAG_IMMUTABLE

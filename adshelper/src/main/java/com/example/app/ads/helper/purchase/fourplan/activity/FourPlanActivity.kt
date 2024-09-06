@@ -59,6 +59,7 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFull
 import com.example.app.ads.helper.purchase.removeTrailingZeros
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
 import com.example.app.ads.helper.toCamelCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -100,7 +101,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
      * Index == 1 ::-> START MY FREE TRIAL
      * Index == else ::-> CONTINUE
      */
-    private val mPurchaseButtonTextIndex: Int get() = screenDataModel?.purchaseButtonTextIndex ?: 0
+    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionConfigModel.purchaseButtonTextIndex
 
     private val isFromTimeLine: Boolean get() = intent?.getBooleanExtra("isFromTimeLine", false) ?: false
 
@@ -415,7 +416,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                                         context = mActivity,
                                         resourceId = R.string.payment_is_charged_after_period_cancel_anytime,
                                         formatArgs = arrayOf(
-                                            productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity)
+                                            productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity).lowercase()
                                         )
                                     )
                                     this.visible
@@ -683,6 +684,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                         context = mActivity,
                         resourceId = R.string.cancel_anytime_secure_with_play_store,
                     )
+                    this.isSelected = true
                     this.setTextColor(Color.parseColor("#24272C"))
                 }
 
@@ -721,7 +723,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                         price
                     )
                 )
-
+                this.isAllCaps = (buttonTextIndex != 2)
 
                 this.setEdgeToEdgeTopPadding(fTopPadding = mActivity.getDimensionRes(com.intuit.ssp.R.dimen._11ssp).toInt(), isAddDefaultPadding = false)
                 this.setEdgeToEdgeBottomPadding(fBottomPadding = mActivity.getDimensionRes(com.intuit.ssp.R.dimen._11ssp).toInt(), isAddDefaultPadding = false)
@@ -818,7 +820,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                             this.text = getLocalizedString<String>(
                                 context = mActivity,
                                 resourceId = R.string.percentage_off,
-                                formatArgs = arrayOf("${screenDataModel?.lifeTimePlanDiscountPercentage ?: 80}")
+                                formatArgs = arrayOf("${mVasuSubscriptionConfigModel.lifeTimePlanDiscountPercentage}")
                             )
                             this.setTextColor(mLifetimePlanSelector.getColorForState(intArrayOf(android.R.attr.state_selected), mLifetimePlanSelector.defaultColor))
                         }

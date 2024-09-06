@@ -55,7 +55,6 @@
             android:maxLines="1"
             android:paddingVertical="@dimen/_8sdp"
             tools:text="@string/start_my_free_trial"
-            android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintBottom_toBottomOf="parent"

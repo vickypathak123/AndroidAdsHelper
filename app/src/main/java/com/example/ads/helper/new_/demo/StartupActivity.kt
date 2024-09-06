@@ -19,6 +19,7 @@ import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
 import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
 import com.example.app.ads.helper.revenuecat.initRevenueCatProductList
+import com.safetynet.integritycheck.integrity.AppProtector
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -56,10 +57,10 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         super.initView()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
-//        AppProtector.with()
-//            .checkIntegrity {
-//
-//            }
+        AppProtector.with(mActivity)
+            .checkIntegrity {
+
+            }
 
         CoroutineScope(Dispatchers.IO).launch {
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
@@ -163,29 +164,35 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         if (!isLaunchNextScreen) {
             VasuSplashConfig.showSplashFlow(
                 fActivity = mActivity,
-                listOfInitialSubscriptionOpenFlow = intArrayOf(0, 1, 4, 2, 5, 3),
                 onOpenSubscriptionScreen = {
+                    Log.e(TAG, "launchScreenWithAd: onOpenSubscriptionScreen")
                     VasuSubscriptionConfig.with(fActivity = mActivity)
+                        .enableTestPurchase(true)
                         .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
                             this.setNotificationIcon(id = R.drawable.ic_share_blue)
                         })
                         .launchScreen(
-                            morePlanScreenType = MorePlanScreenType.FOUR_PLAN_SCREEN,
+//                            morePlanScreenType = MorePlanScreenType.FOUR_PLAN_SCREEN,
                             isFromSplash = true,
-                            showCloseAdForTimeLineScreen = true,
-                            showCloseAdForViewAllPlanScreenOpenAfterSplash = true,
-                            showCloseAdForViewAllPlanScreen = true,
+//                            showCloseAdForTimeLineScreen = true,
+//                            showCloseAdForViewAllPlanScreenOpenAfterSplash = true,
+//                            showCloseAdForViewAllPlanScreen = true,
                             directShowMorePlanScreen = false,
                             onSubscriptionEvent = {},
                             onScreenFinish = {
+                                Log.e(TAG, "launchScreenWithAd: $it, onScreenFinish")
                                 checkAndLaunchNextScreen()
                             }
                         )
                 },
                 onNextAction = {
+                    Log.e(TAG, "launchScreenWithAd: onNextAction")
                     checkAndLaunchNextScreen()
                 }
             )
+        } else {
+            Log.e(TAG, "launchScreenWithAd: else")
+            checkAndLaunchNextScreen()
         }
     }
 
@@ -218,7 +225,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                 } else {
                     loadAdWithTimer()
                 }
-            } else if (isLaunchScreenWithAd) {
+            } else if (isLaunchScreenWithAd && !isLaunchNextScreen) {
                 checkAndLaunchNextScreen()
             } else {
                 Log.e(TAG, "onResume: already going on next screen")

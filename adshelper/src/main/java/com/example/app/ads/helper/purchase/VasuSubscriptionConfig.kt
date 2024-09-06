@@ -32,6 +32,7 @@ import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
 import java.io.Serializable
 import java.lang.ref.WeakReference
 
@@ -120,11 +121,11 @@ object VasuSubscriptionConfig {
         }
 
         fun launchScreen(
-            morePlanScreenType: MorePlanScreenType,
+            fPlanScreenType: MorePlanScreenType = MorePlanScreenType.fromName(value = mVasuSubscriptionConfigModel.morePlanScreenType.takeIf { it.isNotEmpty() } ?: "four_plan_screen"),
             isFromSplash: Boolean = false,
-            showCloseAdForTimeLineScreen: Boolean = false,
-            showCloseAdForViewAllPlanScreenOpenAfterSplash: Boolean = false,
-            showCloseAdForViewAllPlanScreen: Boolean = false,
+//            showCloseAdForTimeLineScreen: Boolean = false,
+//            showCloseAdForViewAllPlanScreenOpenAfterSplash: Boolean = false,
+//            showCloseAdForViewAllPlanScreen: Boolean = false,
             directShowMorePlanScreen: Boolean = false,
             onSubscriptionEvent: (eventType: SubscriptionEventType) -> Unit,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit
@@ -139,9 +140,9 @@ object VasuSubscriptionConfig {
                 triggerSubscriptionEvent = onSubscriptionEvent
 
                 IS_FROM_SPLASH = isFromSplash
-                SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = showCloseAdForTimeLineScreen
-                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = showCloseAdForViewAllPlanScreenOpenAfterSplash
-                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = showCloseAdForViewAllPlanScreen
+                SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = mVasuSubscriptionConfigModel.initialSubscriptionTimeLineCloseAd
+                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = mVasuSubscriptionConfigModel.initialSubscriptionMorePlanCloseAd
+                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = mVasuSubscriptionConfigModel.inAppSubscriptionAdClose
 
                 val lScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = { isUserPurchaseAnyPlan ->
                     IS_FROM_SPLASH = false
@@ -157,7 +158,7 @@ object VasuSubscriptionConfig {
                         onViewAllPlans = {
                             fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_MORE_PLANS_CLICK)
                             launchMorePlanScreen(
-                                fType = morePlanScreenType,
+                                fType = fPlanScreenType,
                                 isFromTimeLine = true,
                                 onScreenFinish = { isUserPurchaseAnyPlan ->
                                     if (isUserPurchaseAnyPlan) {
@@ -170,7 +171,7 @@ object VasuSubscriptionConfig {
                     )
                 } else {
                     launchMorePlanScreen(
-                        fType = morePlanScreenType,
+                        fType = fPlanScreenType,
                         isFromTimeLine = false,
                         onScreenFinish = lScreenFinish
                     )
@@ -239,7 +240,7 @@ object VasuSubscriptionConfig {
                 fActivity = mActivity,
                 isFromTimeLine = isFromTimeLine,
                 screenDataModel = ViewAllPlansScreenDataModel(
-                    purchaseButtonTextIndex = mViewAllPlansScreenData.purchaseButtonTextIndex,
+//                    purchaseButtonTextIndex = mViewAllPlansScreenData.purchaseButtonTextIndex,
                     listOfBoxItem = mViewAllPlansScreenData.listOfBoxItem,
                     listOfRattingItem = mViewAllPlansScreenData.listOfRattingItem,
                     yearPlanIconSelector = mViewAllPlansScreenData.yearPlanIconSelector,
@@ -281,10 +282,10 @@ object VasuSubscriptionConfig {
                 fActivity = mActivity,
                 isFromTimeLine = isFromTimeLine,
                 screenDataModel = FourPlanScreenDataModel(
-                    purchaseButtonTextIndex = mFourPlanScreenData.purchaseButtonTextIndex,
+//                    purchaseButtonTextIndex = mFourPlanScreenData.purchaseButtonTextIndex,
                     listOfBoxItem = mFourPlanScreenData.listOfBoxItem,
                     listOfRattingItem = mFourPlanScreenData.listOfRattingItem,
-                    lifeTimePlanDiscountPercentage = mFourPlanScreenData.lifeTimePlanDiscountPercentage,
+//                    lifeTimePlanDiscountPercentage = mFourPlanScreenData.lifeTimePlanDiscountPercentage,
                 ),
                 onScreenFinish = onScreenFinish,
             )
@@ -576,8 +577,8 @@ object VasuSubscriptionConfig {
     }
 
     class ViewAllPlansScreenData(private val fActivity: Activity) : Serializable {
-        private var _purchaseButtonTextIndex: Int = 0
-        internal val purchaseButtonTextIndex: Int get() = _purchaseButtonTextIndex
+//        private var _purchaseButtonTextIndex: Int = 0
+//        internal val purchaseButtonTextIndex: Int get() = _purchaseButtonTextIndex
 
         private var _listOfBoxItem: ArrayList<BoxItem> = ArrayList()
         internal val listOfBoxItem: ArrayList<BoxItem> get() = _listOfBoxItem
@@ -660,11 +661,11 @@ object VasuSubscriptionConfig {
 
 
         //<editor-fold desc="Remove this fold After Color Work Done">
-        @JvmName("setPurchaseButtonTextIndex")
-        fun setPurchaseButtonTextIndex(index: Int) = this@ViewAllPlansScreenData.apply {
-            this._purchaseButtonTextIndex = index
-            return this
-        }
+//        @JvmName("setPurchaseButtonTextIndex")
+//        fun setPurchaseButtonTextIndex(index: Int) = this@ViewAllPlansScreenData.apply {
+//            this._purchaseButtonTextIndex = index
+//            return this
+//        }
 
         @JvmName("setBoxItems")
         fun setBoxItems(vararg listOfBoxItem: BoxItem) = this@ViewAllPlansScreenData.apply {
@@ -1079,8 +1080,8 @@ object VasuSubscriptionConfig {
     }
 
     class FourPlanScreenData(private val fActivity: Activity) : Serializable {
-        private var _purchaseButtonTextIndex: Int = 0
-        internal val purchaseButtonTextIndex: Int get() = _purchaseButtonTextIndex
+//        private var _purchaseButtonTextIndex: Int = 0
+//        internal val purchaseButtonTextIndex: Int get() = _purchaseButtonTextIndex
 
         private var _listOfBoxItem: ArrayList<FourPlanUserItem> = ArrayList()
         internal val listOfBoxItem: ArrayList<FourPlanUserItem> get() = _listOfBoxItem
@@ -1088,14 +1089,14 @@ object VasuSubscriptionConfig {
         private var _listOfRattingItem: ArrayList<FourPlanRattingItem> = ArrayList()
         internal val listOfRattingItem: ArrayList<FourPlanRattingItem> get() = _listOfRattingItem
 
-        private var _lifeTimePlanDiscountPercentage: Int = 0
-        internal val lifeTimePlanDiscountPercentage: Int get() = _lifeTimePlanDiscountPercentage
+//        private var _lifeTimePlanDiscountPercentage: Int = 0
+//        internal val lifeTimePlanDiscountPercentage: Int get() = _lifeTimePlanDiscountPercentage
 
-        @JvmName("setPurchaseButtonTextIndex")
-        fun setPurchaseButtonTextIndex(index: Int) = this@FourPlanScreenData.apply {
-            this._purchaseButtonTextIndex = index
-            return this
-        }
+//        @JvmName("setPurchaseButtonTextIndex")
+//        fun setPurchaseButtonTextIndex(index: Int) = this@FourPlanScreenData.apply {
+//            this._purchaseButtonTextIndex = index
+//            return this
+//        }
 
         @JvmName("setBoxItems")
         fun setBoxItems(vararg listOfBoxItem: FourPlanUserItem) = this@FourPlanScreenData.apply {
@@ -1111,11 +1112,11 @@ object VasuSubscriptionConfig {
             return this
         }
 
-        @JvmName("setLifeTimePlanDiscountPercentage")
-        fun setLifeTimePlanDiscountPercentage(discountPercentage: Int) = this@FourPlanScreenData.apply {
-            this._lifeTimePlanDiscountPercentage = discountPercentage
-            return this
-        }
+//        @JvmName("setLifeTimePlanDiscountPercentage")
+//        fun setLifeTimePlanDiscountPercentage(discountPercentage: Int) = this@FourPlanScreenData.apply {
+//            this._lifeTimePlanDiscountPercentage = discountPercentage
+//            return this
+//        }
     }
 
     class NotificationData(val intentClass: Class<*>) : Serializable {

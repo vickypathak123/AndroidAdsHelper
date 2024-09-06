@@ -430,6 +430,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/txt_free_then_per_period"
                 app:layout_constraintEnd_toEndOf="@id/gl_end_2"
                 app:layout_constraintStart_toStartOf="@id/gl_start_2"

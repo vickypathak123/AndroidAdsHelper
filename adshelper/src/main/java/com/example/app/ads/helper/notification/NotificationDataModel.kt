@@ -9,7 +9,8 @@ import kotlinx.parcelize.Parcelize
 @Keep
 @Parcelize
 data class NotificationDataModel(
-    val intentClass: Class<*>,
+//    val intentClass: Class<*>,
+    val intentClass: String,
     @DrawableRes
     val notificationIcon: Int = R.drawable.outline_notification_important_24,
     val notificationId: Int = SUBSCRIPTION_NOTIFICATION_ID,

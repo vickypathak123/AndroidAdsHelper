@@ -322,10 +322,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_8sdp"
+                app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/txt_terms_of_use"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="@id/gl_start_2" />
 
             <TextView
                 android:id="@+id/txt_terms_of_use"
@@ -341,9 +342,9 @@
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txt_privacy_policy"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/txt_privacy_policy"
                 tools:text="@string/terms_of_use" />
 
             <View

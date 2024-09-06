@@ -48,6 +48,7 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isWeekl
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isYearlySKU
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -67,6 +68,13 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
             R.string.instant_access_hint_5,
             R.string.instant_access_hint_6,
         )
+
+    /**
+     * Index == 2 ::-> Try 3 days for $0
+     * Index == 1 ::-> START MY FREE TRIAL
+     * Index == else ::-> CONTINUE
+     */
+    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionConfigModel.purchaseButtonTextIndex
 
     private val maxValue = 40f
     private var currentValue = 0f
@@ -177,7 +185,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                                     )
 
                                     AdsManager(mActivity).notificationData = NotificationDataModel(
-                                        intentClass = data.intentClass,
+                                        intentClass = data.intentClass::class.java.name,
                                         notificationIcon = data.notificationIcon,
                                         notificationId = data.notificationId,
                                         notificationChannelId = data.notificationChannelId,
@@ -376,6 +384,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
             lySecureWithPlayStore.txtSecureWithPlayStore.apply {
                 this.setTextColor(secureWithPlayStoreTextColor)
                 this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.cancel_anytime_secure_with_play_store)
+                this.isSelected = true
             }
 
             lySecureWithPlayStore.ivSecureWithPlayStoreBg.apply {
@@ -523,7 +532,21 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                             }
 
                             lySubscribeButton.txtBtnContinue.apply {
-                                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.start_my_free_trial)
+//                                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.start_my_free_trial)
+                                this.text = getLocalizedString<String>(
+                                    context = mActivity,
+                                    resourceId = R.string.try_period_for_price.takeIf {
+                                        mPurchaseButtonTextIndex == 2
+                                    } ?: R.string.start_my_free_trial.takeIf {
+                                        mPurchaseButtonTextIndex == 1
+                                    } ?: R.string.continue_,
+                                    formatArgs = arrayOf(
+                                        productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity),
+                                        "${productInfo.priceCurrencySymbol}0"
+                                    )
+                                )
+
+                                this.isAllCaps = (mPurchaseButtonTextIndex != 2)
                             }
 
                             txtTrialReminder.apply {

@@ -56,6 +56,7 @@ import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
 import com.example.app.ads.helper.purchase.sixbox.utils.ViewAllPlansScreenDataModel
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
 import com.zhpan.indicator.enums.IndicatorOrientation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -78,7 +79,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
      * Index == 1 ::-> START MY FREE TRIAL
      * Index == else ::-> CONTINUE
      */
-    private val mPurchaseButtonTextIndex: Int get() = screenDataModel?.purchaseButtonTextIndex ?: 0
+    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionConfigModel.purchaseButtonTextIndex
 
     private val listOfBoxItem: ArrayList<BoxItem>
         get() = screenDataModel?.listOfBoxItem.takeIf { !it.isNullOrEmpty() } ?: arrayListOf(
@@ -697,7 +698,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                                         context = mActivity,
                                         resourceId = R.string.payment_is_charged_after_period_cancel_anytime,
                                         formatArgs = arrayOf(
-                                            productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity)
+                                            productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity).lowercase()
                                         )
                                     )
                                     this.visible
@@ -828,7 +829,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                         price
                     )
                 )
-
+                this.isAllCaps = (buttonTextIndex != 2)
 
                 this.setEdgeToEdgeTopPadding(fTopPadding = mActivity.getDimensionRes(com.intuit.ssp.R.dimen._11ssp).toInt(), isAddDefaultPadding = false)
                 this.setEdgeToEdgeBottomPadding(fBottomPadding = mActivity.getDimensionRes(com.intuit.ssp.R.dimen._9ssp).toInt(), isAddDefaultPadding = false)
@@ -885,6 +886,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                     resourceId = R.string.cancel_anytime_secure_with_play_store,
                 )
                 this.setTextColor(secureWithPlayStoreTextColor)
+                this.isSelected = true
             }
             lySecureWithPlayStore.ivSecureWithPlayStoreBg.apply {
                 this.setBackgroundColor(secureWithPlayStoreBackgroundColor.defaultColor)

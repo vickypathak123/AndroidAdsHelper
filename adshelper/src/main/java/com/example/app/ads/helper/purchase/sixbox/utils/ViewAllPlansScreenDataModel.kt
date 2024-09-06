@@ -5,7 +5,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 
 data class ViewAllPlansScreenDataModel(
-    var purchaseButtonTextIndex: Int,
+//    var purchaseButtonTextIndex: Int,
     var listOfBoxItem: ArrayList<BoxItem>,
     var listOfRattingItem: ArrayList<RattingItem>,
     var yearPlanIconSelector: SelectorDrawableItem,

@@ -199,10 +199,10 @@
                 app:layout_constraintVertical_bias="0"
                 app:vpi_orientation="horizontal"
                 app:vpi_slide_mode="worm"
-                tools:vpi_slider_checked_color="@color/default_view_more_plan_rating_indicator_color"
                 app:vpi_slider_normal_color="@color/default_view_more_plan_rating_place_holder_color"
                 app:vpi_slider_radius="@dimen/_3sdp"
-                app:vpi_style="circle" />
+                app:vpi_style="circle"
+                tools:vpi_slider_checked_color="@color/default_view_more_plan_rating_indicator_color" />
             <!--</editor-fold>-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -304,14 +304,14 @@
                 android:shadowDx="0"
                 android:shadowDy="4"
                 android:shadowRadius="2"
-                tools:textColor="@color/default_view_more_plan_pay_nothing_now_color"
                 android:textSize="@dimen/_14ssp"
                 app:layout_constraintBottom_toTopOf="@id/ly_secure_with_play_store"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="@string/pay_nothing_now" />
+                tools:text="@string/pay_nothing_now"
+                tools:textColor="@color/default_view_more_plan_pay_nothing_now_color" />
 
             <include
                 android:id="@+id/ly_secure_with_play_store"
@@ -319,10 +319,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_8sdp"
+                app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/txt_terms_of_use"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_end_2"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="@id/gl_start_2" />
 
             <TextView
                 android:id="@+id/txt_terms_of_use"

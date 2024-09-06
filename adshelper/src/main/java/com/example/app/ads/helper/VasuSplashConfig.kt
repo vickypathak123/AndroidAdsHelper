@@ -4,6 +4,7 @@ import android.app.Activity
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
 import com.example.app.ads.helper.openad.AppOpenAdHelper.showAppOpenAd
 import com.example.app.ads.helper.purchase.product.AdsManager
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
 
 object VasuSplashConfig {
 
@@ -18,17 +19,17 @@ object VasuSplashConfig {
      * - `Index == else` : Performs the next action without showing ads or the Subscription Screen.
      *
      * @param fActivity Reference to the current Activity.
-     * @param listOfInitialSubscriptionOpenFlow A list obtained from the remote config key "initial_subscription_open_flow".
-     *                                           This list determines whether to show ads or the subscription screen before performing the next action.
      * @param onOpenSubscriptionScreen Callback for opening the subscription screen and performing the next action.
      * @param onNextAction Callback for performing the next action directly.
      */
     fun showSplashFlow(
         fActivity: Activity,
-        vararg listOfInitialSubscriptionOpenFlow: Int,
         onOpenSubscriptionScreen: () -> Unit,
         onNextAction: () -> Unit,
     ) {
+
+        val listOfInitialSubscriptionOpenFlow = mVasuSubscriptionConfigModel.initialSubscriptionOpenFlow
+
         val oldIndex: Int = AdsManager(context = fActivity).initialSubscriptionOpenFlowIndex
 
         val showIndex = if (oldIndex >= 0 && oldIndex < listOfInitialSubscriptionOpenFlow.size) {
@@ -49,7 +50,9 @@ object VasuSplashConfig {
             }
         }
 
-        when (listOfInitialSubscriptionOpenFlow[showIndex]) {
+        val finalShowIndex: Int = (0).takeIf { !AdsManager(fActivity).isNeedToShowAds } ?: listOfInitialSubscriptionOpenFlow[showIndex]
+
+        when (finalShowIndex) {
             1 -> onAction.invoke(true)
 
             2 -> {

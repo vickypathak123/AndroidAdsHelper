@@ -24,7 +24,7 @@ androidx-browser = "1.8.0"
 zhpanvip-dotsindicator = "1.2.3"
 revenuecat = "8.4.0"
 integrity = "1.4.0"
-googleAuthLibraryOauth2Http = "1.23.0"
+googleAuthLibraryOauth2Http = "1.24.1"
 googleApiClientJackson2 = "1.20.0"
 googleApiServicesPlayintegrity = "v1-rev20231109-2.0.0"
 userMessagingPlatform = "3.0.0"
@@ -35,6 +35,12 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 [libraries]
+
+vasu-revenueCat  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "revenueCat", version = "1.0.2" }
+vasu-ads-helper  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "adshelper", version = "1.0.2" }
+vasu-integrity-check  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "integritycheck", version = "1.0.2" }
+vasu-android-ads-helper  = { group = "com.github.vickypathak123", name = "AndroidAdsHelper", version = "1.0.2" }
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -58,8 +64,9 @@ androidx-browser = { group = "androidx.browser", name = "browser", version.ref =
 zhpanvip-dotsindicator = { group = "com.github.zhpanvip", name = "viewpagerindicator", version.ref = "zhpanvip-dotsindicator" }
 revenuecat = { group = "com.revenuecat.purchases", name = "purchases", version.ref = "revenuecat" }
 integrity = { group = "com.google.android.play", name = "integrity", version.ref = "integrity" }
-google-auth-library-oauth2-http = { module = "com.google.auth:google-auth-library-oauth2-http", version.ref = "googleAuthLibraryOauth2Http" }
-google-api-client-jackson2 = { module = "com.google.api-client:google-api-client-jackson2", version.ref = "googleApiClientJackson2" }
-google-api-services-playintegrity = { module = "com.google.apis:google-api-services-playintegrity", version.ref = "googleApiServicesPlayintegrity" }
-user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "userMessagingPlatform" }
+#google-auth-library-credentials = { group = "com.google.auth", name = "google-auth-library-credentials", version.ref = "googleAuthLibraryOauth2Http" }
+google-auth-library-oauth2-http = { group = "com.google.auth", name = "google-auth-library-oauth2-http", version.ref = "googleAuthLibraryOauth2Http" }
+google-api-client-jackson2 = { group = "com.google.api-client", name = "google-api-client-jackson2", version.ref = "googleApiClientJackson2" }
+google-api-services-playintegrity = { group = "com.google.apis", name = "google-api-services-playintegrity", version.ref = "googleApiServicesPlayintegrity" }
+user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "userMessagingPlatform" }
 

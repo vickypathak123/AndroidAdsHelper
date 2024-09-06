@@ -118,7 +118,7 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
 
                 btnUpdate -> {
                     VasuSubscriptionConfig.with(fActivity = mActivity)
-                        .enableTestPurchase(false)
+                        .enableTestPurchase(true)
                         .setAppLanguageCode(fCode = spLanguage.selectedItem.toString().substringAfter("(").substringBefore(")").takeIf { it.isNotEmpty() } ?: "en")
                         .setPrivacyPolicy(fLink = etPrivacyPolicy.text.toString().trim().takeIf { it.isNotEmpty() && switchPrivacyPolicy.isChecked } ?: "https://www.freeprivacypolicy.com/blog/privacy-policy-url/")
                         .setTermsOfUse(fLink = etTermsOfUse.text.toString().trim().takeIf { it.isNotEmpty() && switchTermsOfUse.isChecked } ?: "https://policies.google.com/privacy?hl=en-US")
@@ -147,7 +147,7 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                         }
                         .setViewAllPlansScreenData { fViewAllPlansScreenData ->
                             with(fViewAllPlansScreenData) {
-                                this.setPurchaseButtonTextIndex(index = listOf(0, 1, 2).random())
+//                                this.setPurchaseButtonTextIndex(index = listOf(0, 1, 2).random())
 //                                this.setBoxItems(BoxItem(),BoxItem(),BoxItem(),BoxItem(),BoxItem(),BoxItem())
 //                                this.setRattingItems(RattingItem(),RattingItem(),RattingItem(),RattingItem(),RattingItem())
 //                                this.setYearPlanIconSelector(fSelectorItem = SelectorDrawableItem())
@@ -178,8 +178,8 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                         }
                         .setFourPlanScreenData { fFourPlanScreenData ->
                             with(fFourPlanScreenData) {
-                                this.setPurchaseButtonTextIndex(index = listOf(0, 1, 2).random())
-                                this.setLifeTimePlanDiscountPercentage(discountPercentage = 80)
+//                                this.setPurchaseButtonTextIndex(index = listOf(0, 1, 2).random())
+//                                this.setLifeTimePlanDiscountPercentage(discountPercentage = 80)
 
                                 this.setBoxItems(
                                     FourPlanUserItem(
@@ -251,11 +251,11 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                             }
                         }
                         .launchScreen(
-                            morePlanScreenType = MorePlanScreenType.fromName(value = spScreenType.selectedItem.toString().takeIf { it.isNotEmpty() } ?: "six_box_screen"),
+                            fPlanScreenType = MorePlanScreenType.fromName(value = spScreenType.selectedItem.toString().takeIf { it.isNotEmpty() } ?: "six_box_screen"),
                             isFromSplash = switchIsFromSplash.isChecked,
-                            showCloseAdForTimeLineScreen = switchCloseAdForTimeLineScreen.isChecked,
-                            showCloseAdForViewAllPlanScreenOpenAfterSplash = switchCloseAdForViewAllPlansScreenAfterSplash.isChecked,
-                            showCloseAdForViewAllPlanScreen = switchCloseAdForViewAllPlansScreen.isChecked,
+//                            showCloseAdForTimeLineScreen = switchCloseAdForTimeLineScreen.isChecked,
+//                            showCloseAdForViewAllPlanScreenOpenAfterSplash = switchCloseAdForViewAllPlansScreenAfterSplash.isChecked,
+//                            showCloseAdForViewAllPlanScreen = switchCloseAdForViewAllPlansScreen.isChecked,
                             directShowMorePlanScreen = switchShowOnlyViewAllPlans.isChecked,
                             onSubscriptionEvent = { eventType ->
                                 Log.e(TAG, "onClick: Admob_ Akshay_ eventType::-> $eventType")
