@@ -78,6 +78,7 @@ dependencies {
 
 ## Usage
 1. [Exit Dialog](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/EXIT_DIALOG_README.md)
+2. [Live Internet Connection Status](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/INTERNET_README.md)
 
 
 
