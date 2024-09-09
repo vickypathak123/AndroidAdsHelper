@@ -6,6 +6,8 @@ A material exit dialog for Android based on `BottomSheetDialog`.
 
 ![Exit Dialog With AD](/screenshots/exit_dialog_with_ad.jpg)   ![Exit Dialog Without AD](/screenshots/exit_dialog_without_ad.jpg)
 
+<img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/exit_dialog_with_ad.jpg" height="auto" width="300" alt="Exit Dialog With Native Ad"/>    <img src="https://github.com/vickypathak123/AndroidAdsHelper/blob/main/screenshots/exit_dialog_without_ad.jpg" height="auto" width="300" alt="Exit Dialog With Exit Icon"/>
+
 ## Usage
 
 - Create an `ExitDialog` object in your activity or fragment file, for example:
