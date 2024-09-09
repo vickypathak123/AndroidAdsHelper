@@ -17,6 +17,21 @@ import com.example.app.ads.helper.purchase.product.AdsManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.Locale
 
+
+/**
+ * Class for [ExitDialog]s styled as a bottom sheet.
+ *
+ * @param fActivity it refers to your [ComponentActivity] context.
+ * @param isForTesting [by Default value = false] it's refers to UI change like test exit Ad's & exit Icon.
+ * @param backgroundColor it's refers to main background color of dialog.
+ * @param iconColor it's refers to exit icon color of dialog.
+ * @param iconLineColor it's refers to exit icon background line color of dialog.
+ * @param titleTextColor it's refers to title text color of dialog.
+ * @param subTitleTextColor it's refers to sub title text color of dialog.
+ * @param buttonTextColor it's refers to positive & negative button text color of dialog.
+ * @param buttonBackgroundColor it's refers to positive & negative button background color of dialog.
+ * @param buttonStrokeColor it's refers to positive & negative button background stroke color of dialog.
+ */
 class ExitDialog(
     private val fActivity: ComponentActivity,
     private val isForTesting: Boolean = false,
@@ -96,6 +111,12 @@ class ExitDialog(
         }
     }
 
+    /**
+     * Show the exit dialog.
+     *
+     * @param fLanguageCode it's refers to your app language code.
+     * @param subTitleId it's refers to your exit dialog sub title string resources id.
+     */
     fun show(
         fLanguageCode: String,
         @StringRes subTitleId: Int
