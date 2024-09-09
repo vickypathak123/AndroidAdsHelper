@@ -15,9 +15,9 @@ class YourActivity : AppCompatActivity() {
 
     private val mExitDialog: ExitDialog by lazy {
         /**
-         * Class for {@link com.example.app.ads.helper.widget.ExitDialog}s styled as a bottom sheet.
+         * Class for [ExitDialog]s styled as a bottom sheet.
          *
-         * @param fActivity it refers to your activity context.
+         * @param fActivity it refers to your [ComponentActivity] context.
          * @param isForTesting [by Default value = false] it's refers to UI change like test exit Ad's & exit Icon.
          * @param backgroundColor it's refers to main background color of dialog.
          * @param iconColor it's refers to exit icon color of dialog.
