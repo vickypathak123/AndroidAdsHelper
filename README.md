@@ -77,7 +77,7 @@ dependencies {
 11. Some Launcher functions like [Open Google Play Store](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/launcher/Launcher.kt#L48), [Open Privacy Policy Link](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/launcher/Launcher.kt#L65), [Open Any Other Link](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/launcher/Launcher.kt#L81), and [Share This App](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/launcher/Launcher.kt#L97), all links are open using the Google Custom
 
 ## Usage
-1. [Exit Dialog]()
+1. [Exit Dialog](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/EXIT_DIALOG_README.md)
 
 # Android Ads Helper With Subscription (with/without Revenue-Cat)
 
