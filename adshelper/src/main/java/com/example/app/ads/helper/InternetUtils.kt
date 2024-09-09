@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.example.app.ads.helper
 
 import android.app.Application
@@ -59,6 +61,7 @@ inline val isOnline: Boolean
     get() {
         return isInternetAvailable.value == true
     }
+
 val isInternetAvailable: InternetLiveData<Boolean> = InternetLiveData()
 
 internal fun getUIThread(runOnUIThread: () -> Unit) {
