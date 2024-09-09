@@ -9,7 +9,6 @@ import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
@@ -38,6 +37,7 @@ import com.example.app.ads.helper.databinding.FourPlanRatingIndicatorBinding
 import com.example.app.ads.helper.getLocalizedString
 import com.example.app.ads.helper.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
+import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN
@@ -268,7 +268,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
 
     private fun setBillingListener(fWhere: String): Job {
         val job: Job = CoroutineScope(Dispatchers.IO).launch {
-            Log.e(TAG, "$fWhere: Set Listener")
+            logE(TAG, "$fWhere: Set Listener")
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {
                     if (!isYearlyPrizeSated || !isWeeklyPrizeSated || !isMonthlyPrizeSated || !isLifeTimePrizeSated) {
@@ -394,7 +394,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                         else -> null
                     }
 
-                    Log.e(TAG, "onClick: ${lProductInfo?.id}")
+                    logE(TAG, "onClick: ${lProductInfo?.id}")
 
                     lProductInfo?.let { productInfo ->
                         when (productInfo.planOfferType) {
@@ -542,7 +542,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                 override fun smoothScrollToPosition(recyclerView: RecyclerView, state: RecyclerView.State, position: Int) {
                     val smoothScroller: LinearSmoothScroller =
                         object : LinearSmoothScroller(mActivity) {
-                            private val SPEED = 4f // Change this value (default=25f)
+//                            private val SPEED = 4f // Change this value (default=25f)
                             override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
                                 return (4f / displayMetrics.densityDpi)
                             }

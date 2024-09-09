@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.text.format.DateUtils
-import android.util.Log
 import android.view.View
 import androidx.annotation.AnimRes
 import androidx.annotation.AnimatorRes
@@ -154,7 +153,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
     private fun setBillingListener(fWhere: String): Job {
         val job: Job = CoroutineScope(Dispatchers.IO).launch {
-            Log.e(TAG, "$fWhere: Set Listener")
+            logE(TAG, "$fWhere: Set Listener")
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {
                     ProductPurchaseHelper.initProductsKeys(fContext = mActivity) {
@@ -164,7 +163,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
                 override fun onPurchasedSuccess() {
                     super.onPurchasedSuccess()
-                    Log.e(TAG, "onPurchasedSuccess: Akshay_")
+                    logE(TAG, "onPurchasedSuccess: Akshay_")
                     CoroutineScope(Dispatchers.Main).launch {
                         mActivity.runOnUiThread {
                             ProductPurchaseHelper.getFreeTrialProductInfo?.let { productInfo ->
@@ -234,7 +233,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         runBlocking {
             job.join()
             CoroutineScope(Dispatchers.IO).launch {
-                Log.e(TAG, "initView: InitBilling")
+                logE(TAG, "initView: InitBilling")
                 ProductPurchaseHelper.initBillingClient(fContext = mActivity)
 
                 setProductData()

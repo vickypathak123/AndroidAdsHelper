@@ -3,9 +3,9 @@
 package com.example.app.ads.helper.purchase.product
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.app.ads.helper.getUIThread
+import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.notification.KEY_SUBSCRIPTION_NOTIFICATION_INTENT
 import com.example.app.ads.helper.notification.NotificationDataModel
 import com.example.app.ads.helper.updateAppPurchasedStatusRemoveAds
@@ -35,13 +35,13 @@ class AdsManager(context: Context) {
     private val sp: SharedPreferences = SharedPreferences(context)
 
     fun onProductPurchased() {
-        Log.e(TAG, "onProductPurchased")
+        logE(TAG, "onProductPurchased")
         sp.isLifeTimePlanPurchased = true
         updateAdsVisibility()
     }
 
     fun onProductExpired() {
-        Log.e(TAG, "onProductExpired")
+        logE(TAG, "onProductExpired")
         sp.isLifeTimePlanPurchased = false
         updateAdsVisibility()
     }
@@ -49,13 +49,13 @@ class AdsManager(context: Context) {
     val isLifeTimePlanPurchased: Boolean get() = sp.isLifeTimePlanPurchased
 
     fun onProductSubscribed() {
-        Log.e(TAG, "onProductSubscribed")
+        logE(TAG, "onProductSubscribed")
         sp.isAnyPlanSubscribed = true
         updateAdsVisibility()
     }
 
     fun onSubscribeExpired() {
-        Log.e(TAG, "onSubscribeExpired")
+        logE(TAG, "onSubscribeExpired")
         sp.isAnyPlanSubscribed = false
         updateAdsVisibility()
     }
@@ -63,7 +63,7 @@ class AdsManager(context: Context) {
     val isAnyPlanSubscribed: Boolean get() = sp.isAnyPlanSubscribed
 
     fun onProductTestPurchase() {
-        Log.e(TAG, "onProductTestPurchase")
+        logE(TAG, "onProductTestPurchase")
         sp.isTestPurchase = true
         updateAdsVisibility()
     }

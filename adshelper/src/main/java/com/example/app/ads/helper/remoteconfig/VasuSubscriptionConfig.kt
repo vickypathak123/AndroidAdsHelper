@@ -1,11 +1,16 @@
 package com.example.app.ads.helper.remoteconfig
 
-import android.util.Log
+import com.example.app.ads.helper.logI
 import com.google.gson.Gson
 import org.json.JSONObject
 
 var mVasuSubscriptionConfigModel: VasuSubscriptionConfigModel = VasuSubscriptionConfigModel()
 
+/**
+ * initialization of your remote config json
+ *
+ * @param jsonString it refers to your original remote config JSON.
+ */
 fun initSubscriptionRemoteConfig(jsonString: String) {
 
     val jsonObject = JSONObject(jsonString)
@@ -15,7 +20,7 @@ fun initSubscriptionRemoteConfig(jsonString: String) {
         mVasuSubscriptionConfigModel = Gson().fromJson(vasuSubscriptionConfig.toString(), VasuSubscriptionConfigModel::class.java)
     }
 
-    Log.i("RemoteConfig", "initSubscriptionRemoteConfig: $mVasuSubscriptionConfigModel")
+    logI("RemoteConfig", "initSubscriptionRemoteConfig: $mVasuSubscriptionConfigModel")
 }
 
 val testJson: String = "{\n" +

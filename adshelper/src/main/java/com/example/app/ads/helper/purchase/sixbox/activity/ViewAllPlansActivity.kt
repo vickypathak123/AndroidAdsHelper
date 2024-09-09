@@ -7,7 +7,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.StateListDrawable
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.animation.OvershootInterpolator
@@ -38,6 +37,7 @@ import com.example.app.ads.helper.databinding.LayoutSubscribeSkuItemBinding
 import com.example.app.ads.helper.getLocalizedString
 import com.example.app.ads.helper.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
+import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN
@@ -517,7 +517,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
     private fun setBillingListener(fWhere: String): Job {
         val job: Job = CoroutineScope(Dispatchers.IO).launch {
-            Log.e(TAG, "$fWhere: Set Listener")
+            logE(TAG, "$fWhere: Set Listener")
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {
                     if (!isAnyPlanPrizeSated || !isLifeTimePrizeSated) {
@@ -531,7 +531,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
                 override fun onPurchasedSuccess() {
                     super.onPurchasedSuccess()
-                    Log.e(TAG, "onPurchasedSuccess: Akshay_")
+                    logE(TAG, "onPurchasedSuccess: Akshay_")
                     CoroutineScope(Dispatchers.Main).launch {
                         mActivity.runOnUiThread {
                             when {
@@ -580,7 +580,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         runBlocking {
             job.join()
             CoroutineScope(Dispatchers.IO).launch {
-                Log.e(TAG, "initView: InitBilling")
+                logE(TAG, "initView: InitBilling")
                 ProductPurchaseHelper.initBillingClient(fContext = mActivity)
             }
         }
@@ -676,7 +676,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                         else -> null
                     }
 
-                    Log.e(TAG, "onClick: ${lProductInfo?.id}")
+                    logE(TAG, "onClick: ${lProductInfo?.id}")
 
                     lProductInfo?.let { productInfo ->
                         when (productInfo.planOfferType) {

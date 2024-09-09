@@ -2,7 +2,6 @@
 
 package com.example.app.ads.helper
 
-import android.util.Log
 import com.google.android.gms.ads.AdRequest
 
 /**
@@ -64,7 +63,7 @@ fun startShowingOpenAdInternally() {
 }
 
 fun updateAppPurchasedStatusRemoveAds() {
-    Log.e(TAG, "updateAppPurchasedStatusRemoveAds: Akshay_ AdsManager Before::$isAppNotPurchased")
+    logE(TAG, "updateAppPurchasedStatusRemoveAds: Akshay_ AdsManager Before::$isAppNotPurchased")
     isAppNotPurchased = false
-    Log.e(TAG, "updateAppPurchasedStatusRemoveAds: Akshay_ AdsManager After::$isAppNotPurchased")
+    logE(TAG, "updateAppPurchasedStatusRemoveAds: Akshay_ AdsManager After::$isAppNotPurchased")
 }

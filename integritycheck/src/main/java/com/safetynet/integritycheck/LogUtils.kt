@@ -12,25 +12,25 @@ import android.util.Log
 
 internal var isEnableDebugMode: Boolean = false
 
-fun logD(tag: String, message: String) {
+internal fun logD(tag: String, message: String) {
     if (isEnableDebugMode) {
         Log.d(tag, message)
     }
 }
 
-fun logI(tag: String, message: String) {
+internal fun logI(tag: String, message: String) {
     if (isEnableDebugMode) {
         Log.i(tag, message)
     }
 }
 
-fun logE(tag: String, message: String) {
+internal fun logE(tag: String, message: String) {
     if (isEnableDebugMode) {
         Log.e(tag, message)
     }
 }
 
-fun logW(tag: String, message: String) {
+internal fun logW(tag: String, message: String) {
     if (isEnableDebugMode) {
         Log.w(tag, message)
     }

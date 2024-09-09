@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -472,7 +471,7 @@ class NativeAdView : FrameLayout {
                     NativeAdHelper.listOfNativeAdsModel.find { it.defaultAdListener != null }?.let { fModel ->
 
                         if (!isThisViewLoadNewAd) {
-                            Log.e(TAG, "onAdClosed: Called")
+                            logE(TAG, "onAdClosed: Called")
                             isThisViewLoadNewAd = true
                             CoroutineScope(Dispatchers.Main).launch {
                                 callAdClosed()
@@ -498,19 +497,19 @@ class NativeAdView : FrameLayout {
 //            mediaAspectRatio = NativeAdOptions.NATIVE_MEDIA_ASPECT_RATIO_PORTRAIT, // test ad with default like google & flood it
 //            mediaAspectRatio = NativeAdOptions.NATIVE_MEDIA_ASPECT_RATIO_SQUARE, // test ad with info icon
                 onAdLoaded = { nativeAd ->
-                    Log.e(TAG, "onAdLoaded: 1")
+                    logE(TAG, "onAdLoaded: 1")
                     if (isThisViewLoadNewAd) {
                         isThisViewLoadNewAd = false
-                        Log.e(TAG, "onAdLoaded: 2")
+                        logE(TAG, "onAdLoaded: 2")
                         CoroutineScope(Dispatchers.Main).launch {
                             showMainView(fNativeAd = nativeAd)
                         }
                     }
                 },
                 onAdClosed = {
-                    Log.e(TAG, "onAdClosed: 1")
+                    logE(TAG, "onAdClosed: 1")
                     if (!isThisViewLoadNewAd) {
-                        Log.e(TAG, "onAdClosed: 2")
+                        logE(TAG, "onAdClosed: 2")
                         isThisViewLoadNewAd = true
                         CoroutineScope(Dispatchers.Main).launch {
                             callAdClosed()
@@ -519,9 +518,9 @@ class NativeAdView : FrameLayout {
                     }
                 },
                 onAdFailed = {
-                    Log.e(TAG, "onAdFailed: 1")
+                    logE(TAG, "onAdFailed: 1")
                     if (!isThisViewLoadNewAd) {
-                        Log.e(TAG, "onAdFailed: 2")
+                        logE(TAG, "onAdFailed: 2")
                         isThisViewLoadNewAd = true
                         CoroutineScope(Dispatchers.Main).launch {
                             callAdFailed()

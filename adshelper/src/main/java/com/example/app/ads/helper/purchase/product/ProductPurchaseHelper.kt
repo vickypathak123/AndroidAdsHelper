@@ -5,7 +5,6 @@ package com.example.app.ads.helper.purchase.product
 import android.app.Activity
 import android.content.Context
 import android.os.SystemClock
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.android.billingclient.api.AcknowledgePurchaseParams
@@ -233,11 +232,11 @@ object ProductPurchaseHelper {
                         onComplete.invoke()
                     }
                 } else {
-                    Log.e(TAG, "$methodName: =>> The billing client is not ready")
+                    logE(TAG, "$methodName: =>> The billing client is not ready")
                     onComplete.invoke()
                 }
             } ?: kotlin.run {
-                Log.e(TAG, "$methodName: =>> The billing client is NULL")
+                logE(TAG, "$methodName: =>> The billing client is NULL")
                 onComplete.invoke()
             }
         }
@@ -644,7 +643,7 @@ object ProductPurchaseHelper {
         val isSubscriptionKey: Boolean = subscriptionKeyList.any { it.getSKU.contains(productId.getSKU) }
         isConsumable = fIsConsumable
 
-        Log.e(TAG, "purchase: isLifeTimeKey::$isLifeTimeKey, isSubscriptionKey::$isSubscriptionKey")
+        logE(TAG, "purchase: isLifeTimeKey::$isLifeTimeKey, isSubscriptionKey::$isSubscriptionKey")
 
         CoroutineScope(Dispatchers.IO).launch {
             if (isLifeTimeKey || isSubscriptionKey) {
@@ -732,13 +731,13 @@ object ProductPurchaseHelper {
                     }
                 }
             } else {
-                Log.e(TAG, "$methodName: =>> The billing client is not ready")
+                logE(TAG, "$methodName: =>> The billing client is not ready")
                 CoroutineScope(Dispatchers.Main).launch {
                     activity.toasts(messageId = R.string.error_billing_client_not_ready)
                 }
             }
         } ?: kotlin.run {
-            Log.e(TAG, "$methodName: =>> The billing client is NULL")
+            logE(TAG, "$methodName: =>> The billing client is NULL")
             CoroutineScope(Dispatchers.Main).launch {
                 activity.toasts(messageId = R.string.error_billing_client_null)
             }
@@ -831,7 +830,7 @@ object ProductPurchaseHelper {
                 }
             }
         } catch (e: Exception) {
-            Log.e(TAG, "getFullBillingPeriod Exception: ${e.message}")
+            logE(TAG, "getFullBillingPeriod Exception: ${e.message}")
             PurchaseHelperText.NOT_FOUND.value
         }
     }
@@ -856,7 +855,7 @@ object ProductPurchaseHelper {
                 }
             }
         } catch (e: Exception) {
-            Log.e(TAG, "getBillingPeriodCount Exception: ${e.message}")
+            logE(TAG, "getBillingPeriodCount Exception: ${e.message}")
             -1
         }
     }
@@ -904,7 +903,7 @@ object ProductPurchaseHelper {
                 }
             }
         } catch (e: Exception) {
-            Log.e(TAG, "getBillingPeriodName Exception: ${e.message}")
+            logE(TAG, "getBillingPeriodName Exception: ${e.message}")
             PurchaseHelperText.NOT_FOUND.value
         }
     }
@@ -1166,7 +1165,7 @@ object ProductPurchaseHelper {
             }).toMutableList()
 
             lifeTimeList.forEachIndexed { index, productInfo ->
-                Log.e(TAG, "LifeTimeProductInfo: index::-> $index, \n$productInfo")
+                logE(TAG, "LifeTimeProductInfo: index::-> $index, \n$productInfo")
             }
 
             if (lifeTimeList.isNotEmpty()) {
@@ -1193,7 +1192,7 @@ object ProductPurchaseHelper {
             }).toMutableList()
 
             monthlyList.forEachIndexed { index, productInfo ->
-                Log.e(TAG, "MonthlyProductInfo: index::-> $index, \n$productInfo")
+                logE(TAG, "MonthlyProductInfo: index::-> $index, \n$productInfo")
             }
 
             if (monthlyList.isNotEmpty()) {
@@ -1243,7 +1242,7 @@ object ProductPurchaseHelper {
             }).toMutableList()
 
             yearlyList.forEachIndexed { index, productInfo ->
-                Log.e(TAG, "YearlyProductInfo: index::-> $index, \n$productInfo")
+                logE(TAG, "YearlyProductInfo: index::-> $index, \n$productInfo")
             }
 
             if (yearlyList.isNotEmpty()) {
