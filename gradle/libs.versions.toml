@@ -36,10 +36,10 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 
 [libraries]
 
-vasu-revenueCat  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "revenueCat", version = "1.0.2" }
-vasu-ads-helper  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "adshelper", version = "1.0.2" }
-vasu-integrity-check  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "integritycheck", version = "1.0.2" }
-vasu-android-ads-helper  = { group = "com.github.vickypathak123", name = "AndroidAdsHelper", version = "1.0.2" }
+#vasu-revenueCat  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "revenueCat", version = "1.0.3" }
+#vasu-ads-helper  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "adshelper", version = "1.0.3" }
+#vasu-integrity-check  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "integritycheck", version = "1.0.3" }
+#vasu-android-ads-helper  = { group = "com.github.vickypathak123", name = "AndroidAdsHelper", version = "1.0.3" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -64,7 +64,6 @@ androidx-browser = { group = "androidx.browser", name = "browser", version.ref =
 zhpanvip-dotsindicator = { group = "com.github.zhpanvip", name = "viewpagerindicator", version.ref = "zhpanvip-dotsindicator" }
 revenuecat = { group = "com.revenuecat.purchases", name = "purchases", version.ref = "revenuecat" }
 integrity = { group = "com.google.android.play", name = "integrity", version.ref = "integrity" }
-#google-auth-library-credentials = { group = "com.google.auth", name = "google-auth-library-credentials", version.ref = "googleAuthLibraryOauth2Http" }
 google-auth-library-oauth2-http = { group = "com.google.auth", name = "google-auth-library-oauth2-http", version.ref = "googleAuthLibraryOauth2Http" }
 google-api-client-jackson2 = { group = "com.google.api-client", name = "google-api-client-jackson2", version.ref = "googleApiClientJackson2" }
 google-api-services-playintegrity = { group = "com.google.apis", name = "google-api-services-playintegrity", version.ref = "googleApiServicesPlayintegrity" }

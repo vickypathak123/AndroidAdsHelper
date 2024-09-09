@@ -52,7 +52,6 @@ dependencies {
     //endregion
 
     implementation libs.integrity
-//    implementation libs.google.auth.library.credentials
     implementation libs.google.auth.library.oauth2.http
     implementation libs.google.api.client.jackson2
     implementation (libs.google.api.services.playintegrity) {
