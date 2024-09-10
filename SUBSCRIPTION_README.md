@@ -173,7 +173,7 @@ class SplashActivity : AppCompatActivity() {
     /**
      * initialization of subscription screen ui data
      */
-    VasuSubscriptionConfig.with(fActivity = this@AkshayTestingActivity)
+    VasuSubscriptionConfig.with(fActivity = this@YourActivity)
         /**
          * enable test purchase [by Default value = false].
          * call if you want to test your purchase code.
