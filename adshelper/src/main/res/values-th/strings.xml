@@ -15,18 +15,18 @@
     <string name="now">ตอนนี้</string>
     <string name="unlock_all_the_features">ปลดล็อกคุณสมบัติทั้งหมด</string>
     <string name="today_get_instant_access">วันนี้: เข้าถึงได้ทันที</string>
-    <string name="day_title">วันที่ %1:</string>
+    <string name="day_title">วันที่ %1s:</string>
     <string name="trial_reminder">คำเตือนการทดลองใช้งาน</string>
     <string name="trial_reminder_hint">รับคำเตือนเมื่อการทดลองใช้งานฟรีของคุณจะสิ้นสุด ยกเลิกได้ทุกเมื่อภายใน 15 วินาที</string>
     <string name="premium_begins">Premium Begins</string>
     <string name="premium_begins_hint">ช่วงทดลองใช้งานจะแปลงเป็นราคาเต็ม เว้นแต่จะยกเลิก</string>
-    <string name="free_then_per_period">ฟรี 1 วินาที จากนั้น 2 วินาทีต่อ 3 วินาที</string>
+    <string name="free_then_per_period">ฟรี %1s วินาที จากนั้น %2s วินาทีต่อ %3s วินาที</string>
     <string name="pay_nothing_now">ไม่ต้องจ่ายอะไรเลยตอนนี้</string>
     <string name="view_all_plans"><u>ดูแผนทั้งหมด</u></string>
 
     <string name="unlock_all_features">ปลดล็อคคุณสมบัติทั้งหมด</string>
     <string name="lifetime_purchase">ซื้อตลอดชีพ</string>
-    <string name="payment_is_charged_after_period_cancel_anytime">ชำระเงินหลังจาก %1 วินาที ยกเลิกได้ตลอดเวลา</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">ชำระเงินหลังจาก %1s วินาที ยกเลิกได้ตลอดเวลา</string>
     <string name="subscription_will_auto_renew_cancel_anytime">สมัครสมาชิกจะต่ออายุอัตโนมัติ ยกเลิกได้ตลอดเวลา</string>
 
     <string name="best_value">คุ้มค่าที่สุด</string>
@@ -44,7 +44,7 @@
 
     <string name="continue_">ดำเนินการต่อ</string>
     <string name="start_my_free_trial">เริ่มทดลองใช้งานฟรี</string>
-    <string name="try_period_for_price">ทดลองใช้ %1 วินาทีในราคา %2 วินาที</string>
+    <string name="try_period_for_price">ทดลองใช้ %1s วินาทีในราคา %2s วินาที</string>
 
     <string name="cancel_anytime_secure_with_play_store">ยกเลิกได้ทุกเมื่อ ปลอดภัยด้วย Play Store</string>
     <string name="price_for_period_use">%1s สำหรับการใช้งาน %2s</string>
@@ -69,7 +69,7 @@
     <string name="rating">คะแนน</string>
 
     <string name="pay_once_enjoy_forever">จ่ายครั้งเดียว เพลิดเพลินตลอดไป</string>
-    <string name="percentage_off">ส่วนลด %1%%</string>
+    <string name="percentage_off">ส่วนลด %1s%%</string>
     <string name="price_per_period">%1s ต่อ %2s</string>
     <string name="enjoy_forever">เพลิดเพลินตลอดไป</string>
     <string name="recommend">แนะนำ</string>

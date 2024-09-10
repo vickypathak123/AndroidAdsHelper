@@ -15,7 +15,7 @@
     <string name="now">Maintenant</string>
     <string name="unlock_all_the_features">Déverrouillez toutes les fonctionnalités.</string>
     <string name="today_get_instant_access">Aujourd\'hui : obtenez un accès instantané</string>
-    <string name="day_title">Jour %1 :</string>
+    <string name="day_title">Jour %1s :</string>
     <string name="trial_reminder">Rappel d\'essai</string>
     <string name="trial_reminder_hint">Recevez un rappel concernant la fin de votre essai gratuit. Annulez à tout moment dans 15 secondes.</string>
     <string name="premium_begins">Début de la période Premium</string>

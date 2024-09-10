@@ -925,7 +925,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                         }
 
                         this.txtPlanPrice.apply {
-                            this.text = productInfo.formattedPrice.removeTrailingZeros
+                            this.text = (productInfo.offerFormattedPrice.takeIf { productInfo.planOfferType == PlanOfferType.INTRO_OFFER } ?: productInfo.formattedPrice).removeTrailingZeros
                         }
 
                         this.txtPlanDiscount.apply {

@@ -34,13 +34,13 @@ class AdsManager(context: Context) {
     // SP to be save & retrieve
     private val sp: SharedPreferences = SharedPreferences(context)
 
-    fun onProductPurchased() {
+    internal fun onProductPurchased() {
         logE(TAG, "onProductPurchased")
         sp.isLifeTimePlanPurchased = true
         updateAdsVisibility()
     }
 
-    fun onProductExpired() {
+    internal fun onProductExpired() {
         logE(TAG, "onProductExpired")
         sp.isLifeTimePlanPurchased = false
         updateAdsVisibility()
@@ -48,13 +48,13 @@ class AdsManager(context: Context) {
 
     val isLifeTimePlanPurchased: Boolean get() = sp.isLifeTimePlanPurchased
 
-    fun onProductSubscribed() {
+    internal fun onProductSubscribed() {
         logE(TAG, "onProductSubscribed")
         sp.isAnyPlanSubscribed = true
         updateAdsVisibility()
     }
 
-    fun onSubscribeExpired() {
+    internal fun onSubscribeExpired() {
         logE(TAG, "onSubscribeExpired")
         sp.isAnyPlanSubscribed = false
         updateAdsVisibility()
@@ -62,7 +62,7 @@ class AdsManager(context: Context) {
 
     val isAnyPlanSubscribed: Boolean get() = sp.isAnyPlanSubscribed
 
-    fun onProductTestPurchase() {
+    internal fun onProductTestPurchase() {
         logE(TAG, "onProductTestPurchase")
         sp.isTestPurchase = true
         updateAdsVisibility()
@@ -75,7 +75,7 @@ class AdsManager(context: Context) {
             return isShowAds.value == true
         }
 
-    private fun updateAdsVisibility() {
+    internal fun updateAdsVisibility() {
         getUIThread {
             val newValue = (!(isLifeTimePlanPurchased.takeIf { it } ?: isAnyPlanSubscribed.takeIf { it } ?: isTestPurchase.takeIf { it } ?: false))
             if (!newValue) {

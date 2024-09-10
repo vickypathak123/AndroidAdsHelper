@@ -30,7 +30,7 @@
     <string name="subscription_will_auto_renew_cancel_anytime">Subscribe zai sabunta ta atomatik, soke kowane lokaci.</string>
 
     <string name="best_value"> MAFI KYAU </string>
-    <string name="save_percentage"> Ajiye %1s% </string>
+    <string name="save_percentage"> Ajiye %1s%% </string>
     <string name="most_popular">MAFI SHARHI</string>
 
     <string name="lifetime">Rayuwa</string>

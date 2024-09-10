@@ -15,12 +15,12 @@
     <string name="now">지금</string>
     <string name="unlock_all_the_features">모든 기능을 잠금 해제하세요.</string>
     <string name="today_get_instant_access">오늘: 즉시 액세스하세요</string>
-    <string name="day_title">%1초 일:</string>
+    <string name="day_title">%1s초 일:</string>
     <string name="trial_reminder">체험판 알림</string>
     <string name="trial_reminder_hint">무료 체험판이 언제 종료되는지 알림을 받으세요. 15초 이내에 언제든지 취소할 수 있습니다.</string>
     <string name="premium_begins">프리미엄 시작</string>
     <string name="premium_begins_hint">취소하지 않는 한 체험판은 정가로 전환됩니다.</string>
-    <string name="free_then_per_period">%1초 무료, 그 후 %3초당 %2초</string>
+    <string name="free_then_per_period">%1s초 무료, 그 후 %3s초당 %2s초</string>
     <string name="pay_nothing_now">지금은 아무것도 지불하지 않습니다</string>
     <string name="view_all_plans"><u>모든 플랜 보기</u></string>
 
@@ -70,7 +70,7 @@
 
     <string name="pay_once_enjoy_forever">한 번 지불하고 영원히 즐기세요</string>
     <string name="percentage_off">%1s%% 할인</string>
-    <string name="price_per_period">%2초당 %1s</string>
+    <string name="price_per_period">%2s초당 %1s</string>
     <string name="enjoy_forever">영원히 즐기세요</string>
     <string name="recommend">추천</string>
 

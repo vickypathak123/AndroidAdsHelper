@@ -23,6 +23,7 @@ import com.example.app.ads.helper.launcher.tabs.CustomTabsHelper
 import com.example.app.ads.helper.logD
 import com.example.app.ads.helper.logI
 import com.example.app.ads.helper.need_to_block_open_ad_internally
+import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.reward.RewardedInterstitialAdHelper
 import com.example.app.ads.helper.reward.RewardedVideoAdHelper
 import com.example.app.ads.helper.setTestDeviceIds
@@ -53,9 +54,13 @@ abstract class AppOpenApplication : MultiDexApplication(), DefaultLifecycleObser
 
     override fun onCreate() {
         super<MultiDexApplication>.onCreate()
+
+        AdsManager(this).updateAdsVisibility()
+
         initNetwork(fContext = this@AppOpenApplication)
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
         CustomTabsHelper.initialize(this)
+
     }
     //</editor-fold>
 

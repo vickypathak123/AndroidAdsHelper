@@ -107,6 +107,11 @@ object ProductPurchaseHelper {
     //</editor-fold>
 
     //<editor-fold desc="init Billing Related Data">
+    /**
+     * initialization of Google Billing Client.
+     *
+     * @param fContext it's refers to your application, activity or fragment context.
+     */
     fun initBillingClient(fContext: Context) {
         logE(tag = TAG, message = "initBillingClient call -> isBillingClientInitialized::$isBillingClientInitialized")
 
@@ -182,6 +187,12 @@ object ProductPurchaseHelper {
         }
     }
 
+    /**
+     * initialization of Product SKU data using Google Billing.
+     *
+     * @param fContext it's refers to your application, activity or fragment context.
+     * @param onInitializationComplete Callback for data will be initialized.
+     */
     fun initProductsKeys(fContext: Context, onInitializationComplete: () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             initProducts(

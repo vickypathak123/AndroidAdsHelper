@@ -20,7 +20,7 @@
     <string name="trial_reminder_hint">無料トライアルの終了時期に関するリマインダーを受け取ります。 15 秒以内にいつでもキャンセルできます。</string>
     <string name="premium_begins">プレミアムが開始します</string>
     <string name="premium_begins_hint">キャンセルしない限り、トライアルは正規料金に切り替わります。</string>
-    <string name="free_then_per_period">%1 秒は無料、その後 %3 秒ごとに %2 秒</string>
+    <string name="free_then_per_period">%1s 秒は無料、その後 %3s 秒ごとに %2s 秒</string>
     <string name="pay_nothing_now">今すぐお支払いください</string>
     <string name="view_all_plans"><u>すべてのプランを表示</u></string>
 
@@ -39,8 +39,8 @@
     <string name="weekly">週単位</string>
 
     <string name="purchase_1">1 回の購入</string>
-    <string name="period_free">%1 秒無料</string>
-    <string name="upto_period">最大 %1 秒</string>
+    <string name="period_free">%1s 秒無料</string>
+    <string name="upto_period">最大 %1s 秒</string>
 
     <string name="continue_">続行</string>
     <string name="start_my_free_trial">無料トライアルを開始</string>
@@ -61,7 +61,7 @@
     <string name="instant_access_hint_6">広告なし</string>
 
     <string name="rating_header">テキスト変換に最適なアプリ</string>
-    <string name="rating_sub_header">このアプリは良いですが、スキャンした画像のシーケンスには本当に取り組む必要があります。一部のコンテンツが欠落していたり​​、シャッフルされていたりします。アプリの改善が必要です</string>
+    <string name="rating_sub_header">このアプリは良いですが、スキャンした画像のシーケンスには本当に取り組む必要があります。一部のコンテンツが欠落していたり、シャッフルされていたりします。アプリの改善が必要です</string>
     <string name="rating_by">%1s による</string>
     <string name="rating_user">アクシャイ・ハルソーダ</string>
 
@@ -69,7 +69,7 @@
     <string name="rating">評価</string>
 
     <string name="pay_once_enjoy_forever">一度支払えば、永遠に楽しめます</string>
-    <string name="percentage_off">%1%% の</string>
+    <string name="percentage_off">%1s%% の</string>
     <string name="price_per_period">%1s/%2s</string>
     <string name="enjoy_forever">永遠に楽しめます</string>
     <string name="recommend">おすすめ</string>

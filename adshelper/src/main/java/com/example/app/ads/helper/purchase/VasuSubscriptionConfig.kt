@@ -38,6 +38,9 @@ import java.lang.ref.WeakReference
 
 object VasuSubscriptionConfig {
 
+    /**
+     * initialization of subscription screen ui data
+     */
     @JvmStatic
     fun with(fActivity: Activity): ActivityData {
         return ActivityData(fActivity = fActivity)
@@ -65,7 +68,10 @@ object VasuSubscriptionConfig {
         private var isEnableTestPurchase: Boolean = false
 
 
-        @JvmName("setAdmobAppId")
+        /**
+         * @param fCode it's refers to your app language code.
+         */
+        @JvmName("setAppLanguageCode")
         fun setAppLanguageCode(fCode: String) = this@ActivityData.apply {
             this.mLanguageCode = fCode
         }
@@ -100,16 +106,27 @@ object VasuSubscriptionConfig {
             action.invoke(this.mFourPlanScreenData)
         }
 
+        /**
+         * @param fLink it's refers to your app terms of use.
+         */
         @JvmName("setTermsOfUse")
         fun setTermsOfUse(fLink: String) = this@ActivityData.apply {
             this.mTermsOfUse = fLink
         }
 
+        /**
+         * @param fLink it's refers to your app privacy policy.
+         */
         @JvmName("setPrivacyPolicy")
         fun setPrivacyPolicy(fLink: String) = this@ActivityData.apply {
             this.mPrivacyPolicy = fLink
         }
 
+        /**
+         * enable test purchase [by Default value = false].
+         *
+         * call if you want to test your purchase code.
+         */
         @JvmName("enableTestPurchase")
         fun enableTestPurchase(fIsEnable: Boolean) = this@ActivityData.apply {
             this.isEnableTestPurchase = fIsEnable
@@ -120,6 +137,15 @@ object VasuSubscriptionConfig {
             this.mNotificationData = fNotificationData
         }
 
+        /**
+         * launch subscription screen
+         *
+         * @param fPlanScreenType it's refers to your app plan screen type.
+         * @param isFromSplash it's refers to you need to launch from splash screen or not.
+         * @param directShowMorePlanScreen it's refers to you need to launch directly more plan screen or not.
+         * @param onSubscriptionEvent callback for subscription event.
+         * @param onScreenFinish callback for screen finish. [@param isUserPurchaseAnyPlan true if user will purchase any plan]
+         */
         fun launchScreen(
             fPlanScreenType: MorePlanScreenType = MorePlanScreenType.fromName(value = mVasuSubscriptionConfigModel.morePlanScreenType.takeIf { it.isNotEmpty() } ?: "four_plan_screen"),
             isFromSplash: Boolean = false,
@@ -1119,6 +1145,11 @@ object VasuSubscriptionConfig {
 //        }
     }
 
+    /**
+     * initialization of Notification Data
+     *
+     * @param intentClass it's refers to your app intent class.
+     */
     class NotificationData(val intentClass: Class<*>) : Serializable {
         @DrawableRes
         private var _notificationIcon: Int = R.drawable.outline_notification_important_24
@@ -1136,24 +1167,37 @@ object VasuSubscriptionConfig {
         internal val notificationChannelName: String get() = _notificationChannelName
 
 
+        /**
+         * @param id it's refers to your app notification icon.
+         */
         @JvmName("setNotificationIcon")
         fun setNotificationIcon(@DrawableRes id: Int) = this@NotificationData.apply {
             this._notificationIcon = id
             return this
         }
 
+        /**
+         * @param id it's refers to your app notification id, [by Default value = 275]
+         */
         @JvmName("setNotificationId")
         fun setNotificationId(id: Int) = this@NotificationData.apply {
             this._notificationId = id
             return this
         }
 
+        /**
+         * @param channelId it's refers to your app notification channel id, [by Default value = "subscription_notification_channel_id"]
+         */
         @JvmName("setNotificationChannelId")
         fun setNotificationChannelId(channelId: String) = this@NotificationData.apply {
             this._notificationChannelId = channelId
             return this
         }
 
+
+        /**
+         * @param channelName it's refers to your app notification channel name, [by Default value = "Free Trial Expire"]
+         */
         @JvmName("setNotificationChannelName")
         fun setNotificationChannelName(channelName: String) = this@NotificationData.apply {
             this._notificationChannelName = channelName

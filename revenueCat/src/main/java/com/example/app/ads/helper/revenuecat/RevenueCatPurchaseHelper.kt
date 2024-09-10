@@ -36,6 +36,12 @@ fun initRevenueCat(fContext: Context, revenueCatID: String) {
     }
 }
 
+/**
+ * initialization of Product SKU data using RevenueCat Billing.
+ *
+ * @param fContext it's refers to your application, activity or fragment context.
+ * @param onInitializationComplete Callback for data will be initialized.
+ */
 fun initRevenueCatProductList(fContext: Context, onInitializationComplete: () -> Unit) {
     Purchases.sharedInstance.getOfferingsWith(
         onError = { error ->
