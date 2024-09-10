@@ -81,6 +81,7 @@ dependencies {
 2. [Live Internet Connection Status](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/INTERNET_README.md)
 3. [In-App Purchases and Subscription](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/SUBSCRIPTION_README.md)
 4. [Safetynet (Google Play Integrity & Admob Consent Form)](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/SAFETYNET_README.md)
+5. [Google Ads](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/ADS_README.md)
 
 
 
