@@ -25,7 +25,6 @@ class SplashActivity : AppCompatActivity() {
              * Check your logcat output for the hashed device ID e.g.
              * "Use new ConsentDebugSettings.Builder().addTestDeviceHashedId("ABCDEF012345")" to use
              */
-
             .setTestDeviceId(deviceId = "YOUR TEST DEVICE ID")
 
             /**
