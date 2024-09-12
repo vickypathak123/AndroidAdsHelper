@@ -158,13 +158,13 @@ class BannerAdView : FrameLayout {
 
     private val listOfBannerAdsModel: ArrayList<AdStatusModel<AdView>> = ArrayList()
 
-    private val list_of_banner_ads: ArrayList<AdStatusModel<AdView>>
+    private val listOfBannerAds: ArrayList<AdStatusModel<AdView>>
         get() {
             if (mBannerAdSize == BannerAdSize.ADAPTIVE_BANNER && mBannerAdType == BannerAdType.SPLASH) {
-                logE(tag = TAG, message = "list_of_banner_ads: SPLASH BANNER")
+                logE(tag = TAG, message = "listOfBannerAds: SPLASH BANNER")
                 return list_of_admob_splash_banner_ads
             } else {
-                logE(tag = TAG, message = "list_of_banner_ads: NON SPLASH BANNER")
+                logE(tag = TAG, message = "listOfBannerAds: NON SPLASH BANNER")
                 return list_of_admob_banner_ads
             }
         }
@@ -290,7 +290,7 @@ class BannerAdView : FrameLayout {
 
                 listOfBannerAdsModel.clearAll()
 
-                list_of_banner_ads.forEach {
+                listOfBannerAds.forEach {
                     listOfBannerAdsModel.add(
                         AdStatusModel(
                             adID = it.adID
@@ -674,7 +674,7 @@ class BannerAdView : FrameLayout {
 
         listOfBannerAdsModel.clearAll()
 
-        list_of_banner_ads.forEach {
+        listOfBannerAds.forEach {
             listOfBannerAdsModel.add(
                 AdStatusModel(
                     adID = it.adID

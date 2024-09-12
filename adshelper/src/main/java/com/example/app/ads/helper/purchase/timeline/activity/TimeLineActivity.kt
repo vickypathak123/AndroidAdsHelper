@@ -47,7 +47,7 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isWeekl
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isYearlySKU
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
-import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -73,7 +73,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
      * Index == 1 ::-> START MY FREE TRIAL
      * Index == else ::-> CONTINUE
      */
-    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionConfigModel.purchaseButtonTextIndex
+    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionRemoteConfigModel.purchaseButtonTextIndex
 
     private val maxValue = 40f
     private var currentValue = 0f
@@ -540,7 +540,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                                         mPurchaseButtonTextIndex == 1
                                     } ?: R.string.continue_,
                                     formatArgs = arrayOf(
-                                        productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity),
+                                        productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity).lowercase(),
                                         "${productInfo.priceCurrencySymbol}0"
                                     )
                                 )

@@ -648,7 +648,7 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View.OnClickL
 
 //        mExitDialog.show()
         mExitDialog.show(
-            fLanguageCode = "en",
+            fLanguageCode = "pt",
             subTitleId = com.example.app.ads.helper.R.string.rating_sub_header
         )
 

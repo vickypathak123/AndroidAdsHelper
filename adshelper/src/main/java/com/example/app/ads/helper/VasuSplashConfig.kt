@@ -4,7 +4,7 @@ import android.app.Activity
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
 import com.example.app.ads.helper.openad.AppOpenAdHelper.showAppOpenAd
 import com.example.app.ads.helper.purchase.product.AdsManager
-import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 
 object VasuSplashConfig {
 
@@ -28,7 +28,7 @@ object VasuSplashConfig {
         onNextAction: () -> Unit,
     ) {
 
-        val listOfInitialSubscriptionOpenFlow = mVasuSubscriptionConfigModel.initialSubscriptionOpenFlow
+        val listOfInitialSubscriptionOpenFlow = mVasuSubscriptionRemoteConfigModel.initialSubscriptionOpenFlow
 
         val oldIndex: Int = AdsManager(context = fActivity).initialSubscriptionOpenFlowIndex
 

@@ -8,7 +8,8 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.ads.helper.new_.demo"
+//        applicationId "com.example.ads.helper.new_.demo"
+        applicationId "com.vasu.ads.helper.demo"
 //        applicationId "com.contacts.number.add.sim.phone.recent.details"
 //        applicationId "com.gps.photo.geo.capture.location.map.time.stamp"
 //        applicationId "com.voice.gps.navigation.map.location.route"
@@ -17,9 +18,15 @@ android {
         //noinspection OldTargetApi
         targetSdk 34
         versionCode 1
-        versionName "$dependencies_version"
+        versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def createdDate = new Date().format('dd_MM_yyyy') // 09_07_2024
+        def appVersionName = "${versionName}".replace(".","_")
+        def appName = "${rootProject.name}_${createdDate}_v_${appVersionName}"
+        archivesBaseName = "${appName}"
+        setProperty("archivesBaseName", "${appName}")
     }
 
     buildTypes {

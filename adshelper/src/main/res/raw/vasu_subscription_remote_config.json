@@ -1,0 +1,13 @@
+{
+  "vasu_subscription_config": {
+    "initial_subscription_open_flow": [1, 2, 3],
+    "purchase_button_text_index": 0,
+    "initial_subscription_time_line_close_ad": true,
+    "initial_subscription_more_plan_close_ad": true,
+    "in_app_subscription_ad_close": true,
+    "_comment":  "\"more_plan_screen_type\": \"six_box_screen / four_plan_screen\"",
+    "more_plan_screen_type": "four_plan_screen",
+    "life_time_plan_discount_percentage": 80,
+    "ratting_bar_slider_timing": 5000
+  }
+}

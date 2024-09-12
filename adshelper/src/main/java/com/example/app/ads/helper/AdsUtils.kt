@@ -15,6 +15,7 @@ var isAppForeground = false
 var isAnyAdOpen = false
 
 internal var need_to_block_open_ad_internally: Boolean = false
+internal var is_exit_dialog_opened: Boolean = false
 internal var isAppNotPurchased: Boolean = true
 
 //region Multiple Request Flag
@@ -65,5 +66,6 @@ fun startShowingOpenAdInternally() {
 fun updateAppPurchasedStatusRemoveAds() {
     logE(TAG, "updateAppPurchasedStatusRemoveAds: Akshay_ AdsManager Before::$isAppNotPurchased")
     isAppNotPurchased = false
+    @Suppress("KotlinConstantConditions")
     logE(TAG, "updateAppPurchasedStatusRemoveAds: Akshay_ AdsManager After::$isAppNotPurchased")
 }

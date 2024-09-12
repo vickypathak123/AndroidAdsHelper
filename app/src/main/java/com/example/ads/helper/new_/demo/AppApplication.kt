@@ -13,7 +13,6 @@ import com.example.ads.helper.new_.demo.utils.YEARLY_SKU
 import com.example.app.ads.helper.VasuAdsConfig
 import com.example.app.ads.helper.openad.AppOpenApplication
 import com.example.app.ads.helper.remoteconfig.initSubscriptionRemoteConfig
-import com.example.app.ads.helper.remoteconfig.testJson
 import com.example.app.ads.helper.revenuecat.initRevenueCat
 
 class AppApplication : AppOpenApplication() {
@@ -35,11 +34,12 @@ class AppApplication : AppOpenApplication() {
         VasuAdsConfig.with(this)
             .enableOpenAd(fIsEnable = true)
             .enableDebugMode(fIsEnable = true)
+            .enablePurchaseHistoryLog(fIsEnable = true)
             .needToTakeAllTestAdID(fIsTakeAll = true)
             .needToBlockInterstitialAd(fIsBlock = false)
             .enableAppOpenAdFromRemoteConfig(fIsEnable = true)
             .enableBannerAdFromRemoteConfig(fIsEnable = true)
-            .enableInterstitialAdFromRemoteConfig(fIsEnable = false)
+            .enableInterstitialAdFromRemoteConfig(fIsEnable = true)
             .enableNativeAdFromRemoteConfig(fIsEnable = true)
             .enableRewardedInterstitialAdFromRemoteConfig(fIsEnable = true)
             .enableRewardedVideoAdFromRemoteConfig(fIsEnable = true)
@@ -55,11 +55,11 @@ class AppApplication : AppOpenApplication() {
 
         destroyAllLoadedAd()
 
-        initSubscriptionRemoteConfig(jsonString = testJson)
+        initSubscriptionRemoteConfig()
     }
 
     override fun onResumeApp(fCurrentActivity: Activity): Boolean {
-        return false
+        return true
     }
 
 //    override fun onResumeApp(fCurrentActivity: Activity): Boolean {

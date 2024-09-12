@@ -32,7 +32,7 @@ internal abstract class BaseFragment : Fragment(), View.OnClickListener {
      * your log tag name
      */
     @Suppress("PropertyName")
-    val TAG = javaClass.simpleName
+    val TAG = javaClass.simpleName ?: "BaseFragment"
 
     var isOnPause: Boolean = false
 
@@ -64,10 +64,6 @@ internal abstract class BaseFragment : Fragment(), View.OnClickListener {
         loadAds()
         initViewAction()
         initViewListener()
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     /**

@@ -10,26 +10,39 @@
     <application
         android:enableOnBackInvokedCallback="true"
         android:hardwareAccelerated="true"
+        android:largeHeap="true"
         android:supportsRtl="true"
         tools:targetApi="tiramisu">
         <activity
             android:name=".purchase.fourplan.activity.FourPlanActivity"
-            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:largeHeap="true"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity"
-            tools:ignore="DiscouragedApi" />
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"
+            tools:ignore="DiscouragedApi, LockedOrientationActivity" />
         <activity
             android:name=".purchase.sixbox.activity.ViewAllPlansActivity"
-            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:largeHeap="true"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity"
-            tools:ignore="DiscouragedApi" />
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"
+            tools:ignore="DiscouragedApi, LockedOrientationActivity" />
         <activity
             android:name=".purchase.timeline.activity.TimeLineActivity"
-            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:largeHeap="true"
             android:screenOrientation="portrait"
             android:theme="@style/theme_subscription_activity"
-            tools:ignore="DiscouragedApi" />
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"
+            tools:ignore="DiscouragedApi, LockedOrientationActivity" />
         <activity
             android:name=".activity.InterstitialNativeAdActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

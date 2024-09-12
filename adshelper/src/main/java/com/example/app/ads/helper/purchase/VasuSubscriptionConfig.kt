@@ -14,6 +14,7 @@ import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.getColorRes
 import com.example.app.ads.helper.base.utils.getColorStateRes
 import com.example.app.ads.helper.clearAll
+import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_CHANNEL_ID
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_CHANNEL_NAME
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_ID
@@ -22,6 +23,7 @@ import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanScreenDataModel
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanUserItem
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
+import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.checkIsAllPriceLoaded
 import com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity
 import com.example.app.ads.helper.purchase.sixbox.utils.BoxItem
 import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
@@ -32,7 +34,7 @@ import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
-import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import java.io.Serializable
 import java.lang.ref.WeakReference
 
@@ -147,14 +149,15 @@ object VasuSubscriptionConfig {
          * @param onScreenFinish callback for screen finish. [@param isUserPurchaseAnyPlan true if user will purchase any plan]
          */
         fun launchScreen(
-            fPlanScreenType: MorePlanScreenType = MorePlanScreenType.fromName(value = mVasuSubscriptionConfigModel.morePlanScreenType.takeIf { it.isNotEmpty() } ?: "four_plan_screen"),
+            fPlanScreenType: MorePlanScreenType = MorePlanScreenType.fromName(value = mVasuSubscriptionRemoteConfigModel.morePlanScreenType.takeIf { it.isNotEmpty() } ?: "four_plan_screen"),
             isFromSplash: Boolean = false,
 //            showCloseAdForTimeLineScreen: Boolean = false,
 //            showCloseAdForViewAllPlanScreenOpenAfterSplash: Boolean = false,
 //            showCloseAdForViewAllPlanScreen: Boolean = false,
             directShowMorePlanScreen: Boolean = false,
             onSubscriptionEvent: (eventType: SubscriptionEventType) -> Unit,
-            onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit
+            onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
+            onOpeningError: () -> Unit,
         ) {
 
             mNotificationData?.let { notificationData ->
@@ -166,41 +169,47 @@ object VasuSubscriptionConfig {
                 triggerSubscriptionEvent = onSubscriptionEvent
 
                 IS_FROM_SPLASH = isFromSplash
-                SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = mVasuSubscriptionConfigModel.initialSubscriptionTimeLineCloseAd
-                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = mVasuSubscriptionConfigModel.initialSubscriptionMorePlanCloseAd
-                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = mVasuSubscriptionConfigModel.inAppSubscriptionAdClose
+                SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = mVasuSubscriptionRemoteConfigModel.initialSubscriptionTimeLineCloseAd
+                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = mVasuSubscriptionRemoteConfigModel.initialSubscriptionMorePlanCloseAd
+                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = mVasuSubscriptionRemoteConfigModel.inAppSubscriptionAdClose
 
-                val lScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = { isUserPurchaseAnyPlan ->
-                    IS_FROM_SPLASH = false
-                    SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = false
-                    SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = false
-                    SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = false
-                    onScreenFinish.invoke(isUserPurchaseAnyPlan)
-                }
+                logE(TAG, "launchScreen: checkIsAllPriceLoaded::-> $checkIsAllPriceLoaded")
+                if (checkIsAllPriceLoaded) {
 
-                if (!directShowMorePlanScreen && ProductPurchaseHelper.isNeedToLaunchTimeLineScreen) {
-                    launchTimeLineScreen(
-                        fNotificationData = notificationData,
-                        onViewAllPlans = {
-                            fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_MORE_PLANS_CLICK)
-                            launchMorePlanScreen(
-                                fType = fPlanScreenType,
-                                isFromTimeLine = true,
-                                onScreenFinish = { isUserPurchaseAnyPlan ->
-                                    if (isUserPurchaseAnyPlan) {
-                                        TimeLineActivity.onPurchaseFromMorePlanScreen.invoke()
+                    val lScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = { isUserPurchaseAnyPlan ->
+                        IS_FROM_SPLASH = false
+                        SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = false
+                        SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = false
+                        SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = false
+                        onScreenFinish.invoke(isUserPurchaseAnyPlan)
+                    }
+
+                    if (!directShowMorePlanScreen && ProductPurchaseHelper.isNeedToLaunchTimeLineScreen) {
+                        launchTimeLineScreen(
+                            fNotificationData = notificationData,
+                            onViewAllPlans = {
+                                fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_MORE_PLANS_CLICK)
+                                launchMorePlanScreen(
+                                    fType = fPlanScreenType,
+                                    isFromTimeLine = true,
+                                    onScreenFinish = { isUserPurchaseAnyPlan ->
+                                        if (isUserPurchaseAnyPlan) {
+                                            TimeLineActivity.onPurchaseFromMorePlanScreen.invoke()
+                                        }
                                     }
-                                }
-                            )
-                        },
-                        onScreenFinish = lScreenFinish
-                    )
+                                )
+                            },
+                            onScreenFinish = lScreenFinish
+                        )
+                    } else {
+                        launchMorePlanScreen(
+                            fType = fPlanScreenType,
+                            isFromTimeLine = false,
+                            onScreenFinish = lScreenFinish
+                        )
+                    }
                 } else {
-                    launchMorePlanScreen(
-                        fType = fPlanScreenType,
-                        isFromTimeLine = false,
-                        onScreenFinish = lScreenFinish
-                    )
+                    onOpeningError.invoke()
                 }
             } ?: kotlin.run {
                 throw RuntimeException("Set Subscription Notification Data First")

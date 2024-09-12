@@ -13,6 +13,7 @@ import com.example.app.ads.helper.base.utils.getColorRes
 import com.example.app.ads.helper.databinding.DialogExitBinding
 import com.example.app.ads.helper.exitTheApp
 import com.example.app.ads.helper.getLocalizedString
+import com.example.app.ads.helper.is_exit_dialog_opened
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.Locale
@@ -72,6 +73,18 @@ class ExitDialog(
             }
         }
 
+        setOnShowListener {
+            is_exit_dialog_opened = true
+        }
+
+        setOnDismissListener {
+            is_exit_dialog_opened = false
+        }
+
+        setOnCancelListener {
+            is_exit_dialog_opened = false
+        }
+
         with(mBinding) {
             clExitMain.setBackgroundColor(fActivity.getColorRes(backgroundColor))
             backgroundViewExitIcon.setBackgroundColor(fActivity.getColorRes(backgroundColor))
@@ -82,6 +95,7 @@ class ExitDialog(
             txtSubTitle.setTextColor(fActivity.getColorRes(subTitleTextColor))
 
             btnNegative.apply {
+                isSelected = true
                 setTextColor(fActivity.getColorRes(buttonTextColor))
                 setBackgroundColor(fActivity.getColorRes(buttonBackgroundColor))
                 strokeColor = ColorStateList.valueOf(fActivity.getColorRes(buttonStrokeColor))
@@ -92,6 +106,7 @@ class ExitDialog(
             }
 
             btnPositive.apply {
+                isSelected = true
                 setTextColor(fActivity.getColorRes(buttonTextColor))
                 setBackgroundColor(fActivity.getColorRes(buttonBackgroundColor))
                 strokeColor = ColorStateList.valueOf(fActivity.getColorRes(buttonStrokeColor))

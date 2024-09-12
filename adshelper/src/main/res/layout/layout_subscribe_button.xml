@@ -31,6 +31,7 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie_btn_continue"
+            app:lottie_enableMergePathsForKitKatAndAbove="true"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
@@ -40,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/android_button_1"
+            app:lottie_rawRes="@raw/lottie_subscription_continue_bg"
             app:shapeAppearance="@style/full_round" />
 
 

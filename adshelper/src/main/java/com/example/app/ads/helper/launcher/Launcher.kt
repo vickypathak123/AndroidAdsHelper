@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.example.app.ads.helper.launcher
 
 import android.app.Activity

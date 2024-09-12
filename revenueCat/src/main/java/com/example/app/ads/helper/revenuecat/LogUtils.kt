@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.example.app.ads.helper
+package com.example.app.ads.helper.revenuecat
 
 import android.util.Log
 
@@ -10,11 +10,8 @@ import android.util.Log
  * @updated 24 Jun 2024
  */
 
-internal var isEnableDebugMode: Boolean = false
-internal var isPurchaseHistoryLogEnable: Boolean = false
-
-fun getDebugModeStatus(): Boolean = isEnableDebugMode
-fun getPurchaseHistoryLogStatus(): Boolean = isPurchaseHistoryLogEnable
+internal val isEnableDebugMode: Boolean get() = com.example.app.ads.helper.getDebugModeStatus()
+internal val isPurchaseHistoryLogEnable: Boolean get() = com.example.app.ads.helper.getPurchaseHistoryLogStatus()
 
 internal fun logD(tag: String, message: String) {
     if (isEnableDebugMode) {

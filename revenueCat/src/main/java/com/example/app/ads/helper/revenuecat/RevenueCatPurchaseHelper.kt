@@ -1,11 +1,12 @@
 package com.example.app.ads.helper.revenuecat
 
 import android.content.Context
-import com.example.app.ads.helper.logE
-import com.example.app.ads.helper.logI
+import com.example.app.ads.helper.isInternetAvailable
+import com.example.app.ads.helper.isOnline
 import com.example.app.ads.helper.purchase.getCurrencySymbol
 import com.example.app.ads.helper.purchase.product.PlanOfferType
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
+import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.checkIsAllPriceLoaded
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFullBillingPeriod
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getSKU
 import com.revenuecat.purchases.LogLevel
@@ -24,15 +25,78 @@ import kotlinx.coroutines.runBlocking
 
 private const val TAG: String = "Akshay_Admob_RevenueCatPurchaseHelper"
 
+private fun setBillingListener(fContext: Context): Job {
+    val job: Job = CoroutineScope(Dispatchers.IO).launch {
+        logE(TAG, "setBillingListener: Set Listener")
+        ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
+            override fun onBillingSetupFinished() {
+                initRevenueCatProductList(fContext = fContext, onInitializationComplete = {})
+            }
+        })
+    }
+    return job
+}
 
 fun initRevenueCat(fContext: Context, revenueCatID: String) {
     if (revenueCatID.isNotEmpty()) {
+
+        var isOfflineCall: Boolean = !isOnline
+
+        if (isOfflineCall) {
+            isInternetAvailable.observeForever {
+                if (it) {
+                    if (isOfflineCall) {
+                        isOfflineCall = false
+                        if (!checkIsAllPriceLoaded) {
+                            val job: Job = setBillingListener(fContext = fContext)
+                            runBlocking {
+                                job.join()
+                                CoroutineScope(Dispatchers.IO).launch {
+                                    logE(TAG, "initView: InitBilling")
+                                    ProductPurchaseHelper.initBillingClient(fContext = fContext)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
         Purchases.logLevel = LogLevel.DEBUG
         Purchases.configure(
             PurchasesConfiguration.Builder(fContext, revenueCatID)
                 .purchasesAreCompletedBy(PurchasesAreCompletedBy.REVENUECAT)
                 .build()
         )
+
+        /*Purchases.sharedInstance.updatedCustomerInfoListener = UpdatedCustomerInfoListener { customerInfo ->
+            val logStringBuilder: StringBuilder = StringBuilder().apply {
+                this.append("\n\n initRevenueCat:\n")
+            }
+
+            logStringBuilder.append("\n <<<-----------------   START CUSTOMER INFO   ----------------->>>")
+
+            logStringBuilder.append("\n entitlements.all::-> ${customerInfo.entitlements.all.values}")
+            logStringBuilder.append("\n entitlements.verification::-> ${customerInfo.entitlements.verification}")
+            logStringBuilder.append("\n allExpirationDatesByProduct::-> ${customerInfo.allExpirationDatesByProduct}")
+            logStringBuilder.append("\n allPurchaseDatesByProduct::-> ${customerInfo.allPurchaseDatesByProduct}")
+            logStringBuilder.append("\n requestDate::-> ${customerInfo.requestDate}")
+            logStringBuilder.append("\n schemaVersion::-> ${customerInfo.schemaVersion}")
+            logStringBuilder.append("\n firstSeen::-> ${customerInfo.firstSeen}")
+            logStringBuilder.append("\n originalAppUserId::-> ${customerInfo.originalAppUserId}")
+            logStringBuilder.append("\n managementURL::-> ${customerInfo.managementURL}")
+            logStringBuilder.append("\n originalPurchaseDate::-> ${customerInfo.originalPurchaseDate}")
+            logStringBuilder.append("\n activeSubscriptions::-> ${customerInfo.activeSubscriptions}")
+            logStringBuilder.append("\n allPurchasedProductIds::-> ${customerInfo.allPurchasedProductIds}")
+            logStringBuilder.append("\n latestExpirationDate::-> ${customerInfo.latestExpirationDate}")
+            logStringBuilder.append("\n nonSubscriptionTransactions::-> ${customerInfo.nonSubscriptionTransactions}")
+            logStringBuilder.append("\n")
+
+            logStringBuilder.append("\n <<<-----------------   END CUSTOMER INFO   ----------------->>>")
+
+            logI(tag = TAG, message = logStringBuilder.toString())
+        }*/
     }
 }
 
@@ -46,6 +110,7 @@ fun initRevenueCatProductList(fContext: Context, onInitializationComplete: () ->
     Purchases.sharedInstance.getOfferingsWith(
         onError = { error ->
             logE(tag = TAG, message = "initRevenueCatProductList: onError: $error")
+            onInitializationComplete.invoke()
         },
         onSuccess = { offerings ->
             offerings.current?.availablePackages?.let { listOfProducts ->
@@ -79,10 +144,15 @@ fun initRevenueCatProductList(fContext: Context, onInitializationComplete: () ->
                                 logStringBuilder.append("\npresentedOfferingContext::-> ${product.presentedOfferingContext}")
                                 logStringBuilder.append("\ndefaultOption::-> ${product.defaultOption}")
                                 logStringBuilder.append("\nsubscriptionOptions::-> ${product.subscriptionOptions}")
+                                logStringBuilder.append("\nfreeTrial::-> ${product.subscriptionOptions?.freeTrial?.billingPeriod}")
+                                logStringBuilder.append("\n")
+                                logStringBuilder.append("\n")
                                 logStringBuilder.append("\n")
 
                                 ProductPurchaseHelper.PRODUCT_LIST.find { it.id.getSKU == products.product.purchasingData.productId.getSKU }?.let { foundProductInfo ->
                                     logStringBuilder.append("\nData From Google Billing ==> $foundProductInfo")
+                                    logStringBuilder.append("\n")
+                                    logStringBuilder.append("\n")
                                     logStringBuilder.append("\n")
                                     foundProductInfo.formattedPrice = product.price.formatted
                                     foundProductInfo.priceAmountMicros = product.price.amountMicros
@@ -93,6 +163,13 @@ fun initRevenueCatProductList(fContext: Context, onInitializationComplete: () ->
                                     foundProductInfo.planOfferType = PlanOfferType.BASE_PLAN
 
                                     if (product.type == ProductType.SUBS) {
+                                        logStringBuilder.append("\nbasePlan ==> ${products.product.subscriptionOptions?.basePlan}")
+                                        logStringBuilder.append("\nfreeTrial ==> ${products.product.subscriptionOptions?.freeTrial}")
+                                        logStringBuilder.append("\nintroOffer ==> ${products.product.subscriptionOptions?.introOffer}")
+                                        logStringBuilder.append("\n")
+                                        logStringBuilder.append("\n")
+                                        logStringBuilder.append("\n")
+
                                         products.product.subscriptionOptions?.defaultOffer?.let { defaultOffer ->
                                             logStringBuilder.append("\nfullPricePhase::-> ${defaultOffer.fullPricePhase}")
                                             logStringBuilder.append("\nfreePhase::-> ${defaultOffer.freePhase}")

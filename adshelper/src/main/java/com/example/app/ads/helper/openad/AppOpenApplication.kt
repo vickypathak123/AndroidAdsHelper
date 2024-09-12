@@ -19,11 +19,15 @@ import com.example.app.ads.helper.interstitialad.InterstitialAdHelper
 import com.example.app.ads.helper.isAnyAdOpen
 import com.example.app.ads.helper.isAppForeground
 import com.example.app.ads.helper.isEnableOpenAd
+import com.example.app.ads.helper.is_exit_dialog_opened
 import com.example.app.ads.helper.launcher.tabs.CustomTabsHelper
 import com.example.app.ads.helper.logD
 import com.example.app.ads.helper.logI
 import com.example.app.ads.helper.need_to_block_open_ad_internally
+import com.example.app.ads.helper.purchase.fourplan.activity.FourPlanActivity
 import com.example.app.ads.helper.purchase.product.AdsManager
+import com.example.app.ads.helper.purchase.sixbox.activity.ViewAllPlansActivity
+import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
 import com.example.app.ads.helper.reward.RewardedInterstitialAdHelper
 import com.example.app.ads.helper.reward.RewardedVideoAdHelper
 import com.example.app.ads.helper.setTestDeviceIds
@@ -143,7 +147,8 @@ abstract class AppOpenApplication : MultiDexApplication(), DefaultLifecycleObser
                     if (fCurrentActivity !is AdActivity) {
                         logI(tag = TAG, message = "onResume: Current Activity Is Not Ad Activity, isAnyAdOpen::$isAnyAdOpen")
                         if (!isAnyAdOpen) {
-                            if (fCurrentActivity !is InterstitialNativeAdActivity) {
+//                            if (fCurrentActivity !is InterstitialNativeAdActivity) {
+                            if (!checkIsAdsActivity(fCurrentActivity = fCurrentActivity)) {
                                 logI(tag = TAG, message = "onResume: Need To Show Open Ad needToBlockOpenAdInternally::$need_to_block_open_ad_internally")
                                 if (!need_to_block_open_ad_internally) {
                                     val lDeveloperResumeFlag: Boolean = onResumeApp(fCurrentActivity)
@@ -162,5 +167,17 @@ abstract class AppOpenApplication : MultiDexApplication(), DefaultLifecycleObser
                 startShowingOpenAdInternally()
             }
         }
+    }
+
+    private fun checkIsAdsActivity(fCurrentActivity: Activity): Boolean {
+        val isAdsActivity: Boolean = when(fCurrentActivity) {
+            is FourPlanActivity,
+            is ViewAllPlansActivity,
+            is TimeLineActivity,
+            is InterstitialNativeAdActivity -> true
+            else -> false
+        }
+
+        return if (is_exit_dialog_opened) true else isAdsActivity
     }
 }

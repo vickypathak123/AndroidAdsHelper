@@ -1,0 +1,4 @@
+App Name:- Ads Helper 2.0
+App Package Name:- com.vasu.ads.helper.demo
+
+Keystore Alise Name & Password:- AdsHelper

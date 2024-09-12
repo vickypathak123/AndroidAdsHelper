@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!--    strings.xml-->
 
     <string name="one_time_purchase">One Time Purchase</string>
@@ -19,7 +19,7 @@
     <string name="today_get_instant_access">Today: Get Instant Access</string>
     <string name="day_title">Day %1s:</string>
     <string name="trial_reminder">Trial Reminder</string>
-    <string name="trial_reminder_hint">Get a reminder about when your free trial will end. Cancel anytime in 15 seconds.</string>
+    <string name="trial_reminder_hint">Get a reminder about when your free trial will end. cancel anytime in 15 seconds.</string>
     <string name="premium_begins">Premium Begins</string>
     <string name="premium_begins_hint">Your trial will convert to full price unless cancelled.</string>
     <string name="free_then_per_period">%1s free, then %2s per %3s</string>
@@ -29,7 +29,7 @@
     <string name="unlock_all_features">Unlock All Features</string>
     <string name="lifetime_purchase">Lifetime Purchase</string>
     <string name="payment_is_charged_after_period_cancel_anytime">Payment is charged after %1s, cancel anytime.</string>
-    <string name="subscription_will_auto_renew_cancel_anytime">Subscription will auto-renew, Cancel anytime.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Subscription will auto-renew, cancel anytime.</string>
 
     <string name="best_value">BEST VALUE</string>
     <string name="save_percentage">SAVE %1s%%</string>
@@ -42,7 +42,7 @@
 
     <string name="purchase_1">1 Purchase</string>
     <string name="period_free">%1s free</string>
-    <string name="upto_period">upto %1s</string>
+    <string name="upto_period" tools:ignore="Typos">upto %1s</string>
 
     <string name="continue_">Continue</string>
     <string name="start_my_free_trial">START MY FREE TRIAL</string>
@@ -50,7 +50,7 @@
 
     <string name="cancel_anytime_secure_with_play_store">Cancel anytime. Secure with Play Store</string>
     <string name="price_for_period_use">%1s for %2s use</string>
-    <string name="price_upto_period_then_price_slash_period">%1s upto %2s, then %3s</string>
+    <string name="price_upto_period_then_price_slash_period" tools:ignore="Typos">%1s upto %2s, then %3s</string>
 
     <string name="terms_of_use">Terms of Use</string>
     <string name="privacy_policy">Privacy Policy</string>

@@ -3,8 +3,6 @@
 package com.example.app.ads.helper.purchase.utils
 
 import android.os.CountDownTimer
-import com.example.app.ads.helper.logE
-import java.util.Locale
 
 class AdTimer(
     millisInFuture: Long,
@@ -13,8 +11,8 @@ class AdTimer(
     private val onFinish: () -> Unit = {},
 ) : CountDownTimer(millisInFuture, countDownInterval) {
 
-    @Suppress("PrivatePropertyName")
-    private val TAG: String = javaClass.simpleName
+//    @Suppress("PrivatePropertyName")
+//    private val TAG: String = javaClass.simpleName
 
     private var _isRunning: Boolean = false
     var isRunning: Boolean
@@ -25,8 +23,8 @@ class AdTimer(
 
     override fun onTick(millisUntilFinished: Long) {
         val lCountDownTime = (millisUntilFinished / 1000)
-        val formattedSeconds = String.format(Locale.getDefault(), "%02d", lCountDownTime)
-        logE(TAG, "onTick: Formatted Time Number is $formattedSeconds")
+//        val formattedSeconds = String.format(Locale.getDefault(), "%02d", lCountDownTime)
+//        logE(TAG, "onTick: Formatted Time Number is $formattedSeconds")
         _isRunning = true
         onTick.invoke(lCountDownTime)
     }

@@ -74,6 +74,7 @@ object VasuAdsConfig {
         //<editor-fold desc="Developer Ads Flag">
         private var isBlockInterstitialAd: Boolean = false
         private var isEnableDebugMode: Boolean = false
+        private var isPurchaseHistoryLogEnable: Boolean = false
         private var isEnableOpenAd: Boolean = false
         private var isTakeAllTestAdID: Boolean = false
         //</editor-fold>
@@ -196,6 +197,10 @@ object VasuAdsConfig {
         fun enableDebugMode(fIsEnable: Boolean) = this@SetAdsID.apply {
             this.isEnableDebugMode = fIsEnable
         }
+        @JvmName("enablePurchaseHistoryLog")
+        fun enablePurchaseHistoryLog(fIsEnable: Boolean) = this@SetAdsID.apply {
+            this.isPurchaseHistoryLogEnable = fIsEnable
+        }
 
         @JvmName("enableOpenAd")
         fun enableOpenAd(fIsEnable: Boolean) = this@SetAdsID.apply {
@@ -250,6 +255,7 @@ object VasuAdsConfig {
             //region Developer Ads Flag
             com.example.app.ads.helper.isBlockInterstitialAd = (this.isBlockInterstitialAd && this.isTakeAllTestAdID)
             com.example.app.ads.helper.isEnableDebugMode = this.isEnableDebugMode
+            com.example.app.ads.helper.isPurchaseHistoryLogEnable = this.isPurchaseHistoryLogEnable
             com.example.app.ads.helper.isEnableOpenAd = this.isEnableOpenAd
             //endregion
 
@@ -356,6 +362,7 @@ object VasuAdsConfig {
             //region Developer Ads Flag
             com.example.app.ads.helper.isBlockInterstitialAd = (this.isBlockInterstitialAd && this.isTakeAllTestAdID).takeIf { it != com.example.app.ads.helper.isBlockInterstitialAd } ?: com.example.app.ads.helper.isBlockInterstitialAd
             com.example.app.ads.helper.isEnableDebugMode = this.isEnableDebugMode.takeIf { it != com.example.app.ads.helper.isEnableDebugMode } ?: com.example.app.ads.helper.isEnableDebugMode
+            com.example.app.ads.helper.isPurchaseHistoryLogEnable = this.isPurchaseHistoryLogEnable.takeIf { it != com.example.app.ads.helper.isPurchaseHistoryLogEnable } ?: com.example.app.ads.helper.isPurchaseHistoryLogEnable
             com.example.app.ads.helper.isEnableOpenAd = this.isEnableOpenAd.takeIf { it != com.example.app.ads.helper.isEnableOpenAd } ?: com.example.app.ads.helper.isEnableOpenAd
             //endregion
         }

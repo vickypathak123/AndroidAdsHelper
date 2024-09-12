@@ -11,6 +11,7 @@ import com.example.ads.helper.new_.demo.base.BaseActivity
 import com.example.ads.helper.new_.demo.base.BaseBindingActivity
 import com.example.ads.helper.new_.demo.base.utils.beVisibleIf
 import com.example.ads.helper.new_.demo.base.utils.getDrawableRes
+import com.example.ads.helper.new_.demo.base.utils.makeText
 import com.example.ads.helper.new_.demo.databinding.ActivityManageSubscriptionUiBinding
 import com.example.app.ads.helper.purchase.VasuSubscriptionConfig
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
@@ -118,7 +119,7 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
 
                 btnUpdate -> {
                     VasuSubscriptionConfig.with(fActivity = mActivity)
-                        .enableTestPurchase(true)
+//                        .enableTestPurchase(true)
                         .setAppLanguageCode(fCode = spLanguage.selectedItem.toString().substringAfter("(").substringBefore(")").takeIf { it.isNotEmpty() } ?: "en")
                         .setPrivacyPolicy(fLink = etPrivacyPolicy.text.toString().trim().takeIf { it.isNotEmpty() && switchPrivacyPolicy.isChecked } ?: "https://www.freeprivacypolicy.com/blog/privacy-policy-url/")
                         .setTermsOfUse(fLink = etTermsOfUse.text.toString().trim().takeIf { it.isNotEmpty() && switchTermsOfUse.isChecked } ?: "https://policies.google.com/privacy?hl=en-US")
@@ -262,6 +263,10 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                             },
                             onScreenFinish = { isUserPurchaseAnyPlan ->
                                 Log.e(TAG, "onClick: Admob_ Akshay_ Screen Finished isUserPurchaseAnyPlan::-> $isUserPurchaseAnyPlan")
+                            },
+                            onOpeningError = {
+                                mActivity.makeText("Error")
+                                Log.e(TAG, "onClick: Admob_ Akshay_ Opening Error")
                             }
                         )
                 }

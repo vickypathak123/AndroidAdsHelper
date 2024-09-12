@@ -31,7 +31,7 @@ private val SKU_KEY_LIST: ArrayList<SkuData> = arrayListOf(
         weeklySku = CONTACTS_BACKUP_WEEKLY_SKU,
         monthlySku = CONTACTS_BACKUP_MONTHLY_SKU,
         yearlySku = CONTACTS_BACKUP_YEARLY_SKU,
-        revenueCatID = "",
+//        revenueCatID = "",
     ),
     SkuData(
         applicationId = GPS_MAP_CAMERA_APPLICATION_ID,
@@ -39,15 +39,24 @@ private val SKU_KEY_LIST: ArrayList<SkuData> = arrayListOf(
         weeklySku = GPS_MAP_CAMERA_WEEKLY_SKU,
         monthlySku = GPS_MAP_CAMERA_MONTHLY_SKU,
         yearlySku = GPS_MAP_CAMERA_YEARLY_SKU,
-        revenueCatID = "",
+//        revenueCatID = "",
     ),
     SkuData(
         applicationId = "com.voice.gps.navigation.map.location.route",
         revenueCatID = "goog_dlPfUeMWkUyljBCupwuSBIwcEMb",
+//        monthlySku = "com.voicegps.test_1"
     ),
     SkuData(
         applicationId = "com.voice.changer.sound.effects.girl.call",
         revenueCatID = "goog_idqTpAMCtLoJjqLwuZpuFpwexhA",
+    ),
+    SkuData(
+        applicationId = "com.vasu.ads.helper.demo",
+        monthlySku = "vasu.ads.helper.month.test.1",
+        weeklySku = "vasu.ads.helper.week.test.1",
+        yearlySku = "vasu.ads.helper.year.test.1",
+        lifeTimeSku = "vasu.ads.helper.year.test.one",
+//        revenueCatID = "goog_VfuepcREdgEARZAcfgLVStSMMDp",
     ),
 )
 

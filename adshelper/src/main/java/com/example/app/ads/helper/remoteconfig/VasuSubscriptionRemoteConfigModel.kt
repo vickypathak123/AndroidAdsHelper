@@ -9,7 +9,7 @@ import com.google.gson.annotations.Expose
 
 @Keep
 @Parcelize
-data class VasuSubscriptionConfigModel(
+data class VasuSubscriptionRemoteConfigModel(
     @SerializedName("initial_subscription_open_flow")
     @Expose
     val initialSubscriptionOpenFlow: List<Int> = listOf(0),
@@ -31,7 +31,11 @@ data class VasuSubscriptionConfigModel(
     @SerializedName("life_time_plan_discount_percentage")
     @Expose
     val lifeTimePlanDiscountPercentage: Int = 0,
+    @SerializedName("ratting_bar_slider_timing")
+    @Expose
+    val rattingBarSliderTiming: Long = 2000,
 ) : Parcelable {
+
     override fun toString(): String {
         return StringBuilder().apply {
             append("vasu_subscription_config : {")
@@ -42,6 +46,7 @@ data class VasuSubscriptionConfigModel(
             append("\nin_app_subscription_ad_close : '${inAppSubscriptionAdClose}', ")
             append("\nmore_plan_screen_type : '${morePlanScreenType}', ")
             append("\nlife_time_plan_discount_percentage : '${lifeTimePlanDiscountPercentage}'")
+            append("\nratting_bar_slider_timing : '${rattingBarSliderTiming}'")
             append("}")
         }.toString()
     }

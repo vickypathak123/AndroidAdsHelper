@@ -17,7 +17,6 @@ import com.google.android.gms.ads.RequestConfiguration
 import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.system.exitProcess
 
 /**
  * @author Akshay Harsoda
@@ -98,7 +97,7 @@ internal fun Activity.exitTheApp() {
     this.setResult(Activity.RESULT_CANCELED)
     this.finishAffinity()
     this.finishAfterTransition()
-    exitProcess(0)
+//    exitProcess(0)
 }
 
 

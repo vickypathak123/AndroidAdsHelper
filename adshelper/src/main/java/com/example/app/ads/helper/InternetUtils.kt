@@ -132,7 +132,7 @@ private val networkCallback = object : ConnectivityManager.NetworkCallback() {
     }
 }
 
-private val Context.isOnlineApp: Boolean
+internal val Context.isOnlineApp: Boolean
     get() {
         (getSystemService(ConnectivityManager::class.java)).let { connectivityManager ->
             connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)?.let {

@@ -53,6 +53,8 @@ object ProductPurchaseHelper {
     private val subscriptionKeyList: ArrayList<String> = ArrayList()
     val PRODUCT_LIST: ArrayList<ProductInfo> = ArrayList()
 
+    val checkIsAllPriceLoaded : Boolean get() = PRODUCT_LIST.isNotEmpty() && PRODUCT_LIST.all { it.formattedPrice.isNotEmpty() && it.formattedPrice != PurchaseHelperText.NOT_FOUND.value }
+
     private var mPurchaseListener: ProductPurchaseListener? = null // Callback for listen purchase states
     private var mBillingClient: BillingClient? = null // Object of BillingClient
 

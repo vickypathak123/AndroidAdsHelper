@@ -56,7 +56,7 @@ import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
 import com.example.app.ads.helper.purchase.sixbox.utils.ViewAllPlansScreenDataModel
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
-import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.zhpan.indicator.enums.IndicatorOrientation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -79,7 +79,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
      * Index == 1 ::-> START MY FREE TRIAL
      * Index == else ::-> CONTINUE
      */
-    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionConfigModel.purchaseButtonTextIndex
+    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionRemoteConfigModel.purchaseButtonTextIndex
 
     private val listOfBoxItem: ArrayList<BoxItem>
         get() = screenDataModel?.listOfBoxItem.takeIf { !it.isNullOrEmpty() } ?: arrayListOf(
@@ -825,7 +825,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                         buttonTextIndex == 1
                     } ?: R.string.continue_,
                     formatArgs = arrayOf(
-                        period,
+                        period.lowercase(),
                         price
                     )
                 )
@@ -987,7 +987,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         mTimer = null
 
         AdTimer(
-            millisInFuture = 2000,
+            millisInFuture = mVasuSubscriptionRemoteConfigModel.rattingBarSliderTiming,
             countDownInterval = 1000,
             onTick = {
             },
@@ -1016,6 +1016,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
             ivTopBackground.background = mPlanBackgroundSelector
             ivBottomPriceBackground.background = mPlanBackgroundSelector
             txtPlanPricePercentage.setTextColor(mPlanHeaderTextColorSelector)
+            txtPlanPricePercentage.isSelected = true
             txtPlanTitle.setTextColor(mPlanTitleTextColorSelector)
             txtPlanTrialPeriod.setTextColor(mPlanTrialPeriodTextColorSelector)
             txtPlanReferencePrice.setTextColor(mPlanTrialPeriodTextColorSelector)

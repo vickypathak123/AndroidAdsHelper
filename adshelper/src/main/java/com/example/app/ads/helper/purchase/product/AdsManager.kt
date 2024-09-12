@@ -5,6 +5,9 @@ package com.example.app.ads.helper.purchase.product
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.app.ads.helper.getUIThread
+import com.example.app.ads.helper.isAppNotPurchased
+import com.example.app.ads.helper.isInternetAvailable
+import com.example.app.ads.helper.isOnlineApp
 import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.notification.KEY_SUBSCRIPTION_NOTIFICATION_INTENT
 import com.example.app.ads.helper.notification.NotificationDataModel
@@ -23,7 +26,7 @@ private const val KEY_ANY_PLAN_SUBSCRIBE = "key_any_plan_subscribe"
 private const val KEY_TEST_PURCHASE = "key_test_purchase"
 private const val KEY_INITIAL_SUBSCRIPTION_OPEN_FLOW_INDEX = "key_initial_subscription_open_flow_index"
 
-class AdsManager(context: Context) {
+class AdsManager(private val context: Context) {
     @Suppress("PrivatePropertyName")
     private val TAG: String = javaClass.simpleName
 
@@ -35,13 +38,13 @@ class AdsManager(context: Context) {
     private val sp: SharedPreferences = SharedPreferences(context)
 
     internal fun onProductPurchased() {
-        logE(TAG, "onProductPurchased")
+        logE(TAG, "onProductPurchased: ")
         sp.isLifeTimePlanPurchased = true
         updateAdsVisibility()
     }
 
     internal fun onProductExpired() {
-        logE(TAG, "onProductExpired")
+        logE(TAG, "onProductExpired: ")
         sp.isLifeTimePlanPurchased = false
         updateAdsVisibility()
     }
@@ -49,13 +52,13 @@ class AdsManager(context: Context) {
     val isLifeTimePlanPurchased: Boolean get() = sp.isLifeTimePlanPurchased
 
     internal fun onProductSubscribed() {
-        logE(TAG, "onProductSubscribed")
+        logE(TAG, "onProductSubscribed: ")
         sp.isAnyPlanSubscribed = true
         updateAdsVisibility()
     }
 
     internal fun onSubscribeExpired() {
-        logE(TAG, "onSubscribeExpired")
+        logE(TAG, "onSubscribeExpired: ")
         sp.isAnyPlanSubscribed = false
         updateAdsVisibility()
     }
@@ -63,7 +66,7 @@ class AdsManager(context: Context) {
     val isAnyPlanSubscribed: Boolean get() = sp.isAnyPlanSubscribed
 
     internal fun onProductTestPurchase() {
-        logE(TAG, "onProductTestPurchase")
+        logE(TAG, "onProductTestPurchase: ")
         sp.isTestPurchase = true
         updateAdsVisibility()
     }
@@ -79,11 +82,18 @@ class AdsManager(context: Context) {
         getUIThread {
             val newValue = (!(isLifeTimePlanPurchased.takeIf { it } ?: isAnyPlanSubscribed.takeIf { it } ?: isTestPurchase.takeIf { it } ?: false))
             if (!newValue) {
+//                Log.e(TAG, "updateAdsVisibility: Harsoda_ updateAppPurchasedStatusRemoveAds()")
                 updateAppPurchasedStatusRemoveAds()
+            } else {
+//                Log.e(TAG, "updateAdsVisibility: Harsoda_ isAppNotPurchased::-> $isAppNotPurchased")
+                isAppNotPurchased = true
+//                Log.e(TAG, "updateAdsVisibility: Harsoda_ isAppNotPurchased::-> $isAppNotPurchased")
             }
             val oldValue = isShowAds.value
             if (oldValue != newValue) {
+//                Log.e(TAG, "updateAdsVisibility: Harsoda_ isShowAds.value = newValue")
                 isShowAds.value = newValue
+                isInternetAvailable.value = context.isOnlineApp
             }
         }
     }

@@ -232,6 +232,7 @@
                 android:id="@+id/lottie_unlock_today_bg"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="0dp"
+                app:lottie_enableMergePathsForKitKatAndAbove="true"
                 app:layout_constraintBottom_toBottomOf="@id/iv_unlock_today"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="@id/iv_unlock_today"

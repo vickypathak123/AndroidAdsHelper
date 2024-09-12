@@ -59,7 +59,7 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFull
 import com.example.app.ads.helper.purchase.removeTrailingZeros
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
-import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionConfigModel
+import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.toCamelCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -101,7 +101,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
      * Index == 1 ::-> START MY FREE TRIAL
      * Index == else ::-> CONTINUE
      */
-    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionConfigModel.purchaseButtonTextIndex
+    private val mPurchaseButtonTextIndex: Int get() = mVasuSubscriptionRemoteConfigModel.purchaseButtonTextIndex
 
     private val isFromTimeLine: Boolean get() = intent?.getBooleanExtra("isFromTimeLine", false) ?: false
 
@@ -630,7 +630,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
         mTimer = null
 
         AdTimer(
-            millisInFuture = 2000,
+            millisInFuture = mVasuSubscriptionRemoteConfigModel.rattingBarSliderTiming,
             countDownInterval = 1000,
             onTick = {
             },
@@ -719,7 +719,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                         buttonTextIndex == 1
                     } ?: R.string.continue_,
                     formatArgs = arrayOf(
-                        period,
+                        period.lowercase(),
                         price
                     )
                 )
@@ -820,7 +820,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                             this.text = getLocalizedString<String>(
                                 context = mActivity,
                                 resourceId = R.string.percentage_off,
-                                formatArgs = arrayOf("${mVasuSubscriptionConfigModel.lifeTimePlanDiscountPercentage}")
+                                formatArgs = arrayOf("${mVasuSubscriptionRemoteConfigModel.lifeTimePlanDiscountPercentage}")
                             )
                             this.setTextColor(mLifetimePlanSelector.getColorForState(intArrayOf(android.R.attr.state_selected), mLifetimePlanSelector.defaultColor))
                         }

@@ -2,6 +2,7 @@
 
 package com.example.app.ads.helper.base
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
@@ -459,6 +460,7 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
      * @param fExitAnimId your activity Exit animation
      * @param onActivityResult in this method you get your Result
      */
+    @SuppressLint("QueryPermissionsNeeded")
     private fun launchActivityForResult(
         fIntent: Intent,
         isCheckResolveActivity: Boolean,

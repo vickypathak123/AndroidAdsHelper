@@ -12,12 +12,10 @@ import com.example.ads.helper.new_.demo.utils.REVENUE_CAT_ID
 import com.example.app.ads.helper.VasuSplashConfig
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper
 import com.example.app.ads.helper.isOnline
-import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.openad.AppOpenAdHelper
 import com.example.app.ads.helper.purchase.VasuSubscriptionConfig
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
-import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
 import com.example.app.ads.helper.revenuecat.initRevenueCatProductList
 import com.safetynet.integritycheck.integrity.AppProtector
 import kotlinx.coroutines.CoroutineScope
@@ -65,6 +63,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         CoroutineScope(Dispatchers.IO).launch {
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {
+                    Log.e(TAG, "onBillingSetupFinished: ")
                     val action: () -> Unit = {
                         CoroutineScope(Dispatchers.Main).launch {
                             mActivity.runOnUiThread {
@@ -85,7 +84,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         }
 
         AdsManager.isShowAds.observe(mActivity) {
-            logE(TAG, "initView: AdsManager needToShowAds::-> $it")
+            Log.e(TAG, "initView: AdsManager needToShowAds::-> $it")
         }
     }
 
@@ -98,7 +97,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                 if (this.getBoolean(IS_OPEN_ADS_ENABLE, true)) {
                     AppOpenAdHelper.setOnAppOpenAdLoadListener(fListener = object : AppOpenAdHelper.OnAppOpenAdLoadListener {
                         override fun onAdLoaded() {
-                            Log.e(TAG, "Admob_ onOpenAdLoad: ")
+                            Log.e(TAG, "onOpenAdLoad: ")
                             isAdLoaded = true
                             checkAndLaunchScreenWithAd()
                         }
@@ -106,7 +105,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                 } else {
                     InterstitialAdHelper.setOnInterstitialAdLoadListener(fListener = object : InterstitialAdHelper.OnInterstitialAdLoadListener {
                         override fun onAdLoaded() {
-                            Log.e(TAG, "Admob_Inte onInterstitialAdLoad: ")
+                            Log.e(TAG, "onInterstitialAdLoad: ")
                             isAdLoaded = true
                             checkAndLaunchScreenWithAd()
                         }
@@ -162,36 +161,39 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         }*/
 
         if (!isLaunchNextScreen) {
-            VasuSplashConfig.showSplashFlow(
-                fActivity = mActivity,
-                onOpenSubscriptionScreen = {
-                    Log.e(TAG, "launchScreenWithAd: onOpenSubscriptionScreen")
-                    VasuSubscriptionConfig.with(fActivity = mActivity)
-                        .enableTestPurchase(true)
-                        .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
-                            this.setNotificationIcon(id = R.drawable.ic_share_blue)
-                        })
-                        .launchScreen(
+//            if (isOnline) {
+                VasuSplashConfig.showSplashFlow(
+                    fActivity = mActivity,
+                    onOpenSubscriptionScreen = {
+                        VasuSubscriptionConfig.with(fActivity = mActivity)
+//                        .enableTestPurchase(true)
+                            .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
+                                this.setNotificationIcon(id = R.drawable.ic_share_blue)
+                            })
+                            .launchScreen(
 //                            morePlanScreenType = MorePlanScreenType.FOUR_PLAN_SCREEN,
-                            isFromSplash = true,
+                                isFromSplash = true,
 //                            showCloseAdForTimeLineScreen = true,
 //                            showCloseAdForViewAllPlanScreenOpenAfterSplash = true,
 //                            showCloseAdForViewAllPlanScreen = true,
-                            directShowMorePlanScreen = false,
-                            onSubscriptionEvent = {},
-                            onScreenFinish = {
-                                Log.e(TAG, "launchScreenWithAd: $it, onScreenFinish")
-                                checkAndLaunchNextScreen()
-                            }
-                        )
-                },
-                onNextAction = {
-                    Log.e(TAG, "launchScreenWithAd: onNextAction")
-                    checkAndLaunchNextScreen()
-                }
-            )
+                                directShowMorePlanScreen = false,
+                                onSubscriptionEvent = {},
+                                onScreenFinish = {
+                                    checkAndLaunchNextScreen()
+                                },
+                                onOpeningError = {
+                                    checkAndLaunchNextScreen()
+                                }
+                            )
+                    },
+                    onNextAction = {
+                        checkAndLaunchNextScreen()
+                    },
+                )
+//            } else {
+//                checkAndLaunchNextScreen()
+//            }
         } else {
-            Log.e(TAG, "launchScreenWithAd: else")
             checkAndLaunchNextScreen()
         }
     }
