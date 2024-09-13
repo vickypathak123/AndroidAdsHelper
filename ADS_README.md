@@ -84,7 +84,7 @@ All types of Ads load and show details using Google Ads.
                  * 
                  * @param fDeviceId Pass multiple "TEST_DEVICE_ID" values.
                  */
-                initMobileAds("747DD141C5DB53A9F7E3E452845C08FF")
+                initMobileAds()
             }
             
             fun updateRemoteConfigFlag() {
