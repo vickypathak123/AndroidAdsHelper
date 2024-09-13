@@ -431,7 +431,7 @@ All types of Ads load and show details using Google Ads.
         }
     ```
 
-#### 1. Reward Video Ad
+#### 6. Reward Video Ad
 
 - Add the below code for the Reward Video Ad as an example:
 
