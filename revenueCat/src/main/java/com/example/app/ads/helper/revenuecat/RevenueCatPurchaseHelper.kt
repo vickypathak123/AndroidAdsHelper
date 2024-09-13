@@ -13,7 +13,6 @@ import com.revenuecat.purchases.LogLevel
 import com.revenuecat.purchases.PackageType
 import com.revenuecat.purchases.ProductType
 import com.revenuecat.purchases.Purchases
-import com.revenuecat.purchases.PurchasesAreCompletedBy
 import com.revenuecat.purchases.PurchasesConfiguration
 import com.revenuecat.purchases.getOfferingsWith
 import kotlinx.coroutines.CoroutineScope
@@ -40,6 +39,8 @@ private fun setBillingListener(fContext: Context): Job {
 fun initRevenueCat(fContext: Context, revenueCatID: String) {
     if (revenueCatID.isNotEmpty()) {
 
+        logW(TAG, "initRevenueCat: revenueCatID::-> $revenueCatID")
+
         var isOfflineCall: Boolean = !isOnline
 
         if (isOfflineCall) {
@@ -63,10 +64,11 @@ fun initRevenueCat(fContext: Context, revenueCatID: String) {
         }
 
 
-        Purchases.logLevel = LogLevel.DEBUG
+        Purchases.logLevel = LogLevel.VERBOSE
         Purchases.configure(
             PurchasesConfiguration.Builder(fContext, revenueCatID)
-                .purchasesAreCompletedBy(PurchasesAreCompletedBy.REVENUECAT)
+//                .store(Store.PLAY_STORE)
+//                .purchasesAreCompletedBy(PurchasesAreCompletedBy.REVENUECAT)
                 .build()
         )
 
@@ -113,6 +115,23 @@ fun initRevenueCatProductList(fContext: Context, onInitializationComplete: () ->
             onInitializationComplete.invoke()
         },
         onSuccess = { offerings ->
+
+            val logOfferings: StringBuilder = StringBuilder().apply {
+                this.append("\n\n\n initRevenueCat:\n")
+            }
+
+            logOfferings.append("\n <<<-----------------   START OFFERINGS INFO   ----------------->>>")
+
+            logOfferings.append("\n offerings.all::-> ${offerings.all}")
+            logOfferings.append("\n offerings.current::-> ${offerings.current}")
+            logOfferings.append("\n offerings::-> $offerings")
+            logOfferings.append("\n")
+
+            logOfferings.append("\n <<<-----------------   END OFFERINGS INFO   ----------------->>>")
+            logOfferings.append("\n\n\n .")
+
+            logI(tag = TAG, message = logOfferings.toString())
+
             offerings.current?.availablePackages?.let { listOfProducts ->
                 listOfProducts.forEach { product ->
                     logE(tag = TAG, message = "initRevenueCatProductList: ${product.packageType} ::-> ${product.product.purchasingData.productId}")

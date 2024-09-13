@@ -309,15 +309,16 @@ object InterstitialAdHelper {
     }
 
     /**
-     * Call this method when you need to show Interstitial AD
-     * also this method call our offline native dialog AD [InterstitialNativeAdActivity] when Interstitial Ad fails and give call bake on same way
+     * Call this method when you need to show an Interstitial Ad.
+     * This method will also call our offline native dialog ad [InterstitialNativeAdActivity] when the Interstitial Ad fails,
+     * and it will provide a callback in the same way.
      *
-     * Use of this Method
-     * activity.showInterstitialAd {[your code which has run after AD show or if AD fails to show]}
-     * call this method with [Activity] instance
+     * Usage of this method:
+     * activity.showInterstitialAd { [your code that runs after the ad is shown or if the ad fails to show] }
+     * Call this method with the [Activity] instance.
      *
-     * @param fIsShowFullScreenNativeAd pass false if you don't need native ad if interstitial ads not loaded
-     * @param onAdClosed this is a call back of your ad close, it will call also if your ad was not showing to the user
+     * @param fIsShowFullScreenNativeAd Pass `false` if you don't need a native ad when interstitial ads are not loaded.
+     * @param onAdClosed This is the callback for when the ad is closed; it is also called if the ad was not shown to the user.
      */
     fun Activity.showInterstitialAd(
         fIsShowFullScreenNativeAd: Boolean = true,

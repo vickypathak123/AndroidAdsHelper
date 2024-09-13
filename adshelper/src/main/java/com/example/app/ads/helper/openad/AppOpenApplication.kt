@@ -23,6 +23,7 @@ import com.example.app.ads.helper.is_exit_dialog_opened
 import com.example.app.ads.helper.launcher.tabs.CustomTabsHelper
 import com.example.app.ads.helper.logD
 import com.example.app.ads.helper.logI
+import com.example.app.ads.helper.nativead.NativeAdHelper
 import com.example.app.ads.helper.need_to_block_open_ad_internally
 import com.example.app.ads.helper.purchase.fourplan.activity.FourPlanActivity
 import com.example.app.ads.helper.purchase.product.AdsManager
@@ -68,17 +69,33 @@ abstract class AppOpenApplication : MultiDexApplication(), DefaultLifecycleObser
     }
     //</editor-fold>
 
+    /**
+     * Override this function in your application class to show the App Open Ad.
+     *
+     * @param fCurrentActivity Refers to your current activity.
+     * @return `true` if you want to show the App Open Ad,
+     * @return `false` if you don't want to show the App Open Ad.
+     */
     abstract fun onResumeApp(fCurrentActivity: Activity): Boolean
 
     open fun destroyAllLoadedAd() {
         InterstitialAdHelper.destroy()
+        NativeAdHelper.destroy()
         AppOpenAdHelper.destroy()
         RewardedInterstitialAdHelper.destroy()
         RewardedVideoAdHelper.destroy()
-//        NativeAdvancedModelHelper.destroy()
     }
 
     //<editor-fold desc="Init Ads & Set Test Device Id">
+    /**
+     * Initializing the mobile ads SDK.
+     *
+     * Helper method to set device IDs, which you can get from logs.
+     * Check your logcat output for the test device ID, e.g.,
+     * I/Ads: Use RequestConfiguration.Builder.setTestDeviceIds("TEST_DEVICE_ID","TEST_DEVICE_ID")
+     *
+     * @param fDeviceId Pass multiple "TEST_DEVICE_ID" values.
+     */
     open fun initMobileAds(vararg fDeviceId: String) {
         CoroutineScope(Dispatchers.IO).launch {
             setMobileAds(fDeviceId = fDeviceId)
