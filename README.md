@@ -62,8 +62,14 @@ dependencies {
 }
 ```
 
-## Following points are covered in this code:
+## Usage
+1. [Exit Dialog](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/EXIT_DIALOG_README.md)
+2. [Live Internet Connection Status](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/INTERNET_README.md)
+3. [In-App Purchases and Subscription](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/SUBSCRIPTION_README.md)
+4. [Safetynet (Google Play Integrity & Admob Consent Form)](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/SAFETYNET_README.md)
+5. [Google Ads](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/ADS_README.md)
 
+## Following points are covered in this code:
 1. [Google Ads](https://github.com/vickypathak123/AndroidAdsHelper/tree/main/adshelper)
 2. [Safetynet - Google Play Integrity](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/integritycheck/src/main/java/com/safetynet/integritycheck/integrity/AppProtector.kt#L120)
 3. [Safetynet - Admob Consent Form](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/integritycheck/src/main/java/com/safetynet/integritycheck/integrity/GoogleMobileAdsConsentManager.kt#L16)
@@ -75,22 +81,6 @@ dependencies {
 9. [Exit Dialog](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/widget/ExitDialog.kt)
 10. [Live Internet Connection Status](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/InternetUtils.kt#L62)
 11. Some Launcher functions like [Open Google Play Store](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/launcher/Launcher.kt#L48), [Open Privacy Policy Link](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/launcher/Launcher.kt#L65), [Open Any Other Link](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/launcher/Launcher.kt#L81), and [Share This App](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/adshelper/src/main/java/com/example/app/ads/helper/launcher/Launcher.kt#L97), all links are open using the Google Custom
-
-## Usage
-1. [Exit Dialog](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/EXIT_DIALOG_README.md)
-2. [Live Internet Connection Status](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/INTERNET_README.md)
-3. [In-App Purchases and Subscription](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/SUBSCRIPTION_README.md)
-4. [Safetynet (Google Play Integrity & Admob Consent Form)](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/SAFETYNET_README.md)
-5. [Google Ads](https://github.com/vickypathak123/AndroidAdsHelper/blob/main/ADS_README.md)
-
-
-
---*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--
-
-# Check [AdMob Error Codes & Logs](https://support.google.com/admob/thread/3494603/admob-error-codes-logs?hl=en)
-
-
-
 
 ### ⭐️ If you liked it support me with your stars!
 
