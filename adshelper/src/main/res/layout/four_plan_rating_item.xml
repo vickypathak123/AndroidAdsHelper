@@ -79,7 +79,7 @@
             android:id="@+id/group_of_review_views"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="gone"
             app:constraint_referenced_ids="txt_review_header, txt_review, txt_review_by" />
 
         <TextView
@@ -141,6 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            tools:visibility="visible"
             app:constraint_referenced_ids="iv_like, bg_girl, iv_girl, txt_emoji, cl_customer_count, txt_satisfied_customer" />
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -192,7 +193,6 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/_6sdp"
             android:autoSizeTextType="uniform"
-            android:fontFamily="@font/apple_color_emoji"
             android:gravity="center"
             android:includeFontPadding="false"
             android:maxLines="1"
