@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:ellipsize="end"
-                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:fontFamily="@font/ads_plus_jakarta_sans_medium"
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:marqueeRepeatLimit="marquee_forever"

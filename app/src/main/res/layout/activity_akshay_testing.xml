@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:fontFamily="@font/avenir_black"
+        android:fontFamily="@font/ads_avenir_black"
         android:includeFontPadding="false"
         android:maxLines="1"
         android:text="@string/unlock_all_features"

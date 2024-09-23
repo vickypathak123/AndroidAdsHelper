@@ -55,7 +55,7 @@
         android:layout_marginEnd="@dimen/_6sdp"
         android:background="@android:color/transparent"
         android:ellipsize="marquee"
-        android:fontFamily="@font/avenir_medium"
+        android:fontFamily="@font/ads_avenir_medium"
         android:gravity="center"
         android:includeFontPadding="false"
         android:marqueeRepeatLimit="marquee_forever"

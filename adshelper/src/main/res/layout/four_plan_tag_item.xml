@@ -21,7 +21,7 @@
         android:id="@+id/txt_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/plus_jakarta_sans_extra_bold"
+        android:fontFamily="@font/ads_plus_jakarta_sans_extra_bold"
         android:gravity="center"
         android:includeFontPadding="false"
         android:maxLines="1"

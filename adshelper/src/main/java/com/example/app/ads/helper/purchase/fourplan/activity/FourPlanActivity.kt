@@ -674,7 +674,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                 }
                 this.txtBtnContinue.apply {
                     this.setTextSizeDimension(com.intuit.ssp.R.dimen._15ssp)
-                    this.typeface = mActivity.getFontRes(R.font.plus_jakarta_sans_extra_bold)
+                    this.typeface = mActivity.getFontRes(R.font.ads_plus_jakarta_sans_extra_bold)
                 }
             }
 
@@ -682,7 +682,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                 this.ivSecureWithPlayStore.setImageDrawable(mActivity.getDrawableRes(R.drawable.ic_secure_with_play_store_four_plan))
 
                 this.txtSecureWithPlayStore.apply {
-                    this.typeface = mActivity.getFontRes(R.font.plus_jakarta_sans_regular)
+                    this.typeface = mActivity.getFontRes(R.font.ads_plus_jakarta_sans_regular)
                     this.text = getLocalizedString<String>(
                         context = mActivity,
                         resourceId = R.string.cancel_anytime_secure_with_play_store,

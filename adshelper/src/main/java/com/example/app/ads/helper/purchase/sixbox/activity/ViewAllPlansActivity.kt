@@ -212,16 +212,16 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
     private val unselectedSkuBackgroundColor: ColorStateList get() = screenDataModel?.unselectedSkuBackgroundColor ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_view_more_plan_unselected_sku_background_color))
 
     @FontRes
-    private val planExtraBoldFontFamily: Int = R.font.plus_jakarta_sans_extra_bold
+    private val planExtraBoldFontFamily: Int = R.font.ads_plus_jakarta_sans_extra_bold
 
     @FontRes
-    private val planBoldFontFamily: Int = R.font.plus_jakarta_sans_bold
+    private val planBoldFontFamily: Int = R.font.ads_plus_jakarta_sans_bold
 
     @FontRes
-    private val planSemiBoldFontFamily: Int = R.font.plus_jakarta_sans_semi_bold
+    private val planSemiBoldFontFamily: Int = R.font.ads_plus_jakarta_sans_semi_bold
 
     @FontRes
-    private val planMediumFontFamily: Int = R.font.plus_jakarta_sans_medium
+    private val planMediumFontFamily: Int = R.font.ads_plus_jakarta_sans_medium
 
     //<editor-fold desc="Plan Item Selectors">
     private val mYearPlanIconSelector: StateListDrawable
