@@ -52,13 +52,13 @@ private val SKU_KEY_LIST: ArrayList<SkuData> = arrayListOf(
     ),
     SkuData(
         applicationId = "com.vasu.ads.helper.demo",
-//        monthlySku = "vasu.ads.helper.month.test.1",
-//        weeklySku = "vasu.ads.helper.week.test.1",
-//        yearlySku = "vasu.ads.helper.year.test.1",
-//        lifeTimeSku = "vasu.ads.helper.year.test.one",
+        monthlySku = "vasu.ads.helper.month.test.1",
+        weeklySku = "vasu.ads.helper.week.test.1",
+        yearlySku = "vasu.ads.helper.year.test.1",
+        lifeTimeSku = "vasu.ads.helper.year.test.one",
 //        revenueCatID = "goog_VfuepcREdgEARZAcfgLVStSMMDp",
 //        revenueCatID = "goog_xrLdIIWyOfdpbTiQEVWZEHHNPZD",
-        revenueCatID = "goog_BNFmsuknvhhRhJJMqJwVzdbAPkS",
+//        revenueCatID = "goog_BNFmsuknvhhRhJJMqJwVzdbAPkS",
     ),
 )
 

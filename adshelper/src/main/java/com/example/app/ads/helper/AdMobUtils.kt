@@ -73,9 +73,11 @@ internal val String.toCamelCase: String
         return builder.toString()
     }
 
+internal inline val dataLocale: Locale get() = Locale(SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en")
+
 internal val isRTLDirectionFromLocale: Boolean get() = TextUtils.getLayoutDirectionFromLocale(dataLocale) == View.LAYOUT_DIRECTION_RTL
 
-internal inline val dataLocale: Locale get() = Locale(SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en")
+internal inline val isEnglishLanguage: Boolean get() = dataLocale.language == "en"
 
 internal inline fun <reified T> getLocalizedString(
     context: Context,

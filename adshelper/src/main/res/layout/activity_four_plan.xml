@@ -96,10 +96,12 @@
                 android:id="@+id/txt_unlock_all_features"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
+                android:ellipsize="marquee"
                 android:fontFamily="@font/avenir_black"
                 android:includeFontPadding="false"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:text="@string/unlock_all_features"
                 android:textColor="#FFFFFF"
                 android:textSize="@dimen/_18ssp"
@@ -123,21 +125,34 @@
                 app:layout_constraintStart_toEndOf="@id/txt_unlock_all_features"
                 app:layout_constraintTop_toTopOf="@id/txt_unlock_all_features">
 
-<!--                <ImageView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:src="@drawable/ic_four_plan_star"/>-->
-
-                <TextView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:autoSizeTextType="uniform"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:text="✨"
-                    tools:ignore="HardcodedText"
-                    tools:targetApi="o" />
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_star_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="✨"
+                        android:visibility="invisible"
+                        tools:ignore="HardcodedText"
+                        tools:targetApi="o" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:src="@drawable/ic_four_plan_star"
+                        app:layout_constraintBottom_toBottomOf="@id/txt_star_hint"
+                        app:layout_constraintEnd_toEndOf="@id/txt_star_hint"
+                        app:layout_constraintStart_toStartOf="@id/txt_star_hint"
+                        app:layout_constraintTop_toTopOf="@id/txt_star_hint" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.example.app.ads.helper.purchase.widget.SquareLayout>
 

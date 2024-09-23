@@ -35,6 +35,7 @@ import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.ActivityFourPlanBinding
 import com.example.app.ads.helper.databinding.FourPlanRatingIndicatorBinding
 import com.example.app.ads.helper.getLocalizedString
+import com.example.app.ads.helper.isEnglishLanguage
 import com.example.app.ads.helper.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
 import com.example.app.ads.helper.logE
@@ -656,6 +657,8 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                     context = mActivity,
                     resourceId = R.string.unlock_all_features,
                 )
+
+                this.isSelected = !isEnglishLanguage
             }
 
             txtPayNothingNow.apply {

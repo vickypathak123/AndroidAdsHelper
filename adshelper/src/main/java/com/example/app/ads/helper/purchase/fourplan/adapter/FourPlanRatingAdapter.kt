@@ -10,6 +10,7 @@ import com.example.app.ads.helper.base.utils.inflater
 import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.FourPlanRatingItemBinding
 import com.example.app.ads.helper.getLocalizedString
+import com.example.app.ads.helper.isEnglishLanguage
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItemType
 import java.text.NumberFormat
@@ -50,6 +51,8 @@ class FourPlanRatingAdapter(
                                         context = itemView.context,
                                         resourceId = R.string.rating
                                     )
+
+                                    txtAppRatingHint.isSelected = !isEnglishLanguage
 
                                     txtBestAppHeader.text = getLocalizedString<String>(
                                         context = itemView.context,

@@ -12,28 +12,28 @@ import com.google.gson.annotations.Expose
 data class VasuSubscriptionRemoteConfigModel(
     @SerializedName("initial_subscription_open_flow")
     @Expose
-    val initialSubscriptionOpenFlow: List<Int> = listOf(0),
+    val initialSubscriptionOpenFlow: List<Int> = listOf(1,2,3),
     @SerializedName("purchase_button_text_index")
     @Expose
     val purchaseButtonTextIndex: Int = 0,
     @SerializedName("initial_subscription_time_line_close_ad")
     @Expose
-    val initialSubscriptionTimeLineCloseAd: Boolean = false,
+    val initialSubscriptionTimeLineCloseAd: Boolean = true,
     @SerializedName("initial_subscription_more_plan_close_ad")
     @Expose
-    val initialSubscriptionMorePlanCloseAd: Boolean = false,
+    val initialSubscriptionMorePlanCloseAd: Boolean = true,
     @SerializedName("in_app_subscription_ad_close")
     @Expose
-    val inAppSubscriptionAdClose: Boolean = false,
+    val inAppSubscriptionAdClose: Boolean = true,
     @SerializedName("more_plan_screen_type")
     @Expose
     val morePlanScreenType: String = "four_plan_screen",
     @SerializedName("life_time_plan_discount_percentage")
     @Expose
-    val lifeTimePlanDiscountPercentage: Int = 0,
+    val lifeTimePlanDiscountPercentage: Int = 80,
     @SerializedName("ratting_bar_slider_timing")
     @Expose
-    val rattingBarSliderTiming: Long = 2000,
+    val rattingBarSliderTiming: Long = 5000,
 ) : Parcelable {
 
     override fun toString(): String {

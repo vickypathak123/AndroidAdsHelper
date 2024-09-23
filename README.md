@@ -1,4 +1,4 @@
-# Vasundhara Android Common Code thsdvjs
+# Vasundhara Android Common Code
 
 Common Code For Android that is required in every app of [Vasundhara Infotech LLP](https://vasundharainfotechllp.com)
 
