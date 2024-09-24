@@ -28,6 +28,7 @@ googleAuthLibraryOauth2Http = "1.24.1"
 googleApiClientJackson2 = "1.20.0"
 googleApiServicesPlayintegrity = "v1-rev20231109-2.0.0"
 userMessagingPlatform = "3.0.0"
+#vasuAdsHelper = "1.0.5"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -36,10 +37,10 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 
 [libraries]
 
-#vasu-revenueCat  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "revenueCat", version = "1.0.3" }
-#vasu-ads-helper  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "adshelper", version = "1.0.3" }
-#vasu-integrity-check  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "integritycheck", version = "1.0.3" }
-#vasu-android-ads-helper  = { group = "com.github.vickypathak123", name = "AndroidAdsHelper", version = "1.0.3" }
+#vasu-android-ads-helper  = { group = "com.github.vickypathak123", name = "AndroidAdsHelper", version.ref = "vasuAdsHelper" }
+#vasu-revenueCat  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "revenueCat", version.ref = "vasuAdsHelper" }
+#vasu-ads-helper  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "adshelper", version.ref = "vasuAdsHelper" }
+#vasu-integrity-check  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "integritycheck", version.ref = "vasuAdsHelper" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

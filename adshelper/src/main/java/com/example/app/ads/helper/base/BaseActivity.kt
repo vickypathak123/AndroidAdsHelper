@@ -624,32 +624,32 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
 
     }
 
-    private var doubleBackToExitPressedOnce = false
+//    private var doubleBackToExitPressedOnce = false
     open fun customOnBackPressed() {
-        if (!isTaskRoot) {
+//        if (!isTaskRoot) {
             // If the activity is not the root of the task, allow finish to proceed normally.
             backFromCurrentScreen()
-            return
-        } else {
-            backFroExit()
-        }
+//            return
+//        } else {
+//            backFroExit()
+//        }
     }
 
-    fun backFroExit() {
+//    fun backFroExit() {
         //            mExitDialog.show {
 //                        exitApplication()
         //            }
 
-        if (doubleBackToExitPressedOnce) {
-            exitApplication()
-            return
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        mActivity.makeText("Please click BACK again to exit")
-
-        Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 1500)
-    }
+//        if (doubleBackToExitPressedOnce) {
+//            exitApplication()
+//            return
+//        }
+//
+//        this.doubleBackToExitPressedOnce = true
+//        mActivity.makeText("Please click BACK again to exit")
+//
+//        Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 1500)
+//    }
 
     @UiThread
     open fun needToShowBackAd(): Boolean {

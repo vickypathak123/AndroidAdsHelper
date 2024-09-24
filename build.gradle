@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-        dependencies_version = '1.0.5'
+        dependencies_version = '1.0.6'
     }
 }
 
