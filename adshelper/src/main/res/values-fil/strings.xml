@@ -77,4 +77,35 @@
     <string name="exit_dialog_negative_button_text">Bumalik</string>
     <string name="exit_dialog_positive_button_text">Lumabas sa App</string>
     <string name="exit_dialog_title">Sigurado ka ba, gusto mong lumabas ?</string>
+
+    <string name="update_title">Kinakailangan ang Update</string>
+    <string name="update_sub_title">Napansin namin na ginagamit mo ang hindi na ginagamit na bersyon ng application sa loob ng mahabang panahon. Mangyaring mag-update sa pinakabagong bersyon at mag-enjoy sa app.</string>
+    <string name="update">I-update</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="review_dialog_title">Hindi Interesado?</string>
+    <string name="review_dialog_sub_title">Pakibahagi Kung Bakit</string>
+    <string name="review_option_1">Hindi alam kung ano ito?</string>
+    <string name="review_option_2">Masyadong mahal</string>
+    <string name="review_option_3">Hindi ako nagbabayad para sa mga app</string>
+    <string name="review_option_4">Kailangan ko muna itong subukan</string>
+
+    <string name="rate_dialog_title">Tinatangkilik ang app?</string>
+    <string name="rate_dialog_sub_title">Ipaalam sa amin sa pamamagitan ng pag -iwan ng isang ratingng \n5 star</string>
+    <string name="rate_dialog_ask_me_later">Tanungin mo ako mamaya!</string>
+
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_sub_title">Ibahagi ang iyong karanasan sa amin</string>
+    <string name="feedback_what_is_your_profession">Ano ang iyong propesyon?</string>
+    <string name="feedback_write_your_suggestions">Isulat ang iyong mga mungkahi</string>
+    <string name="feedback_write_here">Sumulat dito ...</string>
+    <string name="feedback_submit">Isumite</string>
+
+    <string name="internet_offline">Walang Koneksyon sa Internet.</string>
+    <string name="write_your_profession">Pakilagay ang iyong propesyon.</string>
+    <string name="write_your_suggestions">Pakilagay ang iyong mga mungkahi.</string>
+    <string name="feedback_response_success">Matagumpay na naisumite ang feedback</string>
+    <string name="feedback_response_error">May nangyaring mali, Pakisubukang muli sa ibang pagkakataon.</string>
+
+
 </resources>

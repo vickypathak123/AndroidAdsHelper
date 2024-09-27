@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">Komawa</string>
     <string name="exit_dialog_positive_button_text">Fita App</string>
     <string name="exit_dialog_title">Ka tabbata, kana son fita?</string>
+
+    <string name="update_title">Ana Bukatar Sabuntawa</string>
+    <string name="update_sub_title">Mun lura cewa kun dade kuna amfani da sigar da aka yanke ta aikace-aikacen. Da fatan za a sabunta zuwa sabon sigar kuma ku more app ɗin.</string>
+    <string name="update">Sabunta</string>
+    <string name="cancel">Soke</string>
+
+    <string name="review_dialog_title">Baka Sha\'awa?</string>
+    <string name="review_dialog_sub_title">Don Allah a raba Me ya sa</string>
+    <string name="review_option_1">Ba ku san menene shi ba?</string>
+    <string name="review_option_2">Ya yi tsada sosai</string>
+    <string name="review_option_3">Bana biyan aikace-aikace</string>
+    <string name="review_option_4">Ina bukatan fara gwada shi</string>
+
+    <string name="rate_dialog_title">Jin daɗin app?</string>
+    <string name="rate_dialog_sub_title">Sanar da mu ta hanyar barin star wani Rating</string>
+    <string name="rate_dialog_ask_me_later">Tambaye ni daga baya!</string>
+
+    <string name="feedback_title">Martani</string>
+    <string name="feedback_sub_title">Raba kwarewarku tare da mu</string>
+    <string name="feedback_what_is_your_profession">Menene sana\'arku?</string>
+    <string name="feedback_write_your_suggestions">Rubuta shawarwarinku</string>
+    <string name="feedback_write_here">Rubuta anan ...</string>
+    <string name="feedback_submit">Yi biyayya</string>
+
+    <string name="internet_offline">Babu Haɗin Intanet.</string>
+    <string name="write_your_profession">Da fatan za a shigar da sana\'ar ku.</string>
+    <string name="write_your_suggestions"> Da fatan za a shigar da shawarwarinku.</string>
+    <string name="feedback_response_success">An ƙaddamar da martani cikin nasara</string>
+    <string name="feedback_response_error">Wani abu yayi kuskure, Da fatan za a sake gwadawa daga baya.</string>
 </resources>

@@ -5,12 +5,14 @@ import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.akshay.harsoda.permission.helper.AksPermission
 import com.akshay.harsoda.permission.helper.utiles.OnAlertButtonClickListener
 import com.akshay.harsoda.permission.helper.utiles.getPermissionName
 import com.akshay.harsoda.permission.helper.utiles.showAlert
+import com.example.ads.helper.new_.demo.BuildConfig
 import com.example.ads.helper.new_.demo.IS_OPEN_ADS_ENABLE
 import com.example.ads.helper.new_.demo.R
 import com.example.ads.helper.new_.demo.base.BaseActivity
@@ -23,15 +25,17 @@ import com.example.ads.helper.new_.demo.base.utils.setSelection
 import com.example.ads.helper.new_.demo.base.utils.shareApp
 import com.example.ads.helper.new_.demo.databinding.ActivityMainBinding
 import com.example.ads.helper.new_.demo.triggerRebirth
+import com.example.ads.helper.new_.demo.utils.selectedAppLanguageCode
 import com.example.app.ads.helper.activity.showFullScreenNativeAdActivity
+import com.example.app.ads.helper.feedback.FeedBackConfig
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.reward.RewardedInterstitialAdHelper
 import com.example.app.ads.helper.reward.RewardedInterstitialAdHelper.showRewardedInterstitialAd
 import com.example.app.ads.helper.reward.RewardedVideoAdHelper
 import com.example.app.ads.helper.reward.RewardedVideoAdHelper.showRewardedVideoAd
-import com.example.app.ads.helper.startShowingOpenAdInternally
-import com.example.app.ads.helper.stopShowingOpenAdInternally
+import com.example.app.ads.helper.utils.startShowingOpenAdInternally
+import com.example.app.ads.helper.utils.stopShowingOpenAdInternally
 
 class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
 
@@ -139,6 +143,8 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                 showDialogs,
                 showBannerAds,
                 showSubscriptionScreen,
+                showRateApp,
+                showFeedback,
             )
         }
     }
@@ -148,6 +154,35 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
             mBinding.layoutHeader.ivHeaderBack -> customOnBackPressed()
 
             mBinding.layoutHeader.ivHeaderRightIcon -> mActivity.shareApp
+
+            mBinding.showRateApp -> {
+                mRateAppDialog.show(
+                    fLanguageCode = selectedAppLanguageCode,
+                    onClickAskMeLater = {
+                        Log.e(TAG, "onClick: onClickAskMeLater")
+                    },
+                    onClickNegativeReview = {
+                        Log.e(TAG, "onClick: onClickNegativeReview")
+                    },
+                    onClickPositiveReview = {
+                        Log.e(TAG, "onClick: onClickPositiveReview")
+                    },
+                )
+            }
+
+            mBinding.showFeedback -> {
+                FeedBackConfig.with(fActivity = mActivity, fAppVersionName = BuildConfig.VERSION_NAME)
+                    .setAppLanguageCode(selectedAppLanguageCode)
+                    .setFeedBackScreenData { fFeedBackScreenData ->
+                        with(fFeedBackScreenData) {
+                            changeBackIcon(R.layout.item_toolbar_testing)
+                            screenTitleTextGravity(gravity = Gravity.CENTER)
+                        }
+                    }
+                    .launchScreen {
+                        Log.e(TAG, "onClick: back from Feedback")
+                    }
+            }
 
             mBinding.showInterstitialAds -> {
                 mActivity.showInterstitialAd { isAdShowing, isShowFullScreenAd ->

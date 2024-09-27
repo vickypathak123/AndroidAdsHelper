@@ -25,12 +25,41 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="theme_feedback_activity" parent="Theme.Material3.DayNight.NoActionBar">
+<!--        <item name="android:windowDisablePreview">true</item>-->
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        <item name="android:windowBackground">@android:color/white</item>-->
+<!--        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>-->
+<!--        <item name="windowActionBar">false</item>-->
+
+
+
+
+        <item name="android:windowDisablePreview">true</item>
+
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:windowBackground">@android:color/white</item>
+
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+
+
+    </style>
+
     <style name="theme_exit_dialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/theme_bottom_sheet_shape_appearance</item>
     </style>
 
     <style name="theme_bottom_sheet_shape_appearance" parent="Widget.MaterialComponents.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/top_round_16_dp</item>
+    </style>
+
+    <style name="dialog_animation_bottom_to_top">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
 
     <style name="top_round_16_dp" parent="">
@@ -57,6 +86,11 @@
     <style name="full_round" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="full_round_10_45" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item>
     </style>
 
     <style name="full_round_38" parent="">
@@ -113,5 +147,22 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">@dimen/_16sdp</item>
         <item name="cornerSizeBottomRight">@dimen/_16sdp</item>
+    </style>
+
+    <style name="theme_review_dialog_option_item_divider" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/_1sdp</item>
+        <item name="android:background">#F4F4F4</item>
+    </style>
+
+    <style name="theme_review_dialog_option_text" parent="">
+        <item name="android:textColor">@color/default_review_option_color</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:fontFamily">@font/ads_metropolis_semi_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:singleLine">true</item>
     </style>
 </resources>

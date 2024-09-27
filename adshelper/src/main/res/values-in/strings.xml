@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">Satu kali pembelian</string>
+    <string name="period_day">Hari</string>
+    <string name="period_days">Hari -hari</string>
+    <string name="period_week">Pekan</string>
+    <string name="period_weeks">Minggu -minggu</string>
+    <string name="period_month">Bulan</string>
+    <string name="period_months">Berbulan -bulan</string>
+    <string name="period_year">Tahun</string>
+    <string name="period_years">Bertahun-tahun</string>
+
+    <string name="have_doubts">Punya keraguan?</string>
+    <string name="start_with_a_free_trial">Mulailah dengan uji coba gratis</string>
+    <string name="now">Sekarang</string>
+    <string name="unlock_all_the_features">Buka semua fitur.</string>
+    <string name="today_get_instant_access">Hari ini: Dapatkan akses instan</string>
+    <string name="day_title">Hari %1s:</string>
+    <string name="trial_reminder">Pengingat percobaan</string>
+    <string name="trial_reminder_hint">Dapatkan pengingat kapan uji coba gratis Anda akan berakhir.Batalkan kapan saja dalam 15 detik.</string>
+    <string name="premium_begins">Premium dimulai</string>
+    <string name="premium_begins_hint">Uji coba Anda akan dikonversi ke harga penuh kecuali dibatalkan.</string>
+    <string name="free_then_per_period">%1s gratis, lalu %2s per %3s</string>
+    <string name="pay_nothing_now">Tidak membayar apa pun sekarang</string>
+    <string name="view_all_plans"><u>Lihat Semua Paket</u></string>
+
+    <string name="unlock_all_features">Buka semua fitur</string>
+    <string name="lifetime_purchase">Pembelian seumur hidup</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">Pembayaran dibebankan setelah %1s, batal kapan saja.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Berlangganan akan diperbarui secara otomatis, dibatalkan kapan saja.</string>
+
+    <string name="best_value">Nilai terbaik</string>
+    <string name="save_percentage">Simpan%1S %%</string>
+    <string name="most_popular">Paling Populer</string>
+
+    <string name="lifetime">Seumur hidup</string>
+    <string name="yearly">Tahunan</string>
+    <string name="monthly">Bulanan</string>
+    <string name="weekly">Mingguan</string>
+
+    <string name="purchase_1">1 pembelian</string>
+    <string name="period_free">%1 gratis</string>
+    <string name="upto_period">Hingga %1s</string>
+
+    <string name="continue_">Melanjutkan</string>
+    <string name="start_my_free_trial">Mulai uji coba gratis saya</string>
+    <string name="try_period_for_price">Coba %1s untuk %2s</string>
+
+    <string name="cancel_anytime_secure_with_play_store">Batalkan kapan saja.Aman dengan Play Store</string>
+    <string name="price_for_period_use">%1s untuk %2s Penggunaan</string>
+    <string name="price_upto_period_then_price_slash_period">%1S hingga %2s, lalu %3s</string>
+
+    <string name="terms_of_use">Ketentuan Penggunaan</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+
+    <string name="instant_access_hint_1">Pengukuran jarak</string>
+    <string name="instant_access_hint_2">Pengukuran Area Lapangan</string>
+    <string name="instant_access_hint_3">Kamera Timestamp Geo</string>
+    <string name="instant_access_hint_4">Perencanaan rute</string>
+    <string name="instant_access_hint_5">Sinkronisasi Cloud Data</string>
+    <string name="instant_access_hint_6">Iklan Gratis</string>
+
+    <string name="rating_header">Aplikasi yang sangat baik untuk Konversi Teks</string>
+    <string name="rating_sub_header">Aplikasi ini adalah aplikasi yang baik benar -benar perlu bekerja pada urutan gambar yang dipindai, beberapa konten hilang dan beberapa dijalankan.Aplikasi membutuhkan perbaikan</string>
+    <string name="rating_by">oleh %1s</string>
+    <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Pelanggan yang puas</string>
+    <string name="rating">Peringkat</string>
+
+    <string name="pay_once_enjoy_forever">Bayar sekali, nikmati selamanya</string>
+    <string name="percentage_off">%1S %% MATI</string>
+    <string name="price_per_period">%1s per %2s</string>
+    <string name="enjoy_forever">Nikmati selamanya</string>
+    <string name="recommend">Menyarankan</string>
+
+    <string name="exit_dialog_negative_button_text">Kembali</string>
+    <string name="exit_dialog_positive_button_text">Aplikasi keluar</string>
+    <string name="exit_dialog_title">Apakah Anda yakin, Anda ingin keluar?</string>
+
+    <string name="update_title">Pembaruan diperlukan</string>
+    <string name="update_sub_title">Kami telah memperhatikan bahwa Anda telah menggunakan versi aplikasi yang sudah lama digunakan untuk waktu yang lama.Harap perbarui untuk versi terbaru dan nikmati aplikasi.</string>
+    <string name="update">Memperbarui</string>
+    <string name="cancel">Membatalkan</string>
+
+    <string name="review_dialog_title">Tidak tertarik?</string>
+    <string name="review_dialog_sub_title">Tolong bagikan mengapa</string>
+    <string name="review_option_1">Jangan tahu apa itu?</string>
+    <string name="review_option_2">Terlalu mahal</string>
+    <string name="review_option_3">Saya tidak membayar aplikasi</string>
+    <string name="review_option_4">Saya perlu mencobanya dulu</string>
+
+    <string name="rate_dialog_title">Menikmati aplikasinya?</string>
+    <string name="rate_dialog_sub_title">Beri tahu kami dengan meninggalkan peringkat bintang \ n5</string>
+    <string name="rate_dialog_ask_me_later">Tanya aku nanti!</string>
+
+    <string name="feedback_title">Masukan</string>
+    <string name="feedback_sub_title">Bagikan pengalaman Anda dengan kami</string>
+    <string name="feedback_what_is_your_profession">Apa profesi Anda?</string>
+    <string name="feedback_write_your_suggestions">Tulis saran Anda</string>
+    <string name="feedback_write_here">Tulis di sini ...</string>
+    <string name="feedback_submit">Kirim</string>
+
+    <string name="internet_offline">Tidak Ada Koneksi Internet.</string>
+    <string name="write_your_profession">Silakan masukkan profesi Anda.</string>
+    <string name="write_your_suggestions">Silakan masukkan saran Anda.</string>
+    <string name="feedback_response_success">Umpan balik berhasil dikirim</string>
+    <string name="feedback_response_error">Terjadi kesalahan, Silakan coba lagi nanti.</string>
+</resources>

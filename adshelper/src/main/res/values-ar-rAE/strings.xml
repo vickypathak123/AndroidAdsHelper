@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">العودة</string>
     <string name="exit_dialog_positive_button_text">الخروج من التطبيق</string>
     <string name="exit_dialog_title">هل أنت متأكد، هل تريد الخروج؟</string>
+
+    <string name="update_title">مطلوب التحديث</string>
+    <string name="update_sub_title">لقد لاحظنا أنك تستخدم إصدار التطبيق القديم لفترة طويلة. يرجى التحديث إلى أحدث إصدار والاستمتاع بالتطبيق.</string>
+    <string name="update">تحديث</string>
+    <string name="cancel">إلغاء</string>
+
+    <string name="review_dialog_title">غير مهتم؟</string>
+    <string name="review_dialog_sub_title">يرجى مشاركة السبب</string>
+    <string name="review_option_1">لا أعرف ما هو؟</string>
+    <string name="review_option_2">غالي الثمن للغاية</string>
+    <string name="review_option_3">لا أدفع مقابل التطبيقات</string>
+    <string name="review_option_4">يجب أن أجربه أولاً</string>
+
+    <string name="rate_dialog_title">الاستمتاع بالتطبيق؟</string>
+    <string name="rate_dialog_sub_title">دعنا نعرف بترك تصنيف نجمة \n5</string>
+    <string name="rate_dialog_ask_me_later">اسألني لاحقًا!</string>
+
+    <string name="feedback_title">تعليق</string>
+    <string name="feedback_sub_title">شارك تجربتك معنا</string>
+    <string name="feedback_what_is_your_profession">ما هي مهنتك؟</string>
+    <string name="feedback_write_your_suggestions">اكتب اقتراحاتك</string>
+    <string name="feedback_write_here">اكتب هنا ...</string>
+    <string name="feedback_submit">يُقدِّم</string>
+
+    <string name="internet_offline">لا يوجد اتصال بالإنترنت.</string>
+    <string name="write_your_profession">يرجى إدخال مهنتك.</string>
+    <string name="write_your_suggestions">يرجى إدخال اقتراحاتك.</string>
+    <string name="feedback_response_success">تم إرسال التعليقات بنجاح</string>
+    <string name="feedback_response_error">حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا.</string>
 </resources>

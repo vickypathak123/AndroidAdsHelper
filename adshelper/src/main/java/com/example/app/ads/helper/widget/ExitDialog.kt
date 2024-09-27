@@ -11,9 +11,9 @@ import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.beVisibleIf
 import com.example.app.ads.helper.base.utils.getColorRes
 import com.example.app.ads.helper.databinding.DialogExitBinding
-import com.example.app.ads.helper.exitTheApp
-import com.example.app.ads.helper.getLocalizedString
-import com.example.app.ads.helper.is_exit_dialog_opened
+import com.example.app.ads.helper.utils.exitTheApp
+import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.is_exit_dialog_opened
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.Locale

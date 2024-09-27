@@ -14,6 +14,16 @@
         android:supportsRtl="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".feedback.FeedBackActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:largeHeap="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/theme_feedback_activity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            tools:ignore="DiscouragedApi, LockedOrientationActivity"/>
+        <activity
             android:name=".purchase.fourplan.activity.FourPlanActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"

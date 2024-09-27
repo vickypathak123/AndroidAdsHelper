@@ -13,7 +13,7 @@ import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.launcher.tabs.CustomTabsHelper
-import com.example.app.ads.helper.stopShowingOpenAdInternally
+import com.example.app.ads.helper.utils.stopShowingOpenAdInternally
 
 object Launcher {
     private fun openUri(context: Context, uri: String): Boolean = runCatching {

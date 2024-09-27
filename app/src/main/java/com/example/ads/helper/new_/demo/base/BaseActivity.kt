@@ -37,11 +37,14 @@ import com.example.ads.helper.new_.demo.base.shared_prefs.BaseConfig
 import com.example.ads.helper.new_.demo.base.utils.isTiramisuPlus
 import com.example.ads.helper.new_.demo.isNeedToLoadAd
 import com.example.ads.helper.new_.demo.utils.AppTimer
+import com.example.ads.helper.new_.demo.utils.selectedAppLanguageCode
+import com.example.ads.helper.new_.demo.widget.SelectLanguageDialog
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
-import com.example.app.ads.helper.isAppForeground
-import com.example.app.ads.helper.isInternetAvailable
-import com.example.app.ads.helper.isOnline
+import com.example.app.ads.helper.utils.isAppForeground
+import com.example.app.ads.helper.utils.isInternetAvailable
+import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.widget.ExitDialog
+import com.example.app.ads.helper.widget.RateAppDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -77,6 +80,9 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View.OnClickL
 
     var isOnPause: Boolean = false
     val mBaseConfig: BaseConfig by lazy { BaseConfig(mActivity) }
+
+    val mRateAppDialog: RateAppDialog by lazy { RateAppDialog(mActivity) }
+    val mSelectLanguageDialog: SelectLanguageDialog by lazy { SelectLanguageDialog(mActivity) }
 
     var mTimer: AppTimer? = null
 
@@ -648,7 +654,7 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View.OnClickL
 
 //        mExitDialog.show()
         mExitDialog.show(
-            fLanguageCode = "pt",
+            fLanguageCode = selectedAppLanguageCode,
             subTitleId = com.example.app.ads.helper.R.string.rating_sub_header
         )
 
@@ -707,5 +713,7 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View.OnClickL
     override fun onDestroy() {
         super.onDestroy()
         mJob.cancel()
+        mRateAppDialog.dismiss()
+        mSelectLanguageDialog.dismiss()
     }
 }

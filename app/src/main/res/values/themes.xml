@@ -35,8 +35,8 @@
         <item name="android:datePickerDialogTheme">@style/AlertDialogTheme</item>
         <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
 
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="fontFamily">sans-serif</item>
+<!--        <item name="android:fontFamily">sans-serif</item>-->
+<!--        <item name="fontFamily">sans-serif</item>-->
 
         <item name="native_ads_main_color">#9C27B0</item>
         <item name="native_ads_body_text_color">#673AB7</item>

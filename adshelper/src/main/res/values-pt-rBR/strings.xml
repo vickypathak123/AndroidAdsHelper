@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">Voltar</string>
     <string name="exit_dialog_positive_button_text">Sair do aplicativo</string>
     <string name="exit_dialog_title">Tem certeza de que deseja sair?</string>
+
+    <string name="update_title">Atualização necessária</string>
+    <string name="update_sub_title">Percebemos que você está usando a versão obsoleta do aplicativo há muito tempo. Atualize para a versão mais recente e aproveite o aplicativo.</string>
+    <string name="update">Atualizar</string>
+    <string name="cancel">Cancelar</string>
+
+    <string name="review_dialog_title">Não está interessado?</string>
+    <string name="review_dialog_sub_title">Por favor, compartilhe o motivo</string>
+    <string name="review_option_1">Não sabe o que é?</string>
+    <string name="review_option_2">Muito caro</string>
+    <string name="review_option_3">Não pago por aplicativos</string>
+    <string name="review_option_4">Preciso experimentar primeiro</string>
+
+    <string name="rate_dialog_title">Desfrutando do aplicativo?</string>
+    <string name="rate_dialog_sub_title">Informe -nos deixando uma classificação de estrela \n5</string>
+    <string name="rate_dialog_ask_me_later">Pergunte -me mais tarde!</string>
+
+    <string name="feedback_title">Opinião</string>
+    <string name="feedback_sub_title">Compartilhe sua experiência conosco</string>
+    <string name="feedback_what_is_your_profession">Qual é a sua profissão?</string>
+    <string name="feedback_write_your_suggestions">Escreva suas sugestões</string>
+    <string name="feedback_write_here">Escreva aqui ...</string>
+    <string name="feedback_submit">Enviar</string>
+
+    <string name="internet_offline">Sem conexão com a Internet.</string>
+    <string name="write_your_profession">Por favor, insira sua profissão.</string>
+    <string name="write_your_suggestions">Por favor, insira suas sugestões.</string>
+    <string name="feedback_response_success">Feedback enviado com sucesso</string>
+    <string name="feedback_response_error">Algo deu errado, tente novamente mais tarde.</string>
 </resources>

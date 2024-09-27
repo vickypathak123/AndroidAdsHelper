@@ -10,11 +10,12 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.getColorRes
 import com.example.app.ads.helper.base.utils.getColorStateRes
-import com.example.app.ads.helper.clearAll
-import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_CHANNEL_ID
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_CHANNEL_NAME
 import com.example.app.ads.helper.notification.SUBSCRIPTION_NOTIFICATION_ID
@@ -35,6 +36,9 @@ import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataMode
 import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
+import com.example.app.ads.helper.utils.clearAll
+import com.example.app.ads.helper.utils.logE
+import com.example.app.ads.helper.widget.ReviewDialog
 import java.io.Serializable
 import java.lang.ref.WeakReference
 
@@ -44,11 +48,11 @@ object VasuSubscriptionConfig {
      * initialization of subscription screen ui data
      */
     @JvmStatic
-    fun with(fActivity: Activity): ActivityData {
-        return ActivityData(fActivity = fActivity)
+    fun with(fActivity: Activity, fAppVersionName: String): ActivityData {
+        return ActivityData(fActivity = fActivity, fAppVersionName = fAppVersionName)
     }
 
-    class ActivityData(private val fActivity: Activity) : Serializable {
+    class ActivityData(private val fActivity: Activity, private val fAppVersionName: String) : Serializable {
 
         @Suppress("PropertyName")
         val TAG: String = "Akshay_AdMob_${javaClass.simpleName}"
@@ -151,9 +155,6 @@ object VasuSubscriptionConfig {
         fun launchScreen(
             fPlanScreenType: MorePlanScreenType = MorePlanScreenType.fromName(value = mVasuSubscriptionRemoteConfigModel.morePlanScreenType.takeIf { it.isNotEmpty() } ?: "four_plan_screen"),
             isFromSplash: Boolean = false,
-//            showCloseAdForTimeLineScreen: Boolean = false,
-//            showCloseAdForViewAllPlanScreenOpenAfterSplash: Boolean = false,
-//            showCloseAdForViewAllPlanScreen: Boolean = false,
             directShowMorePlanScreen: Boolean = false,
             onSubscriptionEvent: (eventType: SubscriptionEventType) -> Unit,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
@@ -184,14 +185,18 @@ object VasuSubscriptionConfig {
                         onScreenFinish.invoke(isUserPurchaseAnyPlan)
                     }
 
+                    val reviewDialogData = Pair(mActivity.packageName, fAppVersionName)
+
                     if (!directShowMorePlanScreen && ProductPurchaseHelper.isNeedToLaunchTimeLineScreen) {
                         launchTimeLineScreen(
                             fNotificationData = notificationData,
+                            reviewDialogData = reviewDialogData,
                             onViewAllPlans = {
                                 fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_MORE_PLANS_CLICK)
                                 launchMorePlanScreen(
                                     fType = fPlanScreenType,
                                     isFromTimeLine = true,
+                                    reviewDialogData = reviewDialogData,
                                     onScreenFinish = { isUserPurchaseAnyPlan ->
                                         if (isUserPurchaseAnyPlan) {
                                             TimeLineActivity.onPurchaseFromMorePlanScreen.invoke()
@@ -199,11 +204,12 @@ object VasuSubscriptionConfig {
                                     }
                                 )
                             },
-                            onScreenFinish = lScreenFinish
+                            onScreenFinish = lScreenFinish,
                         )
                     } else {
                         launchMorePlanScreen(
                             fType = fPlanScreenType,
+                            reviewDialogData = reviewDialogData,
                             isFromTimeLine = false,
                             onScreenFinish = lScreenFinish
                         )
@@ -219,6 +225,7 @@ object VasuSubscriptionConfig {
 
         private fun launchTimeLineScreen(
             fNotificationData: NotificationData,
+            reviewDialogData: Pair<String, String>,
             onViewAllPlans: () -> Unit,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit
         ) {
@@ -241,27 +248,31 @@ object VasuSubscriptionConfig {
                 ),
                 notificationData = fNotificationData,
                 onViewAllPlans = onViewAllPlans,
-                onScreenFinish = onScreenFinish
+                onScreenFinish = onScreenFinish,
+                reviewDialogData = reviewDialogData,
             )
         }
 
         private fun launchMorePlanScreen(
             fType: MorePlanScreenType,
             isFromTimeLine: Boolean,
+            reviewDialogData: Pair<String, String>,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
         ) {
             when (fType) {
                 MorePlanScreenType.SIX_BOX_SCREEN -> {
                     launchViewAllPlansScreen(
                         isFromTimeLine = isFromTimeLine,
-                        onScreenFinish = onScreenFinish
+                        onScreenFinish = onScreenFinish,
+                        reviewDialogData = reviewDialogData
                     )
                 }
 
                 MorePlanScreenType.FOUR_PLAN_SCREEN -> {
                     launchFourPlanScreen(
                         isFromTimeLine = isFromTimeLine,
-                        onScreenFinish = onScreenFinish
+                        onScreenFinish = onScreenFinish,
+                        reviewDialogData = reviewDialogData,
                     )
                 }
             }
@@ -269,6 +280,7 @@ object VasuSubscriptionConfig {
 
         private fun launchViewAllPlansScreen(
             isFromTimeLine: Boolean,
+            reviewDialogData: Pair<String, String>,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
         ) {
             ViewAllPlansActivity.launchScreen(
@@ -306,11 +318,13 @@ object VasuSubscriptionConfig {
                     unselectedSkuBackgroundColor = mViewAllPlansScreenData.unselectedSkuBackgroundColor,
                 ),
                 onScreenFinish = onScreenFinish,
+                reviewDialogData = reviewDialogData,
             )
         }
 
         private fun launchFourPlanScreen(
             isFromTimeLine: Boolean,
+            reviewDialogData: Pair<String, String>,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
         ) {
             FourPlanActivity.launchScreen(
@@ -323,6 +337,7 @@ object VasuSubscriptionConfig {
 //                    lifeTimePlanDiscountPercentage = mFourPlanScreenData.lifeTimePlanDiscountPercentage,
                 ),
                 onScreenFinish = onScreenFinish,
+                reviewDialogData = reviewDialogData,
             )
         }
     }

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/Theme.Material3.DayNight"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="false"
+    app:contentPadding="0dp"
+    app:shapeAppearance="@style/top_round_16_dp"
+    app:shapeAppearanceOverlay="@style/top_round_16_dp"
+    app:strokeColor="@android:color/transparent"
+    app:strokeWidth="0dp"
+    tools:cardBackgroundColor="@android:color/holo_orange_dark"
+    tools:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_exit_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@android:color/holo_purple">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/ads_metropolis_regular"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingHorizontal="@dimen/review_dialog_option_text_padding_Horizontal"
+            android:singleLine="true"
+            android:text="@string/review_dialog_title"
+            android:textColor="#192045"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_sub_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/txt_sub_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/ads_metropolis_regular"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:layout_marginBottom="@dimen/review_dialog_option_text_padding_vertical"
+            android:paddingHorizontal="@dimen/review_dialog_option_text_padding_Horizontal"
+            android:singleLine="true"
+            android:text="@string/review_dialog_sub_title"
+            android:textColor="#6D7172"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toTopOf="@+id/divider_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+        <View
+            android:id="@+id/divider_1"
+            style="@style/theme_review_dialog_option_item_divider"
+            app:layout_constraintBottom_toTopOf="@+id/txt_option_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_sub_title" />
+
+        <TextView
+            android:id="@+id/txt_option_1"
+            style="@style/theme_review_dialog_option_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/review_dialog_option_text_padding_Horizontal"
+            android:paddingVertical="@dimen/review_dialog_option_text_padding_vertical"
+            android:text="@string/review_option_1"
+            app:layout_constraintBottom_toTopOf="@+id/divider_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_1" />
+
+        <View
+            android:id="@+id/divider_2"
+            style="@style/theme_review_dialog_option_item_divider"
+            app:layout_constraintBottom_toTopOf="@+id/txt_option_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_option_1" />
+
+        <TextView
+            android:id="@+id/txt_option_2"
+            style="@style/theme_review_dialog_option_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/review_dialog_option_text_padding_Horizontal"
+            android:paddingVertical="@dimen/review_dialog_option_text_padding_vertical"
+            android:text="@string/review_option_2"
+            app:layout_constraintBottom_toTopOf="@+id/divider_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_2" />
+
+        <View
+            android:id="@+id/divider_3"
+            style="@style/theme_review_dialog_option_item_divider"
+            app:layout_constraintBottom_toTopOf="@+id/txt_option_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_option_2" />
+
+        <TextView
+            android:id="@+id/txt_option_3"
+            style="@style/theme_review_dialog_option_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/review_dialog_option_text_padding_Horizontal"
+            android:paddingVertical="@dimen/review_dialog_option_text_padding_vertical"
+            android:text="@string/review_option_3"
+            app:layout_constraintBottom_toTopOf="@+id/divider_4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_3" />
+
+        <View
+            android:id="@+id/divider_4"
+            style="@style/theme_review_dialog_option_item_divider"
+            app:layout_constraintBottom_toTopOf="@+id/txt_option_4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_option_3" />
+
+        <TextView
+            android:id="@+id/txt_option_4"
+            style="@style/theme_review_dialog_option_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/review_dialog_option_text_padding_Horizontal"
+            android:paddingVertical="@dimen/review_dialog_option_text_padding_vertical"
+            android:text="@string/review_option_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

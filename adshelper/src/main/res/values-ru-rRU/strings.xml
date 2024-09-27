@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">Вернуться</string>
     <string name="exit_dialog_positive_button_text">Выйти из приложения</string>
     <string name="exit_dialog_title">Вы уверены, что хотите выйти?</string>
+
+    <string name="update_title">Требуется обновление</string>
+    <string name="update_sub_title">Мы заметили, что вы долгое время использовали устаревшую версию приложения. Пожалуйста, обновитесь до последней версии и наслаждайтесь приложением.</string>
+    <string name="update">Обновить</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="review_dialog_title">Не интересно?</string>
+    <string name="review_dialog_sub_title">Поделитесь, почему</string>
+    <string name="review_option_1">Не знаете, что это?</string>
+    <string name="review_option_2">Слишком дорого</string>
+    <string name="review_option_3">Я не плачу за приложения</string>
+    <string name="review_option_4">Мне нужно сначала попробовать</string>
+
+    <string name="rate_dialog_title">Наслаждаясь приложением?</string>
+    <string name="rate_dialog_sub_title">Дайте нам знать, оставив рейтинг \n5 Star</string>
+    <string name="rate_dialog_ask_me_later">Спросите меня позже!</string>
+
+    <string name="feedback_title">Обратная связь</string>
+    <string name="feedback_sub_title">Поделитесь своим опытом с нами</string>
+    <string name="feedback_what_is_your_profession">Какая у вас профессия?</string>
+    <string name="feedback_write_your_suggestions">Напишите свои предложения</string>
+    <string name="feedback_write_here">Напишите здесь ...</string>
+    <string name="feedback_submit">Представлять на рассмотрение</string>
+
+    <string name="internet_offline">Нет подключения к Интернету.</string>
+    <string name="write_your_profession">Введите свою профессию.</string>
+    <string name="write_your_suggestions">Введите свои предложения.</string>
+    <string name="feedback_response_success">Отзыв успешно отправлен</string>
+    <string name="feedback_response_error">Что-то пошло не так. Повторите попытку позже.</string>
 </resources>

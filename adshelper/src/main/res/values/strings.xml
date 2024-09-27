@@ -80,4 +80,33 @@
     <string name="exit_dialog_negative_button_text">Go Back</string>
     <string name="exit_dialog_positive_button_text">Exit App</string>
     <string name="exit_dialog_title">Are you sure, you want to exit ?</string>
+
+    <string name="update_title">Update Required</string>
+    <string name="update_sub_title">We\'ve noticed that you\'ve been using the deprecated application version for a long time. Please update to the latest version and enjoy the app.</string>
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="review_dialog_title">Not Interested?</string>
+    <string name="review_dialog_sub_title">Please Share Why</string>
+    <string name="review_option_1">Don\'t know what it is ?</string>
+    <string name="review_option_2">Too expensive</string>
+    <string name="review_option_3">I don\'t pay for apps</string>
+    <string name="review_option_4">I need to try it first</string>
+
+    <string name="rate_dialog_title">Enjoying the app ?</string>
+    <string name="rate_dialog_sub_title">Let us know by leaving a\n5 star rating</string>
+    <string name="rate_dialog_ask_me_later">Ask me later!</string>
+
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_sub_title">Share your experience with us</string>
+    <string name="feedback_what_is_your_profession">What is your Profession?</string>
+    <string name="feedback_write_your_suggestions">Write your Suggestions</string>
+    <string name="feedback_write_here">Write Here...</string>
+    <string name="feedback_submit">Submit</string>
+
+    <string name="internet_offline">No Internet Connection.</string>
+    <string name="write_your_profession">Please enter your profession.</string>
+    <string name="write_your_suggestions">Please enter your suggestions.</string>
+    <string name="feedback_response_success">Feedback submitted successfully</string>
+    <string name="feedback_response_error">Something went wrong, Please try again later.</string>
 </resources>

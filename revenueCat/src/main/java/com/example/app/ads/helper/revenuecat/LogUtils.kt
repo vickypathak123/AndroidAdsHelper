@@ -3,6 +3,8 @@
 package com.example.app.ads.helper.revenuecat
 
 import android.util.Log
+import com.example.app.ads.helper.utils.getDebugModeStatus
+import com.example.app.ads.helper.utils.getPurchaseHistoryLogStatus
 
 /**
  * @author Akshay Harsoda
@@ -10,8 +12,8 @@ import android.util.Log
  * @updated 24 Jun 2024
  */
 
-internal val isEnableDebugMode: Boolean get() = com.example.app.ads.helper.getDebugModeStatus()
-internal val isPurchaseHistoryLogEnable: Boolean get() = com.example.app.ads.helper.getPurchaseHistoryLogStatus()
+internal val isEnableDebugMode: Boolean get() = getDebugModeStatus()
+internal val isPurchaseHistoryLogEnable: Boolean get() = getPurchaseHistoryLogStatus()
 
 internal fun logD(tag: String, message: String) {
     if (isEnableDebugMode) {

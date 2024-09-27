@@ -5,6 +5,7 @@ import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInters
 import com.example.app.ads.helper.openad.AppOpenAdHelper.showAppOpenAd
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
+import com.example.app.ads.helper.utils.logE
 
 object VasuSplashConfig {
 

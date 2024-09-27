@@ -9,8 +9,6 @@ import android.content.Intent
 import android.content.IntentSender
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -37,12 +35,12 @@ import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.app.ads.helper.base.utils.isTiramisuPlus
-import com.example.app.ads.helper.base.utils.makeText
-import com.example.app.ads.helper.exitTheApp
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper.showInterstitialAd
-import com.example.app.ads.helper.isAppForeground
-import com.example.app.ads.helper.isInternetAvailable
-import com.example.app.ads.helper.isOnline
+import com.example.app.ads.helper.utils.exitTheApp
+import com.example.app.ads.helper.utils.isAppForeground
+import com.example.app.ads.helper.utils.isInternetAvailable
+import com.example.app.ads.helper.utils.isOnline
+import com.example.app.ads.helper.widget.ReviewDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -81,6 +79,10 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
         get() = mJob + Dispatchers.Main
 
     var isSystemBackButtonPressed: Boolean = false
+
+    val mReviewDialog: ReviewDialog by lazy {
+        ReviewDialog(fActivity = mActivity)
+    }
 
     private var mOnBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(
         true // default to enabled
@@ -624,32 +626,24 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
 
     }
 
-//    private var doubleBackToExitPressedOnce = false
-    open fun customOnBackPressed() {
-//        if (!isTaskRoot) {
-            // If the activity is not the root of the task, allow finish to proceed normally.
-            backFromCurrentScreen()
-//            return
-//        } else {
-//            backFroExit()
-//        }
+    @UiThread
+    open fun needToShowReviewDialog(): Boolean {
+        return false
+    }
+    @UiThread
+    open fun showReviewDialog(onNextAction: () -> Unit) {
+
     }
 
-//    fun backFroExit() {
-        //            mExitDialog.show {
-//                        exitApplication()
-        //            }
-
-//        if (doubleBackToExitPressedOnce) {
-//            exitApplication()
-//            return
-//        }
-//
-//        this.doubleBackToExitPressedOnce = true
-//        mActivity.makeText("Please click BACK again to exit")
-//
-//        Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 1500)
-//    }
+    open fun customOnBackPressed() {
+        if (isAppForeground && needToShowReviewDialog()) {
+            showReviewDialog {
+                backFromCurrentScreen()
+            }
+        } else {
+            backFromCurrentScreen()
+        }
+    }
 
     @UiThread
     open fun needToShowBackAd(): Boolean {
@@ -665,6 +659,8 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
             directBack()
         }
     }
+
+
 
     @UiThread
     open fun onScreenFinishing() {
@@ -695,6 +691,7 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
 
     override fun onDestroy() {
         super.onDestroy()
+        mReviewDialog.dismiss()
         mJob.cancel()
     }
 }

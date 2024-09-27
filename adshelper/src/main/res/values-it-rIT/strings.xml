@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">Torna indietro</string>
     <string name="exit_dialog_positive_button_text">Esci dall\'app</string>
     <string name="exit_dialog_title">Sei sicuro, vuoi uscire?</string>
+
+    <string name="update_title">Aggiornamento richiesto</string>
+    <string name="update_sub_title">Abbiamo notato che stai utilizzando la versione obsoleta dell\'applicazione da molto tempo. Aggiorna all\'ultima versione e goditi l\'app.</string>
+    <string name="update">Aggiorna</string>
+    <string name="cancel">Annulla</string>
+
+    <string name="review_dialog_title">Non ti interessa?</string>
+    <string name="review_dialog_sub_title">Per favore, spiegaci perché</string>
+    <string name="review_option_1">Non sai di cosa si tratta?</string>
+    <string name="review_option_2">Troppo costoso</string>
+    <string name="review_option_3">Non pago le app</string>
+    <string name="review_option_4">Devo prima provarlo</string>
+
+    <string name="rate_dialog_title">Ti godi l\'app?</string>
+    <string name="rate_dialog_sub_title">Facci sapere lasciando una valutazione di stelle \ n5</string>
+    <string name="rate_dialog_ask_me_later">Chiedimi più tardi!</string>
+
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_sub_title">Condividi la tua esperienza con noi</string>
+    <string name="feedback_what_is_your_profession">Qual è la tua professione?</string>
+    <string name="feedback_write_your_suggestions">Scrivi i tuoi suggerimenti</string>
+    <string name="feedback_write_here">Scrivi qui ...</string>
+    <string name="feedback_submit">Invia</string>
+
+    <string name="internet_offline">Nessuna connessione a Internet.</string>
+    <string name="write_your_profession">Inserisci la tua professione.</string>
+    <string name="write_your_suggestions">Inserisci i tuoi suggerimenti.</string>
+    <string name="feedback_response_success">Feedback inviato correttamente</string>
+    <string name="feedback_response_error">Si è verificato un problema, riprova più tardi.</string>
 </resources>

@@ -34,15 +34,16 @@ import com.example.app.ads.helper.base.utils.setTextSizeDimension
 import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.ActivityFourPlanBinding
 import com.example.app.ads.helper.databinding.FourPlanRatingIndicatorBinding
-import com.example.app.ads.helper.getLocalizedString
-import com.example.app.ads.helper.isEnglishLanguage
-import com.example.app.ads.helper.isRTLDirectionFromLocale
+import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isEnglishLanguage
+import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
-import com.example.app.ads.helper.logE
+import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_PRIVACY_POLICY
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_TERMS_OF_USE
 import com.example.app.ads.helper.purchase.fireSubscriptionEvent
@@ -52,16 +53,19 @@ import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItemType
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanScreenDataModel
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanUserItem
+import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.product.PlanOfferType
 import com.example.app.ads.helper.purchase.product.ProductInfo
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getBillingPeriodName
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFullBillingPeriod
 import com.example.app.ads.helper.purchase.removeTrailingZeros
+import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
+import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity.Companion
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
-import com.example.app.ads.helper.toCamelCase
+import com.example.app.ads.helper.utils.toCamelCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -220,15 +224,18 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
     companion object {
         private var screenDataModel: FourPlanScreenDataModel? = null
         private var onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
+        private var reviewDialogData: Pair<String, String> = Pair("", "")
 
         internal fun launchScreen(
             fActivity: Activity,
             isFromTimeLine: Boolean,
             screenDataModel: FourPlanScreenDataModel,
+            reviewDialogData: Pair<String, String>,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
         ) {
             Companion.screenDataModel = screenDataModel
             Companion.onScreenFinish = onScreenFinish
+            Companion.reviewDialogData = reviewDialogData
 
             val lIntent = Intent(fActivity, FourPlanActivity::class.java)
             lIntent.putExtra("isFromTimeLine", isFromTimeLine)
@@ -995,7 +1002,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
     override fun needToShowBackAd(): Boolean {
         var isShowAd = false
         if (!isFromTimeLine) {
-            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed) {
+            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
                 if (IS_FROM_SPLASH && SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH) {
                     isShowAd = true
                 } else if (!IS_FROM_SPLASH && SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN) {
@@ -1006,12 +1013,36 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
         return isShowAd
     }
 
+    override fun needToShowReviewDialog(): Boolean {
+//        return (!isFromTimeLine) && IS_FROM_SPLASH && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
+    }
+
+    private var isFromReviewDialog: Boolean = false
+
+    override fun showReviewDialog(onNextAction: () -> Unit) {
+        super.showReviewDialog(onNextAction)
+        mReviewDialog.show(
+            fPackageName = reviewDialogData.first,
+            fVersionName = reviewDialogData.second,
+            fLanguageCode = SUBSCRIPTION_DATA_LANGUAGE_CODE,
+            onDismiss = {
+                isFromReviewDialog = true
+                onNextAction.invoke()
+            },
+        )
+    }
+
     override fun customOnBackPressed() {
-        if (mBinding.ivClose.isPressed || isSystemBackButtonPressed) {
-            fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
+        if (needToShowReviewDialog()) {
+            super.customOnBackPressed()
+        } else {
+            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
+                fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
+            }
+            super.customOnBackPressed()
+            isSystemBackButtonPressed = false
         }
-        super.customOnBackPressed()
-        isSystemBackButtonPressed = false
     }
 
     override fun onStop() {

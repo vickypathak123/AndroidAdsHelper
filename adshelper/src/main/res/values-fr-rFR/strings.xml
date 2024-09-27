@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">Retour</string>
     <string name="exit_dialog_positive_button_text">Quitter l\'application</string>
     <string name="exit_dialog_title">Êtes-vous sûr de vouloir quitter ?</string>
+
+    <string name="update_title">Mise à jour requise</string>
+    <string name="update_sub_title">Nous avons remarqué que vous utilisez la version obsolète de l\'application depuis longtemps. Veuillez effectuer la mise à jour vers la dernière version et profiter de l\'application.</string>
+    <string name="update">Mise à jour</string>
+    <string name="cancel">Annuler</string>
+
+    <string name="review_dialog_title">Pas intéressé?</string>
+    <string name="review_dialog_sub_title">Veuillez partager pourquoi</string>
+    <string name="review_option_1">Je ne sais pas ce que c\'est?</string>
+    <string name="review_option_2">Trop cher</string>
+    <string name="review_option_3">Je ne paie pas pour les applications</string>
+    <string name="review_option_4">Je dois d\'abord l\'essayer</string>
+
+    <string name="rate_dialog_title">Profiter de l\'application?</string>
+    <string name="rate_dialog_sub_title">Faites-nous savoir en laissant une note d\'étoile \n5</string>
+    <string name="rate_dialog_ask_me_later">Demandez-moi plus tard!</string>
+
+    <string name="feedback_title">Retour</string>
+    <string name="feedback_sub_title">Partagez votre expérience avec nous</string>
+    <string name="feedback_what_is_your_profession">Quelle est votre profession?</string>
+    <string name="feedback_write_your_suggestions">Écrivez vos suggestions</string>
+    <string name="feedback_write_here">Écrivez ici...</string>
+    <string name="feedback_submit">Soumettre</string>
+
+    <string name="internet_offline">Pas de connexion Internet.</string>
+    <string name="write_your_profession">Veuillez saisir votre profession.</string>
+    <string name="write_your_suggestions">Veuillez saisir vos suggestions.</string>
+    <string name="feedback_response_success">Commentaire envoyé avec succès</string>
+    <string name="feedback_response_error">Une erreur s\'est produite, veuillez réessayer plus tard.</string>
 </resources>

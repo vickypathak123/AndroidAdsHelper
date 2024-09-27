@@ -76,4 +76,33 @@
     <string name="exit_dialog_negative_button_text">Volver</string>
     <string name="exit_dialog_positive_button_text">Salir de la aplicación</string>
     <string name="exit_dialog_title">¿Está seguro de que desea salir?</string>
+
+    <string name="update_title">Actualización requerida</string>
+    <string name="update_sub_title">Hemos notado que ha estado usando la versión obsoleta de la aplicación durante mucho tiempo. Actualice a la última versión y disfrute de la aplicación.</string>
+    <string name="update">Actualizar</string>
+    <string name="cancel">Cancelar</string>
+
+    <string name="review_dialog_title">¿No te interesa?</string>
+    <string name="review_dialog_sub_title">Por favor, comparte por qué</string>
+    <string name="review_option_1">¿No sabes qué es?</string>
+    <string name="review_option_2">Es demasiado caro</string>
+    <string name="review_option_3">No pago por las aplicaciones</string>
+    <string name="review_option_4">Necesito probarlo primero</string>
+
+    <string name="rate_dialog_title">¿Disfrutando de la aplicación?</string>
+    <string name="rate_dialog_sub_title">Háganos saber dejando una calificación de estrella \ n5</string>
+    <string name="rate_dialog_ask_me_later">¡Pregúntame más tarde!</string>
+
+    <string name="feedback_title">Comentario</string>
+    <string name="feedback_sub_title">Comparta su experiencia con nosotros</string>
+    <string name="feedback_what_is_your_profession">¿Cuál es tu profesión?</string>
+    <string name="feedback_write_your_suggestions">Escribe tus sugerencias</string>
+    <string name="feedback_write_here">Escribe aquí...</string>
+    <string name="feedback_submit">Entregar</string>
+
+    <string name="internet_offline">Sin conexión a Internet.</string>
+    <string name="write_your_profession">Ingrese su profesión.</string>
+    <string name="write_your_suggestions">Ingrese sus sugerencias.</string>
+    <string name="feedback_response_success">Comentarios enviados correctamente.</string>
+    <string name="feedback_response_error">Algo salió mal. Inténtelo nuevamente más tarde.</string>
 </resources>

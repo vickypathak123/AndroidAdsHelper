@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">Gå tilbage</string>
     <string name="exit_dialog_positive_button_text">Afslut app</string>
     <string name="exit_dialog_title">Er du sikker på, at du vil afslutte?</string>
+
+    <string name="update_title">Opdatering påkrævet</string>
+    <string name="update_sub_title">Vi har bemærket, at du har brugt den forældede programversion i lang tid. Opdater venligst til den nyeste version og nyd appen.</string>
+    <string name="update">Opdater</string>
+    <string name="cancel">Annuller</string>
+
+    <string name="review_dialog_title">Ikke interesseret?</string>
+    <string name="review_dialog_sub_title">Del venligst hvorfor</string>
+    <string name="review_option_1">Ved du ikke, hvad det er?</string>
+    <string name="review_option_2">For dyrt</string>
+    <string name="review_option_3">Jeg betaler ikke for apps</string>
+    <string name="review_option_4">Jeg skal prøve det først</string>
+
+    <string name="rate_dialog_title">Nyder appen?</string>
+    <string name="rate_dialog_sub_title">Fortæl os det ved at forlade en \n5 -stjernevurdering</string>
+    <string name="rate_dialog_ask_me_later">Spørg mig senere!</string>
+
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_sub_title">Del din oplevelse med os</string>
+    <string name="feedback_what_is_your_profession">Hvad er dit erhverv?</string>
+    <string name="feedback_write_your_suggestions">Skriv dine forslag</string>
+    <string name="feedback_write_here">Skriv her ...</string>
+    <string name="feedback_submit">Indsende</string>
+
+    <string name="internet_offline">Ingen internetforbindelse.</string>
+    <string name="write_your_profession">Angiv venligst dit erhverv.</string>
+    <string name="write_your_suggestions">Angiv venligst dine forslag.</string>
+    <string name="feedback_response_success">Feedback indsendt</string>
+    <string name="feedback_response_error">Noget gik galt. Prøv venligst igen senere.</string>
 </resources>

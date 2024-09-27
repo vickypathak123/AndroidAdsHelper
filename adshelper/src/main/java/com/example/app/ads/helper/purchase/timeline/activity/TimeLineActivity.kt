@@ -23,15 +23,13 @@ import com.example.app.ads.helper.base.utils.isTiramisuPlus
 import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.base.utils.withUnderLine
 import com.example.app.ads.helper.databinding.ActivityTimeLineBinding
-import com.example.app.ads.helper.getLocalizedString
-import com.example.app.ads.helper.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
-import com.example.app.ads.helper.logE
 import com.example.app.ads.helper.notification.NotificationDataModel
 import com.example.app.ads.helper.notification.scheduleNotification
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_PRIVACY_POLICY
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_TERMS_OF_USE
 import com.example.app.ads.helper.purchase.VasuSubscriptionConfig.NotificationData
@@ -48,6 +46,9 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isYearl
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
+import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
+import com.example.app.ads.helper.utils.logE
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -100,12 +101,15 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         private var onViewAllPlans: () -> Unit = {}
         private var onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
 
+        private var reviewDialogData: Pair<String, String> = Pair("", "")
+
         internal var onPurchaseFromMorePlanScreen: () -> Unit = {}
 
         internal fun launchScreen(
             fActivity: Activity,
             screenDataModel: TimeLineScreenDataModel,
             notificationData: NotificationData,
+            reviewDialogData: Pair<String, String>,
             onViewAllPlans: () -> Unit = {},
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
         ) {
@@ -113,6 +117,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
             Companion.onScreenFinish = onScreenFinish
             Companion.screenDataModel = screenDataModel
             Companion.notificationData = notificationData
+            Companion.reviewDialogData = reviewDialogData
 
             val lIntent = Intent(fActivity, TimeLineActivity::class.java)
 
@@ -597,7 +602,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
     override fun needToShowBackAd(): Boolean {
         var isShowAd = false
-        if (mBinding.ivClose.isPressed || isSystemBackButtonPressed) {
+        if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
             if (IS_FROM_SPLASH && SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN) {
                 isShowAd = true
             }
@@ -605,11 +610,34 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         return isShowAd
     }
 
+    override fun needToShowReviewDialog(): Boolean {
+        return (!AdsManager(context = mActivity).isReviewDialogOpened)
+    }
+
+    private var isFromReviewDialog: Boolean = false
+
+    override fun showReviewDialog(onNextAction: () -> Unit) {
+        super.showReviewDialog(onNextAction)
+        mReviewDialog.show(
+            fPackageName = reviewDialogData.first,
+            fVersionName = reviewDialogData.second,
+            fLanguageCode = SUBSCRIPTION_DATA_LANGUAGE_CODE,
+            onDismiss = {
+                isFromReviewDialog = true
+                onNextAction.invoke()
+            },
+        )
+    }
+
     override fun customOnBackPressed() {
-        if (mBinding.ivClose.isPressed || isSystemBackButtonPressed) {
-            fireSubscriptionEvent(fEventType = SubscriptionEventType.TIME_LINE_SCREEN_CLOSE)
+        if (needToShowReviewDialog()) {
+            super.customOnBackPressed()
+        } else {
+            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
+                fireSubscriptionEvent(fEventType = SubscriptionEventType.TIME_LINE_SCREEN_CLOSE)
+            }
+            super.customOnBackPressed()
+            isSystemBackButtonPressed = false
         }
-        super.customOnBackPressed()
-        isSystemBackButtonPressed = false
     }
 }

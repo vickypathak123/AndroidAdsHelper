@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">واپس جائیں</string>
     <string name="exit_dialog_positive_button_text">ایپ سے باہر نکلیں</string>
     <string name="exit_dialog_title">کیا آپ واقعی باہر نکلنا چاہتے ہیں؟</string>
+
+    <string name="update_title"> اپ ڈیٹ درکار ہے</string>
+    <string name="update_sub_title">ہم نے محسوس کیا ہے کہ آپ کافی عرصے سے فرسودہ ایپلیکیشن ورژن استعمال کر رہے ہیں۔ براہ کرم تازہ ترین ورژن میں اپ ڈیٹ کریں اور ایپ سے لطف اندوز ہوں۔</string>
+    <string name="update">اپ ڈیٹ کریں</string>
+    <string name="cancel">منسوخ کریں</string>
+
+    <string name="review_dialog_title">دلچسپی نہیں ہے؟</string>
+    <string name="review_dialog_sub_title">براہ کرم کیوں شیئر کریں</string>
+    <string name="review_option_1"> پتہ نہیں یہ کیا ہے؟</string>
+    <string name="review_option_2">بہت مہنگا</string>
+    <string name="review_option_3">میں ایپس کے لیے ادائیگی نہیں کرتا ہوں</string>
+    <string name="review_option_4">مجھے پہلے اسے آزمانا ہوگا</string>
+
+    <string name="rate_dialog_title">ایپ سے لطف اندوز ہو؟</string>
+    <string name="rate_dialog_sub_title">ہمیں \n5 اسٹار کی درجہ بندی چھوڑ کر بتائیں</string>
+    <string name="rate_dialog_ask_me_later">مجھ سے بعد میں پوچھیں!</string>
+
+    <string name="feedback_title">تاثرات</string>
+    <string name="feedback_sub_title">اپنے تجربے کو ہمارے ساتھ بانٹیں</string>
+    <string name="feedback_what_is_your_profession">آپ کا پیشہ کیا ہے؟</string>
+    <string name="feedback_write_your_suggestions">اپنی تجاویز لکھیں</string>
+    <string name="feedback_write_here">یہاں لکھیں ...</string>
+    <string name="feedback_submit">پیش کریں</string>
+
+    <string name="internet_offline">کوئی انٹرنیٹ کنکشن نہیں ہے۔</string>
+    <string name="write_your_profession">براہ کرم اپنا پیشہ درج کریں۔</string>
+    <string name="write_your_suggestions">براہ کرم اپنی تجاویز درج کریں۔</string>
+    <string name="feedback_response_success">فیڈ بیک کامیابی سے جمع کرایا گیا</string>
+    <string name="feedback_response_error">کچھ غلط ہو گیا، براہ کرم بعد میں دوبارہ کوشش کریں۔</string>
 </resources>

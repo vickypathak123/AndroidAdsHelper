@@ -49,7 +49,7 @@ dependencies {
     implementation libs.material
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
-    api project(':integritycheck')
+
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
@@ -91,7 +91,25 @@ dependencies {
     implementation libs.facebook.shimmer
     //endregion
 
+    //region Dots Indicator
     implementation libs.zhpanvip.dotsindicator
+    //endregion
+
+    //region Google Play Integrity & Admob Consent Form
+    implementation libs.integrity
+    implementation libs.google.auth.library.oauth2.http
+    implementation libs.google.api.client.jackson2
+    implementation (libs.google.api.services.playintegrity) {
+        exclude group: "com.google.guava", module: "guava"
+    }
+    implementation libs.user.messaging.platform
+    //endregion
+
+    //region Retrofit
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    implementation libs.logging.interceptor
+    //endregion
 }
 
 afterEvaluate {

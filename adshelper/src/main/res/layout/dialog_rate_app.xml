@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@android:color/holo_purple">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:theme="@style/Theme.Material3.DayNight"
+        app:cardBackgroundColor="#FBF9F9"
+        app:cardCornerRadius="@dimen/_16sdp"
+        app:cardElevation="@dimen/_6sdp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@android:color/transparent"
+        app:strokeWidth="0dp"
+        tools:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_exit_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:background="@android:color/holo_purple">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_star_icon_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_vertical_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_star_icon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_rate_app_star_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="954:999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/ads_metropolis_semi_bold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textStyle="bold"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:singleLine="true"
+                android:text="@string/rate_dialog_title"
+                android:textColor="#121212"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/gl_star_icon_bottom" />
+
+            <TextView
+                android:id="@+id/txt_sub_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/ads_metropolis_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:text="@string/rate_dialog_sub_title"
+                android:textColor="#525252"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_negative_review"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_negative_review"
+                app:layout_constraintBottom_toTopOf="@id/txt_ask_me_later"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/gl_vertical_center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_sub_title"
+                app:layout_constraintWidth_percent="0.19"
+                tools:background="@android:color/darker_gray" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_positive_review"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_positive_review"
+                app:layout_constraintBottom_toTopOf="@id/txt_ask_me_later"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/gl_vertical_center"
+                app:layout_constraintTop_toBottomOf="@id/txt_sub_title"
+                app:layout_constraintWidth_percent="0.19"
+                tools:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/txt_ask_me_later"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/ads_metropolis_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:singleLine="true"
+                android:text="@string/rate_dialog_ask_me_later"
+                android:textColor="#B4B2B2"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

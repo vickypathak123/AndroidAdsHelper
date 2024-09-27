@@ -34,7 +34,7 @@ class AppApplication : AppOpenApplication() {
         VasuAdsConfig.with(this)
             .enableOpenAd(fIsEnable = true)
             .enableDebugMode(fIsEnable = true)
-            .enablePurchaseHistoryLog(fIsEnable = true)
+            .enablePurchaseHistoryLog(fIsEnable = false)
             .needToTakeAllTestAdID(fIsTakeAll = true)
             .needToBlockInterstitialAd(fIsBlock = false)
             .enableAppOpenAdFromRemoteConfig(fIsEnable = false)

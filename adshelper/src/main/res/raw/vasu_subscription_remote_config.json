@@ -1,6 +1,6 @@
 {
   "vasu_subscription_config": {
-    "initial_subscription_open_flow": [1, 2, 3],
+    "initial_subscription_open_flow": [1],
     "purchase_button_text_index": 0,
     "initial_subscription_time_line_close_ad": true,
     "initial_subscription_more_plan_close_ad": true,

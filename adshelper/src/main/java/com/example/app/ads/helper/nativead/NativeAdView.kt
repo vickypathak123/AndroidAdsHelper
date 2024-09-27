@@ -44,11 +44,11 @@ import com.example.app.ads.helper.blurEffect.BlurImage
 import com.example.app.ads.helper.databinding.LayoutNativeAdMainBinding
 import com.example.app.ads.helper.databinding.PlaceholderShimmerBinding
 import com.example.app.ads.helper.databinding.PlaceholderTextBinding
-import com.example.app.ads.helper.isInternetAvailable
-import com.example.app.ads.helper.logE
-import com.example.app.ads.helper.logI
-import com.example.app.ads.helper.setColorAlpha
-import com.example.app.ads.helper.toCamelCase
+import com.example.app.ads.helper.utils.isInternetAvailable
+import com.example.app.ads.helper.utils.logE
+import com.example.app.ads.helper.utils.logI
+import com.example.app.ads.helper.utils.setColorAlpha
+import com.example.app.ads.helper.utils.toCamelCase
 import com.google.android.gms.ads.nativead.NativeAdOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

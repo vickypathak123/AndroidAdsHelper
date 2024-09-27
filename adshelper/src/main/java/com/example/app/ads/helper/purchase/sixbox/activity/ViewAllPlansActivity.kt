@@ -34,17 +34,19 @@ import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.ActivityViewAllPlansBinding
 import com.example.app.ads.helper.databinding.LayoutSubscribeItemBoxBinding
 import com.example.app.ads.helper.databinding.LayoutSubscribeSkuItemBinding
-import com.example.app.ads.helper.getLocalizedString
-import com.example.app.ads.helper.isRTLDirectionFromLocale
+import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
-import com.example.app.ads.helper.logE
+import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_PRIVACY_POLICY
 import com.example.app.ads.helper.purchase.SUBSCRIPTION_TERMS_OF_USE
 import com.example.app.ads.helper.purchase.fireSubscriptionEvent
+import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.product.PlanOfferType
 import com.example.app.ads.helper.purchase.product.ProductInfo
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
@@ -54,6 +56,8 @@ import com.example.app.ads.helper.purchase.sixbox.utils.BoxItem
 import com.example.app.ads.helper.purchase.sixbox.utils.InfiniteRecyclerAdapter
 import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
 import com.example.app.ads.helper.purchase.sixbox.utils.ViewAllPlansScreenDataModel
+import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
+import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity.Companion
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
@@ -464,6 +468,8 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
         private var onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
 
+        private var reviewDialogData: Pair<String, String> = Pair("", "")
+
 //        var animationDuration: Float = 500.0f
 //        var animationName: String = "DecelerateInterpolator"
 
@@ -472,10 +478,12 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
             fActivity: Activity,
             isFromTimeLine: Boolean,
             screenDataModel: ViewAllPlansScreenDataModel,
+            reviewDialogData: Pair<String, String>,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
         ) {
             Companion.screenDataModel = screenDataModel
             Companion.onScreenFinish = onScreenFinish
+            Companion.reviewDialogData = reviewDialogData
 
             val lIntent = Intent(fActivity, ViewAllPlansActivity::class.java)
             lIntent.putExtra("isFromTimeLine", isFromTimeLine)
@@ -1341,7 +1349,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
     override fun needToShowBackAd(): Boolean {
         var isShowAd = false
         if (!isFromTimeLine) {
-            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed) {
+            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
                 if (IS_FROM_SPLASH && SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH) {
                     isShowAd = true
                 } else if (!IS_FROM_SPLASH && SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN) {
@@ -1352,11 +1360,35 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         return isShowAd
     }
 
+    override fun needToShowReviewDialog(): Boolean {
+//        return (!isFromTimeLine) && IS_FROM_SPLASH && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
+    }
+
+    private var isFromReviewDialog: Boolean = false
+
+    override fun showReviewDialog(onNextAction: () -> Unit) {
+        super.showReviewDialog(onNextAction)
+        mReviewDialog.show(
+            fPackageName = reviewDialogData.first,
+            fVersionName = reviewDialogData.second,
+            fLanguageCode = SUBSCRIPTION_DATA_LANGUAGE_CODE,
+            onDismiss = {
+                isFromReviewDialog = true
+                onNextAction.invoke()
+            },
+        )
+    }
+
     override fun customOnBackPressed() {
-        if (mBinding.ivClose.isPressed || isSystemBackButtonPressed) {
-            fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
+        if (needToShowReviewDialog()) {
+            super.customOnBackPressed()
+        } else {
+            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
+                fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
+            }
+            super.customOnBackPressed()
+            isSystemBackButtonPressed = false
         }
-        super.customOnBackPressed()
-        isSystemBackButtonPressed = false
     }
 }

@@ -10,7 +10,7 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.UiThread
 import androidx.fragment.app.Fragment
 import com.example.ads.helper.new_.demo.isNeedToLoadAd
-import com.example.app.ads.helper.isOnline
+import com.example.app.ads.helper.utils.isOnline
 
 /**
  * @author Akshay Harsoda

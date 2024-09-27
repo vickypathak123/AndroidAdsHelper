@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">वापस जाएँ</string>
     <string name="exit_dialog_positive_button_text">ऐप से बाहर निकलें</string>
     <string name="exit_dialog_title">क्या आप वाकई बाहर निकलना चाहते हैं ?</string>
+
+    <string name="update_title">अपडेट आवश्यक है</string>
+    <string name="update_sub_title">हमने देखा है कि आप लंबे समय से पुराने एप्लिकेशन वर्शन का उपयोग कर रहे हैं। कृपया नवीनतम वर्शन में अपडेट करें और ऐप का आनंद लें।</string>
+    <string name="update">अपडेट करें</string>
+    <string name="cancel">रद्द करें</string>
+
+    <string name="review_dialog_title">रुचि नहीं है?</string>
+    <string name="review_dialog_sub_title">कृपया साझा करें क्यों</string>
+    <string name="review_option_1">पता नहीं यह क्या है?</string>
+    <string name="review_option_2">बहुत महंगा है</string>
+    <string name="review_option_3">मैं ऐप्स के लिए भुगतान नहीं करता</string>
+    <string name="review_option_4">मुझे पहले इसे आज़माना होगा</string>
+
+    <string name="rate_dialog_title">ऐप का आनंद ले रहे हैं?</string>
+    <string name="rate_dialog_sub_title">हमें एक \n5 स्टार रेटिंग छोड़कर बताएं</string>
+    <string name="rate_dialog_ask_me_later">मुझसे बाद में पूछें!</string>
+
+    <string name="feedback_title">प्रतिक्रिया</string>
+    <string name="feedback_sub_title">अपने अनुभव को हमारे साथ साझा करें</string>
+    <string name="feedback_what_is_your_profession">आपका पेशा क्या है?</string>
+    <string name="feedback_write_your_suggestions">अपने सुझाव लिखें</string>
+    <string name="feedback_write_here">यहाँ लिखें...</string>
+    <string name="feedback_submit">जमा करना</string>
+
+    <string name="internet_offline">कोई इंटरनेट कनेक्शन नहीं है।</string>
+    <string name="write_your_profession">कृपया अपना पेशा दर्ज करें।</string>
+    <string name="write_your_suggestions">कृपया अपने सुझाव दर्ज करें।</string>
+    <string name="feedback_response_success">फ़ीडबैक सफलतापूर्वक सबमिट किया गया</string>
+    <string name="feedback_response_error">कुछ गलत हो गया, कृपया बाद में पुनः प्रयास करें।</string>
 </resources>

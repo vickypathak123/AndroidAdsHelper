@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">ย้อนกลับ</string>
     <string name="exit_dialog_positive_button_text">ออกจากแอป</string>
     <string name="exit_dialog_title">คุณแน่ใจหรือไม่ คุณต้องการออกจากแอป ?</string>
+
+    <string name="update_title">จำเป็นต้องอัปเดต</string>
+    <string name="update_sub_title">เราสังเกตเห็นว่าคุณใช้แอปพลิเคชันเวอร์ชันที่ล้าสมัยมาเป็นเวลานานแล้ว โปรดอัปเดตเป็นเวอร์ชันล่าสุดและเพลิดเพลินไปกับแอปพลิเคชันนี้</string>
+    <string name="update">อัปเดต</string>
+    <string name="cancel">ยกเลิก</string>
+
+    <string name="review_dialog_title">ไม่สนใจใช่ไหม</string>
+    <string name="review_dialog_sub_title">โปรดแชร์เหตุผล</string>
+    <string name="review_option_1">ไม่รู้ว่ามันคืออะไรใช่ไหม</string>
+    <string name="review_option_2">แพงเกินไป</string>
+    <string name="review_option_3">ฉันไม่จ่ายเงินซื้อแอป</string>
+    <string name="review_option_4">ฉันต้องลองใช้ดูก่อน</string>
+
+    <string name="rate_dialog_title">เพลิดเพลินกับแอพ?</string>
+    <string name="rate_dialog_sub_title">แจ้งให้เราทราบโดยออกจากการจัดอันดับดาว \ n5</string>
+    <string name="rate_dialog_ask_me_later">ถามฉันทีหลัง!</string>
+
+    <string name="feedback_title">ข้อเสนอแนะ</string>
+    <string name="feedback_sub_title">แบ่งปันประสบการณ์ของคุณกับเรา</string>
+    <string name="feedback_what_is_your_profession">อาชีพของคุณคืออะไร?</string>
+    <string name="feedback_write_your_suggestions">เขียนคำแนะนำของคุณ</string>
+    <string name="feedback_write_here">เขียนที่นี่ ...</string>
+    <string name="feedback_submit">ส่ง</string>
+
+    <string name="internet_offline">ไม่มีการเชื่อมต่ออินเทอร์เน็ต</string>
+    <string name="write_your_profession">กรุณาป้อนอาชีพของคุณ</string>
+    <string name="write_your_suggestions">กรุณาป้อนคำแนะนำของคุณ</string>
+    <string name="feedback_response_success">ส่งคำติชมเรียบร้อยแล้ว</string>
+    <string name="feedback_response_error">มีบางอย่างผิดพลาด โปรดลองอีกครั้งในภายหลัง</string>
 </resources>

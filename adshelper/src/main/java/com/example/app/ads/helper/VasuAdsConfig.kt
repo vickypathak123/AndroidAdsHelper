@@ -7,6 +7,24 @@ import com.example.app.ads.helper.base.utils.getStringRes
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper
 import com.example.app.ads.helper.openad.AppOpenAdHelper
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
+import com.example.app.ads.helper.utils.AdStatusModel
+import com.example.app.ads.helper.utils.admob_app_id
+import com.example.app.ads.helper.utils.clearAll
+import com.example.app.ads.helper.utils.isInternetAvailable
+import com.example.app.ads.helper.utils.is_enable_app_open_ad_from_remote_config
+import com.example.app.ads.helper.utils.is_enable_banner_ad_from_remote_config
+import com.example.app.ads.helper.utils.is_enable_interstitial_ad_from_remote_config
+import com.example.app.ads.helper.utils.is_enable_native_ad_from_remote_config
+import com.example.app.ads.helper.utils.is_enable_rewarded_interstitial_ad_from_remote_config
+import com.example.app.ads.helper.utils.is_enable_rewarded_video_ad_from_remote_config
+import com.example.app.ads.helper.utils.list_of_admob_app_open_ads
+import com.example.app.ads.helper.utils.list_of_admob_banner_ads
+import com.example.app.ads.helper.utils.list_of_admob_interstitial_ads
+import com.example.app.ads.helper.utils.list_of_admob_native_ads
+import com.example.app.ads.helper.utils.list_of_admob_rewarded_interstitial_ads
+import com.example.app.ads.helper.utils.list_of_admob_rewarded_video_ads
+import com.example.app.ads.helper.utils.list_of_admob_splash_banner_ads
+import com.example.app.ads.helper.utils.logI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -253,10 +271,10 @@ object VasuAdsConfig {
             //endregion
 
             //region Developer Ads Flag
-            com.example.app.ads.helper.isBlockInterstitialAd = (this.isBlockInterstitialAd && this.isTakeAllTestAdID)
-            com.example.app.ads.helper.isEnableDebugMode = this.isEnableDebugMode
-            com.example.app.ads.helper.isPurchaseHistoryLogEnable = this.isPurchaseHistoryLogEnable
-            com.example.app.ads.helper.isEnableOpenAd = this.isEnableOpenAd
+            com.example.app.ads.helper.utils.isBlockInterstitialAd = (this.isBlockInterstitialAd && this.isTakeAllTestAdID)
+            com.example.app.ads.helper.utils.isEnableDebugMode = this.isEnableDebugMode
+            com.example.app.ads.helper.utils.isPurchaseHistoryLogEnable = this.isPurchaseHistoryLogEnable
+            com.example.app.ads.helper.utils.isEnableOpenAd = this.isEnableOpenAd
             //endregion
 
             //region Clear & Set All Ads Id List
@@ -360,10 +378,10 @@ object VasuAdsConfig {
         @JvmName("initializeDeveloperAdsFlag")
         fun initializeDeveloperAdsFlag() {
             //region Developer Ads Flag
-            com.example.app.ads.helper.isBlockInterstitialAd = (this.isBlockInterstitialAd && this.isTakeAllTestAdID).takeIf { it != com.example.app.ads.helper.isBlockInterstitialAd } ?: com.example.app.ads.helper.isBlockInterstitialAd
-            com.example.app.ads.helper.isEnableDebugMode = this.isEnableDebugMode.takeIf { it != com.example.app.ads.helper.isEnableDebugMode } ?: com.example.app.ads.helper.isEnableDebugMode
-            com.example.app.ads.helper.isPurchaseHistoryLogEnable = this.isPurchaseHistoryLogEnable.takeIf { it != com.example.app.ads.helper.isPurchaseHistoryLogEnable } ?: com.example.app.ads.helper.isPurchaseHistoryLogEnable
-            com.example.app.ads.helper.isEnableOpenAd = this.isEnableOpenAd.takeIf { it != com.example.app.ads.helper.isEnableOpenAd } ?: com.example.app.ads.helper.isEnableOpenAd
+            com.example.app.ads.helper.utils.isBlockInterstitialAd = (this.isBlockInterstitialAd && this.isTakeAllTestAdID).takeIf { it != com.example.app.ads.helper.utils.isBlockInterstitialAd } ?: com.example.app.ads.helper.utils.isBlockInterstitialAd
+            com.example.app.ads.helper.utils.isEnableDebugMode = this.isEnableDebugMode.takeIf { it != com.example.app.ads.helper.utils.isEnableDebugMode } ?: com.example.app.ads.helper.utils.isEnableDebugMode
+            com.example.app.ads.helper.utils.isPurchaseHistoryLogEnable = this.isPurchaseHistoryLogEnable.takeIf { it != com.example.app.ads.helper.utils.isPurchaseHistoryLogEnable } ?: com.example.app.ads.helper.utils.isPurchaseHistoryLogEnable
+            com.example.app.ads.helper.utils.isEnableOpenAd = this.isEnableOpenAd.takeIf { it != com.example.app.ads.helper.utils.isEnableOpenAd } ?: com.example.app.ads.helper.utils.isEnableOpenAd
             //endregion
         }
 
@@ -467,6 +485,7 @@ object VasuAdsConfig {
                 isInternetAvailable.observeForever {
                     if (it) {
                         if (InterstitialAdHelper.isInterstitialAdEnable()) {
+                            logI(TAG, "InterstitialAdHelper: Loading Start.....")
                             InterstitialAdHelper.loadAd(fContext = mContext)
                         }
 

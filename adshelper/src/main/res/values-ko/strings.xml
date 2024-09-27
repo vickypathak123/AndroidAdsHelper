@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">뒤로 돌아가기</string>
     <string name="exit_dialog_positive_button_text">앱 종료</string>
     <string name="exit_dialog_title">정말 종료하시겠습니까?</string>
+
+    <string name="update_title">업데이트 필요</string>
+    <string name="update_sub_title">오랫동안 사용되지 않는 애플리케이션 버전을 사용하고 계신 것으로 확인되었습니다. 최신 버전으로 업데이트하고 앱을 즐기시기 바랍니다.</string>
+    <string name="update">업데이트</string>
+    <string name="cancel">취소</string>
+
+    <string name="review_dialog_title">관심이 없으신가요?</string>
+    <string name="review_dialog_sub_title">이유를 알려주세요</string>
+    <string name="review_option_1">무엇인지 모르시겠어요?</string>
+    <string name="review_option_2">너무 비쌉니다</string>
+    <string name="review_option_3">앱에 돈을 내지 않아요</string>
+    <string name="review_option_4">먼저 시도해봐야겠어요</string>
+
+    <string name="rate_dialog_title">앱을 즐기십니까?</string>
+    <string name="rate_dialog_sub_title">\n5 별 등급을 남겨서 알려주십시오</string>
+    <string name="rate_dialog_ask_me_later">나중에 물어봐!</string>
+
+    <string name="feedback_title">피드백</string>
+    <string name="feedback_sub_title">귀하의 경험을 우리와 공유하십시오</string>
+    <string name="feedback_what_is_your_profession">당신의 직업은 무엇입니까?</string>
+    <string name="feedback_write_your_suggestions">제안을 작성하십시오</string>
+    <string name="feedback_write_here">여기에 쓰기 ...</string>
+    <string name="feedback_submit">제출하다</string>
+
+    <string name="internet_offline">인터넷 연결 없음.</string>
+    <string name="write_your_profession">직업을 입력하세요.</string>
+    <string name="write_your_suggestions">제안 사항을 입력하세요.</string>
+    <string name="feedback_response_success">피드백이 성공적으로 제출되었습니다.</string>
+    <string name="feedback_response_error">문제가 발생했습니다. 나중에 다시 시도하세요.</string>
 </resources>

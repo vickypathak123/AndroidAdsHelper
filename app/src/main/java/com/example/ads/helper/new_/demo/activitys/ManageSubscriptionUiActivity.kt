@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.CompoundButton
+import com.example.ads.helper.new_.demo.BuildConfig
 import com.example.ads.helper.new_.demo.R
 import com.example.ads.helper.new_.demo.StartupActivity
 import com.example.ads.helper.new_.demo.base.BaseActivity
@@ -118,7 +119,7 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                 layoutHeader.ivHeaderBack -> customOnBackPressed()
 
                 btnUpdate -> {
-                    VasuSubscriptionConfig.with(fActivity = mActivity)
+                    VasuSubscriptionConfig.with(fActivity = mActivity, fAppVersionName = BuildConfig.VERSION_NAME)
 //                        .enableTestPurchase(true)
                         .setAppLanguageCode(fCode = spLanguage.selectedItem.toString().substringAfter("(").substringBefore(")").takeIf { it.isNotEmpty() } ?: "en")
                         .setPrivacyPolicy(fLink = etPrivacyPolicy.text.toString().trim().takeIf { it.isNotEmpty() && switchPrivacyPolicy.isChecked } ?: "https://www.freeprivacypolicy.com/blog/privacy-policy-url/")

@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">戻る</string>
     <string name="exit_dialog_positive_button_text">アプリを終了</string>
     <string name="exit_dialog_title">本当に終了しますか?</string>
+
+    <string name="update_title">更新が必要です</string>
+    <string name="update_sub_title">廃止されたアプリケーション バージョンを長期間使用していたことがわかりました。最新バージョンに更新して、アプリをお楽しみください。</string>
+    <string name="update">更新</string>
+    <string name="cancel">キャンセル</string>
+
+    <string name="review_dialog_title">興味がない?</string>
+    <string name="review_dialog_sub_title">理由を教えてください</string>
+    <string name="review_option_1">何なのか分からない?</string>
+    <string name="review_option_2">高すぎる</string>
+    <string name="review_option_3">アプリにはお金をかけたくない</string>
+    <string name="review_option_4">まずは試してみる必要がある</string>
+
+    <string name="rate_dialog_title">アプリを楽しんでいますか？</string>
+    <string name="rate_dialog_sub_title">\n5星の評価を残してお知らせください</string>
+    <string name="rate_dialog_ask_me_later">後で私に聞いてください！</string>
+
+    <string name="feedback_title">フィードバック</string>
+    <string name="feedback_sub_title">あなたの経験を私たちと共有してください</string>
+    <string name="feedback_what_is_your_profession">あなたの職業は何ですか？</string>
+    <string name="feedback_write_your_suggestions">あなたの提案を書いてください</string>
+    <string name="feedback_write_here">ここに書く...</string>
+    <string name="feedback_submit">提出する</string>
+
+    <string name="internet_offline">インターネットに接続されていません。</string>
+    <string name="write_your_profession">職業を入力してください。</string>
+    <string name="write_your_suggestions">ご提案を入力してください。</string>
+    <string name="feedback_response_success">フィードバックが正常に送信されました</string>
+    <string name="feedback_response_error">問題が発生しました。しばらくしてからもう一度お試しください。</string>
 </resources>

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="time_line_start_end_margin">@dimen/_16sdp</dimen>
+<!--    <dimen name="review_dialog_divider_view_height">@dimen/_1sdp</dimen>-->
+<!--    <dimen name="review_dialog_option_text_size">@dimen/_12ssp</dimen>-->
+
+    <dimen name="review_dialog_option_text_padding_Horizontal">@dimen/_14sdp</dimen>
+    <dimen name="review_dialog_option_text_padding_vertical">@dimen/_14sdp</dimen>
 </resources>

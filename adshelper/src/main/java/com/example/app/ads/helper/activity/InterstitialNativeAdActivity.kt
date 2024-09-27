@@ -9,8 +9,8 @@ import com.example.app.ads.helper.base.BaseActivity
 import com.example.app.ads.helper.base.BaseBindingActivity
 import com.example.app.ads.helper.base.utils.beVisibleIf
 import com.example.app.ads.helper.databinding.ActivityInterstitialNativeAdBinding
-import com.example.app.ads.helper.isAnyAdOpen
-import com.example.app.ads.helper.logI
+import com.example.app.ads.helper.utils.isAnyAdOpen
+import com.example.app.ads.helper.utils.logI
 import com.example.app.ads.helper.nativead.NativeAdInterstitialType
 import com.example.app.ads.helper.nativead.NativeAdView
 

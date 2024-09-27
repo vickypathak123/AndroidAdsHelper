@@ -1,5 +1,5 @@
 [versions]
-agp = "8.5.2"
+agp = "8.6.1"
 kotlin = "1.9.23"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -28,6 +28,9 @@ googleAuthLibraryOauth2Http = "1.24.1"
 googleApiClientJackson2 = "1.20.0"
 googleApiServicesPlayintegrity = "v1-rev20231109-2.0.0"
 userMessagingPlatform = "3.0.0"
+retrofit = "2.9.0"
+loggingInterceptor = "5.0.0-alpha.6"
+#retrofitCoroutinesAdapter = "5.0.0-alpha.6"
 #vasuAdsHelper = "1.0.5"
 
 [plugins]
@@ -69,4 +72,8 @@ google-auth-library-oauth2-http = { group = "com.google.auth", name = "google-au
 google-api-client-jackson2 = { group = "com.google.api-client", name = "google-api-client-jackson2", version.ref = "googleApiClientJackson2" }
 google-api-services-playintegrity = { group = "com.google.apis", name = "google-api-services-playintegrity", version.ref = "googleApiServicesPlayintegrity" }
 user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "userMessagingPlatform" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
+#retrofit2-kotlin-coroutines-adapter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlin-coroutines-adapter", version.ref = "retrofitCoroutinesAdapter" }
 

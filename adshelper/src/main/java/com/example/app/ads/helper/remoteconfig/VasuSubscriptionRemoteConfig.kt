@@ -1,9 +1,9 @@
 package com.example.app.ads.helper.remoteconfig
 
 import android.content.Context
-import com.example.app.ads.helper.logD
-import com.example.app.ads.helper.logE
-import com.example.app.ads.helper.logI
+import com.example.app.ads.helper.utils.logD
+import com.example.app.ads.helper.utils.logE
+import com.example.app.ads.helper.utils.logI
 import com.google.gson.Gson
 import org.json.JSONObject
 import java.io.IOException

@@ -2,6 +2,12 @@ package com.example.ads.helper.new_.demo.utils
 
 import com.example.ads.helper.new_.demo.BuildConfig
 
+
+internal var SELECTED_APP_LANGUAGE_CODE: String = "en"
+internal val selectedAppLanguageCode: String get() = SELECTED_APP_LANGUAGE_CODE
+
+
+
 private data class SkuData(
     val applicationId: String = "",
     val lifeTimeSku: String = "",

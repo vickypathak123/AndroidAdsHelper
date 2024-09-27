@@ -1,8 +1,8 @@
 package com.example.app.ads.helper.revenuecat
 
 import android.content.Context
-import com.example.app.ads.helper.isInternetAvailable
-import com.example.app.ads.helper.isOnline
+import com.example.app.ads.helper.utils.isInternetAvailable
+import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.purchase.getCurrencySymbol
 import com.example.app.ads.helper.purchase.product.PlanOfferType
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper

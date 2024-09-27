@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.inflater
 import com.example.app.ads.helper.databinding.CustomInfinitePagerLayoutBinding
-import com.example.app.ads.helper.getLocalizedString
+import com.example.app.ads.helper.utils.getLocalizedString
 
 class InfiniteRecyclerAdapter(
     originalList: List<RattingItem>,

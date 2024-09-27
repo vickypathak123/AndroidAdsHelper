@@ -9,15 +9,17 @@ import com.example.ads.helper.new_.demo.base.shared_prefs.getBoolean
 import com.example.ads.helper.new_.demo.databinding.ActivityStartupBinding
 import com.example.ads.helper.new_.demo.utils.AppTimer
 import com.example.ads.helper.new_.demo.utils.REVENUE_CAT_ID
+import com.example.ads.helper.new_.demo.utils.SELECTED_APP_LANGUAGE_CODE
+import com.example.ads.helper.new_.demo.utils.selectedAppLanguageCode
 import com.example.app.ads.helper.VasuSplashConfig
+import com.example.app.ads.helper.integrity.AppProtector
 import com.example.app.ads.helper.interstitialad.InterstitialAdHelper
-import com.example.app.ads.helper.isOnline
 import com.example.app.ads.helper.openad.AppOpenAdHelper
 import com.example.app.ads.helper.purchase.VasuSubscriptionConfig
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
 import com.example.app.ads.helper.revenuecat.initRevenueCatProductList
-import com.safetynet.integritycheck.integrity.AppProtector
+import com.example.app.ads.helper.utils.isOnline
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,6 +31,8 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
     private var isAdLoaded: Boolean = false
     private var isLaunchScreenWithAd: Boolean = false
     private var isLaunchNextScreen: Boolean = false
+    private var isOpenSubscriptionScreen: Boolean = false
+    private var isAppSafe: Boolean = false
 
     override fun getActivityContext(): BaseActivity {
         return this@StartupActivity
@@ -55,11 +59,6 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         super.initView()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
-        AppProtector.with(mActivity)
-            .checkIntegrity {
-
-            }
-
         CoroutineScope(Dispatchers.IO).launch {
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {
@@ -79,9 +78,34 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                     }
                 }
             })
-
-            ProductPurchaseHelper.initBillingClient(fContext = mActivity)
         }
+
+        mSelectLanguageDialog.show { fLanguageCode ->
+            SELECTED_APP_LANGUAGE_CODE = fLanguageCode
+            doAfterLanguageSelection()
+        }
+
+
+
+    }
+
+    private fun doAfterLanguageSelection() {
+        AppProtector.with(mActivity)
+            .enableDebugMode(true)
+            .setAppLanguageCode(selectedAppLanguageCode)
+            .packageName(mActivity.packageName)
+//            .versionName(BuildConfig.VERSION_NAME)
+            .versionName("2.0")
+            .needToBlockCheckIntegrity(true)
+            .checkIntegrity {
+                isAppSafe = true
+                Log.e(TAG, "initView: Next Action")
+                CoroutineScope(Dispatchers.IO).launch {
+                    ProductPurchaseHelper.initBillingClient(fContext = mActivity)
+                }
+            }
+
+
 
         AdsManager.isShowAds.observe(mActivity) {
             Log.e(TAG, "initView: AdsManager needToShowAds::-> $it")
@@ -161,38 +185,32 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         }*/
 
         if (!isLaunchNextScreen) {
-//            if (isOnline) {
-                VasuSplashConfig.showSplashFlow(
-                    fActivity = mActivity,
-                    onOpenSubscriptionScreen = {
-                        VasuSubscriptionConfig.with(fActivity = mActivity)
+            VasuSplashConfig.showSplashFlow(
+                fActivity = mActivity,
+                onOpenSubscriptionScreen = {
+                    isOpenSubscriptionScreen = true
+                    VasuSubscriptionConfig.with(fActivity = mActivity, fAppVersionName = BuildConfig.VERSION_NAME)
 //                        .enableTestPurchase(true)
-                            .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
-                                this.setNotificationIcon(id = R.drawable.ic_share_blue)
-                            })
-                            .launchScreen(
-//                            morePlanScreenType = MorePlanScreenType.FOUR_PLAN_SCREEN,
-                                isFromSplash = true,
-//                            showCloseAdForTimeLineScreen = true,
-//                            showCloseAdForViewAllPlanScreenOpenAfterSplash = true,
-//                            showCloseAdForViewAllPlanScreen = true,
-                                directShowMorePlanScreen = false,
-                                onSubscriptionEvent = {},
-                                onScreenFinish = {
-                                    checkAndLaunchNextScreen()
-                                },
-                                onOpeningError = {
-                                    checkAndLaunchNextScreen()
-                                }
-                            )
-                    },
-                    onNextAction = {
-                        checkAndLaunchNextScreen()
-                    },
-                )
-//            } else {
-//                checkAndLaunchNextScreen()
-//            }
+                        .setAppLanguageCode(selectedAppLanguageCode)
+                        .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
+                            this.setNotificationIcon(id = R.drawable.ic_share_blue)
+                        })
+                        .launchScreen(
+                            isFromSplash = true,
+                            directShowMorePlanScreen = false,
+                            onSubscriptionEvent = {},
+                            onScreenFinish = { isUserPurchaseAnyPlan ->
+                                checkAndLaunchNextScreen()
+                            },
+                            onOpeningError = {
+                                checkAndLaunchNextScreen()
+                            }
+                        )
+                },
+                onNextAction = {
+                    checkAndLaunchNextScreen()
+                },
+            )
         } else {
             checkAndLaunchNextScreen()
         }
@@ -215,22 +233,25 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
     //</editor-fold>
 
     override fun onResume() {
-        if (isOnPause) {
-            isOnPause = false
+        if (isAppSafe) {
+            if (isOnPause) {
+                isOnPause = false
 
-            mTimer?.cancelTimer()
-            mTimer = null
+                mTimer?.cancelTimer()
+                mTimer = null
 
-            if (!isLaunchScreenWithAd && !isLaunchNextScreen) {
-                if (isAdLoaded) {
-                    startNextTimer()
+                if (!isLaunchScreenWithAd && !isLaunchNextScreen && !isOpenSubscriptionScreen) {
+                    if (isAdLoaded) {
+                        startNextTimer()
+                    } else {
+                        loadAdWithTimer()
+                    }
+                } else if (isLaunchScreenWithAd && !isLaunchNextScreen && !isOpenSubscriptionScreen) {
+                    Log.e(TAG, "onResume: checkAndLaunchNextScreen")
+                    checkAndLaunchNextScreen()
                 } else {
-                    loadAdWithTimer()
+                    Log.e(TAG, "onResume: already going on next screen")
                 }
-            } else if (isLaunchScreenWithAd && !isLaunchNextScreen) {
-                checkAndLaunchNextScreen()
-            } else {
-                Log.e(TAG, "onResume: already going on next screen")
             }
         }
         super.onResume()

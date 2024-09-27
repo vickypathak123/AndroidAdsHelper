@@ -77,4 +77,33 @@
     <string name="exit_dialog_negative_button_text">Gaan Terug</string>
     <string name="exit_dialog_positive_button_text">Verlaat toepassing</string>
     <string name="exit_dialog_title">Is jy seker, jy wil uitgaan?</string>
+
+    <string name="update_title">Opdatering vereis</string>
+    <string name="update_sub_title">Ons het opgemerk dat jy die verouderde toepassingweergawe vir \'n lang tyd gebruik. Dateer asseblief op na die nuutste weergawe en geniet die toepassing.</string>
+    <string name="update">Dateer op</string>
+    <string name="cancel">Kanselleer</string>
+
+    <string name="review_dialog_title">Nie belangstel nie?</string>
+    <string name="review_dialog_sub_title">Deel asseblief hoekom</string>
+    <string name="review_option_1">Weet jy nie wat dit is nie?</string>
+    <string name="review_option_2">Te duur</string>
+    <string name="review_option_3">Ek betaal nie vir programme nie</string>
+    <string name="review_option_4">Ek moet dit eers probeer</string>
+
+    <string name="rate_dialog_title">Geniet u die app?</string>
+    <string name="rate_dialog_sub_title">Laat weet ons deur \'n \n5 -ster -gradering te laat</string>
+    <string name="rate_dialog_ask_me_later">Vra my later!</string>
+
+    <string name="feedback_title">Terugvoer</string>
+    <string name="feedback_sub_title">Deel u ervaring met ons</string>
+    <string name="feedback_what_is_your_profession">Wat is u beroep?</string>
+    <string name="feedback_write_your_suggestions">Skryf u voorstelle</string>
+    <string name="feedback_write_here">Skryf hier ...</string>
+    <string name="feedback_submit">Onderwerp</string>
+
+    <string name="internet_offline">Geen internetverbinding nie.</string>
+    <string name="write_your_profession">Voer asseblief jou beroep in.</string>
+    <string name="write_your_suggestions">Voer asseblief jou voorstelle in.</string>
+    <string name="feedback_response_success">Terugvoer suksesvol ingedien</string>
+    <string name="feedback_response_error">Iets het verkeerd geloop. Probeer asseblief later weer.</string>
 </resources>

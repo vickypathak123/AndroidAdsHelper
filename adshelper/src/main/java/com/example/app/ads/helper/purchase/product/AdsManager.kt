@@ -4,14 +4,14 @@ package com.example.app.ads.helper.purchase.product
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
-import com.example.app.ads.helper.getUIThread
-import com.example.app.ads.helper.isAppNotPurchased
-import com.example.app.ads.helper.isInternetAvailable
-import com.example.app.ads.helper.isOnlineApp
-import com.example.app.ads.helper.logE
+import com.example.app.ads.helper.utils.getUIThread
+import com.example.app.ads.helper.utils.isAppNotPurchased
+import com.example.app.ads.helper.utils.isInternetAvailable
+import com.example.app.ads.helper.utils.isOnlineApp
+import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.notification.KEY_SUBSCRIPTION_NOTIFICATION_INTENT
 import com.example.app.ads.helper.notification.NotificationDataModel
-import com.example.app.ads.helper.updateAppPurchasedStatusRemoveAds
+import com.example.app.ads.helper.utils.updateAppPurchasedStatusRemoveAds
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -25,6 +25,8 @@ private const val KEY_LIFE_TIME_PLAN_PURCHASE = "key_life_time_plan_purchase"
 private const val KEY_ANY_PLAN_SUBSCRIBE = "key_any_plan_subscribe"
 private const val KEY_TEST_PURCHASE = "key_test_purchase"
 private const val KEY_INITIAL_SUBSCRIPTION_OPEN_FLOW_INDEX = "key_initial_subscription_open_flow_index"
+private const val KEY_NEED_TO_OPEN_REVIEW_DIALOG = "key_need_to_open_review_dialog"
+private const val KEY_NEED_TO_OPEN_RATE_APP_DIALOG = "key_need_to_open_rate_app_dialog"
 
 class AdsManager(private val context: Context) {
     @Suppress("PrivatePropertyName")
@@ -82,16 +84,12 @@ class AdsManager(private val context: Context) {
         getUIThread {
             val newValue = (!(isLifeTimePlanPurchased.takeIf { it } ?: isAnyPlanSubscribed.takeIf { it } ?: isTestPurchase.takeIf { it } ?: false))
             if (!newValue) {
-//                Log.e(TAG, "updateAdsVisibility: Harsoda_ updateAppPurchasedStatusRemoveAds()")
                 updateAppPurchasedStatusRemoveAds()
             } else {
-//                Log.e(TAG, "updateAdsVisibility: Harsoda_ isAppNotPurchased::-> $isAppNotPurchased")
                 isAppNotPurchased = true
-//                Log.e(TAG, "updateAdsVisibility: Harsoda_ isAppNotPurchased::-> $isAppNotPurchased")
             }
             val oldValue = isShowAds.value
             if (oldValue != newValue) {
-//                Log.e(TAG, "updateAdsVisibility: Harsoda_ isShowAds.value = newValue")
                 isShowAds.value = newValue
                 isInternetAvailable.value = context.isOnlineApp
             }
@@ -108,6 +106,18 @@ class AdsManager(private val context: Context) {
         get() = sp.initialSubscriptionOpenFlowIndex
         set(fValue) {
             sp.initialSubscriptionOpenFlowIndex = fValue
+        }
+
+    internal var isReviewDialogOpened: Boolean
+        get() = sp.isReviewDialogOpened
+        set(fValue) {
+            sp.isReviewDialogOpened = fValue
+        }
+
+    internal var isRateAppDialogOpened: Boolean
+        get() = sp.isRateAppDialogOpened
+        set(fValue) {
+            sp.isRateAppDialogOpened = fValue
         }
 
     /**
@@ -166,6 +176,24 @@ class AdsManager(private val context: Context) {
                 context.getSharedPreferences(myPreferences, Context.MODE_PRIVATE)
                     .edit()
                     .putInt(KEY_INITIAL_SUBSCRIPTION_OPEN_FLOW_INDEX, fValue)
+                    .apply()
+            }
+
+        var isReviewDialogOpened: Boolean
+            get() = context.getSharedPreferences(myPreferences, Context.MODE_PRIVATE).getBoolean(KEY_NEED_TO_OPEN_REVIEW_DIALOG, false)
+            set(fValue) {
+                context.getSharedPreferences(myPreferences, Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean(KEY_NEED_TO_OPEN_REVIEW_DIALOG, fValue)
+                    .apply()
+            }
+
+        var isRateAppDialogOpened: Boolean
+            get() = context.getSharedPreferences(myPreferences, Context.MODE_PRIVATE).getBoolean(KEY_NEED_TO_OPEN_RATE_APP_DIALOG, false)
+            set(fValue) {
+                context.getSharedPreferences(myPreferences, Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean(KEY_NEED_TO_OPEN_RATE_APP_DIALOG, fValue)
                     .apply()
             }
     }

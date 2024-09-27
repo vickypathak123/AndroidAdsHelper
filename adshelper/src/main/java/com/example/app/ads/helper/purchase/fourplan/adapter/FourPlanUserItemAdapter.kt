@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app.ads.helper.base.utils.getDrawableRes
 import com.example.app.ads.helper.base.utils.inflater
 import com.example.app.ads.helper.databinding.FourPlanLayoutItemBoxBinding
-import com.example.app.ads.helper.getLocalizedString
+import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanUserItem
 
 class FourPlanUserItemAdapter(
