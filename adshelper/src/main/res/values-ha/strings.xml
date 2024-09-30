@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">Raba kwarewarku tare da mu</string>
     <string name="feedback_what_is_your_profession">Menene sana\'arku?</string>
     <string name="feedback_write_your_suggestions">Rubuta shawarwarinku</string>
-    <string name="feedback_write_here">Rubuta anan ...</string>
+    <string name="feedback_write_here">Rubuta anan …</string>
+    <string name="feedback_write_here_suggestion">Rubuta A nan Shawarar ku/Ra\'ayoyin ku…</string>
     <string name="feedback_submit">Yi biyayya</string>
 
     <string name="internet_offline">Babu Haɗin Intanet.</string>

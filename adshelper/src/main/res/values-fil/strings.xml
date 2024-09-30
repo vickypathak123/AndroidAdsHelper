@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">Ibahagi ang iyong karanasan sa amin</string>
     <string name="feedback_what_is_your_profession">Ano ang iyong propesyon?</string>
     <string name="feedback_write_your_suggestions">Isulat ang iyong mga mungkahi</string>
-    <string name="feedback_write_here">Sumulat dito ...</string>
+    <string name="feedback_write_here">Sumulat dito …</string>
+    <string name="feedback_write_here_suggestion">Isulat Dito ang iyong mungkahi/Feedback…</string>
     <string name="feedback_submit">Isumite</string>
 
     <string name="internet_offline">Walang Koneksyon sa Internet.</string>

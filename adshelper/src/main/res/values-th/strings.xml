@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">แบ่งปันประสบการณ์ของคุณกับเรา</string>
     <string name="feedback_what_is_your_profession">อาชีพของคุณคืออะไร?</string>
     <string name="feedback_write_your_suggestions">เขียนคำแนะนำของคุณ</string>
-    <string name="feedback_write_here">เขียนที่นี่ ...</string>
+    <string name="feedback_write_here">เขียนที่นี่ …</string>
+    <string name="feedback_write_here_suggestion">เขียนข้อเสนอแนะ/ข้อคิดเห็นของคุณที่นี่…</string>
     <string name="feedback_submit">ส่ง</string>
 
     <string name="internet_offline">ไม่มีการเชื่อมต่ออินเทอร์เน็ต</string>

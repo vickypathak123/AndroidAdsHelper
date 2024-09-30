@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">Deel u ervaring met ons</string>
     <string name="feedback_what_is_your_profession">Wat is u beroep?</string>
     <string name="feedback_write_your_suggestions">Skryf u voorstelle</string>
-    <string name="feedback_write_here">Skryf hier ...</string>
+    <string name="feedback_write_here">Skryf hier …</string>
+    <string name="feedback_write_here_suggestion">Skryf hier jou voorstel/terugvoer…</string>
     <string name="feedback_submit">Onderwerp</string>
 
     <string name="internet_offline">Geen internetverbinding nie.</string>

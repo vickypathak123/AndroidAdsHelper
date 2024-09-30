@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">Del din oplevelse med os</string>
     <string name="feedback_what_is_your_profession">Hvad er dit erhverv?</string>
     <string name="feedback_write_your_suggestions">Skriv dine forslag</string>
-    <string name="feedback_write_here">Skriv her ...</string>
+    <string name="feedback_write_here">Skriv her …</string>
+    <string name="feedback_write_here_suggestion">Skriv dit forslag/feedback her…</string>
     <string name="feedback_submit">Indsende</string>
 
     <string name="internet_offline">Ingen internetforbindelse.</string>

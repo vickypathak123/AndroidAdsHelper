@@ -26,7 +26,7 @@
 
     <string name="unlock_all_features">すべての機能のロックを解除</string>
     <string name="lifetime_purchase">生涯購入</string>
-    <string name="payment_is_charged_after_period_cancel_anytime">料金は %1 秒後に請求されます。いつでもキャンセルできます。</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">料金は %1s 秒後に請求されます。いつでもキャンセルできます。</string>
     <string name="subscription_will_auto_renew_cancel_anytime">サブスクリプションは自動更新されます。いつでもキャンセルできます。</string>
 
     <string name="best_value">ベストバリュー</string>
@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">あなたの経験を私たちと共有してください</string>
     <string name="feedback_what_is_your_profession">あなたの職業は何ですか？</string>
     <string name="feedback_write_your_suggestions">あなたの提案を書いてください</string>
-    <string name="feedback_write_here">ここに書く...</string>
+    <string name="feedback_write_here">ここに書く…</string>
+    <string name="feedback_write_here_suggestion">ここにご提案/フィードバックを記入してください…</string>
     <string name="feedback_submit">提出する</string>
 
     <string name="internet_offline">インターネットに接続されていません。</string>

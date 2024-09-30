@@ -4,25 +4,33 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.text.InputFilter
 import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AnimRes
 import androidx.annotation.AnimatorRes
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
+import androidx.annotation.FontRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.widget.doOnTextChanged
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.BaseActivity
 import com.example.app.ads.helper.base.BaseBindingActivity
+import com.example.app.ads.helper.base.utils.getColorRes
+import com.example.app.ads.helper.base.utils.getDrawableRes
+import com.example.app.ads.helper.base.utils.getFontRes
 import com.example.app.ads.helper.base.utils.gone
 import com.example.app.ads.helper.base.utils.inflateLayout
 import com.example.app.ads.helper.base.utils.isTiramisuPlus
 import com.example.app.ads.helper.base.utils.makeText
+import com.example.app.ads.helper.base.utils.setTextSizeDimension
 import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.ActivityFeedBackBinding
-import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFullBillingPeriod
 import com.example.app.ads.helper.purchase.sixbox.utils.TextGravityFlags
 import com.example.app.ads.helper.retrofit.enqueue.APICallEnqueue.feedbackApi
 import com.example.app.ads.helper.retrofit.listener.APIResponseListener
@@ -33,21 +41,83 @@ import com.example.app.ads.helper.utils.logI
 import org.json.JSONObject
 import java.util.Locale
 
+
 internal class FeedBackActivity : BaseBindingActivity<ActivityFeedBackBinding>() {
 
     private val mAppLanguage: String get() = screenData.first
     private val mAppPackageName: String get() = screenData.second
     private val mAppVersionName: String get() = screenData.third
 
+
+
+    private val useLightStatusBar: Boolean get() = screenDataModel.useLightStatusBar
+
+    private val useLightNavigationBar: Boolean get() = screenDataModel.useLightNavigationBar
+
+    @get:ColorRes
+    private val screenBackgroundColor: Int get() = screenDataModel.screenBackgroundColor
+
+    @get:ColorRes
+    private val toolbarBackgroundColor: Int get() = screenDataModel.toolbarBackgroundColor
+
     @get:LayoutRes
-    private val mBackIconViewResource: Int get() = screenDataModel.backIconViewResource
+    private val backIconViewResource: Int get() = screenDataModel.backIconViewResource
 
     @TextGravityFlags
-    private val screenTitleTextGravity: Int get() = screenDataModel.screenTitleTextGravity
+    private val toolbarTextGravity: Int get() = screenDataModel.toolbarTextGravity
+
+    @get:ColorRes
+    private val toolbarTextColor: Int get() = screenDataModel.toolbarTextColor
+
+    @get:DimenRes
+    private val toolbarTextSize: Int get() = screenDataModel.toolbarTextSize
+
+    @get:FontRes
+    private val toolbarTextFontFamily: Int get() = screenDataModel.toolbarTextFontFamily
+
+    @get:ColorRes
+    private val titleTextColor: Int get() = screenDataModel.titleTextColor
+
+    @get:FontRes
+    private val titleTextFontFamily: Int get() = screenDataModel.titleTextFontFamily
+
+    @get:ColorRes
+    private val questionTextColor: Int get() = screenDataModel.questionTextColor
+
+    @get:FontRes
+    private val questionTextFontFamily: Int get() = screenDataModel.questionTextFontFamily
+
+    @get:ColorRes
+    private val answerTextColor: Int get() = screenDataModel.answerTextColor
+
+    @get:FontRes
+    private val answerTextFontFamily: Int get() = screenDataModel.answerTextFontFamily
+
+    @get:ColorRes
+    private val answerTextHintColor: Int get() = screenDataModel.answerTextHintColor
+
+    @get:ColorRes
+    private val answerCountTextColor: Int get() = screenDataModel.answerCountTextColor
+
+    @get:FontRes
+    private val answerCountTextFontFamily: Int get() = screenDataModel.answerCountTextFontFamily
+
+    @get:ColorRes
+    private val submitButtonTextColor: Int get() = screenDataModel.submitButtonTextColor
+
+    @get:FontRes
+    private val submitButtonTextFontFamily: Int get() = screenDataModel.submitButtonTextFontFamily
+
+    @get:ColorRes
+    private val progressBarColor: Int get() = screenDataModel.progressBarColor
+
+    private val answerBackground: FeedBackBackgroundItem get() = screenDataModel.answerBackground
+
+    private val submitBackground: FeedBackBackgroundItem get() = screenDataModel.submitBackground
+
 
     private val maxLength: Int = 500
 
-    //    private val Int.suggestionCount: String get() = "${this}/${maxLength}" getLocalizedString(resourceId = R.string.price_slash_period)
     private val Int.suggestionCount: String
         get() = getLocalizedString(
             resourceId = R.string.price_slash_period,
@@ -95,37 +165,175 @@ internal class FeedBackActivity : BaseBindingActivity<ActivityFeedBackBinding>()
         return this@FeedBackActivity
     }
 
+    override fun setParamBeforeLayoutInit() {
+        super.setParamBeforeLayoutInit()
+        window?.let { lWindow ->
+            lWindow.decorView.let { lDecorView ->
+                WindowInsetsControllerCompat(lWindow, lDecorView).apply {
+                    this.isAppearanceLightStatusBars = useLightStatusBar
+                    this.isAppearanceLightNavigationBars = useLightNavigationBar
+
+                    lWindow.statusBarColor = mActivity.getColorRes(toolbarBackgroundColor)
+                    lWindow.navigationBarColor = mActivity.getColorRes(screenBackgroundColor)
+                }
+            }
+        }
+    }
+
     override fun initView() {
         super.initView()
+
         with(mBinding) {
+
+            root.setBackgroundColor(mActivity.getColorRes(screenBackgroundColor))
+            clHeader.setBackgroundColor(mActivity.getColorRes(toolbarBackgroundColor))
+
+            strokeProfession.apply {
+                when {
+                    (answerBackground.strokeDrawableRes != -1) -> {
+                        this.setBackgroundDrawable(mActivity.getDrawableRes(answerBackground.strokeDrawableRes))
+                    }
+
+                    (answerBackground.strokeColorRes != -1) -> {
+                        this.setBackgroundColor(mActivity.getColorRes(answerBackground.strokeColorRes))
+                    }
+
+                    (answerBackground.backgroundDrawableRes != -1) -> {
+                        this.setBackgroundDrawable(mActivity.getDrawableRes(answerBackground.backgroundDrawableRes))
+                    }
+
+                    (answerBackground.backgroundColorRes != -1) -> {
+                        this.setBackgroundColor(mActivity.getColorRes(answerBackground.backgroundColorRes))
+                    }
+                }
+            }
+
+            strokeSuggestions.apply {
+                when {
+                    (answerBackground.strokeDrawableRes != -1) -> {
+                        this.setBackgroundDrawable(mActivity.getDrawableRes(answerBackground.strokeDrawableRes))
+                    }
+
+                    (answerBackground.strokeColorRes != -1) -> {
+                        this.setBackgroundColor(mActivity.getColorRes(answerBackground.strokeColorRes))
+                    }
+
+                    (answerBackground.backgroundDrawableRes != -1) -> {
+                        this.setBackgroundDrawable(mActivity.getDrawableRes(answerBackground.backgroundDrawableRes))
+                    }
+
+                    (answerBackground.backgroundColorRes != -1) -> {
+                        this.setBackgroundColor(mActivity.getColorRes(answerBackground.backgroundColorRes))
+                    }
+                }
+            }
+
+            backgroundProfession.apply {
+                when {
+                    (answerBackground.backgroundDrawableRes != -1) -> {
+                        this.setBackgroundDrawable(mActivity.getDrawableRes(answerBackground.backgroundDrawableRes))
+                    }
+
+                    (answerBackground.backgroundColorRes != -1) -> {
+                        this.setBackgroundColor(mActivity.getColorRes(answerBackground.backgroundColorRes))
+                    }
+                }
+            }
+
+            backgroundSuggestions.apply {
+                when {
+                    (answerBackground.backgroundDrawableRes != -1) -> {
+                        this.setBackgroundDrawable(mActivity.getDrawableRes(answerBackground.backgroundDrawableRes))
+                    }
+
+                    (answerBackground.backgroundColorRes != -1) -> {
+                        this.setBackgroundColor(mActivity.getColorRes(answerBackground.backgroundColorRes))
+                    }
+                }
+            }
+
+            ivBackground.apply {
+                when {
+                    (submitBackground.backgroundDrawableRes != -1) -> {
+                        this.setBackgroundDrawable(mActivity.getDrawableRes(submitBackground.backgroundDrawableRes))
+                    }
+
+                    (submitBackground.backgroundColorRes != -1) -> {
+                        this.setBackgroundColor(mActivity.getColorRes(submitBackground.backgroundColorRes))
+                    }
+
+                    (submitBackground.strokeDrawableRes != -1) -> {
+                        this.setBackgroundDrawable(mActivity.getDrawableRes(submitBackground.strokeDrawableRes))
+                    }
+
+                    (submitBackground.strokeColorRes != -1) -> {
+                        this.setBackgroundColor(mActivity.getColorRes(submitBackground.strokeColorRes))
+                    }
+                }
+            }
 
             ivHeaderBack.apply {
                 removeAllViews()
-                addView(this.inflateLayout(mBackIconViewResource))
+                addView(this.inflateLayout(backIconViewResource))
             }
 
             headerRightIconView.apply {
                 removeAllViews()
-                addView(this.inflateLayout(mBackIconViewResource))
+                addView(this.inflateLayout(backIconViewResource))
             }
 
             txtHeaderTitle.apply {
                 this.text = getLocalizedString(resourceId = R.string.feedback_title)
+                this.setTextColor(mActivity.getColorRes(toolbarTextColor))
+                this.setTextSizeDimension(toolbarTextSize)
+                this.typeface = mActivity.getFontRes(toolbarTextFontFamily)
 
-                this.gravity = when (screenTitleTextGravity) {
+                this.gravity = when (toolbarTextGravity) {
                     Gravity.CENTER -> Gravity.CENTER
                     Gravity.START -> Gravity.CENTER_VERTICAL or Gravity.START
                     else -> Gravity.CENTER_VERTICAL or Gravity.END
                 }
             }
 
-            txtTitle.text = getLocalizedString(resourceId = R.string.feedback_sub_title)
-            txtWhatIsYourProfession.text = getLocalizedString(resourceId = R.string.feedback_what_is_your_profession)
-            txtYourSuggestions.text = getLocalizedString(resourceId = R.string.feedback_write_your_suggestions)
-            etProfession.hint = getLocalizedString(resourceId = R.string.feedback_write_here)
-            etSuggestions.hint = getLocalizedString(resourceId = R.string.feedback_write_here)
-            txtSuggestionsCount.text = 0.suggestionCount
-            txtBtnSubmit.text = getLocalizedString(resourceId = R.string.feedback_submit)
+            txtTitle.apply {
+                this.text = getLocalizedString(resourceId = R.string.feedback_sub_title)
+                this.setTextColor(mActivity.getColorRes(titleTextColor))
+                this.typeface = mActivity.getFontRes(titleTextFontFamily)
+            }
+            txtWhatIsYourProfession.apply {
+                this.text = getLocalizedString(resourceId = R.string.feedback_what_is_your_profession)
+                this.setTextColor(mActivity.getColorRes(questionTextColor))
+                this.typeface = mActivity.getFontRes(questionTextFontFamily)
+            }
+            txtYourSuggestions.apply {
+                this.text = getLocalizedString(resourceId = R.string.feedback_write_your_suggestions)
+                this.setTextColor(mActivity.getColorRes(questionTextColor))
+                this.typeface = mActivity.getFontRes(questionTextFontFamily)
+            }
+            etProfession.apply {
+                this.hint = getLocalizedString(resourceId = R.string.feedback_write_here)
+                this.setTextColor(mActivity.getColorRes(answerTextColor))
+                this.setHintTextColor(mActivity.getColorRes(answerTextHintColor))
+                this.typeface = mActivity.getFontRes(answerTextFontFamily)
+            }
+            etSuggestions.apply {
+                this.hint = getLocalizedString(resourceId = R.string.feedback_write_here_suggestion)
+                this.setTextColor(mActivity.getColorRes(answerTextColor))
+                this.setHintTextColor(mActivity.getColorRes(answerTextHintColor))
+                this.typeface = mActivity.getFontRes(answerTextFontFamily)
+            }
+            txtSuggestionsCount.apply {
+                this.text = 0.suggestionCount
+                this.setTextColor(mActivity.getColorRes(answerCountTextColor))
+                this.typeface = mActivity.getFontRes(answerCountTextFontFamily)
+            }
+            txtBtnSubmit.apply {
+                this.text = getLocalizedString(resourceId = R.string.feedback_submit)
+                this.setTextColor(mActivity.getColorRes(submitButtonTextColor))
+                this.typeface = mActivity.getFontRes(submitButtonTextFontFamily)
+            }
+
+            pbLoading.indeterminateTintList = ColorStateList.valueOf(mActivity.getColorRes(progressBarColor))
             clProgress.gone
         }
     }

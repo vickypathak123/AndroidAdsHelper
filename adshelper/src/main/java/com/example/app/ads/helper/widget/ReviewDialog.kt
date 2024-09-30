@@ -1,7 +1,6 @@
 package com.example.app.ads.helper.widget
 
 import android.app.Activity
-import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
@@ -18,6 +17,7 @@ import com.example.app.ads.helper.utils.is_exit_dialog_opened
 import com.example.app.ads.helper.utils.logD
 import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.utils.logI
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.json.JSONObject
 import java.util.Locale
 
@@ -29,7 +29,7 @@ import java.util.Locale
  */
 internal class ReviewDialog(
     private val fActivity: Activity,
-) : Dialog(fActivity) {
+) : BottomSheetDialog(fActivity, R.style.theme_exit_dialog) {
     private val mBinding: DialogReviewBinding = DialogReviewBinding.inflate(fActivity.layoutInflater)
 
 

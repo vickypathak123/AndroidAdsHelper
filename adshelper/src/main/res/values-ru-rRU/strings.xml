@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">Поделитесь своим опытом с нами</string>
     <string name="feedback_what_is_your_profession">Какая у вас профессия?</string>
     <string name="feedback_write_your_suggestions">Напишите свои предложения</string>
-    <string name="feedback_write_here">Напишите здесь ...</string>
+    <string name="feedback_write_here">Напишите здесь …</string>
+    <string name="feedback_write_here_suggestion">Напишите здесь свое предложение/отзыв…</string>
     <string name="feedback_submit">Представлять на рассмотрение</string>
 
     <string name="internet_offline">Нет подключения к Интернету.</string>

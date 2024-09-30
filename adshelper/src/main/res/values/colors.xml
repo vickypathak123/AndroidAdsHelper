@@ -38,4 +38,13 @@
     <color name="default_four_plan_selected_monthly_sku_border_color">#1DB2F3</color>
     <color name="default_four_plan_selected_weekly_sku_border_color">#174D95</color>
 
+    <color name="default_feedback_screen_toolbar_text_color">#484855</color>
+    <color name="default_feedback_screen_title_text_color">#80121212</color>
+    <color name="default_feedback_screen_question_text_color">#1E2843</color>
+    <color name="default_feedback_screen_answer_text_color">#1E2843</color>
+    <color name="default_feedback_screen_answer_text_hint_color">#9798A5</color>
+    <color name="default_feedback_screen_answer_Count_text_color">#9798A5</color>
+    <color name="default_feedback_screen_answer_text_background_color">#F8F8F8</color>
+    <color name="default_feedback_screen_submit_button_text_color">#9798A5</color>
+
 </resources>

@@ -101,7 +101,8 @@
     <string name="feedback_sub_title">Share your experience with us</string>
     <string name="feedback_what_is_your_profession">What is your Profession?</string>
     <string name="feedback_write_your_suggestions">Write your Suggestions</string>
-    <string name="feedback_write_here">Write Here...</string>
+    <string name="feedback_write_here">Write Here…</string>
+    <string name="feedback_write_here_suggestion">Write Here your suggestion/Feedback…</string>
     <string name="feedback_submit">Submit</string>
 
     <string name="internet_offline">No Internet Connection.</string>

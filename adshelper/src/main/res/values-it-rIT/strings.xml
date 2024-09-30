@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">Condividi la tua esperienza con noi</string>
     <string name="feedback_what_is_your_profession">Qual è la tua professione?</string>
     <string name="feedback_write_your_suggestions">Scrivi i tuoi suggerimenti</string>
-    <string name="feedback_write_here">Scrivi qui ...</string>
+    <string name="feedback_write_here">Scrivi qui …</string>
+    <string name="feedback_write_here_suggestion">Scrivi qui il tuo suggerimento/feedback…</string>
     <string name="feedback_submit">Invia</string>
 
     <string name="internet_offline">Nessuna connessione a Internet.</string>

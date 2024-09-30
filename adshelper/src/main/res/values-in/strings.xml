@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">Bagikan pengalaman Anda dengan kami</string>
     <string name="feedback_what_is_your_profession">Apa profesi Anda?</string>
     <string name="feedback_write_your_suggestions">Tulis saran Anda</string>
-    <string name="feedback_write_here">Tulis di sini ...</string>
+    <string name="feedback_write_here">Tulis di sini …</string>
+    <string name="feedback_write_here_suggestion">Tuliskan saran/Umpan Balik Anda di sini…</string>
     <string name="feedback_submit">Kirim</string>
 
     <string name="internet_offline">Tidak Ada Koneksi Internet.</string>

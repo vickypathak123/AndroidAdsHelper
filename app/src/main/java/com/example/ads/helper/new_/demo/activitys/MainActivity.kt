@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.akshay.harsoda.permission.helper.AksPermission
@@ -175,8 +174,14 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                     .setAppLanguageCode(selectedAppLanguageCode)
                     .setFeedBackScreenData { fFeedBackScreenData ->
                         with(fFeedBackScreenData) {
-                            changeBackIcon(R.layout.item_toolbar_testing)
-                            screenTitleTextGravity(gravity = Gravity.CENTER)
+//                            progressBarColor(resourceId = R.color.exit_button_text)
+//                            useLightStatusBar(isLight = false)
+//                            toolbarBackgroundColor(resourceId = R.color.color_accent)
+//                            screenBackgroundColor(resourceId = R.color.color_primary)
+//                            changeBackIcon(R.layout.item_toolbar_testing)
+//                            screenTitleTextGravity(gravity = Gravity.CENTER)
+//                            toolbarTextSize(resourceId = com.intuit.ssp.R.dimen._10ssp)
+//                            toolbarTextFontFamily(resourceId = com.example.app.ads.helper.R.font.ads_metropolis_regular)
                         }
                     }
                     .launchScreen {

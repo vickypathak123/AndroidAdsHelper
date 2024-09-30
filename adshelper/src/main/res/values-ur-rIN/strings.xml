@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">اپنے تجربے کو ہمارے ساتھ بانٹیں</string>
     <string name="feedback_what_is_your_profession">آپ کا پیشہ کیا ہے؟</string>
     <string name="feedback_write_your_suggestions">اپنی تجاویز لکھیں</string>
-    <string name="feedback_write_here">یہاں لکھیں ...</string>
+    <string name="feedback_write_here">یہاں لکھیں …</string>
+    <string name="feedback_write_here_suggestion">یہاں اپنی تجویز/فیڈ بیک لکھیں…</string>
     <string name="feedback_submit">پیش کریں</string>
 
     <string name="internet_offline">کوئی انٹرنیٹ کنکشن نہیں ہے۔</string>

@@ -51,8 +51,8 @@
         android:includeFontPadding="false"
         android:singleLine="true"
         android:text="@string/feedback_title"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-        android:textColor="#484855"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="@color/default_feedback_screen_toolbar_text_color"
         app:layout_constraintEnd_toStartOf="@id/header_right_icon_view"
         app:layout_constraintStart_toEndOf="@id/iv_header_back"
         app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +101,7 @@
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:singleLine="true"
                 android:text="@string/feedback_sub_title"
-                android:textColor="#80121212"
+                android:textColor="@color/default_feedback_screen_title_text_color"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -122,7 +122,7 @@
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:singleLine="true"
                 android:text="@string/feedback_what_is_your_profession"
-                android:textColor="#1E2843"
+                android:textColor="@color/default_feedback_screen_question_text_color"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -130,17 +130,29 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_title" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/bg_profession"
+                android:id="@+id/stroke_profession"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                android:background="#F8F8F8"
+                android:background="#21AD31"
                 app:layout_constraintDimensionRatio="342.95:60.55"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_what_is_your_profession"
                 app:shapeAppearance="@style/full_round_10_dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/background_profession"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="1.5dp"
+                android:background="#D30F0F"
+                app:layout_constraintBottom_toBottomOf="@id/stroke_profession"
+                app:layout_constraintEnd_toEndOf="@id/stroke_profession"
+                app:layout_constraintStart_toStartOf="@id/stroke_profession"
+                app:layout_constraintTop_toTopOf="@id/stroke_profession"
+                app:shapeAppearance="@style/full_round_9_dp" />
 
             <EditText
                 android:id="@+id/et_profession"
@@ -157,14 +169,14 @@
                 android:maxLines="1"
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:paddingVertical="@dimen/_8sdp"
-                android:textColor="#1E2843"
-                android:textColorHint="#9798A5"
+                android:textColor="@color/default_feedback_screen_answer_text_color"
+                android:textColorHint="@color/default_feedback_screen_answer_text_hint_color"
                 android:textSize="@dimen/_12ssp"
-                app:layout_constraintBottom_toBottomOf="@id/bg_profession"
-                app:layout_constraintEnd_toEndOf="@id/bg_profession"
+                app:layout_constraintBottom_toBottomOf="@id/stroke_profession"
+                app:layout_constraintEnd_toEndOf="@id/stroke_profession"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/bg_profession"
-                app:layout_constraintTop_toTopOf="@id/bg_profession" />
+                app:layout_constraintStart_toStartOf="@id/stroke_profession"
+                app:layout_constraintTop_toTopOf="@id/stroke_profession" />
 
             <TextView
                 android:id="@+id/txt_your_suggestions"
@@ -180,25 +192,37 @@
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:singleLine="true"
                 android:text="@string/feedback_write_your_suggestions"
-                android:textColor="#1E2843"
+                android:textColor="@color/default_feedback_screen_question_text_color"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bg_profession" />
+                app:layout_constraintTop_toBottomOf="@id/stroke_profession" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/bg_suggestions"
+                android:id="@+id/stroke_suggestions"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                android:background="#F8F8F8"
+                android:background="#21AD31"
                 app:layout_constraintDimensionRatio="342.95:121"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_your_suggestions"
                 app:shapeAppearance="@style/full_round_10_dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/background_suggestions"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="1.5dp"
+                android:background="#D30F0F"
+                app:layout_constraintBottom_toBottomOf="@id/stroke_suggestions"
+                app:layout_constraintEnd_toEndOf="@id/stroke_suggestions"
+                app:layout_constraintStart_toStartOf="@id/stroke_suggestions"
+                app:layout_constraintTop_toTopOf="@id/stroke_suggestions"
+                app:shapeAppearance="@style/full_round_9_dp" />
 
             <EditText
                 android:id="@+id/et_suggestions"
@@ -214,14 +238,14 @@
                 android:inputType="textMultiLine"
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:paddingVertical="@dimen/_8sdp"
-                android:textColor="#1E2843"
-                android:textColorHint="#9798A5"
+                android:textColor="@color/default_feedback_screen_answer_text_color"
+                android:textColorHint="@color/default_feedback_screen_answer_text_hint_color"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toTopOf="@id/txt_suggestions_count"
-                app:layout_constraintEnd_toEndOf="@id/bg_suggestions"
+                app:layout_constraintEnd_toEndOf="@id/stroke_suggestions"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/bg_suggestions"
-                app:layout_constraintTop_toTopOf="@id/bg_suggestions" />
+                app:layout_constraintStart_toStartOf="@id/stroke_suggestions"
+                app:layout_constraintTop_toTopOf="@id/stroke_suggestions" />
 
             <TextView
                 android:id="@+id/txt_suggestions_count"
@@ -235,12 +259,12 @@
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:paddingBottom="@dimen/_8sdp"
                 android:singleLine="true"
-                android:textColor="#9798A5"
+                android:textColor="@color/default_feedback_screen_answer_text_hint_color"
                 android:textSize="@dimen/_12ssp"
-                app:layout_constraintBottom_toBottomOf="@id/bg_suggestions"
-                app:layout_constraintEnd_toEndOf="@id/bg_suggestions"
+                app:layout_constraintBottom_toBottomOf="@id/stroke_suggestions"
+                app:layout_constraintEnd_toEndOf="@id/stroke_suggestions"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/bg_suggestions"
+                app:layout_constraintStart_toStartOf="@id/stroke_suggestions"
                 tools:text="0/500" />
 
             <com.google.android.material.card.MaterialCardView
@@ -254,7 +278,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bg_suggestions"
+                app:layout_constraintTop_toBottomOf="@id/stroke_suggestions"
                 app:rippleColor="@android:color/transparent"
                 app:shapeAppearance="@style/full_round_10_45"
                 app:strokeColor="@android:color/transparent"
@@ -269,7 +293,6 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:adjustViewBounds="true"
-                        android:background="@drawable/bg_feed_back_submit_button"
                         android:scaleType="fitXY"
                         android:src="@drawable/bg_continue_button"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -318,6 +341,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
+            android:id="@+id/pb_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminateTint="#FF54A2FF"

@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">अपने अनुभव को हमारे साथ साझा करें</string>
     <string name="feedback_what_is_your_profession">आपका पेशा क्या है?</string>
     <string name="feedback_write_your_suggestions">अपने सुझाव लिखें</string>
-    <string name="feedback_write_here">यहाँ लिखें...</string>
+    <string name="feedback_write_here">यहाँ लिखें…</string>
+    <string name="feedback_write_here_suggestion">यहाँ अपना सुझाव/प्रतिक्रिया लिखें…</string>
     <string name="feedback_submit">जमा करना</string>
 
     <string name="internet_offline">कोई इंटरनेट कनेक्शन नहीं है।</string>

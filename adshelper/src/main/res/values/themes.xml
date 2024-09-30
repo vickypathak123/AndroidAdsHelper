@@ -26,15 +26,6 @@
     </style>
 
     <style name="theme_feedback_activity" parent="Theme.Material3.DayNight.NoActionBar">
-<!--        <item name="android:windowDisablePreview">true</item>-->
-<!--        <item name="android:windowNoTitle">true</item>-->
-<!--        <item name="android:windowBackground">@android:color/white</item>-->
-<!--        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>-->
-<!--        <item name="windowActionBar">false</item>-->
-
-
-
-
         <item name="android:windowDisablePreview">true</item>
 
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
@@ -81,6 +72,11 @@
     <style name="full_round_10_dp" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="full_round_9_dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">9dp</item>
     </style>
 
     <style name="full_round" parent="">

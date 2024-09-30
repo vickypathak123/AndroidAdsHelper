@@ -98,7 +98,8 @@
     <string name="feedback_sub_title">与我们分享您的经验</string>
     <string name="feedback_what_is_your_profession">您的职业是什么？</string>
     <string name="feedback_write_your_suggestions">写下您的建议</string>
-    <string name="feedback_write_here">在此处写下...</string>
+    <string name="feedback_write_here">在此处写下…</string>
+    <string name="feedback_write_here_suggestion">在这里写下您的建议/反馈…</string>
     <string name="feedback_submit">提交</string>
 
     <string name="internet_offline">无互联网连接。</string>
