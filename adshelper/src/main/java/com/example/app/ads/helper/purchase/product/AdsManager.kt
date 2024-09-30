@@ -109,8 +109,8 @@ class AdsManager(private val context: Context) {
         }
 
     internal var isReviewDialogOpened: Boolean
-//        get() = sp.isReviewDialogOpened
-        get() = false
+        get() = sp.isReviewDialogOpened
+//        get() = false
         set(fValue) {
             sp.isReviewDialogOpened = fValue
         }
