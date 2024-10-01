@@ -7,7 +7,7 @@
     "in_app_subscription_ad_close": true,
     "_comment":  "\"more_plan_screen_type\": \"six_box_screen / four_plan_screen\"",
     "more_plan_screen_type": "four_plan_screen",
-    "life_time_plan_discount_percentage": 80,
+    "life_time_plan_discount_percentage": 90,
     "ratting_bar_slider_timing": 5000
   }
 }

@@ -30,7 +30,7 @@ data class VasuSubscriptionRemoteConfigModel(
     val morePlanScreenType: String = "four_plan_screen",
     @SerializedName("life_time_plan_discount_percentage")
     @Expose
-    val lifeTimePlanDiscountPercentage: Int = 80,
+    val lifeTimePlanDiscountPercentage: Int = 90,
     @SerializedName("ratting_bar_slider_timing")
     @Expose
     val rattingBarSliderTiming: Long = 5000,

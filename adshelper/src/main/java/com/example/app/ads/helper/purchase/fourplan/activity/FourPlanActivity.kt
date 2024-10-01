@@ -333,7 +333,10 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
 
     override fun initView() {
         super.initView()
-        getEdgeToEdgeMargin()
+
+//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+
+//        getEdgeToEdgeMargin()
 
         fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_OPEN)
 
@@ -761,9 +764,11 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
 
             ProductPurchaseHelper.getYearlyProductInfo?.let { yearlyProductInfo ->
                 mYearlyPlanProductInfo = yearlyProductInfo
-                ProductPurchaseHelper.getMonthlyProductInfo?.let { monthlyProductInfo ->
-                    ProductPurchaseHelper.getMonthBaseYearlyDiscount(
-                        monthPrice = monthlyProductInfo.formattedPrice,
+//                ProductPurchaseHelper.getMonthlyProductInfo?.let { monthlyProductInfo ->
+                ProductPurchaseHelper.getWeeklyProductInfo?.let { weeklyProductInfo ->
+//                    ProductPurchaseHelper.getMonthBaseYearlyDiscount(
+                    ProductPurchaseHelper.getWeekBaseYearlyDiscount(
+                        weekPrice = weeklyProductInfo.formattedPrice,
                         yearPrice = yearlyProductInfo.formattedPrice,
                         onDiscountCalculated = { discountPercentage, discountPrice ->
                             setYearlyProductData(productInfo = yearlyProductInfo, discountPercentage = discountPercentage, discountPrice = discountPrice)
@@ -872,7 +877,8 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                                     discountPrice.removeTrailingZeros,
                                     getLocalizedString<String>(
                                         context = mActivity,
-                                        resourceId = R.string.period_month,
+//                                        resourceId = R.string.period_month,
+                                        resourceId = R.string.period_week,
                                     )
                                 ),
                             ).lowercase()
@@ -973,11 +979,25 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                             )
                         }
 
+//                        this.txtPlanReferencePrice.apply {
+//                            this.text = getLocalizedString<String>(
+//                                context = mActivity,
+//                                resourceId = R.string.enjoy_forever,
+//                            )
+//                        }
+
                         this.txtPlanReferencePrice.apply {
                             this.text = getLocalizedString<String>(
                                 context = mActivity,
-                                resourceId = R.string.enjoy_forever,
-                            )
+                                resourceId = R.string.price_per_period,
+                                formatArgs = arrayOf(
+                                    productInfo.formattedPrice.removeTrailingZeros,
+                                    getLocalizedString<String>(
+                                        context = mActivity,
+                                        resourceId = R.string.period_week,
+                                    )
+                                ),
+                            ).lowercase()
                         }
 
                         this.txtPlanPrice.apply {

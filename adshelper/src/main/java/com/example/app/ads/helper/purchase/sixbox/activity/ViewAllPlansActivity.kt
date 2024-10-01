@@ -580,7 +580,10 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
     override fun initView() {
         super.initView()
-        getEdgeToEdgeMargin()
+
+//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+
+//        getEdgeToEdgeMargin()
 
         fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_OPEN)
 

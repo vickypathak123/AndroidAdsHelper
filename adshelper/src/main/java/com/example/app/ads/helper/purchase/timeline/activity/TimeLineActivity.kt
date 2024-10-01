@@ -221,7 +221,10 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
     override fun initView() {
         super.initView()
-        getEdgeToEdgeMargin()
+
+//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+
+//        getEdgeToEdgeMargin()
 
         fireSubscriptionEvent(fEventType = SubscriptionEventType.TIME_LINE_SCREEN_OPEN)
 
