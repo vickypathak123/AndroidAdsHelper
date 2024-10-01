@@ -64,42 +64,23 @@ internal class ReviewDialog(
             is_exit_dialog_opened = false
         }
 
+//        Don't know what it is
+//        I need to try it first
+//        Too expensive
+//        I don't pay for apps
+
         with(mBinding) {
             txtOption1.setOnClickListener {
-                onClickOption.invoke(
-                    getLocalizedString<String>(
-                        context = fActivity,
-                        fLocale = Locale("en"),
-                        resourceId = R.string.review_option_1
-                    )
-                )
+                onClickOption.invoke("Don't know what it is")
             }
             txtOption2.setOnClickListener {
-                onClickOption.invoke(
-                    getLocalizedString<String>(
-                        context = fActivity,
-                        fLocale = Locale("en"),
-                        resourceId = R.string.review_option_1
-                    )
-                )
+                onClickOption.invoke("Too expensive")
             }
             txtOption3.setOnClickListener {
-                onClickOption.invoke(
-                    getLocalizedString<String>(
-                        context = fActivity,
-                        fLocale = Locale("en"),
-                        resourceId = R.string.review_option_1
-                    )
-                )
+                onClickOption.invoke("I don't pay for apps")
             }
             txtOption4.setOnClickListener {
-                onClickOption.invoke(
-                    getLocalizedString<String>(
-                        context = fActivity,
-                        fLocale = Locale("en"),
-                        resourceId = R.string.review_option_1
-                    )
-                )
+                onClickOption.invoke("I need to try it first")
             }
         }
     }
