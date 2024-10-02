@@ -2,6 +2,7 @@ package com.example.app.ads.helper.feedback
 
 import android.app.Activity
 import android.app.ActivityOptions
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -354,8 +355,7 @@ internal class FeedBackActivity : BaseBindingActivity<ActivityFeedBackBinding>()
     private inline val View.hideKeyBord: Unit
         get() {
             this.clearFocus()
-            (this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                .hideSoftInputFromWindow(this.windowToken, 0)
+            this.context.getSystemService(InputMethodManager::class.java)?.hideSoftInputFromWindow(this.windowToken, 0)
         }
 
     override fun onClick(v: View) {

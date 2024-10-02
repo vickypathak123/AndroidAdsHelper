@@ -47,6 +47,7 @@ import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataMode
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
 import com.example.app.ads.helper.utils.logE
 import kotlinx.coroutines.CoroutineScope
@@ -614,7 +615,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
     }
 
     override fun needToShowReviewDialog(): Boolean {
-        return (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return isOnline && (!AdsManager(context = mActivity).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false

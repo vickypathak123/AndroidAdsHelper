@@ -65,6 +65,7 @@ import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity.Co
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
+import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.utils.toCamelCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -1035,7 +1036,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
 
     override fun needToShowReviewDialog(): Boolean {
 //        return (!isFromTimeLine) && IS_FROM_SPLASH && (!AdsManager(context = mActivity).isReviewDialogOpened)
-        return (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return isOnline && (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false

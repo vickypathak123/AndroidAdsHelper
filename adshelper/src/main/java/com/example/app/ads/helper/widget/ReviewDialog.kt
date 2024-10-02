@@ -13,6 +13,7 @@ import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.retrofit.enqueue.APICallEnqueue.subscriptionReviewApi
 import com.example.app.ads.helper.retrofit.listener.APIResponseListener
 import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.utils.is_exit_dialog_opened
 import com.example.app.ads.helper.utils.logD
 import com.example.app.ads.helper.utils.logE
@@ -117,22 +118,25 @@ internal class ReviewDialog(
 
                     logD(TAG, "show: review::-> $review")
 
-                    subscriptionReviewApi(
-                        packageName = fPackageName,
-                        versionCode = fVersionName,
-                        languageKey = fLanguageCode,
-                        subscriptionReview = review,
-                        fListener = object : APIResponseListener<JSONObject> {
-                            override fun onSuccess(fResponse: JSONObject) {
-                                logI(TAG, "onSuccess: $fResponse")
-                            }
+                    if (isOnline) {
+                        subscriptionReviewApi(
+                            packageName = fPackageName,
+                            versionCode = fVersionName,
+                            languageKey = fLanguageCode,
+                            subscriptionReview = review,
+                            fListener = object : APIResponseListener<JSONObject> {
+                                override fun onSuccess(fResponse: JSONObject) {
+                                    logI(TAG, "onSuccess: $fResponse")
+                                }
 
-                            override fun onError(fErrorMessage: String?) {
-                                super.onError(fErrorMessage)
-                                logE(TAG, "onError: $fErrorMessage")
+                                override fun onError(fErrorMessage: String?) {
+                                    super.onError(fErrorMessage)
+                                    logE(TAG, "onError: $fErrorMessage")
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
+
 
                     onDismiss.invoke()
                 }
