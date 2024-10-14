@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_dark"
     tools:background="@android:color/darker_gray"
     tools:context=".activitys.BannerPortraitActivity">
     <!--    android:background="@color/purple_200"-->
@@ -141,6 +142,7 @@
                 android:id="@+id/fl_medium_banner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
                 app:banner_ad_size="medium_rectangle"
                 app:banner_ad_type="normal"
                 app:banner_placeholder_type="shimmer"
@@ -154,6 +156,7 @@
                 android:layout_height="wrap_content"
                 android:background="#ddd"
                 android:gravity="center_vertical"
+                android:layout_marginTop="16dp"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
                 android:text="Full Banner (468x60)"

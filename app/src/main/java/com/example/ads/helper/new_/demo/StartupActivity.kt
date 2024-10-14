@@ -23,6 +23,7 @@ import com.example.app.ads.helper.utils.isOnline
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 
 class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
@@ -86,7 +87,23 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         }
 
 
-
+        Locale.getDefault().let {
+            Log.e(TAG, "initView: <<--Akshay-->> " +
+                    "\nisO3Country::-> ${it.isO3Country}" +
+                    "\ncountry::-> ${it.country}" +
+                    "\nlanguage::-> ${it.language}" +
+                    "\ndisplayCountry::-> ${it.displayCountry}" +
+                    "\ndisplayLanguage::-> ${it.displayLanguage}" +
+                    "\ndisplayName::-> ${it.displayName}" +
+                    "\ndisplayScript::-> ${it.displayScript}" +
+                    "\ndisplayVariant::-> ${it.displayVariant}" +
+                    "\nisO3Language::-> ${it.isO3Language}" +
+                    "\nscript::-> ${it.script}" +
+                    "\nvariant::-> ${it.variant}" +
+                    "\ntoString::-> ${it.toString()}" +
+                    "\ntoLanguageTag::-> ${it.toLanguageTag()}" +
+                    "")
+        }
     }
 
     private fun doAfterLanguageSelection() {

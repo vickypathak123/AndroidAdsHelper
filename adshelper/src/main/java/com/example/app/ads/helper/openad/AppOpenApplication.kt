@@ -4,7 +4,6 @@ package com.example.app.ads.helper.openad
 
 import android.app.Activity
 import android.app.ActivityManager
-import android.app.NotificationManager
 import android.content.Context
 import android.os.Process
 import android.webkit.WebView
@@ -104,40 +103,22 @@ abstract class AppOpenApplication : MultiDexApplication(), DefaultLifecycleObser
     }
 
     private fun setMobileAds(vararg fDeviceId: String) {
-        if (isPiePlus) {
-
-            getProcessName(applicationContext)?.let { processName ->
-                if (processName != packageName) {
-                    WebView.setDataDirectorySuffix(processName)
+        CoroutineScope(Dispatchers.IO).launch {
+            if (isPiePlus) {
+                getLocalProcessName(this@AppOpenApplication)?.let { processName ->
+                    if (processName != packageName) {
+                        WebView.setDataDirectorySuffix(processName)
+                    }
                 }
             }
 
-
-            /*val processName = getProcessName(applicationContext)
-            if (processName != null && packageName != processName) {
-                WebView.setDataDirectorySuffix(processName)
-                MobileAds.initialize(baseContext) {
-                    setDeviceIds(fDeviceId = fDeviceId)
-                }
-            } else {
-                MobileAds.initialize(baseContext) {
-                    setDeviceIds(fDeviceId = fDeviceId)
-                }
-            }*/
-        }/* else {
-            MobileAds.initialize(baseContext) {
+            MobileAds.initialize(this@AppOpenApplication) {
                 setDeviceIds(fDeviceId = fDeviceId)
             }
-        }*/
-
-        MobileAds.initialize(baseContext) {
-            setDeviceIds(fDeviceId = fDeviceId)
         }
     }
 
-    private fun getProcessName(fContext: Context?): String? {
-//        if (context == null) return null
-
+    private fun getLocalProcessName(fContext: Context?): String? {
         fContext?.let { context ->
             context.getSystemService(ActivityManager::class.java)?.let { manager ->
                 manager.runningAppProcesses?.let { runningAppProcesses ->
@@ -149,13 +130,6 @@ abstract class AppOpenApplication : MultiDexApplication(), DefaultLifecycleObser
                 }
             }
         }
-
-//        val manager = (context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager)
-//        for (processInfo in manager.runningAppProcesses) {
-//            if (processInfo.pid == Process.myPid()) {
-//                return processInfo.processName
-//            }
-//        }
         return null
     }
 
