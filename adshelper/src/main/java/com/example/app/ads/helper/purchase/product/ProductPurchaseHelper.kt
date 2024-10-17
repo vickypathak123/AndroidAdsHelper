@@ -5,6 +5,7 @@ package com.example.app.ads.helper.purchase.product
 import android.app.Activity
 import android.content.Context
 import android.os.SystemClock
+import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.android.billingclient.api.AcknowledgePurchaseParams
@@ -26,13 +27,13 @@ import com.android.billingclient.api.queryProductDetails
 import com.android.billingclient.api.queryPurchaseHistory
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.getStringRes
+import com.example.app.ads.helper.purchase.getCurrencySymbol
 import com.example.app.ads.helper.utils.clearAll
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.isPurchaseHistoryLogEnable
 import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.utils.logI
 import com.example.app.ads.helper.utils.logW
-import com.example.app.ads.helper.purchase.getCurrencySymbol
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -53,7 +54,7 @@ object ProductPurchaseHelper {
     private val subscriptionKeyList: ArrayList<String> = ArrayList()
     val PRODUCT_LIST: ArrayList<ProductInfo> = ArrayList()
 
-    val checkIsAllPriceLoaded : Boolean get() = PRODUCT_LIST.isNotEmpty() && PRODUCT_LIST.all { it.formattedPrice.isNotEmpty() && it.formattedPrice != PurchaseHelperText.NOT_FOUND.value }
+    val checkIsAllPriceLoaded: Boolean get() = PRODUCT_LIST.isNotEmpty() && PRODUCT_LIST.all { it.formattedPrice.isNotEmpty() && it.formattedPrice != PurchaseHelperText.NOT_FOUND.value }
 
     private var mPurchaseListener: ProductPurchaseListener? = null // Callback for listen purchase states
     private var mBillingClient: BillingClient? = null // Object of BillingClient
@@ -75,12 +76,46 @@ object ProductPurchaseHelper {
 
     private val String.getPriceInDouble: Double
         get() {
-            return if (this.isNotEmpty() && !(this.equals("Not Found", ignoreCase = false))) {
-                (this.replace("""[^0-9.]""".toRegex(), "").takeIf { it.isNotEmpty() } ?: "0.0").toDouble()
+            val finalPrice = if (this.isNotEmpty() && !this.equals(PurchaseHelperText.NOT_FOUND.value, true)) {
+                // Remove non-numeric characters except for one decimal point
+                val numericWithDot = this.replace(Regex("[^0-9.]"), "")
+                val firstDotIndex = numericWithDot.indexOf('.')
+
+                // Handle cases with multiple decimal points or no decimal point
+                if (firstDotIndex != -1 && numericWithDot.lastIndexOf('.') > firstDotIndex) {
+                    // Multiple decimal points: replace all but the first
+                    numericWithDot.replace(
+                        Regex("(\\.[0-9]+).*"),
+                        "." + numericWithDot.substring(firstDotIndex + 1)
+                    )
+                } else {
+                    // No decimal point: append ".0"
+                    if (firstDotIndex == -1) {
+                        numericWithDot + ".0"
+                    } else {
+                        numericWithDot
+                    }
+                }
             } else {
+                "0.0"
+            }
+
+            return try {
+                finalPrice.toDouble()
+            } catch (e: NumberFormatException) {
+                // Handle specific NumberFormatException messages (optional)
+                if (e.message?.contains("multiple points") == true) {
+                    // Log or report multiple decimal point error
+                    Log.e("Price Parsing", "getPriceInDouble: Price string contained multiple decimal points: $finalPrice")
+                }
+                0.0
+            } catch (e: Exception) {
+                // Catch any other unexpected exceptions
+                Log.e("Price Parsing", "getPriceInDouble: Unexpected error parsing price: $finalPrice", e)
                 0.0
             }
         }
+
 
     val String.getSKU: String get() = this.takeIf { !this.contains(":".toRegex()) } ?: kotlin.run { this.split(":".toRegex()).first() }
 
@@ -255,7 +290,7 @@ object ProductPurchaseHelper {
         }
     }
 
-    private suspend fun initProducts(context: Context, onComplete: () -> Unit) {
+    private fun initProducts(context: Context, onComplete: () -> Unit) {
         checkAnyPurchaseAvailable(
             context = context,
             methodName = "initProducts",
@@ -345,7 +380,7 @@ object ProductPurchaseHelper {
         }
     }
 
-    private suspend fun initSubscription(context: Context, onComplete: () -> Unit) {
+    private fun initSubscription(context: Context, onComplete: () -> Unit) {
         checkAnyPurchaseAvailable(
             context = context,
             methodName = "initSubscription",
@@ -951,6 +986,7 @@ object ProductPurchaseHelper {
                 val lDiscountPercentage = lYearPrizeBaseOfWeek.getDiscountPercentage(basePrize = lWeekPrize)
                 val lDiscountPrice = weekPrice.getDiscountPrice(baseNumber = lWeekNumber, newNumber = (lYearNumber / 52))
 
+                logE(TAG, "getWeekBaseYearlyDiscount: lDiscountPercentage::-> $lDiscountPercentage, lDiscountPrice::-> $lDiscountPrice")
                 onDiscountCalculated.invoke(lDiscountPercentage, lDiscountPrice)
             }
         }
@@ -969,6 +1005,7 @@ object ProductPurchaseHelper {
                 val lDiscountPercentage = lMonthPrizeBaseOfWeek.getDiscountPercentage(basePrize = lWeekPrize)
                 val lDiscountPrice = weekPrice.getDiscountPrice(baseNumber = lWeekNumber, newNumber = (lMonthNumber / 4))
 
+                logE(TAG, "getWeekBaseMonthlyDiscount: lDiscountPercentage::-> $lDiscountPercentage, lDiscountPrice::-> $lDiscountPrice")
                 onDiscountCalculated.invoke(lDiscountPercentage, lDiscountPrice)
             }
         }
@@ -987,6 +1024,7 @@ object ProductPurchaseHelper {
                 val lDiscountPercentage = lYearPrizeBaseOfMonth.getDiscountPercentage(basePrize = lMonthPrize)
                 val lDiscountPrice = monthPrice.getDiscountPrice(baseNumber = lMonthNumber, newNumber = (lYearNumber / 12))
 
+                logE(TAG, "getMonthBaseYearlyDiscount: lDiscountPercentage::-> $lDiscountPercentage, lDiscountPrice::-> $lDiscountPrice")
                 onDiscountCalculated.invoke(lDiscountPercentage, lDiscountPrice)
             }
         }

@@ -10,9 +10,6 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.LifecycleOwner
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.getColorRes
 import com.example.app.ads.helper.base.utils.getColorStateRes
@@ -38,9 +35,7 @@ import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.utils.clearAll
 import com.example.app.ads.helper.utils.logE
-import com.example.app.ads.helper.widget.ReviewDialog
 import java.io.Serializable
-import java.lang.ref.WeakReference
 
 object VasuSubscriptionConfig {
 
@@ -48,17 +43,17 @@ object VasuSubscriptionConfig {
      * initialization of subscription screen ui data
      */
     @JvmStatic
-    fun with(fActivity: Activity, fAppVersionName: String): ActivityData {
-        return ActivityData(fActivity = fActivity, fAppVersionName = fAppVersionName)
+    fun with(fActivity: Activity, fAppPackageName: String, fAppVersionName: String): ActivityData {
+        return ActivityData(fActivity = fActivity,  fAppPackageName =  fAppPackageName, fAppVersionName = fAppVersionName)
     }
 
-    class ActivityData(private val fActivity: Activity, private val fAppVersionName: String) : Serializable {
+    class ActivityData(private val fActivity: Activity, private val  fAppPackageName: String, private val fAppVersionName: String) : Serializable {
 
         @Suppress("PropertyName")
         val TAG: String = "Akshay_AdMob_${javaClass.simpleName}"
 
-        private val mContextRef: WeakReference<Activity> = WeakReference(fActivity)
-        private val mActivity: Activity get() = mContextRef.get() ?: fActivity
+//        private val mContextRef: WeakReference<Activity> = WeakReference(fActivity)
+//        private val mActivity: Activity get() = mContextRef.get() ?: fActivity
 
         private var mTimeLineScreenData: TimeLineScreenData = TimeLineScreenData(fActivity = fActivity)
         private var mViewAllPlansScreenData: ViewAllPlansScreenData = ViewAllPlansScreenData(fActivity = fActivity)
@@ -185,7 +180,7 @@ object VasuSubscriptionConfig {
                         onScreenFinish.invoke(isUserPurchaseAnyPlan)
                     }
 
-                    val reviewDialogData = Pair(mActivity.packageName, fAppVersionName)
+                    val reviewDialogData = Pair(fAppPackageName, fAppVersionName)
 
                     if (!directShowMorePlanScreen && ProductPurchaseHelper.isNeedToLaunchTimeLineScreen) {
                         launchTimeLineScreen(
@@ -230,7 +225,7 @@ object VasuSubscriptionConfig {
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit
         ) {
             TimeLineActivity.launchScreen(
-                fActivity = mActivity,
+                fActivity = fActivity,
                 screenDataModel = TimeLineScreenDataModel(
                     listOfInstantAccessHint = mTimeLineScreenData.listOfInstantAccessHint,
                     instantAccessLottieFileRawRes = mTimeLineScreenData.instantAccessLottieFileRawRes,
@@ -284,7 +279,7 @@ object VasuSubscriptionConfig {
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
         ) {
             ViewAllPlansActivity.launchScreen(
-                fActivity = mActivity,
+                fActivity = fActivity,
                 isFromTimeLine = isFromTimeLine,
                 screenDataModel = ViewAllPlansScreenDataModel(
 //                    purchaseButtonTextIndex = mViewAllPlansScreenData.purchaseButtonTextIndex,
@@ -328,7 +323,7 @@ object VasuSubscriptionConfig {
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
         ) {
             FourPlanActivity.launchScreen(
-                fActivity = mActivity,
+                fActivity = fActivity,
                 isFromTimeLine = isFromTimeLine,
                 screenDataModel = FourPlanScreenDataModel(
 //                    purchaseButtonTextIndex = mFourPlanScreenData.purchaseButtonTextIndex,

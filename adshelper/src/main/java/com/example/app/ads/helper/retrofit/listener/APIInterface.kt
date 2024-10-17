@@ -11,8 +11,8 @@ import com.example.app.ads.helper.retrofit.utils.REVIEW_PARAM_REVIEW
 import com.example.app.ads.helper.retrofit.utils.REVIEW_PARAM_SUBSCRIPTION_REVIEW
 import com.example.app.ads.helper.retrofit.utils.REVIEW_PARAM_USE_OF_APP
 import com.example.app.ads.helper.retrofit.utils.REVIEW_PARAM_VERSION_CODE
+import com.google.gson.JsonObject
 import okhttp3.RequestBody
-import org.json.JSONObject
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Multipart
@@ -35,7 +35,7 @@ interface APIInterface {
         @Field(REVIEW_PARAM_VERSION_CODE) versionCode: String,
         @Field(REVIEW_PARAM_LANGUAGE_KEY) languageKey: String,
         @Field(REVIEW_PARAM_SUBSCRIPTION_REVIEW) subscriptionReview: String,
-    ): JSONObject
+    ): JsonObject
 
     @FormUrlEncoded
     @POST(REVIEW_API)
@@ -45,5 +45,5 @@ interface APIInterface {
         @Field(REVIEW_PARAM_LANGUAGE_KEY) languageKey: String,
         @Field(REVIEW_PARAM_REVIEW) review: String,
         @Field(REVIEW_PARAM_USE_OF_APP) useOfApp: String,
-    ): JSONObject
+    ): JsonObject
 }

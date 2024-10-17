@@ -23,7 +23,6 @@ import com.example.app.ads.helper.utils.isOnline
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.Locale
 
 
 class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
@@ -87,7 +86,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         }
 
 
-        Locale.getDefault().let {
+        /*Locale.getDefault().let {
             Log.e(TAG, "initView: <<--Akshay-->> " +
                     "\nisO3Country::-> ${it.isO3Country}" +
                     "\ncountry::-> ${it.country}" +
@@ -103,7 +102,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                     "\ntoString::-> ${it.toString()}" +
                     "\ntoLanguageTag::-> ${it.toLanguageTag()}" +
                     "")
-        }
+        }*/
     }
 
     private fun doAfterLanguageSelection() {
@@ -206,7 +205,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                 fActivity = mActivity,
                 onOpenSubscriptionScreen = {
                     isOpenSubscriptionScreen = true
-                    VasuSubscriptionConfig.with(fActivity = mActivity, fAppVersionName = BuildConfig.VERSION_NAME)
+                    VasuSubscriptionConfig.with(fActivity = mActivity, fAppPackageName = mActivity.packageName, fAppVersionName = BuildConfig.VERSION_NAME)
 //                        .enableTestPurchase(true)
                         .setAppLanguageCode(selectedAppLanguageCode)
                         .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {

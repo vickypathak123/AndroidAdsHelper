@@ -13,6 +13,7 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="tiramisu">
         <activity
             android:name=".feedback.FeedBackActivity"

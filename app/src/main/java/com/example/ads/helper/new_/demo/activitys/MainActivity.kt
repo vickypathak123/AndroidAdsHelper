@@ -170,7 +170,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
             }
 
             mBinding.showFeedback -> {
-                FeedBackConfig.with(fActivity = mActivity, fAppVersionName = BuildConfig.VERSION_NAME)
+                FeedBackConfig.with(fActivity = mActivity, fAppPackageName = mActivity.packageName, fAppVersionName = BuildConfig.VERSION_NAME)
                     .setAppLanguageCode(selectedAppLanguageCode)
                     .setFeedBackScreenData { fFeedBackScreenData ->
                         with(fFeedBackScreenData) {

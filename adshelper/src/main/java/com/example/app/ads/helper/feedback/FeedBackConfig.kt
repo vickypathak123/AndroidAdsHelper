@@ -11,7 +11,6 @@ import androidx.annotation.LayoutRes
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.purchase.sixbox.utils.TextGravityFlags
 import java.io.Serializable
-import java.lang.ref.WeakReference
 
 object FeedBackConfig {
 
@@ -19,17 +18,17 @@ object FeedBackConfig {
      * initialization of subscription screen ui data
      */
     @JvmStatic
-    fun with(fActivity: Activity, fAppVersionName: String): ActivityData {
-        return ActivityData(fActivity = fActivity, fAppVersionName = fAppVersionName)
+    fun with(fActivity: Activity, fAppPackageName: String, fAppVersionName: String): ActivityData {
+        return ActivityData(fActivity = fActivity,  fAppPackageName =  fAppPackageName, fAppVersionName = fAppVersionName)
     }
 
-    class ActivityData(private val fActivity: Activity, private val fAppVersionName: String) : Serializable {
+    class ActivityData(private val fActivity: Activity, private val  fAppPackageName: String, private val fAppVersionName: String) : Serializable {
 
         @Suppress("PropertyName")
         val TAG: String = "FeedBackConfig_${javaClass.simpleName}"
 
-        private val mContextRef: WeakReference<Activity> = WeakReference(fActivity)
-        private val mActivity: Activity get() = mContextRef.get() ?: fActivity
+//        private val mContextRef: WeakReference<Activity> = WeakReference(fActivity)
+//        private val mActivity: Activity get() = mContextRef.get() ?: fActivity
 
         private var mLanguageCode: String = "en"
 
@@ -64,8 +63,8 @@ object FeedBackConfig {
             onScreenFinish: () -> Unit,
         ) {
             FeedBackActivity.launchScreen(
-                fActivity = mActivity,
-                screenData = Triple(mLanguageCode, mActivity.packageName, fAppVersionName),
+                fActivity = fActivity,
+                screenData = Triple(mLanguageCode, fAppPackageName, fAppVersionName),
                 screenDataModel = FeedBackScreenDataModel(
                     useLightStatusBar = mFeedBackScreenData.useLightStatusBar,
                     useLightNavigationBar = mFeedBackScreenData.useLightNavigationBar,

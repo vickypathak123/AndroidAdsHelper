@@ -10,6 +10,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.SecureRandom
+import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
@@ -23,36 +25,30 @@ object APIBuilder {
     private val trustManager: X509TrustManager =
         @SuppressLint("CustomX509TrustManager")
         object : X509TrustManager {
-            @SuppressLint("TrustAllX509TrustManager")
-            override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {
 
-            }
+            @Throws(CertificateException::class)
+            override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) = Unit
 
-            @SuppressLint("TrustAllX509TrustManager")
-            override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) {
+            @Throws(CertificateException::class)
+            override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) = Unit
 
-            }
-
-            override fun getAcceptedIssuers(): Array<X509Certificate> {
-                return arrayOf()
-            }
-
+            override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
         }
 
 
     private val sslContext: SSLContext = SSLContext.getInstance("SSL")
 
     init {
-        sslContext.init(null, arrayOf(trustManager), java.security.SecureRandom())
+        sslContext.init(null, arrayOf(trustManager), SecureRandom())
     }
 
     private val okHttpClient: OkHttpClient
         get() {
             return OkHttpClient.Builder().apply {
-                this.callTimeout(120, TimeUnit.SECONDS)
-                this.connectTimeout(120, TimeUnit.SECONDS)
-                this.readTimeout(120, TimeUnit.SECONDS)
-                this.writeTimeout(120, TimeUnit.SECONDS)
+                this.callTimeout(30, TimeUnit.SECONDS)
+                this.connectTimeout(30, TimeUnit.SECONDS)
+                this.readTimeout(30, TimeUnit.SECONDS)
+                this.writeTimeout(30, TimeUnit.SECONDS)
                 this.sslSocketFactory(sslContext.socketFactory, trustManager)
                 this.hostnameVerifier { _, _ -> true }
                 if (isEnableDebugMode) {

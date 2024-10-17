@@ -4,16 +4,18 @@ package com.example.app.ads.helper.purchase.product
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
-import com.example.app.ads.helper.utils.getUIThread
+import com.example.app.ads.helper.notification.KEY_SUBSCRIPTION_NOTIFICATION_INTENT
+import com.example.app.ads.helper.notification.NotificationDataModel
 import com.example.app.ads.helper.utils.isAppNotPurchased
 import com.example.app.ads.helper.utils.isInternetAvailable
 import com.example.app.ads.helper.utils.isOnlineApp
 import com.example.app.ads.helper.utils.logE
-import com.example.app.ads.helper.notification.KEY_SUBSCRIPTION_NOTIFICATION_INTENT
-import com.example.app.ads.helper.notification.NotificationDataModel
 import com.example.app.ads.helper.utils.updateAppPurchasedStatusRemoveAds
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * @author Akshay Harsoda
@@ -81,7 +83,7 @@ class AdsManager(private val context: Context) {
         }
 
     internal fun updateAdsVisibility() {
-        getUIThread {
+        CoroutineScope(Dispatchers.IO).launch {
             val newValue = (!(isLifeTimePlanPurchased.takeIf { it } ?: isAnyPlanSubscribed.takeIf { it } ?: isTestPurchase.takeIf { it } ?: false))
             if (!newValue) {
                 updateAppPurchasedStatusRemoveAds()
@@ -90,8 +92,8 @@ class AdsManager(private val context: Context) {
             }
             val oldValue = isShowAds.value
             if (oldValue != newValue) {
-                isShowAds.value = newValue
-                isInternetAvailable.value = context.isOnlineApp
+                isShowAds.postValue(newValue)
+                isInternetAvailable.postValue(context.isOnlineApp)
             }
         }
     }
@@ -110,7 +112,7 @@ class AdsManager(private val context: Context) {
 
     internal var isReviewDialogOpened: Boolean
         get() = sp.isReviewDialogOpened
-//        get() = false
+        //        get() = false
         set(fValue) {
             sp.isReviewDialogOpened = fValue
         }

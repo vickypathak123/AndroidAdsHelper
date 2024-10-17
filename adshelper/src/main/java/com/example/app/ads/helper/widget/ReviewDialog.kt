@@ -19,7 +19,7 @@ import com.example.app.ads.helper.utils.logD
 import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.utils.logI
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import org.json.JSONObject
+import com.google.gson.JsonObject
 import java.util.Locale
 
 
@@ -124,8 +124,8 @@ internal class ReviewDialog(
                             versionCode = fVersionName,
                             languageKey = fLanguageCode,
                             subscriptionReview = review,
-                            fListener = object : APIResponseListener<JSONObject> {
-                                override fun onSuccess(fResponse: JSONObject) {
+                            fListener = object : APIResponseListener<JsonObject> {
+                                override fun onSuccess(fResponse: JsonObject) {
                                     logI(TAG, "onSuccess: $fResponse")
                                 }
 

@@ -2,8 +2,6 @@ package com.example.app.ads.helper.feedback
 
 import android.app.Activity
 import android.app.ActivityOptions
-import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.text.InputFilter
@@ -39,7 +37,7 @@ import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.utils.logI
-import org.json.JSONObject
+import com.google.gson.JsonObject
 import java.util.Locale
 
 
@@ -382,8 +380,8 @@ internal class FeedBackActivity : BaseBindingActivity<ActivityFeedBackBinding>()
                             languageKey = mAppLanguage,
                             review = lProfession,
                             useOfApp = lSuggestions,
-                            fListener = object : APIResponseListener<JSONObject> {
-                                override fun onSuccess(fResponse: JSONObject) {
+                            fListener = object : APIResponseListener<JsonObject> {
+                                override fun onSuccess(fResponse: JsonObject) {
                                     logI(TAG, "onSuccess: $fResponse")
                                     makeText(text = getLocalizedString(resourceId = R.string.feedback_response_success))
                                     customOnBackPressed()
@@ -394,6 +392,7 @@ internal class FeedBackActivity : BaseBindingActivity<ActivityFeedBackBinding>()
                                     logE(TAG, "onError: $fErrorMessage")
                                     clProgress.gone
                                     makeText(text = getLocalizedString(resourceId = R.string.feedback_response_error))
+                                    customOnBackPressed()
                                 }
                             }
                         )

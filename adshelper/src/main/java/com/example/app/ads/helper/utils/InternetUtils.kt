@@ -8,6 +8,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import androidx.lifecycle.LifecycleOwner
@@ -148,5 +149,7 @@ internal val Context.isOnlineApp: Boolean
 
 internal fun initNetwork(fContext: Application) {
     isInternetAvailable.value = fContext.isOnlineApp
-    (fContext.getSystemService(ConnectivityManager::class.java)).requestNetwork(networkRequest, networkCallback)
+    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+        (fContext.getSystemService(ConnectivityManager::class.java)).requestNetwork(networkRequest, networkCallback)
+    }
 }
