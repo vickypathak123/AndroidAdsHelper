@@ -6,6 +6,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.app.ads.helper.notification.KEY_SUBSCRIPTION_NOTIFICATION_INTENT
 import com.example.app.ads.helper.notification.NotificationDataModel
+import com.example.app.ads.helper.utils.getUIThread
 import com.example.app.ads.helper.utils.isAppNotPurchased
 import com.example.app.ads.helper.utils.isInternetAvailable
 import com.example.app.ads.helper.utils.isOnlineApp
@@ -83,7 +84,7 @@ class AdsManager(private val context: Context) {
         }
 
     internal fun updateAdsVisibility() {
-        CoroutineScope(Dispatchers.IO).launch {
+        getUIThread {
             val newValue = (!(isLifeTimePlanPurchased.takeIf { it } ?: isAnyPlanSubscribed.takeIf { it } ?: isTestPurchase.takeIf { it } ?: false))
             if (!newValue) {
                 updateAppPurchasedStatusRemoveAds()
@@ -92,8 +93,8 @@ class AdsManager(private val context: Context) {
             }
             val oldValue = isShowAds.value
             if (oldValue != newValue) {
-                isShowAds.postValue(newValue)
-                isInternetAvailable.postValue(context.isOnlineApp)
+                isShowAds.value = newValue
+                isInternetAvailable.value = context.isOnlineApp
             }
         }
     }

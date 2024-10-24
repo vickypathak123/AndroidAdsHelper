@@ -176,7 +176,8 @@ class BannerAdView : FrameLayout {
             if (listOfBannerAdsModel.isNotEmpty()) {
                 return true
             } else {
-                throw RuntimeException("set Banner Ad Id First")
+                return false
+//                throw RuntimeException("set Banner Ad Id First")
             }
         }
     //</editor-fold>
