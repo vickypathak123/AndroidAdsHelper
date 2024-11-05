@@ -22,7 +22,7 @@ class NotificationWorker(
 ) : Worker(fContext, fWorkerParams) {
 
     @Suppress("PropertyName")
-    val TAG: String = "Akshay_Admob_${javaClass.simpleName}"
+    val TAG: String = "Admob_${javaClass.simpleName}"
 
     override fun doWork(): Result {
         triggerNotification(fContext = fContext)

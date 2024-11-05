@@ -42,7 +42,7 @@ import java.util.Locale
 import kotlin.math.roundToInt
 
 object ProductPurchaseHelper {
-    private val TAG: String = "Akshay_AdMob_${javaClass.simpleName}"
+    private val TAG: String = "AdMob_${javaClass.simpleName}"
 
     private var isBillingClientInitialized: Boolean = false
 

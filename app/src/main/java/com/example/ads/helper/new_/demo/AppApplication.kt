@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import androidx.multidex.MultiDex
 import com.example.ads.helper.new_.demo.base.shared_prefs.getBoolean
+import com.example.ads.helper.new_.demo.base.utils.getStringRes
 import com.example.ads.helper.new_.demo.utils.LIFE_TIME_SKU
 import com.example.ads.helper.new_.demo.utils.MONTHLY_SKU
 import com.example.ads.helper.new_.demo.utils.REVENUE_CAT_ID
@@ -18,6 +19,8 @@ import com.example.app.ads.helper.revenuecat.initRevenueCat
 class AppApplication : AppOpenApplication() {
 
     private val TAG = javaClass.simpleName
+
+    private val isAdEnable: Boolean = true
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
@@ -35,19 +38,30 @@ class AppApplication : AppOpenApplication() {
             .enableOpenAd(fIsEnable = false)
             .enableDebugMode(fIsEnable = true)
             .enablePurchaseHistoryLog(fIsEnable = false)
-            .needToTakeAllTestAdID(fIsTakeAll = true)
+            .needToTakeAllTestAdID(fIsTakeAll = false)
             .needToBlockInterstitialAd(fIsBlock = false)
-            .enableAppOpenAdFromRemoteConfig(fIsEnable = false)
-            .enableBannerAdFromRemoteConfig(fIsEnable = false)
-            .enableInterstitialAdFromRemoteConfig(fIsEnable = false)
-            .enableNativeAdFromRemoteConfig(fIsEnable = false)
-            .enableRewardedInterstitialAdFromRemoteConfig(fIsEnable = false)
-            .enableRewardedVideoAdFromRemoteConfig(fIsEnable = false)
             .setLifeTimeProductKey(LIFE_TIME_SKU)
             .setSubscriptionKey(WEEKLY_SKU, MONTHLY_SKU, YEARLY_SKU)
+            .setAdmobOpenAdId(getStringRes(com.example.app.ads.helper.R.string.test_admob_open_ad_id))
+            .setAdmobBannerAdId(getStringRes(com.example.app.ads.helper.R.string.test_admob_banner_ad_id))
+            .setAdmobRewardVideoAdId(getStringRes(com.example.app.ads.helper.R.string.test_admob_reward_video_ad_id))
+            .setAdmobInterstitialAdId(getStringRes(com.example.app.ads.helper.R.string.test_admob_interstitial_ad_id))
+            .setAdmobNativeAdvancedAdId(getStringRes(com.example.app.ads.helper.R.string.test_admob_native_advanced_ad_id))
+            .setAdmobRewardInterstitialAdId(getStringRes(com.example.app.ads.helper.R.string.test_admob_reward_interstitial_ad_id))
+            .setAdmobSplashBannerAdId(getStringRes(com.example.app.ads.helper.R.string.test_admob_adaptive_banner_ad_id))
             .initialize()
 
         initMobileAds("747DD141C5DB53A9F7E3E452845C08FF")
+
+
+        VasuAdsConfig.with(this)
+            .enableAppOpenAdFromRemoteConfig(fIsEnable = isAdEnable)
+            .enableBannerAdFromRemoteConfig(fIsEnable = isAdEnable)
+            .enableInterstitialAdFromRemoteConfig(fIsEnable = isAdEnable)
+            .enableNativeAdFromRemoteConfig(fIsEnable = isAdEnable)
+            .enableRewardedInterstitialAdFromRemoteConfig(fIsEnable = isAdEnable)
+            .enableRewardedVideoAdFromRemoteConfig(fIsEnable = isAdEnable)
+            .initializeRemoteConfig()
 
         if (REVENUE_CAT_ID.isNotEmpty()) {
             initRevenueCat(fContext = this, revenueCatID = REVENUE_CAT_ID)

@@ -34,10 +34,7 @@ import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.ActivityViewAllPlansBinding
 import com.example.app.ads.helper.databinding.LayoutSubscribeItemBoxBinding
 import com.example.app.ads.helper.databinding.LayoutSubscribeSkuItemBinding
-import com.example.app.ads.helper.utils.getLocalizedString
-import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
-import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN
@@ -56,12 +53,13 @@ import com.example.app.ads.helper.purchase.sixbox.utils.BoxItem
 import com.example.app.ads.helper.purchase.sixbox.utils.InfiniteRecyclerAdapter
 import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
 import com.example.app.ads.helper.purchase.sixbox.utils.ViewAllPlansScreenDataModel
-import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
-import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity.Companion
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
+import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.isOnline
+import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
+import com.example.app.ads.helper.utils.logE
 import com.zhpan.indicator.enums.IndicatorOrientation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -540,7 +538,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
                 override fun onPurchasedSuccess() {
                     super.onPurchasedSuccess()
-                    logE(TAG, "onPurchasedSuccess: Akshay_")
+                    logE(TAG, "onPurchasedSuccess: ")
                     CoroutineScope(Dispatchers.Main).launch {
                         mActivity.runOnUiThread {
                             when {

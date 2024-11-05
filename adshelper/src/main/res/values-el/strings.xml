@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--    strings.xml-->
+
+    <string name="one_time_purchase">Μία φορά αγορά</string>
+    <string name="period_day">Ημέρα</string>
+    <string name="period_days">Ημέρες</string>
+    <string name="period_week">Εβδομάδα</string>
+    <string name="period_weeks">Εβδομάδες</string>
+    <string name="period_month">Μήνας</string>
+    <string name="period_months">Μήνες</string>
+    <string name="period_year">Έτος</string>
+    <string name="period_years">Έτη</string>
+
+    <string name="have_doubts">Έχετε αμφιβολίες;</string>
+    <string name="start_with_a_free_trial">Ξεκινήστε με μια δωρεάν δοκιμή</string>
+    <string name="now">Τώρα</string>
+    <string name="unlock_all_the_features">Ξεκλειδώστε όλες τις δυνατότητες.</string>
+    <string name="today_get_instant_access">Σήμερα: Αποκτήστε Άμεση Πρόσβαση</string>
+    <string name="day_title">Ημέρα %1s:</string>
+    <string name="trial_reminder">Δοκιμαστική υπενθύμιση</string>
+    <string name="trial_reminder_hint">Λάβετε υπενθύμιση για το πότε θα λήξει η δωρεάν δοκιμή σας. ακυρώστε οποιαδήποτε στιγμή σε 15 δευτερόλεπτα.</string>
+    <string name="premium_begins">Αρχίζει το Premium</string>
+    <string name="premium_begins_hint">Η δοκιμή σας θα μετατραπεί σε πλήρη τιμή, εκτός εάν ακυρωθεί.</string>
+    <string name="free_then_per_period">%1s δωρεάν, μετά %2s ανά %3s</string>
+    <string name="pay_nothing_now">Να μην πληρώσετε τίποτα τώρα</string>
+    <string name="view_all_plans"><u>Προβολή όλων των σχεδίων</u></string>
+
+    <string name="unlock_all_features">Ξεκλείδωμα όλων των δυνατοτήτων</string>
+    <string name="lifetime_purchase">Αγορά εφ\' όρου ζωής</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">Η πληρωμή χρεώνεται μετά το %1s, ακυρώστε οποιαδήποτε στιγμή.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Η συνδρομή θα ανανεωθεί αυτόματα, θα ακυρωθεί ανά πάσα στιγμή.</string>
+
+    <string name="best_value">ΚΑΛΥΤΕΡΗ ΑΞΙΑ</string>
+    <string name="save_percentage">ΑΠΟΘΗΚΕΥΣΗ %1s%%</string>
+    <string name="most_popular">ΤΟ ΠΙΟ ΔΗΜΟΦΥΛΛΟ</string>
+
+    <string name="lifetime">Διάρκεια ζωής</string>
+    <string name="yearly">Ετήσια</string>
+    <string name="monthly">Μηνιαία</string>
+    <string name="weekly">Εβδομαδιαία</string>
+
+    <string name="purchase_1">1 Αγορά</string>
+    <string name="period_free">%1s δωρεάν</string>
+    <string name="upto_period" tools:ignore="Typos">έως %1s</string>
+
+    <string name="continue_">Συνέχεια</string>
+    <string name="start_my_free_trial">ΞΕΚΙΝΗΣΤΕ ΤΗ ΔΩΡΕΑΝ ΔΟΚΙΜΗ ΜΟΥ</string>
+    <string name="try_period_for_price">Δοκιμάστε %1s για %2s</string>
+
+    <string name="cancel_anytime_secure_with_play_store">Ακύρωση ανά πάσα στιγμή. Ασφαλίστε με το Play Store</string>
+    <string name="price_for_period_use">%1s για χρήση %2s</string>
+    <string name="price_upto_period_then_price_slash_period" tools:ignore="Typos">%1s έως %2s, μετά %3s</string>
+
+    <string name="terms_of_use">Όροι Χρήσης</string>
+    <string name="privacy_policy">Πολιτική απορρήτου</string>
+
+    <string name="instant_access_hint_1">Μέτρηση απόστασης</string>
+    <string name="instant_access_hint_2">Μέτρηση περιοχής πεδίου</string>
+    <string name="instant_access_hint_3">Κάμερα Geo Timestamp</string>
+    <string name="instant_access_hint_4">Σχεδιασμός διαδρομής</string>
+    <string name="instant_access_hint_5">Συγχρονισμός Cloud δεδομένων</string>
+    <string name="instant_access_hint_6">Δωρεάν διαφημίσεις</string>
+
+    <string name="rating_header">Εξαιρετική εφαρμογή για μετατροπή κειμένου</string>
+    <string name="rating_sub_header">Η εφαρμογή είναι καλή εφαρμογή πρέπει πραγματικά να δουλέψει με τη σειρά της σαρωμένης εικόνας, ορισμένα περιεχόμενα λείπουν και ορισμένα ανακατεύονται. Η εφαρμογή χρειάζεται βελτίωση</string>
+    <string name="rating_by">από %1s</string>
+    <string name="rating_user">Akshay Harsoda</string>
+
+
+    <string name="satisfied_customer">Ικανοποιημένοι πελάτες</string>
+    <string name="rating">Βαθμολογίες</string>
+
+    <string name="pay_once_enjoy_forever">Πληρωμή μία φορά, απόλαυση για πάντα</string>
+    <string name="percentage_off">%1s%% ΕΚΠΤΩΣΗ</string>
+    <string name="price_per_period">%1s ανά %2s</string>
+    <string name="enjoy_forever">Απολαύστε για πάντα</string>
+    <string name="recommend">Συστήνεται</string>
+
+    <string name="exit_dialog_negative_button_text">Επιστροφή</string>
+    <string name="exit_dialog_positive_button_text">Έξοδος από την εφαρμογή</string>
+    <string name="exit_dialog_title">Είστε βέβαιοι ότι θέλετε να πραγματοποιήσετε έξοδο;</string>
+
+    <string name="update_title">Απαιτείται ενημέρωση</string>
+    <string name="update_sub_title">Παρατηρήσαμε ότι χρησιμοποιείτε την καταργημένη έκδοση εφαρμογής για μεγάλο χρονικό διάστημα. Ενημερώστε στην πιο πρόσφατη έκδοση και απολαύστε την εφαρμογή.</string>
+    <string name="update">Ενημέρωση</string>
+    <string name="cancel">Ακύρωση</string>
+
+    <string name="review_dialog_title">Δεν σας ενδιαφέρει;</string>
+    <string name="review_dialog_sub_title">Μοιραστείτε το γιατί</string>
+    <string name="review_option_1">Δεν ξέρετε τι είναι;</string>
+    <string name="review_option_2">Πολύ ακριβό</string>
+    <string name="review_option_3">Δεν πληρώνω για εφαρμογές</string>
+    <string name="review_option_4">Πρέπει να το δοκιμάσω πρώτα</string>
+
+    <string name="rate_dialog_title">Απολαμβάνετε την εφαρμογή;</string>
+    <string name="rate_dialog_sub_title">Ενημερώστε μας αφήνοντας μια\nαξιολόγηση 5 αστέρων</string>
+    <string name="rate_dialog_ask_me_later">Ρωτήστε με αργότερα!</string>
+
+    <string name="feedback_title">Σχόλια</string>
+    <string name="feedback_sub_title">Μοιραστείτε την εμπειρία σας μαζί μας</string>
+    <string name="feedback_what_is_your_profession">Ποιο είναι το επάγγελμά σας;</string>
+    <string name="feedback_write_your_suggestions">Γράψτε τις προτάσεις σας</string>
+    <string name="feedback_write_here">Γράψτε εδώ…</string>
+    <string name="feedback_write_here_suggestion">Γράψτε εδώ την πρόταση/σχόλιά σας…</string>
+    <string name="feedback_submit">Υποβολή</string>
+
+    <string name="internet_offline">Δεν υπάρχει σύνδεση στο Διαδίκτυο.</string>
+    <string name="write_your_profession">Εισαγάγετε το επάγγελμά σας.</string>
+    <string name="write_your_suggestions">Εισαγάγετε τις προτάσεις σας.</string>
+    <string name="feedback_response_success">Τα σχόλια υποβλήθηκαν με επιτυχία</string>
+    <string name="feedback_response_error">Κάτι πήγε στραβά. Δοκιμάστε ξανά αργότερα.</string>
+</resources>

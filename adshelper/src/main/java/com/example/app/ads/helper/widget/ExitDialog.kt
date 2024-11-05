@@ -7,14 +7,15 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
+import androidx.core.view.isVisible
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.beVisibleIf
 import com.example.app.ads.helper.base.utils.getColorRes
 import com.example.app.ads.helper.databinding.DialogExitBinding
+import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.utils.exitTheApp
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.is_exit_dialog_opened
-import com.example.app.ads.helper.purchase.product.AdsManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.Locale
 
@@ -57,6 +58,9 @@ class ExitDialog(
 
     private var isTestNeedToShowAds = false
 
+    @Suppress("PropertyName")
+    val TAG: String = javaClass.simpleName
+
     init {
         this.setContentView(mBinding.root)
         window?.let {
@@ -66,11 +70,8 @@ class ExitDialog(
         this.setCancelable(false)
         this.setCanceledOnTouchOutside(false)
 
-        if (!isForTesting) {
-            AdsManager.isShowAds.observe(fActivity) { isNeedToShowAd ->
-                mBinding.nativeAdView.beVisibleIf(isNeedToShowAd)
-                mBinding.clExitIconContainer.beVisibleIf(!isNeedToShowAd)
-            }
+        mBinding.root.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+            mBinding.clExitIconContainer.beVisibleIf(!mBinding.nativeAdView.isVisible)
         }
 
         setOnShowListener {
@@ -138,6 +139,8 @@ class ExitDialog(
     ) {
         if (!fActivity.isFinishing && !isShowing) {
 
+            mBinding.nativeAdView.beVisibleIf(AdsManager(fActivity).isNeedToShowAds)
+
             with(mBinding) {
                 txtTitle.text = getLocalizedString<String>(
                     context = fActivity,
@@ -172,7 +175,6 @@ class ExitDialog(
         if (isForTesting) {
             isTestNeedToShowAds = !isTestNeedToShowAds
             mBinding.nativeAdView.beVisibleIf(isTestNeedToShowAds)
-            mBinding.clExitIconContainer.beVisibleIf(!isTestNeedToShowAds)
         }
     }
 }

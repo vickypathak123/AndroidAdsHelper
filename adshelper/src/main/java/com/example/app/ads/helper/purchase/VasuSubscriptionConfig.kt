@@ -50,7 +50,7 @@ object VasuSubscriptionConfig {
     class ActivityData(private val fActivity: Activity, private val  fAppPackageName: String, private val fAppVersionName: String) : Serializable {
 
         @Suppress("PropertyName")
-        val TAG: String = "Akshay_AdMob_${javaClass.simpleName}"
+        val TAG: String = "AdMob_${javaClass.simpleName}"
 
 //        private val mContextRef: WeakReference<Activity> = WeakReference(fActivity)
 //        private val mActivity: Activity get() = mContextRef.get() ?: fActivity

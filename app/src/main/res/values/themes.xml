@@ -1,11 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <!--    <style name="Base.Theme.AdsHelper20" parent="Theme.Material3.DayNight.NoActionBar">-->
-    <!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
-    <!--        &lt;!&ndash; <item name="colorPrimary">@color/my_light_primary</item> &ndash;&gt;-->
-    <!--    </style>-->
-
-    <!--    <style name="Theme.AdsHelper20" parent="Base.Theme.AdsHelper20" />-->
 
     <style name="Theme.AdsHelper20" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -21,22 +14,14 @@
 
         <!-- Status bar color. -->
         <item name="android:windowLightStatusBar">false</item>
-        <!--        <item name="android:enforceStatusBarContrast" tools:targetApi="q">true</item>-->
         <item name="android:statusBarColor">@color/color_primary</item>
 
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
-        <!--        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">true</item>-->
         <item name="android:navigationBarColor">@color/color_primary</item>
-
-        <!--        <item name="android:windowTranslucentStatus">true</item>-->
-        <!--        <item name="android:windowTranslucentNavigation">true</item>-->
 
         <item name="android:timePickerDialogTheme">@style/AlertDialogTheme</item>
         <item name="android:datePickerDialogTheme">@style/AlertDialogTheme</item>
         <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
-
-<!--        <item name="android:fontFamily">sans-serif</item>-->
-<!--        <item name="fontFamily">sans-serif</item>-->
 
         <item name="native_ads_main_color">#9C27B0</item>
         <item name="native_ads_body_text_color">#673AB7</item>

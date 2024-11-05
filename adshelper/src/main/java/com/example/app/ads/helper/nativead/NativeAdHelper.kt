@@ -54,8 +54,8 @@ object NativeAdHelper {
             if (listOfNativeAdsModel.isNotEmpty()) {
                 return true
             } else {
-                return false
-//                throw RuntimeException("set Native Ad Id First")
+//                return false
+                throw RuntimeException("set Native Ad Id First")
             }
         }
 

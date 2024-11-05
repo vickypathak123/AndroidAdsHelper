@@ -260,14 +260,14 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
 //                            showCloseAdForViewAllPlanScreen = switchCloseAdForViewAllPlansScreen.isChecked,
                             directShowMorePlanScreen = switchShowOnlyViewAllPlans.isChecked,
                             onSubscriptionEvent = { eventType ->
-                                Log.e(TAG, "onClick: Admob_ Akshay_ eventType::-> $eventType")
+                                Log.e(TAG, "onClick: eventType::-> $eventType")
                             },
                             onScreenFinish = { isUserPurchaseAnyPlan ->
-                                Log.e(TAG, "onClick: Admob_ Akshay_ Screen Finished isUserPurchaseAnyPlan::-> $isUserPurchaseAnyPlan")
+                                Log.e(TAG, "onClick: Screen Finished isUserPurchaseAnyPlan::-> $isUserPurchaseAnyPlan")
                             },
                             onOpeningError = {
                                 mActivity.makeText("Error")
-                                Log.e(TAG, "onClick: Admob_ Akshay_ Opening Error")
+                                Log.e(TAG, "onClick: Opening Error")
                             }
                         )
                 }

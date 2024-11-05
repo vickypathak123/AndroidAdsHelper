@@ -66,7 +66,7 @@ dependencies {
     implementation libs.androidx.browser
     //endregion
 
-    //region Google Gson to Json
+    //region Google Ads
     implementation libs.google.play.services.ads
     //endregion
 

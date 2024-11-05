@@ -12,11 +12,8 @@ import androidx.core.content.res.use
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.example.app.ads.helper.utils.AdMobAdsListener
-import com.example.app.ads.helper.utils.AdStatusModel
 import com.example.app.ads.helper.PlaceHolderType
 import com.example.app.ads.helper.R
-import com.example.app.ads.helper.utils.adRequestBuilder
 import com.example.app.ads.helper.base.utils.beVisibleIf
 import com.example.app.ads.helper.base.utils.displayDensity
 import com.example.app.ads.helper.base.utils.displayWidth
@@ -24,9 +21,12 @@ import com.example.app.ads.helper.base.utils.getColorStateRes
 import com.example.app.ads.helper.base.utils.gone
 import com.example.app.ads.helper.base.utils.inflateLayout
 import com.example.app.ads.helper.base.utils.inflater
-import com.example.app.ads.helper.utils.clearAll
 import com.example.app.ads.helper.databinding.PlaceholderShimmerBinding
 import com.example.app.ads.helper.databinding.PlaceholderTextBinding
+import com.example.app.ads.helper.utils.AdMobAdsListener
+import com.example.app.ads.helper.utils.AdStatusModel
+import com.example.app.ads.helper.utils.adRequestBuilder
+import com.example.app.ads.helper.utils.clearAll
 import com.example.app.ads.helper.utils.isAnyAdOpen
 import com.example.app.ads.helper.utils.isAppNotPurchased
 import com.example.app.ads.helper.utils.isInternetAvailable
@@ -176,8 +176,8 @@ class BannerAdView : FrameLayout {
             if (listOfBannerAdsModel.isNotEmpty()) {
                 return true
             } else {
-                return false
-//                throw RuntimeException("set Banner Ad Id First")
+//                return false
+                throw RuntimeException("set Banner Ad Id First")
             }
         }
     //</editor-fold>
@@ -284,20 +284,21 @@ class BannerAdView : FrameLayout {
             showPlaceHolders()
             refreshView()
         } else {
+            listOfBannerAdsModel.clearAll()
+
+            listOfBannerAds.forEach {
+                listOfBannerAdsModel.add(
+                    AdStatusModel(
+                        adID = it.adID
+                    )
+                )
+            }
+
             if (isBannerAdEnable()) {
                 refreshView()
                 showPlaceHolders()
                 refreshView()
 
-                listOfBannerAdsModel.clearAll()
-
-                listOfBannerAds.forEach {
-                    listOfBannerAdsModel.add(
-                        AdStatusModel(
-                            adID = it.adID
-                        )
-                    )
-                }
 
                 if (context is LifecycleOwner) {
                     (context as LifecycleOwner).lifecycle.addObserver(object : DefaultLifecycleObserver {

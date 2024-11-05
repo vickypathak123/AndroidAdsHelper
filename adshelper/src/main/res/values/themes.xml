@@ -161,4 +161,10 @@
         <item name="android:marqueeRepeatLimit">marquee_forever</item>
         <item name="android:singleLine">true</item>
     </style>
+
+    <style name="LightAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Customize colors if needed -->
+<!--        <item name="colorPrimary">#6200EE</item> &lt;!&ndash; Primary color &ndash;&gt;-->
+<!--        <item name="colorAccent">#03DAC5</item> &lt;!&ndash; Accent color &ndash;&gt;-->
+    </style>
 </resources>

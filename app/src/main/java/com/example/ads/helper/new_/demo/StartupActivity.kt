@@ -84,25 +84,6 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
             SELECTED_APP_LANGUAGE_CODE = fLanguageCode
             doAfterLanguageSelection()
         }
-
-
-        /*Locale.getDefault().let {
-            Log.e(TAG, "initView: <<--Akshay-->> " +
-                    "\nisO3Country::-> ${it.isO3Country}" +
-                    "\ncountry::-> ${it.country}" +
-                    "\nlanguage::-> ${it.language}" +
-                    "\ndisplayCountry::-> ${it.displayCountry}" +
-                    "\ndisplayLanguage::-> ${it.displayLanguage}" +
-                    "\ndisplayName::-> ${it.displayName}" +
-                    "\ndisplayScript::-> ${it.displayScript}" +
-                    "\ndisplayVariant::-> ${it.displayVariant}" +
-                    "\nisO3Language::-> ${it.isO3Language}" +
-                    "\nscript::-> ${it.script}" +
-                    "\nvariant::-> ${it.variant}" +
-                    "\ntoString::-> ${it.toString()}" +
-                    "\ntoLanguageTag::-> ${it.toLanguageTag()}" +
-                    "")
-        }*/
     }
 
     private fun doAfterLanguageSelection() {
@@ -183,22 +164,6 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         mTimer?.cancelTimer()
         mTimer = null
         isLaunchScreenWithAd = true
-
-        /*if (this.getBoolean(IS_OPEN_ADS_ENABLE, true)) {
-            if (!isLaunchNextScreen) {
-                Log.e(TAG, "openActivityWithAd: Call With or With-Out Open Ad")
-                mActivity.showAppOpenAd {
-                    checkAndLaunchNextScreen()
-                }
-            }
-        } else {
-            if (!isLaunchNextScreen) {
-                mActivity.showInterstitialAd { _, _ ->
-                    Log.e(TAG, "openActivityWithAd: Call With or With-Out Interstitial Ad")
-                    checkAndLaunchNextScreen()
-                }
-            }
-        }*/
 
         if (!isLaunchNextScreen) {
             VasuSplashConfig.showSplashFlow(

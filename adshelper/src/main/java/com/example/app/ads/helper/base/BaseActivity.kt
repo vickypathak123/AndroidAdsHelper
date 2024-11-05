@@ -69,7 +69,7 @@ internal abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View
      * your log tag name
      */
     @Suppress("PropertyName")
-    val TAG: String = "Akshay_${javaClass.simpleName}"
+    val TAG: String = javaClass.simpleName
 
     var mJob: Job = Job()
 

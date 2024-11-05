@@ -70,8 +70,8 @@ fun startShowingOpenAdInternally() {
 }
 
 fun updateAppPurchasedStatusRemoveAds() {
-    logE(TAG, "updateAppPurchasedStatusRemoveAds: Akshay_ AdsManager Before::$isAppNotPurchased")
+    logE(TAG, "updateAppPurchasedStatusRemoveAds: Before::$isAppNotPurchased")
     isAppNotPurchased = false
     @Suppress("KotlinConstantConditions")
-    (logE(TAG, "updateAppPurchasedStatusRemoveAds: Akshay_ AdsManager After::$isAppNotPurchased"))
+    (logE(TAG, "updateAppPurchasedStatusRemoveAds: After::$isAppNotPurchased"))
 }

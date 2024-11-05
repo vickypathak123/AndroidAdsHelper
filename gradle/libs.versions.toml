@@ -30,7 +30,6 @@ googleApiServicesPlayintegrity = "v1-rev20231109-2.0.0"
 userMessagingPlatform = "3.0.0"
 retrofit = "2.11.0"
 loggingInterceptor = "5.0.0-alpha.11"
-#retrofitCoroutinesAdapter = "5.0.0-alpha.6"
 #vasuAdsHelper = "1.0.5"
 
 [plugins]
@@ -45,6 +44,7 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 #vasu-ads-helper  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "adshelper", version.ref = "vasuAdsHelper" }
 #vasu-integrity-check  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "integritycheck", version.ref = "vasuAdsHelper" }
 
+# Defaults
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -53,27 +53,57 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+# Multidex support
 androidx-multidex = { group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
-google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "googleGson" }
-google-play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
-lottie-animation = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
-intuit-sdp = { group = "com.intuit.sdp", name = "sdp-android", version.ref = "sdp" }
-intuit-ssp = { group = "com.intuit.ssp", name = "ssp-android", version.ref = "ssp" }
+
+# LifeCycle
 androidx-lifecycle-extensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "androidxLifecycleExtensions" }
-facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
-akspermission-android = { group = "com.github.AkshayHarsoda", name = "AksPermission-Android", version.ref = "akspermissionAndroid" }
-colorslider = { group = "com.github.naz013", name = "ColorSlider", version.ref = "colorslider" }
-android-billing = { group = "com.android.billingclient", name = "billing-ktx", version.ref = "android-billing" }
+
+# Google Gson to Json
+google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "googleGson" }
+
+# Custom Tab
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "androidx-browser" }
-zhpanvip-dotsindicator = { group = "com.github.zhpanvip", name = "viewpagerindicator", version.ref = "zhpanvip-dotsindicator" }
-revenuecat = { group = "com.revenuecat.purchases", name = "purchases", version.ref = "revenuecat" }
+
+# Google Ads
+google-play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
+
+# Google Android Billing
+android-billing = { group = "com.android.billingclient", name = "billing-ktx", version.ref = "android-billing" }
+
+# Google Play Integrity & Admob Consent Form
 integrity = { group = "com.google.android.play", name = "integrity", version.ref = "integrity" }
 google-auth-library-oauth2-http = { group = "com.google.auth", name = "google-auth-library-oauth2-http", version.ref = "googleAuthLibraryOauth2Http" }
 google-api-client-jackson2 = { group = "com.google.api-client", name = "google-api-client-jackson2", version.ref = "googleApiClientJackson2" }
 google-api-services-playintegrity = { group = "com.google.apis", name = "google-api-services-playintegrity", version.ref = "googleApiServicesPlayintegrity" }
 user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "userMessagingPlatform" }
+
+# Revenue-Cat
+revenuecat = { group = "com.revenuecat.purchases", name = "purchases", version.ref = "revenuecat" }
+
+# Retrofit
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
-#retrofit2-kotlin-coroutines-adapter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlin-coroutines-adapter", version.ref = "retrofitCoroutinesAdapter" }
+
+# SSP-SDP Dimension
+intuit-sdp = { group = "com.intuit.sdp", name = "sdp-android", version.ref = "sdp" }
+intuit-ssp = { group = "com.intuit.ssp", name = "ssp-android", version.ref = "ssp" }
+
+# Shimmer Layout
+facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
+
+# Lottie Animation
+lottie-animation = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+
+# Dots Indicator
+zhpanvip-dotsindicator = { group = "com.github.zhpanvip", name = "viewpagerindicator", version.ref = "zhpanvip-dotsindicator" }
+
+# Others
+akspermission-android = { group = "com.github.AkshayHarsoda", name = "AksPermission-Android", version.ref = "akspermissionAndroid" }
+colorslider = { group = "com.github.naz013", name = "ColorSlider", version.ref = "colorslider" }
+
+
+
 

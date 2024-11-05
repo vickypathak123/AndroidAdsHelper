@@ -215,6 +215,7 @@ object VasuAdsConfig {
         fun enableDebugMode(fIsEnable: Boolean) = this@SetAdsID.apply {
             this.isEnableDebugMode = fIsEnable
         }
+
         @JvmName("enablePurchaseHistoryLog")
         fun enablePurchaseHistoryLog(fIsEnable: Boolean) = this@SetAdsID.apply {
             this.isPurchaseHistoryLogEnable = fIsEnable
@@ -490,6 +491,7 @@ object VasuAdsConfig {
                         }
 
                         if (AppOpenAdHelper.isAppOpenAdEnable()) {
+                            logI(TAG, "AppOpenAdHelper: Loading Start.....")
                             AppOpenAdHelper.loadAd(fContext = mContext)
                         }
                     }

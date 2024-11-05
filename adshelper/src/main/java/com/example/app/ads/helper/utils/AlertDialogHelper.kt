@@ -10,6 +10,7 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.MetricAffectingSpan
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AlertDialog
+import com.example.app.ads.helper.R
 
 /**
  * @author Akshay Harsoda
@@ -50,7 +51,7 @@ object AlertDialogHelper {
     ) {
         var dialog: AlertDialog? = null
 
-        AlertDialog.Builder(this).apply {
+        AlertDialog.Builder(this, R.style.LightAlertDialogTheme).apply {
             this.setCancelable(false)
 
             this.setOnDismissListener {

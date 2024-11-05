@@ -13,8 +13,8 @@
         android:gravity="center"
         android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-        android:textStyle="bold"
         android:textColor="@color/color_primary_dark"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -26,6 +26,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/banner_ad_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.example.app.ads.helper.banner.BannerAdView
+        android:id="@+id/banner_ad_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:banner_placeholder_type="shimmer"
+        app:banner_ad_size="adaptive_banner"
+        app:banner_ad_type="splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

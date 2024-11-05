@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-private const val TAG: String = "Akshay_Admob_RevenueCatPurchaseHelper"
+private const val TAG: String = "Admob_RevenueCatPurchaseHelper"
 
 private fun setBillingListener(fContext: Context): Job {
     val job: Job = CoroutineScope(Dispatchers.IO).launch {

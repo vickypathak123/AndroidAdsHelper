@@ -25,10 +25,10 @@ object APICallEnqueue {
     ) {
         if (packageName.isEmpty()) {
             fListener.onError("")
-//            throw RuntimeException("App Package Name is not set. Please set your App Package Name first for check force update.")
+            throw RuntimeException("App Package Name is not set. Please set your App Package Name first for check force update.")
         } else if (versionCode.isEmpty()) {
             fListener.onError("")
-//            throw RuntimeException("App Version Name is not set. Please set your App Version Name first for check force update.")
+            throw RuntimeException("App Version Name is not set. Please set your App Version Name first for check force update.")
         } else {
             if (isOnline) {
                 try {
@@ -63,10 +63,10 @@ object APICallEnqueue {
     ) {
         if (packageName.isEmpty()) {
             fListener.onError("")
-//            throw RuntimeException("App Package Name is not set. Please set your App Package Name first for submit subscription review.")
+            throw RuntimeException("App Package Name is not set. Please set your App Package Name first for submit subscription review.")
         } else if (versionCode.isEmpty()) {
             fListener.onError("")
-//            throw RuntimeException("App Version Name is not set. Please set your App Version Name first for submit subscription review.")
+            throw RuntimeException("App Version Name is not set. Please set your App Version Name first for submit subscription review.")
         } else {
             if (isOnline) {
                 try {
@@ -106,10 +106,10 @@ object APICallEnqueue {
     ) {
         if (packageName.isEmpty()) {
             fListener.onError("")
-//            throw RuntimeException("App Package Name is not set. Please set your App Package Name first for submit feedback.")
+            throw RuntimeException("App Package Name is not set. Please set your App Package Name first for submit feedback.")
         } else if (versionCode.isEmpty()) {
             fListener.onError("")
-//            throw RuntimeException("App Version Name is not set. Please set your App Version Name first for submit feedback.")
+            throw RuntimeException("App Version Name is not set. Please set your App Version Name first for submit feedback.")
         } else {
             if (isOnline) {
                 try {

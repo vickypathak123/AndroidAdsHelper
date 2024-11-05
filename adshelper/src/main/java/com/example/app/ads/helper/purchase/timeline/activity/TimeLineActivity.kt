@@ -169,7 +169,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
                 override fun onPurchasedSuccess() {
                     super.onPurchasedSuccess()
-                    logE(TAG, "onPurchasedSuccess: Akshay_")
+                    logE(TAG, "onPurchasedSuccess: ")
                     CoroutineScope(Dispatchers.Main).launch {
                         mActivity.runOnUiThread {
                             ProductPurchaseHelper.getFreeTrialProductInfo?.let { productInfo ->
@@ -204,7 +204,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                                     )
 
                                     scheduleNotification(intervalMillis = ((2.takeIf { freeTrialPeriodCount <= 3 } ?: 5) - 1) * DateUtils.DAY_IN_MILLIS)
-                                    logE(TAG, "Akshay_ Saved Notification Data::-> \n${AdsManager(mActivity).notificationData}")
+                                    logE(TAG, "Saved Notification Data::-> \n${AdsManager(mActivity).notificationData}")
                                 }
 
                             }

@@ -87,6 +87,7 @@
                 android:layout_marginBottom="@dimen/_3sdp"
                 android:includeFontPadding="false"
                 android:lineSpacingExtra="0dp"
+                app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@+id/txt_plan_reference_price"
                 app:layout_constraintEnd_toStartOf="@+id/txt_plan_discount"
                 app:layout_constraintHorizontal_bias="0.0"
