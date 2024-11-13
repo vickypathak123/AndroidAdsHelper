@@ -20,7 +20,7 @@ class AppApplication : AppOpenApplication() {
 
     private val TAG = javaClass.simpleName
 
-    private val isAdEnable: Boolean = true
+    private val isAdEnable: Boolean = false
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)

@@ -54,6 +54,7 @@ object APIBuilder {
                 if (isEnableDebugMode) {
                     this.addInterceptor(provideLoggingInterceptor)
                 }
+                this.retryOnConnectionFailure(false)
             }.build()
         }
 

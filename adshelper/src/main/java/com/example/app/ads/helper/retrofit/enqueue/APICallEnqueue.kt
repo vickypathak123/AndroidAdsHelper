@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 
@@ -31,8 +32,8 @@ object APICallEnqueue {
             throw RuntimeException("App Version Name is not set. Please set your App Version Name first for check force update.")
         } else {
             if (isOnline) {
-                try {
-                    CoroutineScope(Dispatchers.IO).launch {
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
                         val response = CoroutineScope(Dispatchers.IO).async {
                             forceUpdateClient.forceUpdateApi(
                                 packageName = packageName.toRequestBody("text/plain".toMediaType()),
@@ -40,15 +41,19 @@ object APICallEnqueue {
                             )
                         }.await()
 
-                        CoroutineScope(Dispatchers.Main).launch {
+                        withContext(Dispatchers.Main) {
                             Log.e(TAG, "forceUpdateApi: \npackageName::$packageName, \nversionCode::$versionCode, \nresponse::${response}")
                             fListener.onSuccess(response)
                         }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            fListener.onError(e.message)
+                        }
                     }
-                } catch (e: Exception) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        fListener.onError(e.message)
-                    }
+                }
+            } else {
+                CoroutineScope(Dispatchers.Main).launch {
+                    fListener.onError("device is offline")
                 }
             }
         }
@@ -69,8 +74,8 @@ object APICallEnqueue {
             throw RuntimeException("App Version Name is not set. Please set your App Version Name first for submit subscription review.")
         } else {
             if (isOnline) {
-                try {
-                    CoroutineScope(Dispatchers.IO).launch {
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
                         val response = CoroutineScope(Dispatchers.IO).async {
                             reviewClient.subscriptionReviewApi(
                                 packageName = packageName,
@@ -80,17 +85,20 @@ object APICallEnqueue {
                             )
                         }.await()
 
-                        CoroutineScope(Dispatchers.Main).launch {
+                        withContext(Dispatchers.Main) {
                             Log.e(TAG, "subscriptionReviewApi: \npackageName::$packageName, \nversionCode::$versionCode, \nlanguageKey::$languageKey, \nresponse::${response}")
                             fListener.onSuccess(response)
                         }
-                    }
 
-
-                } catch (e: Exception) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        fListener.onError(e.message)
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            fListener.onError(e.message)
+                        }
                     }
+                }
+            } else {
+                CoroutineScope(Dispatchers.Main).launch {
+                    fListener.onError("device is offline")
                 }
             }
         }
@@ -112,8 +120,8 @@ object APICallEnqueue {
             throw RuntimeException("App Version Name is not set. Please set your App Version Name first for submit feedback.")
         } else {
             if (isOnline) {
-                try {
-                    CoroutineScope(Dispatchers.IO).launch {
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
                         val response = CoroutineScope(Dispatchers.IO).async {
                             reviewClient.feedbackApi(
                                 packageName = packageName,
@@ -124,17 +132,20 @@ object APICallEnqueue {
                             )
                         }.await()
 
-                        CoroutineScope(Dispatchers.Main).launch {
+                        withContext(Dispatchers.Main) {
                             Log.e(TAG, "feedbackApi: \npackageName::$packageName, \nversionCode::$versionCode, \nlanguageKey::$languageKey, \nresponse::${response}")
                             fListener.onSuccess(response)
                         }
-                    }
 
-
-                } catch (e: Exception) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        fListener.onError(e.message)
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            fListener.onError(e.message)
+                        }
                     }
+                }
+            } else {
+                CoroutineScope(Dispatchers.Main).launch {
+                    fListener.onError("device is offline")
                 }
             }
         }
