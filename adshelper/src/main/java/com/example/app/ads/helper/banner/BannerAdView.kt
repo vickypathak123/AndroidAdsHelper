@@ -69,19 +69,7 @@ class BannerAdView : FrameLayout {
                     loadAd()
                 }
             }
-        } /*else {
-            if (mCurrentView.tag is String) {
-                when (mCurrentView.tag) {
-                    "placeholder_loaded" -> showPlaceHolders()
-
-                    "ad_loaded" -> {
-                        showBannerAd(beVisible = true)
-                    }
-
-                    else -> showBannerAd(beVisible = false)
-                }
-            }
-        }*/
+        }
     }
 
     private val shimmerBinding: PlaceholderShimmerBinding by lazy {
@@ -176,8 +164,8 @@ class BannerAdView : FrameLayout {
             if (listOfBannerAdsModel.isNotEmpty()) {
                 return true
             } else {
-//                return false
-                throw RuntimeException("set Banner Ad Id First")
+                return false
+//                throw RuntimeException("set Banner Ad Id First")
             }
         }
     //</editor-fold>
@@ -323,67 +311,13 @@ class BannerAdView : FrameLayout {
                 mCurrentView.gone
             }
         }
-
-
-//        showBannerAd(beVisible = false)
-//        refreshView()
-//        showPlaceHolders()
-//        refreshView()
     }
 
     private fun loadAdWithInternetObserver() {
         isInternetAvailable.observeForever(mInternetObserver)
-
-//        if (!isInternetAvailable.hasObserver(mInternetObserver)) {
-//            logE(tag = TAG, message = "loadAdWithInternetObserver: START Observe, $mBannerAdSize $mBannerAdType")
-//            isInternetAvailable.observeForever(mInternetObserver)
-//        }
     }
 
     private fun showPlaceHolders() {
-//        mCurrentView.apply {
-//            this.removeAllViews()
-
-        /*when (mPlaceHolderType) {
-            PlaceHolderType.NONE -> {}
-            PlaceHolderType.SHIMMER -> {
-                shimmerBinding.root.apply {
-                    this.layoutParams = actualLayoutParams
-                }.also { view ->
-                    mCurrentView.tag = "placeholder_loaded"
-                    this.addView(view)
-                }
-            }
-
-            PlaceHolderType.TEXT -> {
-                placeHolderBinding.root.apply {
-                    this.layoutParams = actualLayoutParams
-                }.also { view ->
-                    mCurrentView.tag = "placeholder_loaded"
-                    this.addView(view)
-                }
-            }
-
-            PlaceHolderType.CUSTOM -> {
-                customPlaceHolderResourceId?.let { id ->
-                    this.inflateLayout(resource = id).apply {
-                        this.layoutParams = actualLayoutParams
-                    }.also { view ->
-                        mCurrentView.tag = "placeholder_loaded"
-                        this.addView(view)
-                    }
-                } ?: customPlaceholderView?.let { placeHolderView ->
-                    placeHolderView.apply {
-                        this.layoutParams = actualLayoutParams
-                    }.also { view ->
-                        mCurrentView.tag = "placeholder_loaded"
-                        this.addView(view)
-                    }
-                } ?: kotlin.run {
-                    throw RuntimeException("custom placeholder NullPointerException")
-                }
-            }
-        }*/
 
         val inflatedView = when (mPlaceHolderType) {
             PlaceHolderType.NONE -> null
@@ -410,10 +344,7 @@ class BannerAdView : FrameLayout {
             }
         }
 
-//            showBannerAd(beVisible = mPlaceHolderType != PlaceHolderType.NONE)
-
         refreshView()
-//        }
     }
 
 
@@ -595,8 +526,6 @@ class BannerAdView : FrameLayout {
                                 this.removeAllViews()
                                 fAdModel.loadedAd?.let { this.addView(it) }
                                 refreshView()
-//                                mCurrentView.tag = "ad_loaded"
-//                                showBannerAd(beVisible = true)
                             }
                         },
                         onAdClosed = {
@@ -615,7 +544,6 @@ class BannerAdView : FrameLayout {
                         },
                     )
                 }
-//            } else if (!isAppNotPurchased || !is_enable_banner_ad_from_remote_config) {
             } else if (!isBannerAdEnable()) {
                 mCurrentView.gone
             }
@@ -625,18 +553,6 @@ class BannerAdView : FrameLayout {
     private fun isBannerAdEnable(): Boolean = isAppNotPurchased && is_enable_banner_ad_from_remote_config
 
     private fun isBannerAdAvailable(): Boolean = isBannerAdEnable() && listOfBannerAdsModel.any { it.loadedAd != null }
-
-//    private fun showBannerAd(beVisible: Boolean) {
-//        if (!beVisible) {
-//            if (!isForceViewVisibilityVisible) {
-//                mCurrentView.gone
-//            }
-//        } else {
-//            if (!isForceViewVisibilityGone) {
-//                this.beVisibleIf(isBannerAdEnable())
-//            }
-//        }
-//    }
 
     fun pause() {
         listOfBannerAdsModel.filter { it.loadedAd != null }.let { nonNullList ->
@@ -655,9 +571,6 @@ class BannerAdView : FrameLayout {
     }
 
     fun destroy() {
-//        mCurrentView.tag = "placeholder_loaded"
-//        mCurrentView.removeAllViews()
-//        showBannerAd(beVisible = false)
         isThisAdClicked = false
         isAnyIndexLoaded = false
         isAnyIndexAlreadyLoaded = false
@@ -684,23 +597,6 @@ class BannerAdView : FrameLayout {
             )
         }
     }
-
-//    private var isForceViewVisibilityGone: Boolean = false
-//    private var isForceViewVisibilityVisible: Boolean = false
-//
-//    fun forceViewVisibility(beVisible: Boolean) {
-//        if (beVisible) {
-//            isForceViewVisibilityVisible = true
-//            isForceViewVisibilityGone = false
-//
-//            this.beVisibleIf(isBannerAdEnable())
-//        } else {
-//            isForceViewVisibilityGone = true
-//            isForceViewVisibilityVisible = false
-//
-//            mCurrentView.gone
-//        }
-//    }
 
     fun updateAdView(
         fAdSize: BannerAdSize? = null,
