@@ -37,7 +37,7 @@ android {
         multiDexEnabled true
         
 //        add below line if you face any issue with localization of Subscription Screen
-        resConfigs "en", "af-rZA", "ar-rAE", "da-rDK", "es-rES", "fil", "fr-rFR", "gu-rIN", "ha", "hi-rIN", "it-rIT", "ja", "ko", "pt-rBR", "ru-rRU", "th", "ur-rIN", "zh-rCN"
+        resConfigs "en", "af", "ar", "da",  "el", "es", "fil", "fr", "gu", "ha", "hi", "in", "it", "ja", "ko", "pt", "ru", "th", "ur", "zh"
     }
     
 //        add below line if you face "A failure occurred while executing com.android.build.gradle.internal.tasks.MergeJavaResWorkAction"    
@@ -50,9 +50,6 @@ android {
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
-    
-//        add below line if you don't want to work with adshelper or revenueCat
-    implementation 'com.github.vickypathak123.AndroidAdsHelper:integritycheck:latest_build_version'
     
 //        add below line if you want to work with Google Billing    
     implementation 'com.github.vickypathak123.AndroidAdsHelper:adshelper:latest_build_version'

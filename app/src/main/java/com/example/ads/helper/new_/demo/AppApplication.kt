@@ -20,7 +20,7 @@ class AppApplication : AppOpenApplication() {
 
     private val TAG = javaClass.simpleName
 
-    private val isAdEnable: Boolean = false
+    private val isAdEnable: Boolean = true
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
@@ -35,10 +35,10 @@ class AppApplication : AppOpenApplication() {
         Log.e(TAG, "onCreate: IS_OPEN_ADS_ENABLE::${this.getBoolean(IS_OPEN_ADS_ENABLE, true)}")
 
         VasuAdsConfig.with(this)
-            .enableOpenAd(fIsEnable = false)
+            .enableOpenAd(fIsEnable = true)
             .enableDebugMode(fIsEnable = true)
             .enablePurchaseHistoryLog(fIsEnable = false)
-            .needToTakeAllTestAdID(fIsTakeAll = false)
+            .needToTakeAllTestAdID(fIsTakeAll = true)
             .needToBlockInterstitialAd(fIsBlock = false)
             .setLifeTimeProductKey(LIFE_TIME_SKU)
             .setSubscriptionKey(WEEKLY_SKU, MONTHLY_SKU, YEARLY_SKU)
@@ -51,7 +51,7 @@ class AppApplication : AppOpenApplication() {
             .setAdmobSplashBannerAdId(getStringRes(com.example.app.ads.helper.R.string.test_admob_adaptive_banner_ad_id))
             .initialize()
 
-        initMobileAds("747DD141C5DB53A9F7E3E452845C08FF")
+        initMobileAds()
 
 
         VasuAdsConfig.with(this)

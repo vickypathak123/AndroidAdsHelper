@@ -23,6 +23,7 @@ import com.google.android.gms.ads.nativead.NativeAdOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.concurrent.CopyOnWriteArrayList
 
 
 /**
@@ -424,7 +425,7 @@ object NativeAdHelper {
     )
 
 
-    private val listOfNativeAdView: ArrayList<NativeAdViewModel> = ArrayList()
+    private val listOfNativeAdView: CopyOnWriteArrayList<NativeAdViewModel> = CopyOnWriteArrayList()
 
     /**
      * this method will check Interstitial Ad is Available or not
