@@ -156,6 +156,10 @@ internal class FeedBackActivity : BaseBindingActivity<ActivityFeedBackBinding>()
         }
     }
 
+    override fun getScreenLanguageCode(): String {
+        return mAppLanguage
+    }
+
     override fun setBinding(): ActivityFeedBackBinding {
         return ActivityFeedBackBinding.inflate(layoutInflater)
     }

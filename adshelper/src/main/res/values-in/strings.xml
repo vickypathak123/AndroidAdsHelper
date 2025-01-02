@@ -30,7 +30,7 @@
     <string name="subscription_will_auto_renew_cancel_anytime">Berlangganan akan diperbarui secara otomatis, dibatalkan kapan saja.</string>
 
     <string name="best_value">Nilai terbaik</string>
-    <string name="save_percentage">Simpan%1S %%</string>
+    <string name="save_percentage">Simpan %1s%%</string>
     <string name="most_popular">Paling Populer</string>
 
     <string name="lifetime">Seumur hidup</string>
@@ -39,7 +39,7 @@
     <string name="weekly">Mingguan</string>
 
     <string name="purchase_1">1 pembelian</string>
-    <string name="period_free">%1 gratis</string>
+    <string name="period_free">%1s gratis</string>
     <string name="upto_period">Hingga %1s</string>
 
     <string name="continue_">Melanjutkan</string>
@@ -48,7 +48,7 @@
 
     <string name="cancel_anytime_secure_with_play_store">Batalkan kapan saja.Aman dengan Play Store</string>
     <string name="price_for_period_use">%1s untuk %2s Penggunaan</string>
-    <string name="price_upto_period_then_price_slash_period">%1S hingga %2s, lalu %3s</string>
+    <string name="price_upto_period_then_price_slash_period">%1s hingga %2s, lalu %3s</string>
 
     <string name="terms_of_use">Ketentuan Penggunaan</string>
     <string name="privacy_policy">Kebijakan Privasi</string>
@@ -69,7 +69,7 @@
     <string name="rating">Peringkat</string>
 
     <string name="pay_once_enjoy_forever">Bayar sekali, nikmati selamanya</string>
-    <string name="percentage_off">%1S %% MATI</string>
+    <string name="percentage_off">%1s%% MATI</string>
     <string name="price_per_period">%1s per %2s</string>
     <string name="enjoy_forever">Nikmati selamanya</string>
     <string name="recommend">Menyarankan</string>

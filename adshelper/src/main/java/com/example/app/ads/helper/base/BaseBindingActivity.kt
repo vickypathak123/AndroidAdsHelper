@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewTreeObserver
 import androidx.annotation.UiThread
 import androidx.viewbinding.ViewBinding
+import com.example.app.ads.helper.utils.setIncludeFontPaddingFlag
 
 /**
  * @author Akshay Harsoda
@@ -65,7 +66,11 @@ internal abstract class BaseBindingActivity<VB : ViewBinding> : BaseActivity() {
         setContentView(this.mBinding.root)
 
         this.mBinding.root.viewTreeObserver.addOnGlobalLayoutListener(keyBordListener)
+
+        setIncludeFontPaddingFlag(fView = mBinding.root, fLanguageCode = getScreenLanguageCode())
     }
+
+    abstract fun getScreenLanguageCode(): String
 
     override fun getLayoutRes(): Int? {
         return null

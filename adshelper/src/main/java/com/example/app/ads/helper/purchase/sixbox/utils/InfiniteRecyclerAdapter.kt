@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.inflater
 import com.example.app.ads.helper.databinding.CustomInfinitePagerLayoutBinding
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.setIncludeFontPaddingFlag
 
 class InfiniteRecyclerAdapter(
     originalList: List<RattingItem>,
@@ -31,6 +33,7 @@ class InfiniteRecyclerAdapter(
             if (holder is InfiniteRecyclerViewHolder) {
                 with(holder) {
                     with(fBinding) {
+                        setIncludeFontPaddingFlag(fView = root, fLanguageCode = SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en")
                         with(newList[position]) {
                             ratingBar.apply {
                                 this.setRating(rating = rattingStar)

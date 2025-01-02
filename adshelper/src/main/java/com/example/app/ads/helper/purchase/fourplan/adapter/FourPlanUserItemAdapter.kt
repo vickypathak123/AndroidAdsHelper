@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app.ads.helper.base.utils.getDrawableRes
 import com.example.app.ads.helper.base.utils.inflater
 import com.example.app.ads.helper.databinding.FourPlanLayoutItemBoxBinding
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanUserItem
+import com.example.app.ads.helper.utils.setIncludeFontPaddingFlag
 
 class FourPlanUserItemAdapter(
     val itemList: ArrayList<FourPlanUserItem>,
@@ -23,6 +25,7 @@ class FourPlanUserItemAdapter(
             if (holder is FourPlanUserItemViewHolder) {
                 with(holder) {
                     with(fBinding) {
+                        setIncludeFontPaddingFlag(fView = root, fLanguageCode = SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en")
                         val finalPosition = (position % itemList.size)
                         with(itemList[finalPosition]) {
                             ivIcon.apply {

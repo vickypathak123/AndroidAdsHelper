@@ -37,7 +37,7 @@ android {
         multiDexEnabled true
         
 //        add below line if you face any issue with localization of Subscription Screen
-        resConfigs "en", "af", "ar", "da",  "el", "es", "fil", "fr", "gu", "ha", "hi", "in", "it", "ja", "ko", "pt", "ru", "th", "ur", "zh"
+        resConfigs "en", "af", "ar", "da",  "el", "es", "fil", "fr", "gu", "ha", "hi", "in", "it", "ja", "ko", "pt", "ru", "th", "ur", "zh", "bn", "de", "kn", "ml", "mr", "or", "pa", "ta", "te", "tr", "vi"
     }
     
 //        add below line if you face "A failure occurred while executing com.android.build.gradle.internal.tasks.MergeJavaResWorkAction"    

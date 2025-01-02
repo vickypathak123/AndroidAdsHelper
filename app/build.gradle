@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -8,7 +9,6 @@ android {
     compileSdk 34
 
     defaultConfig {
-//        applicationId "com.example.ads.helper.new_.demo"
         applicationId "com.vasu.ads.helper.demo"
 //        applicationId "com.contacts.number.add.sim.phone.recent.details"
 //        applicationId "com.gps.photo.geo.capture.location.map.time.stamp"

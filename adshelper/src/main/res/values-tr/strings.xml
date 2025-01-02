@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">Tek Seferlik Satın Alma</string>
+    <string name="period_day">Gün</string>
+    <string name="period_days">Günler</string>
+    <string name="period_week">Hafta</string>
+    <string name="period_weeks">Haftalar</string>
+    <string name="period_month">Ay</string>
+    <string name="period_months">Aylar</string>
+    <string name="period_year">Yıl</string>
+    <string name="period_years">Yıllar</string>
+
+    <string name="have_doubts">Şüpheleriniz mi var?</string>
+    <string name="start_with_a_free_trial">Ücretsiz denemeyle başlayın</string>
+    <string name="now">Şimdi</string>
+    <string name="unlock_all_the_features">Tüm özelliklerin kilidini açın.</string>
+    <string name="today_get_instant_access">Bugün: Anında Erişim Sağlayın</string>
+    <string name="day_title">Gün %1s:</string>
+    <string name="trial_reminder">Deneme Hatırlatıcısı</string>
+    <string name="trial_reminder_hint">Ücretsiz denemenizin ne zaman sona ereceğine dair bir hatırlatıcı alın. 15 saniye içinde istediğiniz zaman iptal edin.</string>
+    <string name="premium_begins">Premium Başlıyor</string>
+    <string name="premium_begins_hint">Deneme süreniz iptal edilmediği sürece tam fiyata dönüşecektir.</string>
+    <string name="free_then_per_period">%1s ücretsiz, ardından %3s başına %2s</string>
+    <string name="pay_nothing_now">Şimdi Hiçbir Şey Ödemeyin</string>
+    <string name="view_all_plans"><u>Tüm Planları Görüntüle</u></string>
+
+    <string name="unlock_all_features">Tüm Özelliklerin Kilidini Açın</string>
+    <string name="lifetime_purchase">Ömür Boyu Satın Alma</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">Ödeme %1s\'den sonra tahsil edilir, istediğiniz zaman iptal edebilirsiniz.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Abonelik otomatik olarak yenilenir, istediğiniz zaman iptal edebilirsiniz.</string>
+
+    <string name="best_value">EN İYİ DEĞER</string>
+    <string name="save_percentage">%1sn TASARRUF EDİN%%</string>
+    <string name="most_popular">EN POPÜLER</string>
+
+    <string name="lifetime">Ömür boyu</string>
+    <string name="yearly">Yıllık</string>
+    <string name="monthly">Aylık</string>
+    <string name="weekly">Haftalık</string>
+
+    <string name="purchase_1">1 Satın Alma</string>
+    <string name="period_free">%1s ücretsiz</string>
+    <string name="upto_period">en fazla %1s</string>
+
+    <string name="continue_">Devam et</string>
+    <string name="start_my_free_trial">ÜCRETSİZ DENEMEMİ BAŞLAT</string>
+    <string name="try_period_for_price">%1s\'yi %2s\'ye kadar deneyin</string>
+
+    <string name="cancel_anytime_secure_with_play_store">İstediğiniz zaman iptal edin. Play Store ile güvenli</string>
+    <string name="price_for_period_use">%1s %2s kullanım için</string>
+    <string name="price_upto_period_then_price_slash_period">%1s en fazla %2s, sonra %3s</string>
+
+    <string name="terms_of_use">Kullanım Şartları</string>
+    <string name="privacy_policy">Gizlilik Politikası</string>
+
+    <string name="instant_access_hint_1">Mesafe Ölçümü</string>
+    <string name="instant_access_hint_2">Alan Alanı Ölçümü</string>
+    <string name="instant_access_hint_3">Coğrafi Zaman Damgası Kamerası</string>
+    <string name="instant_access_hint_4">Rota Planlaması</string>
+    <string name="instant_access_hint_5">Veri Bulutu Senkronizasyonu</string>
+    <string name="instant_access_hint_6">Reklamsız</string>
+
+    <string name="rating_header">Metni Dönüştürmek için mükemmel uygulama</string>
+    <string name="rating_sub_header">Uygulama iyi bir uygulama, taranan görüntünün dizisi üzerinde gerçekten çalışması gerekiyor, bazı içerikler eksik ve bazıları karışık. Uygulamanın geliştirilmesi gerekiyor</string>
+    <string name="rating_by">%1s tarafından</string>
+    <string name="rating_user">Akşay Harsoda</string>
+
+    <string name="satisfied_customer">Memnun Müşteri</string>
+    <string name="rating">Puanlama</string>
+
+    <string name="pay_once_enjoy_forever">Bir kere öde, sonsuza kadar keyfini çıkar</string>
+    <string name="percentage_off">%1s%% İNDİRİM</string>
+    <string name="price_per_period">%1s başına %2s</string>
+    <string name="enjoy_forever">Sonsuza kadar keyfini çıkar</string>
+    <string name="recommend">Tavsiye</string>
+
+    <string name="exit_dialog_negative_button_text">Geri Dön</string>
+    <string name="exit_dialog_positive_button_text">Uygulamadan Çık</string>
+    <string name="exit_dialog_title">Çıkmak istediğinizden emin misiniz?</string>
+
+    <string name="update_title">Güncelleme Gerekli</string>
+    <string name="update_sub_title">Uzun süredir kullanım dışı bırakılmış uygulama sürümünü kullandığınızı fark ettik. Lütfen en son sürüme güncelleyin ve uygulamanın keyfini çıkarın.</string>
+    <string name="update">Güncelle</string>
+    <string name="cancel">İptal</string>
+
+    <string name="review_dialog_title">İlgilenmiyor musunuz?</string>
+    <string name="review_dialog_sub_title">Lütfen Paylaşın Neden</string>
+    <string name="review_option_1">Ne olduğunu bilmiyorum?</string>
+    <string name="review_option_2">Çok pahalı</string>
+    <string name="review_option_3">Uygulamalar için ödeme yapmıyorum</string>
+    <string name="review_option_4">Önce denemem gerekiyor</string>
+
+    <string name="rate_dialog_title">Uygulamanın keyfini çıkarıyor musunuz?</string>
+    <string name="rate_dialog_sub_title">\n5 yıldız derecelendirmesi bırakarak bize bildirin</string>
+    <string name="rate_dialog_ask_me_later">Bana sonra sor!</string>
+
+    <string name="feedback_title">Geri bildirim</string>
+    <string name="feedback_sub_title">Deneyiminizi bizimle paylaşın</string>
+    <string name="feedback_what_is_your_profession">Mesleğiniz nedir?</string>
+    <string name="feedback_write_your_suggestions">Önerilerinizi Yazın</string>
+    <string name="feedback_write_here">Buraya Yazın…</string>
+    <string name="feedback_write_here_suggestion">Önerinizi/Geri Bildiriminizi Buraya Yazın…</string>
+    <string name="feedback_submit">Göndermek</string>
+
+    <string name="internet_offline">İnternet Bağlantısı Yok.</string>
+    <string name="write_your_profession">Lütfen mesleğinizi giriniz.</string>
+    <string name="write_your_suggestions">Lütfen önerilerinizi giriniz.</string>
+    <string name="feedback_response_success">Geri bildirim başarıyla gönderildi</string>
+    <string name="feedback_response_error">Bir şeyler ters gitti. Lütfen daha sonra tekrar deneyin.</string>
+
+</resources>

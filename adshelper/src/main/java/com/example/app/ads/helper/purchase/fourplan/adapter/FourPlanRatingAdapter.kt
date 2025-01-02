@@ -9,10 +9,12 @@ import com.example.app.ads.helper.base.utils.gone
 import com.example.app.ads.helper.base.utils.inflater
 import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.FourPlanRatingItemBinding
+import com.example.app.ads.helper.purchase.SUBSCRIPTION_DATA_LANGUAGE_CODE
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.isEnglishLanguage
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItemType
+import com.example.app.ads.helper.utils.setIncludeFontPaddingFlag
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -37,6 +39,7 @@ class FourPlanRatingAdapter(
             if (holder is FourPlanRatingViewHolder) {
                 with(holder) {
                     with(fBinding) {
+                        setIncludeFontPaddingFlag(fView = root, fLanguageCode = SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en")
                         with(newList[position]) {
                             when (itemType) {
                                 FourPlanRattingItemType.APP_RATING -> {

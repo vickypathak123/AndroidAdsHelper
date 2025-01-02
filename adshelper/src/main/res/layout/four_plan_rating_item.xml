@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:constraint_referenced_ids="iv_like, bg_girl, iv_girl, txt_emoji, cl_customer_count, txt_satisfied_customer"
-            tools:visibility="gone" />
+            tools:visibility="visible" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_like"
@@ -277,7 +277,7 @@
 
         <TextView
             android:id="@+id/txt_satisfied_customer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_4sdp"
             android:fontFamily="@font/ads_plus_jakarta_sans_extra_bold"
@@ -285,6 +285,8 @@
             android:text="@string/satisfied_customer"
             android:textColor="#263238"
             android:textSize="@dimen/_12ssp"
+            android:maxLines="1"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/cl_customer_count"
             app:layout_constraintHorizontal_bias="0.5"
@@ -299,7 +301,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:constraint_referenced_ids="iv_rating_frame, iv_rating_star, txt_app_rating_count, txt_app_rating_hint, txt_best_app_header, txt_best_app_sub_header"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_rating_frame"

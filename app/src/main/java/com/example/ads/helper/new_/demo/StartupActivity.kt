@@ -6,7 +6,9 @@ import com.example.ads.helper.new_.demo.activitys.MainActivity
 import com.example.ads.helper.new_.demo.base.BaseActivity
 import com.example.ads.helper.new_.demo.base.BaseBindingActivity
 import com.example.ads.helper.new_.demo.base.shared_prefs.getBoolean
+import com.example.ads.helper.new_.demo.base.utils.beVisibleIf
 import com.example.ads.helper.new_.demo.databinding.ActivityStartupBinding
+import com.example.ads.helper.new_.demo.newdemo.utils.isEnableTestPurchase
 import com.example.ads.helper.new_.demo.utils.AppTimer
 import com.example.ads.helper.new_.demo.utils.REVENUE_CAT_ID
 import com.example.ads.helper.new_.demo.utils.SELECTED_APP_LANGUAGE_CODE
@@ -59,6 +61,13 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
         super.initView()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
+        AdsManager.isShowAds.observe(mActivity) {
+            Log.e(TAG, "initView: AdsManager needToShowAds::-> $it")
+            mActivity.runOnUiThread {
+                mBinding.bannerAdView.beVisibleIf(it)
+            }
+        }
+
         CoroutineScope(Dispatchers.IO).launch {
             ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {
@@ -80,10 +89,10 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
             })
         }
 
-        mSelectLanguageDialog.show { fLanguageCode ->
-            SELECTED_APP_LANGUAGE_CODE = fLanguageCode
+//        mSelectLanguageDialog.show { fLanguageCode ->
+//            SELECTED_APP_LANGUAGE_CODE = fLanguageCode
             doAfterLanguageSelection()
-        }
+//        }
     }
 
     private fun doAfterLanguageSelection() {
@@ -92,7 +101,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
             .setAppLanguageCode(selectedAppLanguageCode)
             .packageName(mActivity.packageName)
 //            .versionName(BuildConfig.VERSION_NAME)
-            .versionName("2.0")
+            .versionName("17.8")
             .needToBlockCheckIntegrity(true)
             .checkIntegrity {
                 isAppSafe = true
@@ -101,12 +110,6 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                     ProductPurchaseHelper.initBillingClient(fContext = mActivity)
                 }
             }
-
-
-
-        AdsManager.isShowAds.observe(mActivity) {
-            Log.e(TAG, "initView: AdsManager needToShowAds::-> $it")
-        }
     }
 
     private fun loadAdWithTimer() {
@@ -171,7 +174,7 @@ class StartupActivity : BaseBindingActivity<ActivityStartupBinding>() {
                 onOpenSubscriptionScreen = {
                     isOpenSubscriptionScreen = true
                     VasuSubscriptionConfig.with(fActivity = mActivity, fAppPackageName = mActivity.packageName, fAppVersionName = BuildConfig.VERSION_NAME)
-//                        .enableTestPurchase(true)
+                        .enableTestPurchase(isEnableTestPurchase)
                         .setAppLanguageCode(selectedAppLanguageCode)
                         .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
                             this.setNotificationIcon(id = R.drawable.ic_share_blue)

@@ -18,6 +18,7 @@ import com.example.app.ads.helper.utils.is_exit_dialog_opened
 import com.example.app.ads.helper.utils.logD
 import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.utils.logI
+import com.example.app.ads.helper.utils.setIncludeFontPaddingFlag
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.JsonObject
 import java.util.Locale
@@ -110,6 +111,8 @@ internal class ReviewDialog(
         if (!fActivity.isFinishing && !isShowing) {
             if (!AdsManager(context = fActivity).isReviewDialogOpened) {
                 AdsManager(context = fActivity).isReviewDialogOpened = true
+
+                setIncludeFontPaddingFlag(fView = mBinding.root, fLanguageCode = fLanguageCode)
 
                 logI(TAG, "show: \nfPackageName::-> $fPackageName, \nfVersionName::-> $fVersionName, \nfLanguageCode::-> $fLanguageCode")
 

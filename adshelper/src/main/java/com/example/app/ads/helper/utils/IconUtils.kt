@@ -16,6 +16,22 @@ import com.example.app.ads.helper.base.utils.isPiePlus
  * @since 24 Jun 2024
  */
 
+private val listOfTextCutLanguageCode: ArrayList<String> = arrayListOf("gu", "hi", "ta", "ml", "mr", "or", "pa", "te", "bn", "th", "kn")
+
+fun setIncludeFontPaddingFlag(fView: View, fLanguageCode: String) {
+    setIncludeFontPaddingFlag(fView = fView, isIncludeFontPadding = listOfTextCutLanguageCode.contains(fLanguageCode))
+}
+
+private fun setIncludeFontPaddingFlag(fView: View, isIncludeFontPadding: Boolean) {
+    if (fView is android.widget.TextView) {
+        fView.includeFontPadding = isIncludeFontPadding
+    } else if (fView is android.view.ViewGroup) {
+        for (i in 0 until fView.childCount) {
+            setIncludeFontPaddingFlag(fView = fView.getChildAt(i), isIncludeFontPadding = isIncludeFontPadding)
+        }
+    }
+}
+
 enum class IconPosition {
     RIGHT_TO_LEFT, LEFT_TO_RIGHT
 }

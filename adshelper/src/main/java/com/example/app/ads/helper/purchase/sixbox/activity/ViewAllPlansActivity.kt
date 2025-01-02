@@ -22,6 +22,8 @@ import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.BaseActivity
 import com.example.app.ads.helper.base.BaseBindingActivity
 import com.example.app.ads.helper.base.utils.beVisibleIf
+import com.example.app.ads.helper.base.utils.disable
+import com.example.app.ads.helper.base.utils.enable
 import com.example.app.ads.helper.base.utils.getColorRes
 import com.example.app.ads.helper.base.utils.getDimensionRes
 import com.example.app.ads.helper.base.utils.getDrawableRes
@@ -503,6 +505,10 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         }
     }
 
+    override fun getScreenLanguageCode(): String {
+        return SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en"
+    }
+
     override fun setBinding(): ActivityViewAllPlansBinding = ActivityViewAllPlansBinding.inflate(layoutInflater)
 
     override fun getActivityContext(): BaseActivity = this@ViewAllPlansActivity
@@ -516,6 +522,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
     override fun onResume() {
         super.onResume()
+        mBinding.lySubscribeButton.root.enable
         if (isOnPause) {
             isOnPause = false
             setBillingListener(fWhere = "onResume")
@@ -809,6 +816,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                     }
 
                     if (selectedSKU.isNotEmpty()) {
+                        lySubscribeButton.root.disable
                         if (IS_ENABLE_TEST_PURCHASE) {
                             ProductPurchaseHelper.fireTestingPurchase(context = mActivity)
                         } else {
@@ -1364,7 +1372,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
     override fun needToShowReviewDialog(): Boolean {
 //        return (!isFromTimeLine) && IS_FROM_SPLASH && (!AdsManager(context = mActivity).isReviewDialogOpened)
-        return isOnline && (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return !isUserPurchaseAnyPlan && isOnline && (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false

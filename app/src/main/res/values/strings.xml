@@ -49,11 +49,11 @@
         <item>English (en)</item>
         <item>Afrikaans (af)</item>
         <item>Arabic (ar)</item>
+        <item>Chinese (zh)</item>
         <item>Danish (da)</item>
-        <item>Greek (el)</item>
-        <item>Spanish (es)</item>
         <item>Filipino (fil)</item>
         <item>French (fr)</item>
+        <item>Greek (el)</item>
         <item>Gujarati (gu)</item>
         <item>Hausa (ha)</item>
         <item>Hindi (hi)</item>
@@ -63,9 +63,21 @@
         <item>Korean (ko)</item>
         <item>Portuguese (pt)</item>
         <item>Russian (ru)</item>
+        <item>Spanish (es)</item>
         <item>Thai (th)</item>
         <item>Urdu (ur)</item>
-        <item>Chinese (zh)</item>
+
+        <item>Turkish (tr)</item>
+        <item>German (de)</item>
+        <item>Vietnamese (vi)</item>
+        <item>Bangla (bn)</item>
+        <item>Kannada (kn)</item>
+        <item>Malayalam (ml)</item>
+        <item>Marathi (mr)</item>
+        <item>Odia (or)</item>
+        <item>Punjabi (pa)</item>
+        <item>Tamil (ta)</item>
+        <item>Telugu (te)</item>
     </string-array>
 
     <string-array name="subscription_screen_type">

@@ -53,23 +53,11 @@ class AppApplication : AppOpenApplication() {
 
         initMobileAds()
 
-
-        VasuAdsConfig.with(this)
-            .enableAppOpenAdFromRemoteConfig(fIsEnable = isAdEnable)
-            .enableBannerAdFromRemoteConfig(fIsEnable = isAdEnable)
-            .enableInterstitialAdFromRemoteConfig(fIsEnable = isAdEnable)
-            .enableNativeAdFromRemoteConfig(fIsEnable = isAdEnable)
-            .enableRewardedInterstitialAdFromRemoteConfig(fIsEnable = isAdEnable)
-            .enableRewardedVideoAdFromRemoteConfig(fIsEnable = isAdEnable)
-            .initializeRemoteConfig()
-
         if (REVENUE_CAT_ID.isNotEmpty()) {
             initRevenueCat(fContext = this, revenueCatID = REVENUE_CAT_ID)
         }
 
         destroyAllLoadedAd()
-
-        initSubscriptionRemoteConfig()
     }
 
     override fun onResumeApp(fCurrentActivity: Activity): Boolean {

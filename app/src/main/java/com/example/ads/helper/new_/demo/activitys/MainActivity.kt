@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import androidx.appcompat.app.AlertDialog
 import com.akshay.harsoda.permission.helper.AksPermission
 import com.akshay.harsoda.permission.helper.utiles.OnAlertButtonClickListener
@@ -24,6 +25,7 @@ import com.example.ads.helper.new_.demo.base.utils.setSelection
 import com.example.ads.helper.new_.demo.base.utils.shareApp
 import com.example.ads.helper.new_.demo.databinding.ActivityMainBinding
 import com.example.ads.helper.new_.demo.triggerRebirth
+import com.example.ads.helper.new_.demo.utils.SELECTED_APP_LANGUAGE_CODE
 import com.example.ads.helper.new_.demo.utils.selectedAppLanguageCode
 import com.example.app.ads.helper.activity.showFullScreenNativeAdActivity
 import com.example.app.ads.helper.feedback.FeedBackConfig
@@ -55,6 +57,16 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
 
         with(mBinding) {
             root.setSelection()
+
+            val languageCodes = resources.getStringArray(R.array.subscription_screen_language).map { it.substringAfter("(").substringBefore(")") }
+            val selectedIndex = languageCodes.indexOf(selectedAppLanguageCode)
+            // Set the selected item in the spinner
+            if (selectedIndex != -1) {
+                spLanguage.setSelection(selectedIndex)
+            }
+
+//            txtLanguageCode.text = "Selected Language Code:- ($selectedAppLanguageCode)"
+            txtLanguageCode.text = "Selected Language:- "
 
             openAdsSwitch.isChecked = mActivity.getBoolean(IS_OPEN_ADS_ENABLE, true)
             adsSwitch.isChecked = true
@@ -127,6 +139,18 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                     finishAfterTransition()
                     triggerRebirth(mActivity)
                 }, 500)
+            }
+
+            spLanguage.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    val selectedItem = parent?.getItemAtPosition(position)?.toString()?.substringAfter("(")?.substringBefore(")")?.takeIf { it.isNotEmpty() } ?: "en"
+                    SELECTED_APP_LANGUAGE_CODE = selectedItem
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+
             }
 
             setClickListener(

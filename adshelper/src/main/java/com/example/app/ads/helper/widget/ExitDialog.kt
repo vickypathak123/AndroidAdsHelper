@@ -16,6 +16,7 @@ import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.utils.exitTheApp
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.is_exit_dialog_opened
+import com.example.app.ads.helper.utils.setIncludeFontPaddingFlag
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.Locale
 
@@ -138,6 +139,8 @@ class ExitDialog(
         @StringRes subTitleId: Int
     ) {
         if (!fActivity.isFinishing && !isShowing) {
+
+            setIncludeFontPaddingFlag(fView = mBinding.root, fLanguageCode = fLanguageCode)
 
             mBinding.nativeAdView.beVisibleIf(AdsManager(fActivity).isNeedToShowAds)
 

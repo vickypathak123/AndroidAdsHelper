@@ -21,6 +21,10 @@ fun showFullScreenNativeAdActivity(fActivity: Activity, onInterstitialNativeAdCl
 
 internal class InterstitialNativeAdActivity : BaseBindingActivity<ActivityInterstitialNativeAdBinding>() {
 
+    override fun getScreenLanguageCode(): String {
+        return "en"
+    }
+
     override fun setBinding(): ActivityInterstitialNativeAdBinding {
         return ActivityInterstitialNativeAdBinding.inflate(layoutInflater)
     }

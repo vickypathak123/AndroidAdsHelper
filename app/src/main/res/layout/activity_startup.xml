@@ -37,6 +37,7 @@
         app:banner_placeholder_type="shimmer"
         app:banner_ad_size="adaptive_banner"
         app:banner_ad_type="splash"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -17,6 +17,8 @@ import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.BaseActivity
 import com.example.app.ads.helper.base.BaseBindingActivity
 import com.example.app.ads.helper.base.utils.beVisibleIf
+import com.example.app.ads.helper.base.utils.disable
+import com.example.app.ads.helper.base.utils.enable
 import com.example.app.ads.helper.base.utils.getColorRes
 import com.example.app.ads.helper.base.utils.gone
 import com.example.app.ads.helper.base.utils.isTiramisuPlus
@@ -138,6 +140,10 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         }
     }
 
+    override fun getScreenLanguageCode(): String {
+        return SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en"
+    }
+
     override fun setBinding(): ActivityTimeLineBinding = ActivityTimeLineBinding.inflate(layoutInflater)
 
     override fun getActivityContext(): BaseActivity = this@TimeLineActivity
@@ -151,6 +157,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
     override fun onResume() {
         super.onResume()
+        mBinding.lySubscribeButton.root.enable
         if (isOnPause) {
             isOnPause = false
             setBillingListener(fWhere = "onResume")
@@ -480,6 +487,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
                 lySubscribeButton.root -> {
                     ProductPurchaseHelper.getFreeTrialProductInfo?.let { productInfo ->
+                        lySubscribeButton.root.disable
                         if (IS_ENABLE_TEST_PURCHASE) {
                             ProductPurchaseHelper.fireTestingPurchase(context = mActivity)
                         } else {
@@ -615,7 +623,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
     }
 
     override fun needToShowReviewDialog(): Boolean {
-        return isOnline && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return !isUserPurchaseAnyPlan && isOnline && (!AdsManager(context = mActivity).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false
@@ -644,4 +652,6 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
             isSystemBackButtonPressed = false
         }
     }
+
+
 }

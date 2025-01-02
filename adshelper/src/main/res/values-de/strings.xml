@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_time_purchase">Einmaliger Kauf</string>
+    <string name="period_day">Tag</string>
+    <string name="period_days">Tage</string>
+    <string name="period_week">Woche</string>
+    <string name="period_weeks">Wochen</string>
+    <string name="period_month">Monat</string>
+    <string name="period_months">Monate</string>
+    <string name="period_year">Jahr</string>
+    <string name="period_years">Jahre</string>
+
+    <string name="have_doubts">Haben Sie Zweifel?</string>
+    <string name="start_with_a_free_trial">Beginnen Sie mit einer kostenlosen Testversion</string>
+    <string name="now">Jetzt</string>
+    <string name="unlock_all_the_features">Schalten Sie alle Funktionen frei.</string>
+    <string name="today_get_instant_access">Heute: Erhalten Sie sofortigen Zugriff</string>
+    <string name="day_title">Tag %1s:</string>
+    <string name="trial_reminder">Testerinnerung</string>
+    <string name="trial_reminder_hint">Erhalten Sie eine Erinnerung, wann Ihre kostenlose Testversion endet. Sie können jederzeit innerhalb von 15 Sekunden kündigen.</string>
+    <string name="premium_begins">Premium beginnt</string>
+    <string name="premium_begins_hint">Ihre Testversion wird zum vollen Preis angeboten, sofern sie nicht gekündigt wird.</string>
+    <string name="free_then_per_period">%1s kostenlos, dann %2s pro %3s</string>
+    <string name="pay_nothing_now">Jetzt nichts bezahlen</string>
+    <string name="view_all_plans"><u>Alle Pläne anzeigen</u></string>
+
+    <string name="unlock_all_features">Alle Funktionen freischalten</string>
+    <string name="lifetime_purchase">Lebenslanger Kauf</string>
+    <string name="payment_is_charged_after_period_cancel_anytime">Zahlung wird nach %1s berechnet, jederzeit kündbar.</string>
+    <string name="subscription_will_auto_renew_cancel_anytime">Abonnement wird automatisch verlängert, jederzeit kündbar.</string>
+
+    <string name="best_value">BESTES PREIS-LEISTUNGS-VERHÄLTNIS</string>
+    <string name="save_percentage">%1s%% SPAREN</string>
+    <string name="most_popular">BELIEBTESTE</string>
+
+    <string name="lifetime">Lebenslang</string>
+    <string name="yearly">Jährlich</string>
+    <string name="monthly">Monatlich</string>
+    <string name="weekly">Wöchentlich</string>
+
+    <string name="purchase_1">1 Kauf</string>
+    <string name="period_free">%1s gratis</string>
+    <string name="upto_period">bis zu %1s</string>
+
+    <string name="continue_">Weiter</string>
+    <string name="start_my_free_trial">KOSTENLOSE TESTVERSION STARTEN</string>
+    <string name="try_period_for_price">%1s für %2s testen</string>
+
+    <string name="cancel_anytime_secure_with_play_store">Jederzeit kündbar. Sicher mit Play Store</string>
+    <string name="price_for_period_use">%1s für %2s nutzen</string>
+    <string name="price_upto_period_then_price_slash_period">%1s bis zu %2s, dann %3s</string>
+
+    <string name="terms_of_use">Nutzungsbedingungen</string>
+    <string name="privacy_policy">Datenschutzrichtlinie</string>
+
+    <string name="instant_access_hint_1">Entfernungsmessung</string>
+    <string name="instant_access_hint_2">Feldflächenmessung</string>
+    <string name="instant_access_hint_3">Geo-Zeitstempelkamera</string>
+    <string name="instant_access_hint_4">Routenplanung</string>
+    <string name="instant_access_hint_5">Daten-Cloud-Sync</string>
+    <string name="instant_access_hint_6">Werbefrei</string>
+
+    <string name="rating_header">Ausgezeichnete App zum Konvertieren von Text</string>
+    <string name="rating_sub_header">Die App ist gut, aber die Reihenfolge der gescannten Bilder muss noch verbessert werden, einige Inhalte fehlen und einige sind durcheinander. App muss verbessert werden</string>
+    <string name="rating_by">von %1s</string>
+    <string name="rating_user">Akshay Harsoda</string>
+
+    <string name="satisfied_customer">Zufriedener Kunde</string>
+    <string name="rating">Bewertung</string>
+
+    <string name="pay_once_enjoy_forever">Einmal zahlen, für immer genießen</string>
+    <string name="percentage_off">%1s%% RABATT</string>
+    <string name="price_per_period">%1s pro %2s</string>
+    <string name="enjoy_forever">Für immer genießen</string>
+    <string name="recommend">Empfehlen</string>
+
+    <string name="exit_dialog_negative_button_text">Zurück</string>
+    <string name="exit_dialog_positive_button_text">App beenden</string>
+    <string name="exit_dialog_title">Möchten Sie die App wirklich beenden?</string>
+
+    <string name="update_title">Update erforderlich</string>
+    <string name="update_sub_title">Wir haben festgestellt, dass Sie die veraltete Anwendungsversion schon lange verwenden. Bitte aktualisieren Sie auf die neueste Version und genießen Sie die App.</string>
+    <string name="update">Update</string>
+    <string name="cancel">Abbrechen</string>
+
+    <string name="review_dialog_title">Kein Interesse?</string>
+    <string name="review_dialog_sub_title">Bitte teilen Sie uns mit, warum.</string>
+    <string name="review_option_1">Sie wissen nicht, was es ist?</string>
+    <string name="review_option_2">Zu teuer.</string>
+    <string name="review_option_3">Ich bezahle nicht für Apps.</string>
+    <string name="review_option_4">Ich muss es erst ausprobieren.</string>
+
+    <string name="rate_dialog_title">Gefällt Ihnen die App?</string>
+    <string name="rate_dialog_sub_title">Lassen Sie es uns wissen, indem Sie eine 5-Sterne-Bewertung hinterlassen</string>
+    <string name="rate_dialog_ask_me_later">Frag mich später!</string>
+
+    <string name="feedback_title">Rückmeldung</string>
+    <string name="feedback_sub_title">Teilen Sie Ihre Erfahrungen mit uns</string>
+    <string name="feedback_what_is_your_profession">Was ist Ihr Beruf?</string>
+    <string name="feedback_write_your_suggestions">Schreiben Sie Ihre Vorschläge</string>
+    <string name="feedback_write_here">Schreiben Sie hier…</string>
+    <string name="feedback_write_here_suggestion">Schreiben Sie hier Ihren Vorschlag/Feedback…</string>
+    <string name="feedback_submit">Einreichen</string>
+
+    <string name="internet_offline">Keine Internetverbindung.</string>
+    <string name="write_your_profession">Bitte geben Sie Ihren Beruf ein.</string>
+    <string name="write_your_suggestions">Bitte geben Sie Ihre Vorschläge ein.</string>
+    <string name="feedback_response_success">Feedback erfolgreich übermittelt</string>
+    <string name="feedback_response_error">Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.</string>
+
+
+</resources>

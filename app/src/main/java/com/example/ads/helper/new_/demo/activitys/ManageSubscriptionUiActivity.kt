@@ -14,6 +14,7 @@ import com.example.ads.helper.new_.demo.base.utils.beVisibleIf
 import com.example.ads.helper.new_.demo.base.utils.getDrawableRes
 import com.example.ads.helper.new_.demo.base.utils.makeText
 import com.example.ads.helper.new_.demo.databinding.ActivityManageSubscriptionUiBinding
+import com.example.ads.helper.new_.demo.newdemo.utils.isEnableTestPurchase
 import com.example.app.ads.helper.purchase.VasuSubscriptionConfig
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItemType
@@ -120,7 +121,7 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
 
                 btnUpdate -> {
                     VasuSubscriptionConfig.with(fActivity = mActivity, fAppPackageName = mActivity.packageName, fAppVersionName = BuildConfig.VERSION_NAME)
-//                        .enableTestPurchase(true)
+                        .enableTestPurchase(isEnableTestPurchase)
                         .setAppLanguageCode(fCode = spLanguage.selectedItem.toString().substringAfter("(").substringBefore(")").takeIf { it.isNotEmpty() } ?: "en")
                         .setPrivacyPolicy(fLink = etPrivacyPolicy.text.toString().trim().takeIf { it.isNotEmpty() && switchPrivacyPolicy.isChecked } ?: "https://www.freeprivacypolicy.com/blog/privacy-policy-url/")
                         .setTermsOfUse(fLink = etTermsOfUse.text.toString().trim().takeIf { it.isNotEmpty() && switchTermsOfUse.isChecked } ?: "https://policies.google.com/privacy?hl=en-US")

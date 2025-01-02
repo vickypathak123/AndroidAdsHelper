@@ -156,7 +156,7 @@ class SubscriptionRatingBar : View {
         var finalDrawable: Drawable? = emptyDrawable
         progressBackgroundTintColor?.let { lColor ->
             emptyDrawable?.let { drawable ->
-                DrawableCompat.wrap(drawable).apply {
+                DrawableCompat.wrap(drawable.mutate()).apply {
                     DrawableCompat.setTintList(this, lColor)
                 }.also { finalDrawable = it }
             }
@@ -186,7 +186,7 @@ class SubscriptionRatingBar : View {
         var finalDrawable: Drawable? = filledDrawable
         progressTintColor?.let { lColor ->
             filledDrawable?.let { drawable ->
-                DrawableCompat.wrap(drawable).apply {
+                DrawableCompat.wrap(drawable.mutate()).apply {
                     DrawableCompat.setTintList(this, lColor)
                 }.also { finalDrawable = it }
             }

@@ -14,6 +14,7 @@ import com.example.app.ads.helper.launcher.Launcher
 import com.example.app.ads.helper.purchase.product.AdsManager
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.is_exit_dialog_opened
+import com.example.app.ads.helper.utils.setIncludeFontPaddingFlag
 import java.util.Locale
 
 
@@ -101,6 +102,10 @@ class RateAppDialog(
     ) {
         if (!fActivity.isFinishing && !isShowing) {
             if (!AdsManager(context = fActivity).isRateAppDialogOpened) {
+
+
+                setIncludeFontPaddingFlag(fView = mBinding.root, fLanguageCode = fLanguageCode)
+
 
                 this.onClickAskMeLater = {
                     this.dismiss()

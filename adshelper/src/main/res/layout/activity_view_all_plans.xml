@@ -86,6 +86,8 @@
                 android:includeFontPadding="false"
                 android:maxLines="1"
                 android:textSize="@dimen/_18ssp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:paddingStart="0dp"
                 app:layout_constraintEnd_toStartOf="@id/iv_close"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/gl_start_1"
