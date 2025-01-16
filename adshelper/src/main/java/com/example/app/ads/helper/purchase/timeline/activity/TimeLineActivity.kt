@@ -47,6 +47,7 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isWeekl
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isYearlySKU
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.purchase.utils.getEventParamBundle
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.isOnline
@@ -181,9 +182,9 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                         mActivity.runOnUiThread {
                             ProductPurchaseHelper.getFreeTrialProductInfo?.let { productInfo ->
                                 when {
-                                    productInfo.id.getSKU.isMonthlySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE)
-                                    productInfo.id.getSKU.isWeeklySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE)
-                                    productInfo.id.getSKU.isYearlySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE)
+                                    productInfo.id.getSKU.isMonthlySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo)))
+                                    productInfo.id.getSKU.isWeeklySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo)))
+                                    productInfo.id.getSKU.isYearlySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo)))
                                 }
 
                                 notificationData?.let { data ->

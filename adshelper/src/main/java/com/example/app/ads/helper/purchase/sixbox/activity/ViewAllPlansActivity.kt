@@ -57,6 +57,7 @@ import com.example.app.ads.helper.purchase.sixbox.utils.RattingItem
 import com.example.app.ads.helper.purchase.sixbox.utils.ViewAllPlansScreenDataModel
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.purchase.utils.getEventParamBundle
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.isOnline
@@ -551,21 +552,37 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                             when {
                                 mBinding.lyYearlyPlan.root.isSelected -> {
                                     mYearlyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE.takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL } ?: SubscriptionEventType.YEARLY_SUBSCRIBE)
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.YEARLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                        )
                                     }
                                 }
 
                                 mBinding.lyLifetimePlan.root.isSelected -> {
                                     mLifetimePlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(fEventType = SubscriptionEventType.LIFE_TIME_FREE_TRAIL_PURCHASE.takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL } ?: SubscriptionEventType.LIFE_TIME_PURCHASE)
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.LIFE_TIME_FREE_TRAIL_PURCHASE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.LIFE_TIME_PURCHASE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                        )
                                     }
                                 }
 
                                 mBinding.lyMonthlyPlan.root.isSelected -> {
                                     mMonthlyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE.takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL } ?: SubscriptionEventType.MONTHLY_SUBSCRIBE)
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.MONTHLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                        )
                                     } ?: mWeeklyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE.takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL } ?: SubscriptionEventType.WEEKLY_SUBSCRIBE)
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.WEEKLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                        )
                                     }
                                 }
 
@@ -1244,12 +1261,16 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                             monthPrice = firstPlanProductInfo.formattedPrice,
                             yearPrice = yearlyProductInfo.formattedPrice,
                             onDiscountCalculated = { discountPercentage, discountPrice ->
-                                txtPlanPricePercentage.apply {
-                                    this.text = getLocalizedString<String>(
-                                        context = mActivity,
-                                        resourceId = R.string.save_percentage,
-                                        formatArgs = arrayOf(discountPercentage.toString())
-                                    )
+                                if (discountPercentage > 0) {
+                                    txtPlanPricePercentage.apply {
+                                        this.text = getLocalizedString<String>(
+                                            context = mActivity,
+                                            resourceId = R.string.save_percentage,
+                                            formatArgs = arrayOf(discountPercentage.toString())
+                                        )
+                                    }
+                                } else {
+                                    txtPlanPricePercentage.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.recommend)
                                 }
 
                                 txtPlanReferencePrice.apply {
@@ -1273,12 +1294,16 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                             weekPrice = firstPlanProductInfo.formattedPrice,
                             yearPrice = yearlyProductInfo.formattedPrice,
                             onDiscountCalculated = { discountPercentage, discountPrice ->
-                                txtPlanPricePercentage.apply {
-                                    this.text = getLocalizedString<String>(
-                                        context = mActivity,
-                                        resourceId = R.string.save_percentage,
-                                        formatArgs = arrayOf(discountPercentage.toString())
-                                    )
+                                if (discountPercentage > 0) {
+                                    txtPlanPricePercentage.apply {
+                                        this.text = getLocalizedString<String>(
+                                            context = mActivity,
+                                            resourceId = R.string.save_percentage,
+                                            formatArgs = arrayOf(discountPercentage.toString())
+                                        )
+                                    }
+                                } else {
+                                    txtPlanPricePercentage.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.recommend)
                                 }
 
                                 txtPlanReferencePrice.apply {
@@ -1396,6 +1421,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         } else {
             if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
                 fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
+//                fireSubscriptionEvent(fEventType = SubscriptionEventType.ViewAllPlansScreenClose)
             }
             super.customOnBackPressed()
             isSystemBackButtonPressed = false

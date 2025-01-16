@@ -36,11 +36,7 @@ import com.example.app.ads.helper.base.utils.setTextSizeDimension
 import com.example.app.ads.helper.base.utils.visible
 import com.example.app.ads.helper.databinding.ActivityFourPlanBinding
 import com.example.app.ads.helper.databinding.FourPlanRatingIndicatorBinding
-import com.example.app.ads.helper.utils.getLocalizedString
-import com.example.app.ads.helper.utils.isEnglishLanguage
-import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
 import com.example.app.ads.helper.launcher.Launcher
-import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.purchase.IS_ENABLE_TEST_PURCHASE
 import com.example.app.ads.helper.purchase.IS_FROM_SPLASH
 import com.example.app.ads.helper.purchase.SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN
@@ -62,12 +58,15 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getBillingPeriodName
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getFullBillingPeriod
 import com.example.app.ads.helper.purchase.removeTrailingZeros
-import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
-import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity.Companion
 import com.example.app.ads.helper.purchase.utils.AdTimer
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.purchase.utils.getEventParamBundle
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
+import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isEnglishLanguage
 import com.example.app.ads.helper.utils.isOnline
+import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
+import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.utils.toCamelCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -303,25 +302,41 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                             when {
                                 mBinding.lyYearlyPlan.root.isSelected -> {
                                     mYearlyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE.takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL } ?: SubscriptionEventType.YEARLY_SUBSCRIBE)
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.YEARLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                        )
                                     }
                                 }
 
                                 mBinding.lyLifetimePlan.root.isSelected -> {
                                     mLifetimePlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(fEventType = SubscriptionEventType.LIFE_TIME_FREE_TRAIL_PURCHASE.takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL } ?: SubscriptionEventType.LIFE_TIME_PURCHASE)
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.LIFE_TIME_FREE_TRAIL_PURCHASE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.LIFE_TIME_PURCHASE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                        )
                                     }
                                 }
 
                                 mBinding.lyMonthlyPlan.root.isSelected -> {
                                     mMonthlyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE.takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL } ?: SubscriptionEventType.MONTHLY_SUBSCRIBE)
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.MONTHLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                        )
                                     }
                                 }
 
                                 mBinding.lyWeeklyPlan.root.isSelected -> {
                                     mWeeklyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE.takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL } ?: SubscriptionEventType.WEEKLY_SUBSCRIBE)
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.WEEKLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
+                                        )
                                     }
                                 }
 
@@ -562,7 +577,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                 override fun smoothScrollToPosition(recyclerView: RecyclerView, state: RecyclerView.State, position: Int) {
                     val smoothScroller: LinearSmoothScroller =
                         object : LinearSmoothScroller(mActivity) {
-//                            private val SPEED = 4f // Change this value (default=25f)
+                            //                            private val SPEED = 4f // Change this value (default=25f)
                             override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
                                 return (4f / displayMetrics.densityDpi)
                             }
@@ -904,6 +919,8 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                                 formatArgs = arrayOf("$discountPercentage")
                             )
                             this.setTextColor(mYearlyPlanSelector.getColorForState(intArrayOf(android.R.attr.state_selected), mYearlyPlanSelector.defaultColor))
+
+                            this.beVisibleIf(discountPercentage > 0)
                         }
                     }
                 }
@@ -960,6 +977,8 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                                 formatArgs = arrayOf("$discountPercentage")
                             )
                             this.setTextColor(mMonthlyPlanSelector.getColorForState(intArrayOf(android.R.attr.state_selected), mMonthlyPlanSelector.defaultColor))
+
+                            this.beVisibleIf(discountPercentage > 0)
                         }
                     }
                 }

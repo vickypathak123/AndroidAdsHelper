@@ -20,6 +20,7 @@ import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItemType
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanUserItem
 import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
+import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 
 class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscriptionUiBinding>(), CompoundButton.OnCheckedChangeListener {
 
@@ -262,6 +263,22 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                             directShowMorePlanScreen = switchShowOnlyViewAllPlans.isChecked,
                             onSubscriptionEvent = { eventType ->
                                 Log.e(TAG, "onClick: eventType::-> $eventType")
+
+//                                when(eventType) {
+//                                    is SubscriptionEventType.LIFE_TIME_FREE_TRAIL_PURCHASE -> TODO()
+//                                    is SubscriptionEventType.LIFE_TIME_PURCHASE -> TODO()
+//                                    is SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE -> TODO()
+//                                    is SubscriptionEventType.MONTHLY_SUBSCRIBE -> TODO()
+//                                    SubscriptionEventType.TIME_LINE_SCREEN_CLOSE -> TODO()
+//                                    SubscriptionEventType.TIME_LINE_SCREEN_OPEN -> TODO()
+//                                    SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE -> TODO()
+//                                    SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_OPEN -> TODO()
+//                                    SubscriptionEventType.VIEW_MORE_PLANS_CLICK -> TODO()
+//                                    is SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE -> TODO()
+//                                    is SubscriptionEventType.WEEKLY_SUBSCRIBE -> TODO()
+//                                    is SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE -> TODO()
+//                                    is SubscriptionEventType.YEARLY_SUBSCRIBE -> TODO()
+//                                }
                             },
                             onScreenFinish = { isUserPurchaseAnyPlan ->
                                 Log.e(TAG, "onClick: Screen Finished isUserPurchaseAnyPlan::-> $isUserPurchaseAnyPlan")
