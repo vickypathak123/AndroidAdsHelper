@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">Введите свои предложения.</string>
     <string name="feedback_response_success">Отзыв успешно отправлен</string>
     <string name="feedback_response_error">Что-то пошло не так. Повторите попытку позже.</string>
+    <string name="try_free_nwithout_ads">Попробуйте бесплатно\n<font color="#36C6FF">Без рекламы</font></string>
+    <string name="after_free_trial_period_s_per_week">После бесплатного пробного периода %s в неделю</string>
+    <string name="s_free_trial">%s Бесплатная пробная версия</string>
+    <string name="no_payment_required_now">Сейчас оплата не требуется</string>
+    <string name="desc_google_play_settings">Подписка будет автоматически продлена по той же цене и на тот же период. Вы можете управлять подписками или отменить их в любое время в Настройки Google Play.</string>
+    <string name="s_per_week">%s в неделю</string>
+    <string name="google_play_settings">Настройки Google Play.</string>
+    <string name="label_start">Начинать</string>
 </resources>

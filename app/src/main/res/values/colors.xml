@@ -18,13 +18,19 @@
 
 
     <!--    Light-->
-    <color name="exit_background">#FFFFFF</color>
-    <color name="exit_icon">#003663</color>
-    <color name="exit_icon_line">#F7FCFF</color>
-    <color name="exit_title_text">#192045</color>
-    <color name="exit_sub_title_text">#6D7172</color>
-    <color name="exit_button_text">#003663</color>
-    <color name="exit_button_background">#F1F9FF</color>
+    <color name="exit_background">#001E32</color>
+    <color name="exit_icon">#BDFF03</color>
+    <color name="exit_icon_line">#001E32</color>
+    <color name="exit_title">#FFFFFF</color>
+    <color name="exit_sub_title">#6D6D6D</color>
+    <color name="exit_positive_button_bg">#BDFF03</color>
+    <color name="exit_positive_button_text">#000000</color>
+    <color name="exit_positive_button_stroke">#BDFF03</color>
+    <color name="exit_negative_button_bg">#001E32</color>
+    <color name="exit_negative_button_text">#FFFFFF</color>
+    <color name="exit_negative_button_stroke">#264970</color>
+
+
 
     <!--    Dark-->
     <!--    <color name="exit_background">#181818</color>-->

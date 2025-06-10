@@ -90,4 +90,12 @@
     <string name="write_your_suggestions">ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੇ ਸੁਝਾਅ ਦਾਖਲ ਕਰੋ।</string>
     <string name="feedback_response_success">ਫੀਡਬੈਕ ਸਫਲਤਾਪੂਰਵਕ ਸਪੁਰਦ ਕੀਤਾ ਗਿਆ</string>
     <string name="feedback_response_error">ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ, ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
+    <string name="try_free_nwithout_ads">ਮੁਫ਼ਤ ਅਜ਼ਮਾਓ\n<font color="#36C6FF">ਬਿਨਾਂ ਇਸ਼ਤਿਹਾਰਾਂ ਦੇ</font></string>
+    <string name="after_free_trial_period_s_per_week">ਮੁਫ਼ਤ ਅਜ਼ਮਾਇਸ਼ ਦੀ ਮਿਆਦ ਦੇ ਬਾਅਦ %s ਪ੍ਰਤੀ ਹਫ਼ਤੇ</string>
+    <string name="s_free_trial">%s ਮੁਫ਼ਤ ਅਜ਼ਮਾਇਸ਼</string>
+    <string name="no_payment_required_now">ਹੁਣ ਕੋਈ ਭੁਗਤਾਨ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ</string>
+    <string name="desc_google_play_settings">ਗਾਹਕੀ ਉਸੇ ਕੀਮਤ \'ਤੇ ਅਤੇ ਉਸੇ ਮਿਆਦ ਲਈ ਆਪਣੇ ਆਪ ਰੀਨਿਊ ਹੋ ਜਾਵੇਗੀ। ਤੁਸੀਂ ਆਪਣੀਆਂ Google Play ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਕਿਸੇ ਵੀ ਸਮੇਂ ਆਪਣੀਆਂ ਗਾਹਕੀਆਂ ਦਾ ਪ੍ਰਬੰਧਨ ਜਾਂ ਰੱਦ ਕਰ ਸਕਦੇ ਹੋ।</string>
+    <string name="s_per_week">%s ਪ੍ਰਤੀ ਹਫ਼ਤੇ</string>
+    <string name="google_play_settings">Google Play ਸੈਟਿੰਗਾਂ।</string>
+    <string name="label_start">ਸ਼ੁਰੂ ਕਰੋ</string>
 </resources>

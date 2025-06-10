@@ -52,7 +52,7 @@ data class GoogleAdsModel(
     val isNeedToShowRewardedInterstitialAd: Boolean = true,
     @SerializedName("is_need_to_show_rewarded_video_ad")
     @Expose
-    val isNeedToShowRewardedVideoAd: Boolean = true,
+    val isNeedToShowRewardedVideoAd: Boolean = true
 ) : Parcelable {
     override fun toString(): String {
         return StringBuilder().apply {
@@ -95,9 +95,14 @@ data class VasuSubscriptionConfigModel(
     @SerializedName("life_time_plan_discount_percentage")
     @Expose
     val lifeTimePlanDiscountPercentage: Int = 90,
+
     @SerializedName("ratting_bar_slider_timing")
     @Expose
-    val rattingBarSliderTiming: Int = 5000
+    val rattingBarSliderTiming: Int = 5000,
+
+    @SerializedName("subscription_close_icon_show_time")
+    @Expose
+    val subscriptionCloseIconShowTime: Long = 3000
 ) : Parcelable {
     override fun toString(): String {
         return StringBuilder().apply {
@@ -109,7 +114,8 @@ data class VasuSubscriptionConfigModel(
             append("\t\t\"in_app_subscription_ad_close\": ${inAppSubscriptionAdClose},\n")
             append("\t\t\"more_plan_screen_type\": ${morePlanScreenType},\n")
             append("\t\t\"life_time_plan_discount_percentage\": ${lifeTimePlanDiscountPercentage},\n")
-            append("\t\t\"ratting_bar_slider_timing\": ${rattingBarSliderTiming}\n")
+            append("\t\t\"ratting_bar_slider_timing\": ${rattingBarSliderTiming},\n")
+            append("\t\t\"subscription_close_icon_show_time\": ${subscriptionCloseIconShowTime}\n")
             append("\t}")
         }.toString()
     }

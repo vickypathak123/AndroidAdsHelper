@@ -89,5 +89,13 @@
     <string name="write_your_suggestions">Vui lòng nhập đề xuất của bạn.</string>
     <string name="feedback_response_success">Đã gửi phản hồi thành công</string>
     <string name="feedback_response_error">Đã xảy ra lỗi, vui lòng thử lại sau.</string>
+    <string name="try_free_nwithout_ads">Dùng thử miễn phí\n<font color="#36C6FF">Không có quảng cáo</font></string>
+    <string name="after_free_trial_period_s_per_week">Sau thời gian dùng thử miễn phí %s mỗi tuần</string>
+    <string name="s_free_trial">%s Dùng thử miễn phí</string>
+    <string name="no_payment_required_now">Không cần thanh toán ngay bây giờ</string>
+    <string name="desc_google_play_settings">Đăng ký sẽ tự động gia hạn với cùng mức giá và trong cùng thời hạn. Bạn có thể quản lý hoặc hủy đăng ký bất kỳ lúc nào trong cài đặt Google Play của mình.</string>
+    <string name="s_per_week">%s mỗi tuần</string>
+    <string name="google_play_settings">cài đặt Google Play</string>
+    <string name="label_start">Bắt đầu</string>
 
 </resources>

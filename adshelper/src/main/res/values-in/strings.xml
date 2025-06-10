@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">Silakan masukkan saran Anda.</string>
     <string name="feedback_response_success">Umpan balik berhasil dikirim</string>
     <string name="feedback_response_error">Terjadi kesalahan, Silakan coba lagi nanti.</string>
+    <string name="try_free_nwithout_ads">Coba gratis\n<font color="#36C6FF">Tanpa iklan</font></string>
+    <string name="after_free_trial_period_s_per_week">Setelah masa uji coba gratis %s per minggu</string>
+    <string name="s_free_trial">Uji Coba Gratis %s</string>
+    <string name="no_payment_required_now">Tidak perlu pembayaran sekarang</string>
+    <string name="desc_google_play_settings">Langganan akan diperbarui secara otomatis dengan harga dan periode yang sama. Anda dapat mengelola atau membatalkan langganan kapan saja di setelan Google Play.</string>
+    <string name="s_per_week">%s per minggu</string>
+    <string name="google_play_settings">setelan Google Play.</string>
+    <string name="label_start">Awal</string>
 </resources>

@@ -25,6 +25,9 @@ data class VasuSubscriptionRemoteConfigModel(
     @SerializedName("in_app_subscription_ad_close")
     @Expose
     val inAppSubscriptionAdClose: Boolean = true,
+    @SerializedName("timeline_screen_type")
+    @Expose
+    val timeLineScreenType: String = "timeline",
     @SerializedName("more_plan_screen_type")
     @Expose
     val morePlanScreenType: String = "four_plan_screen",
@@ -34,6 +37,10 @@ data class VasuSubscriptionRemoteConfigModel(
     @SerializedName("ratting_bar_slider_timing")
     @Expose
     val rattingBarSliderTiming: Long = 5000,
+
+    @SerializedName("subscription_close_icon_show_time")
+    @Expose
+    val subscriptionCloseIconShowTime: Long = 3000
 ) : Parcelable {
 
     override fun toString(): String {
@@ -44,9 +51,11 @@ data class VasuSubscriptionRemoteConfigModel(
             append("\ninitial_subscription_time_line_close_ad : '${initialSubscriptionTimeLineCloseAd}', ")
             append("\ninitial_subscription_more_plan_close_ad : '${initialSubscriptionMorePlanCloseAd}', ")
             append("\nin_app_subscription_ad_close : '${inAppSubscriptionAdClose}', ")
+            append("\ntimeline_screen_type : '${timeLineScreenType}', ")
             append("\nmore_plan_screen_type : '${morePlanScreenType}', ")
-            append("\nlife_time_plan_discount_percentage : '${lifeTimePlanDiscountPercentage}'")
-            append("\nratting_bar_slider_timing : '${rattingBarSliderTiming}'")
+            append("\nlife_time_plan_discount_percentage : '${lifeTimePlanDiscountPercentage}',")
+            append("\nratting_bar_slider_timing : '${rattingBarSliderTiming}',")
+            append("\nsubscription_close_icon_show_time : '${subscriptionCloseIconShowTime}'")
             append("}")
         }.toString()
     }

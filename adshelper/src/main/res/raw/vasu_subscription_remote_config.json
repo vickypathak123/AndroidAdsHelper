@@ -5,8 +5,10 @@
     "initial_subscription_time_line_close_ad": true,
     "initial_subscription_more_plan_close_ad": true,
     "in_app_subscription_ad_close": true,
-    "_comment":  "\"more_plan_screen_type\": \"six_box_screen / four_plan_screen\"",
+    "_comment":  "\"more_plan_screen_type\": \"six_box_screen / four_plan_screen /weekly_screen\"",
     "more_plan_screen_type": "four_plan_screen",
+    "_timeline_comment":  "\"timeline_screen_type\": \"timeline / weekly_screen\"",
+    "timeline_screen_type": "weekly_screen",
     "life_time_plan_discount_percentage": 90,
     "ratting_bar_slider_timing": 5000
   }

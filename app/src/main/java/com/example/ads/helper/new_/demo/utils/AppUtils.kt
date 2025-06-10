@@ -48,6 +48,15 @@ private val SKU_KEY_LIST: ArrayList<SkuData> = arrayListOf(
 //        revenueCatID = "",
     ),
     SkuData(
+        applicationId = "bubble.laser.level.angle.finder.tool",
+        lifeTimeSku = "bubble.laser.level.angle.lifetime",
+        weeklySku = "bubble.laser.level.angle.weekly",
+        monthlySku = "bubble.laser.level.angle.monthly",
+        yearlySku = "bubble.laser.level.angle.yearly",
+//        revenueCatID = "",
+    ),
+
+    SkuData(
         applicationId = "com.voice.gps.navigation.map.location.route",
         revenueCatID = "goog_dlPfUeMWkUyljBCupwuSBIwcEMb",
 //        monthlySku = "com.voicegps.test_1"

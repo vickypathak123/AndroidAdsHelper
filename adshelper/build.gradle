@@ -110,6 +110,9 @@ dependencies {
     implementation libs.converter.gson
     implementation libs.logging.interceptor
     //endregion
+
+    // Image
+    implementation(libs.glide)
 }
 
 afterEvaluate {

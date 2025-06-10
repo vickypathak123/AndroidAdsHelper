@@ -5,6 +5,7 @@ package com.example.app.ads.helper.purchase
 import android.app.Activity
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -32,6 +33,10 @@ import com.example.app.ads.helper.purchase.timeline.activity.TimeLineActivity
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.purchase.utils.TimeLineScreenType
+import com.example.app.ads.helper.purchase.weekly.activity.SubscriptionWeeklyActivity
+import com.example.app.ads.helper.purchase.weekly.utill.WeeklyPlanScreenDataModel
+import com.example.app.ads.helper.purchase.weekly.utill.WeeklyPlanUserItem
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.utils.clearAll
 import com.example.app.ads.helper.utils.logE
@@ -44,10 +49,18 @@ object VasuSubscriptionConfig {
      */
     @JvmStatic
     fun with(fActivity: Activity, fAppPackageName: String, fAppVersionName: String): ActivityData {
-        return ActivityData(fActivity = fActivity,  fAppPackageName =  fAppPackageName, fAppVersionName = fAppVersionName)
+        return ActivityData(
+            fActivity = fActivity,
+            fAppPackageName = fAppPackageName,
+            fAppVersionName = fAppVersionName
+        )
     }
 
-    class ActivityData(private val fActivity: Activity, private val  fAppPackageName: String, private val fAppVersionName: String) : Serializable {
+    class ActivityData(
+        private val fActivity: Activity,
+        private val fAppPackageName: String,
+        private val fAppVersionName: String
+    ) : Serializable {
 
         @Suppress("PropertyName")
         val TAG: String = "AdMob_${javaClass.simpleName}"
@@ -55,9 +68,16 @@ object VasuSubscriptionConfig {
 //        private val mContextRef: WeakReference<Activity> = WeakReference(fActivity)
 //        private val mActivity: Activity get() = mContextRef.get() ?: fActivity
 
-        private var mTimeLineScreenData: TimeLineScreenData = TimeLineScreenData(fActivity = fActivity)
-        private var mViewAllPlansScreenData: ViewAllPlansScreenData = ViewAllPlansScreenData(fActivity = fActivity)
-        private var mFourPlanScreenData: FourPlanScreenData = FourPlanScreenData(fActivity = fActivity)
+        private var mTimeLineScreenData: TimeLineScreenData =
+            TimeLineScreenData(fActivity = fActivity)
+        private var mViewAllPlansScreenData: ViewAllPlansScreenData =
+            ViewAllPlansScreenData(fActivity = fActivity)
+
+        private var mFourPlanScreenData: FourPlanScreenData =
+            FourPlanScreenData(fActivity = fActivity)
+
+        private var mWeeklyPlanScreenData: WeeklyPlanScreenData =
+            WeeklyPlanScreenData(fActivity = fActivity)
 
         private var mNotificationData: NotificationData? = null
 
@@ -78,34 +98,52 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("setTimeLineScreenData")
-        fun setTimeLineScreenData(fTimeLineScreenData: TimeLineScreenData) = this@ActivityData.apply {
-            this.mTimeLineScreenData = fTimeLineScreenData
-        }
+        fun setTimeLineScreenData(fTimeLineScreenData: TimeLineScreenData) =
+            this@ActivityData.apply {
+                this.mTimeLineScreenData = fTimeLineScreenData
+            }
 
         @JvmName("setTimeLineScreenData")
-        fun setTimeLineScreenData(action: (fTimeLineScreenData: TimeLineScreenData) -> Unit) = this@ActivityData.apply {
-            action.invoke(this.mTimeLineScreenData)
-        }
+        fun setTimeLineScreenData(action: (fTimeLineScreenData: TimeLineScreenData) -> Unit) =
+            this@ActivityData.apply {
+                action.invoke(this.mTimeLineScreenData)
+            }
 
         @JvmName("setViewAllPlansScreenData")
-        fun setViewAllPlansScreenData(fViewAllPlansScreenData: ViewAllPlansScreenData) = this@ActivityData.apply {
-            this.mViewAllPlansScreenData = fViewAllPlansScreenData
-        }
+        fun setViewAllPlansScreenData(fViewAllPlansScreenData: ViewAllPlansScreenData) =
+            this@ActivityData.apply {
+                this.mViewAllPlansScreenData = fViewAllPlansScreenData
+            }
 
         @JvmName("setViewAllPlansScreenData")
-        fun setViewAllPlansScreenData(action: (fViewAllPlansScreenData: ViewAllPlansScreenData) -> Unit) = this@ActivityData.apply {
-            action.invoke(this.mViewAllPlansScreenData)
-        }
+        fun setViewAllPlansScreenData(action: (fViewAllPlansScreenData: ViewAllPlansScreenData) -> Unit) =
+            this@ActivityData.apply {
+                action.invoke(this.mViewAllPlansScreenData)
+            }
 
         @JvmName("setFourPlanScreenData")
-        fun setFourPlanScreenData(fFourPlanScreenData: FourPlanScreenData) = this@ActivityData.apply {
-            this.mFourPlanScreenData = fFourPlanScreenData
-        }
+        fun setFourPlanScreenData(fFourPlanScreenData: FourPlanScreenData) =
+            this@ActivityData.apply {
+                this.mFourPlanScreenData = fFourPlanScreenData
+            }
 
         @JvmName("setFourPlanScreenData")
-        fun setFourPlanScreenData(action: (fFourPlanScreenData: FourPlanScreenData) -> Unit) = this@ActivityData.apply {
-            action.invoke(this.mFourPlanScreenData)
-        }
+        fun setFourPlanScreenData(action: (fFourPlanScreenData: FourPlanScreenData) -> Unit) =
+            this@ActivityData.apply {
+                action.invoke(this.mFourPlanScreenData)
+            }
+
+        @JvmName("setWeeklyPlanScreenData")
+        fun setWeeklyPlanScreenData(fWeeklyPlanScreenData: WeeklyPlanScreenData) =
+            this@ActivityData.apply {
+                this.mWeeklyPlanScreenData = fWeeklyPlanScreenData
+            }
+        @JvmName("setWeeklyPlanScreenData")
+        fun setWeeklyPlanScreenData(action: (fWeeklyPlanScreenData: WeeklyPlanScreenData) -> Unit) =
+            this@ActivityData.apply {
+                action.invoke(this.mWeeklyPlanScreenData)
+            }
+
 
         /**
          * @param fLink it's refers to your app terms of use.
@@ -142,19 +180,25 @@ object VasuSubscriptionConfig {
          * launch subscription screen
          *
          * @param fPlanScreenType it's refers to your app plan screen type.
+         * @param fTimeLineScreenType it's refers to your app timeline screen type.
          * @param isFromSplash it's refers to you need to launch from splash screen or not.
          * @param directShowMorePlanScreen it's refers to you need to launch directly more plan screen or not.
          * @param onSubscriptionEvent callback for subscription event.
          * @param onScreenFinish callback for screen finish. [@param isUserPurchaseAnyPlan true if user will purchase any plan]
          */
         fun launchScreen(
-            fPlanScreenType: MorePlanScreenType = MorePlanScreenType.fromName(value = mVasuSubscriptionRemoteConfigModel.morePlanScreenType.takeIf { it.isNotEmpty() } ?: "four_plan_screen"),
+            fPlanScreenType: MorePlanScreenType = MorePlanScreenType.fromName(value = mVasuSubscriptionRemoteConfigModel.morePlanScreenType.takeIf { it.isNotEmpty() }
+                ?: "four_plan_screen"),
+            fTimeLineScreenType: TimeLineScreenType = TimeLineScreenType.fromName(value = mVasuSubscriptionRemoteConfigModel.timeLineScreenType.takeIf { it.isNotEmpty() }
+                ?: "timeline"),
             isFromSplash: Boolean = false,
             directShowMorePlanScreen: Boolean = false,
             onSubscriptionEvent: (eventType: SubscriptionEventType) -> Unit,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
             onOpeningError: () -> Unit,
         ) {
+
+            Log.e(TAG, "launchScreen: ======= $fPlanScreenType  $fTimeLineScreenType" )
 
             mNotificationData?.let { notificationData ->
                 IS_ENABLE_TEST_PURCHASE = this.isEnableTestPurchase
@@ -165,25 +209,30 @@ object VasuSubscriptionConfig {
                 triggerSubscriptionEvent = onSubscriptionEvent
 
                 IS_FROM_SPLASH = isFromSplash
-                SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = mVasuSubscriptionRemoteConfigModel.initialSubscriptionTimeLineCloseAd
-                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = mVasuSubscriptionRemoteConfigModel.initialSubscriptionMorePlanCloseAd
-                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = mVasuSubscriptionRemoteConfigModel.inAppSubscriptionAdClose
+                SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN =
+                    mVasuSubscriptionRemoteConfigModel.initialSubscriptionTimeLineCloseAd
+                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH =
+                    mVasuSubscriptionRemoteConfigModel.initialSubscriptionMorePlanCloseAd
+                SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN =
+                    mVasuSubscriptionRemoteConfigModel.inAppSubscriptionAdClose
 
                 logE(TAG, "launchScreen: checkIsAllPriceLoaded::-> $checkIsAllPriceLoaded")
                 if (checkIsAllPriceLoaded) {
 
-                    val lScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = { isUserPurchaseAnyPlan ->
-                        IS_FROM_SPLASH = false
-                        SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = false
-                        SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = false
-                        SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = false
-                        onScreenFinish.invoke(isUserPurchaseAnyPlan)
-                    }
+                    val lScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit =
+                        { isUserPurchaseAnyPlan ->
+                            IS_FROM_SPLASH = false
+                            SHOW_CLOSE_AD_FOR_TIME_LINE_SCREEN = false
+                            SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN_OPEN_AFTER_SPLASH = false
+                            SHOW_CLOSE_AD_FOR_VIEW_ALL_PLAN_SCREEN = false
+                            onScreenFinish.invoke(isUserPurchaseAnyPlan)
+                        }
 
                     val reviewDialogData = Pair(fAppPackageName, fAppVersionName)
 
-                    if (!directShowMorePlanScreen && ProductPurchaseHelper.isNeedToLaunchTimeLineScreen) {
-                        launchTimeLineScreen(
+                    if (!directShowMorePlanScreen &&  ProductPurchaseHelper.isNeedToLaunchTimeLineScreen) {
+                        launchSplashFlowSubscriptionScreen(
+                            fType = fTimeLineScreenType,
                             fNotificationData = notificationData,
                             reviewDialogData = reviewDialogData,
                             onViewAllPlans = {
@@ -218,11 +267,43 @@ object VasuSubscriptionConfig {
 
         }
 
-        private fun launchTimeLineScreen(
+
+        private fun launchSplashFlowSubscriptionScreen(
+            fType: TimeLineScreenType,
             fNotificationData: NotificationData,
             reviewDialogData: Pair<String, String>,
             onViewAllPlans: () -> Unit,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit
+        ) {
+
+            when (fType) {
+                TimeLineScreenType.TIMELINE_SCREEN -> {
+                    launchTimeLineScreen(
+                        fNotificationData = fNotificationData,
+                        reviewDialogData = reviewDialogData,
+                        onViewAllPlans = onViewAllPlans,
+                        onScreenFinish = onScreenFinish,
+                    )
+                }
+
+                TimeLineScreenType.WEEKLY_SCREEN -> {
+                    launchWeeklyPlanScreen(
+//                        isFromTimeLine = isFromTimeLine,
+                        onScreenFinish = onScreenFinish,
+                        reviewDialogData = reviewDialogData,
+                    )
+                }
+
+
+            }
+
+        }
+
+
+        private fun launchTimeLineScreen( fNotificationData: NotificationData,
+                                          reviewDialogData: Pair<String, String>,
+                                          onViewAllPlans: () -> Unit,
+                                          onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit
         ) {
             TimeLineActivity.launchScreen(
                 fActivity = fActivity,
@@ -248,6 +329,7 @@ object VasuSubscriptionConfig {
             )
         }
 
+
         private fun launchMorePlanScreen(
             fType: MorePlanScreenType,
             isFromTimeLine: Boolean,
@@ -265,6 +347,14 @@ object VasuSubscriptionConfig {
 
                 MorePlanScreenType.FOUR_PLAN_SCREEN -> {
                     launchFourPlanScreen(
+                        isFromTimeLine = isFromTimeLine,
+                        onScreenFinish = onScreenFinish,
+                        reviewDialogData = reviewDialogData,
+                    )
+                }
+
+                MorePlanScreenType.WEEKLY_SCREEN -> {
+                    launchWeeklyPlanScreen(
                         isFromTimeLine = isFromTimeLine,
                         onScreenFinish = onScreenFinish,
                         reviewDialogData = reviewDialogData,
@@ -322,6 +412,10 @@ object VasuSubscriptionConfig {
             reviewDialogData: Pair<String, String>,
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
         ) {
+
+
+            Log.e(TAG, "launchFourPlanScreen: ===== ${mFourPlanScreenData.listOfBoxItem} \n ======  ${mFourPlanScreenData.listOfRattingItem}" )
+
             FourPlanActivity.launchScreen(
                 fActivity = fActivity,
                 isFromTimeLine = isFromTimeLine,
@@ -330,6 +424,27 @@ object VasuSubscriptionConfig {
                     listOfBoxItem = mFourPlanScreenData.listOfBoxItem,
                     listOfRattingItem = mFourPlanScreenData.listOfRattingItem,
 //                    lifeTimePlanDiscountPercentage = mFourPlanScreenData.lifeTimePlanDiscountPercentage,
+                ),
+                onScreenFinish = onScreenFinish,
+                reviewDialogData = reviewDialogData,
+            )
+        }
+
+        private fun launchWeeklyPlanScreen(
+            isFromTimeLine: Boolean =false,
+            reviewDialogData: Pair<String, String>,
+            onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
+        ) {
+
+            Log.e(TAG, "launchWeeklyPlanScreen: ===== ${mWeeklyPlanScreenData.listOfPointItem} \n ======  ${mWeeklyPlanScreenData.weeklyScreenBackground}" )
+
+            SubscriptionWeeklyActivity.launchScreen(
+                fActivity = fActivity,
+                isFromTimeLine = isFromTimeLine,
+                screenDataModel = WeeklyPlanScreenDataModel(
+                    listOfPoints = mWeeklyPlanScreenData.listOfPointItem,
+                    backgroundDrawable = mWeeklyPlanScreenData.weeklyScreenBackground,
+                    weeklyScreenCloseIconTime = mWeeklyPlanScreenData.weeklyScreenCloseIconTime
                 ),
                 onScreenFinish = onScreenFinish,
                 reviewDialogData = reviewDialogData,
@@ -357,39 +472,47 @@ object VasuSubscriptionConfig {
         private var _isWithSliderAnimation: Boolean = false
         internal val isWithSliderAnimation: Boolean get() = _isWithSliderAnimation
 
-        private var _mainColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_main_color))
+        private var _mainColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_main_color))
         internal val mainColor: ColorStateList get() = _mainColor
 
         private var _headerColor: ColorStateList? = null
         internal val headerColor: ColorStateList get() = _headerColor ?: mainColor
 
-        private var _closeIconColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_close_icon_color))
+        private var _closeIconColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_close_icon_color))
         internal val closeIconColor: ColorStateList get() = _closeIconColor
 
-        private var _trackInactiveColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_track_inactive_color))
+        private var _trackInactiveColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_track_inactive_color))
         internal val trackInactiveColor: ColorStateList get() = _trackInactiveColor
 
-        private var _hintTextColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_hint_text_color))
+        private var _hintTextColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_hint_text_color))
         internal val hintTextColor: ColorStateList get() = _hintTextColor
 
-        private var _instantAccessHintTextColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_instant_access_hint_text_color))
+        private var _instantAccessHintTextColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_time_line_instant_access_hint_text_color))
         internal val instantAccessHintTextColor: ColorStateList get() = _instantAccessHintTextColor
 
-        private var _secureWithPlayStoreTextColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_secure_with_play_store_text_color))
+        private var _secureWithPlayStoreTextColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_secure_with_play_store_text_color))
         internal val secureWithPlayStoreTextColor: ColorStateList get() = _secureWithPlayStoreTextColor
 
-        private var _secureWithPlayStoreBackgroundColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_secure_with_play_store_background_color))
+        private var _secureWithPlayStoreBackgroundColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_secure_with_play_store_background_color))
         internal val secureWithPlayStoreBackgroundColor: ColorStateList get() = _secureWithPlayStoreBackgroundColor
 
         private var _buttonContinueTextColor: ColorStateList = ColorStateList.valueOf(Color.WHITE)
         internal val buttonContinueTextColor: ColorStateList get() = _buttonContinueTextColor
 
         @JvmName("setInstantAccessHint")
-        fun setInstantAccessHint(@StringRes vararg listOfInstantAccessHint: Int) = this@TimeLineScreenData.apply {
-            this._listOfInstantAccessHint.clearAll()
-            this._listOfInstantAccessHint.addAll(listOfInstantAccessHint.toMutableList())
-            return this
-        }
+        fun setInstantAccessHint(@StringRes vararg listOfInstantAccessHint: Int) =
+            this@TimeLineScreenData.apply {
+                this._listOfInstantAccessHint.clearAll()
+                this._listOfInstantAccessHint.addAll(listOfInstantAccessHint.toMutableList())
+                return this
+            }
 
         @JvmName("setInstantAccessLottieFile")
         fun setInstantAccessLottieFile(@RawRes fLottieFile: Int) = this@TimeLineScreenData.apply {
@@ -563,36 +686,43 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("secureWithPlayStoreTextColorResources")
-        fun secureWithPlayStoreTextColorResources(@ColorRes id: Int) = this@TimeLineScreenData.apply {
-            secureWithPlayStoreTextColor(fColorInt = fActivity.getColorRes(id))
-        }
+        fun secureWithPlayStoreTextColorResources(@ColorRes id: Int) =
+            this@TimeLineScreenData.apply {
+                secureWithPlayStoreTextColor(fColorInt = fActivity.getColorRes(id))
+            }
 
         @JvmName("secureWithPlayStoreTextColorStateListResources")
-        fun secureWithPlayStoreTextColorStateListResources(@ColorRes id: Int) = this@TimeLineScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { secureWithPlayStoreTextColor(fColors = it) }
-        }
+        fun secureWithPlayStoreTextColorStateListResources(@ColorRes id: Int) =
+            this@TimeLineScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { secureWithPlayStoreTextColor(fColors = it) }
+            }
         //</editor-fold>
 
         //<editor-fold desc="Secure With Play Store Background Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
         @JvmName("secureWithPlayStoreBackgroundColor")
-        fun secureWithPlayStoreBackgroundColor(fColors: ColorStateList?) = this@TimeLineScreenData.apply {
-            fColors?.let { this._secureWithPlayStoreBackgroundColor = it }
-        }
+        fun secureWithPlayStoreBackgroundColor(fColors: ColorStateList?) =
+            this@TimeLineScreenData.apply {
+                fColors?.let { this._secureWithPlayStoreBackgroundColor = it }
+            }
 
         @JvmName("secureWithPlayStoreBackgroundColor")
-        fun secureWithPlayStoreBackgroundColor(@ColorInt fColorInt: Int) = this@TimeLineScreenData.apply {
-            secureWithPlayStoreBackgroundColor(fColors = ColorStateList.valueOf(fColorInt))
-        }
+        fun secureWithPlayStoreBackgroundColor(@ColorInt fColorInt: Int) =
+            this@TimeLineScreenData.apply {
+                secureWithPlayStoreBackgroundColor(fColors = ColorStateList.valueOf(fColorInt))
+            }
 
         @JvmName("secureWithPlayStoreBackgroundColorResources")
-        fun secureWithPlayStoreBackgroundColorResources(@ColorRes id: Int) = this@TimeLineScreenData.apply {
-            secureWithPlayStoreBackgroundColor(fColorInt = fActivity.getColorRes(id))
-        }
+        fun secureWithPlayStoreBackgroundColorResources(@ColorRes id: Int) =
+            this@TimeLineScreenData.apply {
+                secureWithPlayStoreBackgroundColor(fColorInt = fActivity.getColorRes(id))
+            }
 
         @JvmName("secureWithPlayStoreBackgroundColorStateListResources")
-        fun secureWithPlayStoreBackgroundColorStateListResources(@ColorRes id: Int) = this@TimeLineScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { secureWithPlayStoreBackgroundColor(fColors = it) }
-        }
+        fun secureWithPlayStoreBackgroundColorStateListResources(@ColorRes id: Int) =
+            this@TimeLineScreenData.apply {
+                fActivity.getColorStateRes(id)
+                    ?.let { secureWithPlayStoreBackgroundColor(fColors = it) }
+            }
         //</editor-fold>
 
         //<editor-fold desc="Button Continue Text Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -662,46 +792,60 @@ object VasuSubscriptionConfig {
         internal val planPriceTextColorSelector: SelectorColorItem get() = _planPriceTextColorSelector
 
 
-        private var _headerColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_header_color))
+        private var _headerColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_header_color))
         internal val headerColor: ColorStateList get() = _headerColor
 
-        private var _subHeaderColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_sub_header_color))
+        private var _subHeaderColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_sub_header_color))
         internal val subHeaderColor: ColorStateList get() = _subHeaderColor
 
-        private var _closeIconColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_close_icon_color))
+        private var _closeIconColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_close_icon_color))
         internal val closeIconColor: ColorStateList get() = _closeIconColor
 
-        private var _ratingColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_rating_color))
+        private var _ratingColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_rating_color))
         internal val ratingColor: ColorStateList get() = _ratingColor
 
-        private var _ratingPlaceHolderColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_rating_place_holder_color))
+        private var _ratingPlaceHolderColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_rating_place_holder_color))
         internal val ratingPlaceHolderColor: ColorStateList get() = _ratingPlaceHolderColor
 
-        private var _ratingIndicatorColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_rating_indicator_color))
+        private var _ratingIndicatorColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_rating_indicator_color))
         internal val ratingIndicatorColor: ColorStateList get() = _ratingIndicatorColor
 
-        private var _unselectedItemDataColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_unselected_item_data_color))
+        private var _unselectedItemDataColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_unselected_item_data_color))
         internal val unselectedItemDataColor: ColorStateList get() = _unselectedItemDataColor
 
-        private var _selectedItemDataColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_selected_item_data_color))
+        private var _selectedItemDataColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_selected_item_data_color))
         internal val selectedItemDataColor: ColorStateList get() = _selectedItemDataColor
 
-        private var _payNothingNowColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_pay_nothing_now_color))
+        private var _payNothingNowColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_pay_nothing_now_color))
         internal val payNothingNowColor: ColorStateList get() = _payNothingNowColor
 
-        private var _secureWithPlayStoreTextColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_secure_with_play_store_text_color))
+        private var _secureWithPlayStoreTextColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_secure_with_play_store_text_color))
         internal val secureWithPlayStoreTextColor: ColorStateList get() = _secureWithPlayStoreTextColor
 
-        private var _secureWithPlayStoreBackgroundColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_secure_with_play_store_background_color))
+        private var _secureWithPlayStoreBackgroundColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_secure_with_play_store_background_color))
         internal val secureWithPlayStoreBackgroundColor: ColorStateList get() = _secureWithPlayStoreBackgroundColor
 
-        private var _itemBoxBackgroundColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_item_box_background_color))
+        private var _itemBoxBackgroundColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_item_box_background_color))
         internal val itemBoxBackgroundColor: ColorStateList get() = _itemBoxBackgroundColor
 
-        private var _selectedSkuBackgroundColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_selected_sku_background_color))
+        private var _selectedSkuBackgroundColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_selected_sku_background_color))
         internal val selectedSkuBackgroundColor: ColorStateList get() = _selectedSkuBackgroundColor
 
-        private var _unselectedSkuBackgroundColor: ColorStateList = ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_unselected_sku_background_color))
+        private var _unselectedSkuBackgroundColor: ColorStateList =
+            ColorStateList.valueOf(fActivity.getColorRes(R.color.default_view_more_plan_unselected_sku_background_color))
         internal val unselectedSkuBackgroundColor: ColorStateList get() = _unselectedSkuBackgroundColor
 
 
@@ -720,71 +864,82 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("setRattingItems")
-        fun setRattingItems(vararg listOfRattingItem: RattingItem) = this@ViewAllPlansScreenData.apply {
-            this._listOfRattingItem.clearAll()
-            this._listOfRattingItem.addAll(listOfRattingItem)
-            return this
-        }
+        fun setRattingItems(vararg listOfRattingItem: RattingItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._listOfRattingItem.clearAll()
+                this._listOfRattingItem.addAll(listOfRattingItem)
+                return this
+            }
 
         @JvmName("setYearPlanIconSelector")
-        fun setYearPlanIconSelector(fSelectorItem: SelectorDrawableItem) = this@ViewAllPlansScreenData.apply {
-            this._yearPlanIconSelector = fSelectorItem
-            return this
-        }
+        fun setYearPlanIconSelector(fSelectorItem: SelectorDrawableItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._yearPlanIconSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setLifTimePlanIconSelector")
-        fun setLifTimePlanIconSelector(fSelectorItem: SelectorDrawableItem) = this@ViewAllPlansScreenData.apply {
-            this._lifTimePlanIconSelector = fSelectorItem
-            return this
-        }
+        fun setLifTimePlanIconSelector(fSelectorItem: SelectorDrawableItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._lifTimePlanIconSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setMonthPlanIconSelector")
-        fun setMonthPlanIconSelector(fSelectorItem: SelectorDrawableItem) = this@ViewAllPlansScreenData.apply {
-            this._monthPlanIconSelector = fSelectorItem
-            return this
-        }
+        fun setMonthPlanIconSelector(fSelectorItem: SelectorDrawableItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._monthPlanIconSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setPlanSelector")
-        fun setPlanSelector(fSelectorItem: SelectorDrawableItem) = this@ViewAllPlansScreenData.apply {
-            this._planSelector = fSelectorItem
-            return this
-        }
+        fun setPlanSelector(fSelectorItem: SelectorDrawableItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._planSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setPlanHeaderSelector")
-        fun setPlanHeaderSelector(fSelectorItem: SelectorDrawableItem) = this@ViewAllPlansScreenData.apply {
-            this._planHeaderSelector = fSelectorItem
-            return this
-        }
+        fun setPlanHeaderSelector(fSelectorItem: SelectorDrawableItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._planHeaderSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setPlanBackgroundSelector")
-        fun setPlanBackgroundSelector(fSelectorItem: SelectorDrawableItem) = this@ViewAllPlansScreenData.apply {
-            this._planBackgroundSelector = fSelectorItem
-            return this
-        }
+        fun setPlanBackgroundSelector(fSelectorItem: SelectorDrawableItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._planBackgroundSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setPlanHeaderTextColorSelector")
-        fun setPlanHeaderTextColorSelector(fSelectorItem: SelectorColorItem) = this@ViewAllPlansScreenData.apply {
-            this._planHeaderTextColorSelector = fSelectorItem
-            return this
-        }
+        fun setPlanHeaderTextColorSelector(fSelectorItem: SelectorColorItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._planHeaderTextColorSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setPlanTitleTextColorSelector")
-        fun setPlanTitleTextColorSelector(fSelectorItem: SelectorColorItem) = this@ViewAllPlansScreenData.apply {
-            this._planTitleTextColorSelector = fSelectorItem
-            return this
-        }
+        fun setPlanTitleTextColorSelector(fSelectorItem: SelectorColorItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._planTitleTextColorSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setPlanTrialPeriodTextColorSelector")
-        fun setPlanTrialPeriodTextColorSelector(fSelectorItem: SelectorColorItem) = this@ViewAllPlansScreenData.apply {
-            this._planTrialPeriodTextColorSelector = fSelectorItem
-            return this
-        }
+        fun setPlanTrialPeriodTextColorSelector(fSelectorItem: SelectorColorItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._planTrialPeriodTextColorSelector = fSelectorItem
+                return this
+            }
 
         @JvmName("setPlanPriceTextColorSelector")
-        fun setPlanPriceTextColorSelector(fSelectorItem: SelectorColorItem) = this@ViewAllPlansScreenData.apply {
-            this._planPriceTextColorSelector = fSelectorItem
-            return this
-        }
+        fun setPlanPriceTextColorSelector(fSelectorItem: SelectorColorItem) =
+            this@ViewAllPlansScreenData.apply {
+                this._planPriceTextColorSelector = fSelectorItem
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Header Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -829,10 +984,11 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("subHeaderColorStateListResources")
-        fun subHeaderColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { subHeaderColor(fColors = it) }
-            return this
-        }
+        fun subHeaderColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { subHeaderColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Close Icon Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -853,10 +1009,11 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("closeIconColorStateListResources")
-        fun closeIconColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { closeIconColor(fColors = it) }
-            return this
-        }
+        fun closeIconColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { closeIconColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Rating Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -901,10 +1058,11 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("ratingPlaceHolderColorStateListResources")
-        fun ratingPlaceHolderColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { ratingPlaceHolderColor(fColors = it) }
-            return this
-        }
+        fun ratingPlaceHolderColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { ratingPlaceHolderColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Rating Indicator Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -925,10 +1083,11 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("ratingIndicatorColorStateListResources")
-        fun ratingIndicatorColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { ratingIndicatorColor(fColors = it) }
-            return this
-        }
+        fun ratingIndicatorColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { ratingIndicatorColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Unselected Item Data Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -944,15 +1103,17 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("unselectedItemDataColorResources")
-        fun unselectedItemDataColorResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            unselectedItemDataColor(fColorInt = fActivity.getColorRes(id))
-        }
+        fun unselectedItemDataColorResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                unselectedItemDataColor(fColorInt = fActivity.getColorRes(id))
+            }
 
         @JvmName("unselectedItemDataColorStateListResources")
-        fun unselectedItemDataColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { unselectedItemDataColor(fColors = it) }
-            return this
-        }
+        fun unselectedItemDataColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { unselectedItemDataColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Selected Item Data Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -973,10 +1134,11 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("selectedItemDataColorStateListResources")
-        fun selectedItemDataColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { selectedItemDataColor(fColors = it) }
-            return this
-        }
+        fun selectedItemDataColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { selectedItemDataColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Pay Nothing Now Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -997,58 +1159,68 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("payNothingNowColorStateListResources")
-        fun payNothingNowColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { payNothingNowColor(fColors = it) }
-            return this
-        }
+        fun payNothingNowColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { payNothingNowColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Secure With Play Store Text Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
         @JvmName("secureWithPlayStoreTextColor")
-        fun secureWithPlayStoreTextColor(fColors: ColorStateList?) = this@ViewAllPlansScreenData.apply {
-            fColors?.let { this._secureWithPlayStoreTextColor = it }
-            return this
-        }
+        fun secureWithPlayStoreTextColor(fColors: ColorStateList?) =
+            this@ViewAllPlansScreenData.apply {
+                fColors?.let { this._secureWithPlayStoreTextColor = it }
+                return this
+            }
 
         @JvmName("secureWithPlayStoreTextColor")
-        fun secureWithPlayStoreTextColor(@ColorInt fColorInt: Int) = this@ViewAllPlansScreenData.apply {
-            secureWithPlayStoreTextColor(fColors = ColorStateList.valueOf(fColorInt))
-        }
+        fun secureWithPlayStoreTextColor(@ColorInt fColorInt: Int) =
+            this@ViewAllPlansScreenData.apply {
+                secureWithPlayStoreTextColor(fColors = ColorStateList.valueOf(fColorInt))
+            }
 
         @JvmName("secureWithPlayStoreTextColorResources")
-        fun secureWithPlayStoreTextColorResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            secureWithPlayStoreTextColor(fColorInt = fActivity.getColorRes(id))
-        }
+        fun secureWithPlayStoreTextColorResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                secureWithPlayStoreTextColor(fColorInt = fActivity.getColorRes(id))
+            }
 
         @JvmName("secureWithPlayStoreTextColorStateListResources")
-        fun secureWithPlayStoreTextColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { secureWithPlayStoreTextColor(fColors = it) }
-            return this
-        }
+        fun secureWithPlayStoreTextColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { secureWithPlayStoreTextColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Secure With Play Store Background Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
         @JvmName("secureWithPlayStoreBackgroundColor")
-        fun secureWithPlayStoreBackgroundColor(fColors: ColorStateList?) = this@ViewAllPlansScreenData.apply {
-            fColors?.let { this._secureWithPlayStoreBackgroundColor = it }
-            return this
-        }
+        fun secureWithPlayStoreBackgroundColor(fColors: ColorStateList?) =
+            this@ViewAllPlansScreenData.apply {
+                fColors?.let { this._secureWithPlayStoreBackgroundColor = it }
+                return this
+            }
 
         @JvmName("secureWithPlayStoreBackgroundColor")
-        fun secureWithPlayStoreBackgroundColor(@ColorInt fColorInt: Int) = this@ViewAllPlansScreenData.apply {
-            secureWithPlayStoreBackgroundColor(fColors = ColorStateList.valueOf(fColorInt))
-        }
+        fun secureWithPlayStoreBackgroundColor(@ColorInt fColorInt: Int) =
+            this@ViewAllPlansScreenData.apply {
+                secureWithPlayStoreBackgroundColor(fColors = ColorStateList.valueOf(fColorInt))
+            }
 
         @JvmName("secureWithPlayStoreBackgroundColorResources")
-        fun secureWithPlayStoreBackgroundColorResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            secureWithPlayStoreBackgroundColor(fColorInt = fActivity.getColorRes(id))
-        }
+        fun secureWithPlayStoreBackgroundColorResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                secureWithPlayStoreBackgroundColor(fColorInt = fActivity.getColorRes(id))
+            }
 
         @JvmName("secureWithPlayStoreBackgroundColorStateListResources")
-        fun secureWithPlayStoreBackgroundColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { secureWithPlayStoreBackgroundColor(fColors = it) }
-            return this
-        }
+        fun secureWithPlayStoreBackgroundColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)
+                    ?.let { secureWithPlayStoreBackgroundColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Item Box Background Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
@@ -1069,59 +1241,103 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("itemBoxBackgroundColorStateListResources")
-        fun itemBoxBackgroundColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { itemBoxBackgroundColor(fColors = it) }
-            return this
-        }
+        fun itemBoxBackgroundColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { itemBoxBackgroundColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Selected Sku Background Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
         @JvmName("selectedSkuBackgroundColor")
-        fun selectedSkuBackgroundColor(fColors: ColorStateList?) = this@ViewAllPlansScreenData.apply {
-            fColors?.let { this._selectedSkuBackgroundColor = it }
-            return this
-        }
+        fun selectedSkuBackgroundColor(fColors: ColorStateList?) =
+            this@ViewAllPlansScreenData.apply {
+                fColors?.let { this._selectedSkuBackgroundColor = it }
+                return this
+            }
 
         @JvmName("selectedSkuBackgroundColor")
-        fun selectedSkuBackgroundColor(@ColorInt fColorInt: Int) = this@ViewAllPlansScreenData.apply {
-            selectedSkuBackgroundColor(fColors = ColorStateList.valueOf(fColorInt))
-        }
+        fun selectedSkuBackgroundColor(@ColorInt fColorInt: Int) =
+            this@ViewAllPlansScreenData.apply {
+                selectedSkuBackgroundColor(fColors = ColorStateList.valueOf(fColorInt))
+            }
 
         @JvmName("selectedSkuBackgroundColorResources")
-        fun selectedSkuBackgroundColorResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            selectedSkuBackgroundColor(fColorInt = fActivity.getColorRes(id))
-        }
+        fun selectedSkuBackgroundColorResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                selectedSkuBackgroundColor(fColorInt = fActivity.getColorRes(id))
+            }
 
         @JvmName("selectedSkuBackgroundColorStateListResources")
-        fun selectedSkuBackgroundColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { selectedSkuBackgroundColor(fColors = it) }
-            return this
-        }
+        fun selectedSkuBackgroundColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { selectedSkuBackgroundColor(fColors = it) }
+                return this
+            }
         //</editor-fold>
 
         //<editor-fold desc="Unselected Sku Background Color Using ColorStateList, ColorInt & ColorRes ID [ColorResources Or ColorStateListResources]">
         @JvmName("unselectedSkuBackgroundColor")
-        fun unselectedSkuBackgroundColor(fColors: ColorStateList?) = this@ViewAllPlansScreenData.apply {
-            fColors?.let { this._unselectedSkuBackgroundColor = it }
-            return this
-        }
+        fun unselectedSkuBackgroundColor(fColors: ColorStateList?) =
+            this@ViewAllPlansScreenData.apply {
+                fColors?.let { this._unselectedSkuBackgroundColor = it }
+                return this
+            }
 
         @JvmName("unselectedSkuBackgroundColor")
-        fun unselectedSkuBackgroundColor(@ColorInt fColorInt: Int) = this@ViewAllPlansScreenData.apply {
-            unselectedSkuBackgroundColor(fColors = ColorStateList.valueOf(fColorInt))
-        }
+        fun unselectedSkuBackgroundColor(@ColorInt fColorInt: Int) =
+            this@ViewAllPlansScreenData.apply {
+                unselectedSkuBackgroundColor(fColors = ColorStateList.valueOf(fColorInt))
+            }
 
         @JvmName("unselectedSkuBackgroundColorResources")
-        fun unselectedSkuBackgroundColorResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            unselectedSkuBackgroundColor(fColorInt = fActivity.getColorRes(id))
-        }
+        fun unselectedSkuBackgroundColorResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                unselectedSkuBackgroundColor(fColorInt = fActivity.getColorRes(id))
+            }
 
         @JvmName("unselectedSkuBackgroundColorStateListResources")
-        fun unselectedSkuBackgroundColorStateListResources(@ColorRes id: Int) = this@ViewAllPlansScreenData.apply {
-            fActivity.getColorStateRes(id)?.let { unselectedSkuBackgroundColor(fColors = it) }
+        fun unselectedSkuBackgroundColorStateListResources(@ColorRes id: Int) =
+            this@ViewAllPlansScreenData.apply {
+                fActivity.getColorStateRes(id)?.let { unselectedSkuBackgroundColor(fColors = it) }
+                return this
+            }
+        //</editor-fold>
+    }
+
+    class WeeklyPlanScreenData(private val fActivity: Activity) : Serializable {
+
+        private var _listOfPointItem: ArrayList<WeeklyPlanUserItem> = ArrayList()
+        internal val listOfPointItem: ArrayList<WeeklyPlanUserItem> get() = _listOfPointItem
+
+        private var _weeklyScreenBackground: Int = -1
+        internal val weeklyScreenBackground: Int get() = _weeklyScreenBackground
+
+        private var _weeklyScreenCloseIconTime: Long = -1
+        internal val weeklyScreenCloseIconTime: Long get() = _weeklyScreenCloseIconTime
+
+
+        @JvmName("setWeeklyPointItems")
+        fun setWeeklyPointItems(vararg listOfBoxItem: WeeklyPlanUserItem) =
+            this@WeeklyPlanScreenData.apply {
+                this._listOfPointItem.clearAll()
+                this._listOfPointItem.addAll(listOfBoxItem)
+                return this
+            }
+
+        @JvmName("setWeeklyBackground")
+        fun setWeeklyBackground(weeklyScreenBackground: Int) = this@WeeklyPlanScreenData.apply {
+            this._weeklyScreenBackground = -1
+            this._weeklyScreenBackground = weeklyScreenBackground
             return this
         }
-        //</editor-fold>
+
+        @JvmName("setWeeklyScreenCloseIconTime")
+        fun setWeeklyScreenCloseIconTime(weeklyScreenCloseIconTime: Long) = this@WeeklyPlanScreenData.apply {
+            this._weeklyScreenCloseIconTime = -1
+            this._weeklyScreenCloseIconTime = weeklyScreenCloseIconTime
+            return this
+        }
     }
 
     class FourPlanScreenData(private val fActivity: Activity) : Serializable {
@@ -1151,11 +1367,12 @@ object VasuSubscriptionConfig {
         }
 
         @JvmName("setRattingItems")
-        fun setRattingItems(vararg listOfRattingItem: FourPlanRattingItem) = this@FourPlanScreenData.apply {
-            this._listOfRattingItem.clearAll()
-            this._listOfRattingItem.addAll(listOfRattingItem)
-            return this
-        }
+        fun setRattingItems(vararg listOfRattingItem: FourPlanRattingItem) =
+            this@FourPlanScreenData.apply {
+                this._listOfRattingItem.clearAll()
+                this._listOfRattingItem.addAll(listOfRattingItem)
+                return this
+            }
 
 //        @JvmName("setLifeTimePlanDiscountPercentage")
 //        fun setLifeTimePlanDiscountPercentage(discountPercentage: Int) = this@FourPlanScreenData.apply {

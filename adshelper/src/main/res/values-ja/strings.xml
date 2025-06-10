@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">ご提案を入力してください。</string>
     <string name="feedback_response_success">フィードバックが正常に送信されました</string>
     <string name="feedback_response_error">問題が発生しました。しばらくしてからもう一度お試しください。</string>
+    <string name="try_free_nwithout_ads">無料でお試し\n<font color="#36C6FF">広告なし</font></string>
+    <string name="after_free_trial_period_s_per_week">無料トライアル期間終了後は週%s</string>
+    <string name="s_free_trial">%s 無料トライアル</string>
+    <string name="no_payment_required_now">今は支払い不要</string>
+    <string name="desc_google_play_settings">定期購入は同じ価格と期間で自動更新されます。定期購入は Google Play の設定 からいつでも管理またはキャンセルできます。</string>
+    <string name="s_per_week">週あたり%s</string>
+    <string name="google_play_settings">Google Play の設定</string>
+    <string name="label_start">始める</string>
 </resources>

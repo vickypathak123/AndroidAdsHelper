@@ -90,4 +90,12 @@
     <string name="write_your_suggestions">దయచేసి మీ సూచనలను నమోదు చేయండి.</string>
     <string name="feedback_response_success">అభిప్రాయం విజయవంతంగా సమర్పించబడింది</string>
     <string name="feedback_response_error">ఏదో తప్పు జరిగింది, దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి.</string>
+    <string name="try_free_nwithout_ads">ఉచితంగా ప్రయత్నించండి\n<font color="#36C6FF">ప్రకటనలు లేకుండా</font></string>
+    <string name="after_free_trial_period_s_per_week">వారానికి %s ఉచిత ట్రయల్ వ్యవధి తర్వాత</string>
+    <string name="s_free_trial">%s ఉచిత ట్రయల్</string>
+    <string name="no_payment_required_now">ఇప్పుడు చెల్లింపు అవసరం లేదు</string>
+    <string name="desc_google_play_settings">చందా అదే ధరకు మరియు అదే వ్యవధికి స్వయంచాలకంగా పునరుద్ధరించబడుతుంది. మీరు మీ Google Play సెట్టింగ్‌లలో ఎప్పుడైనా మీ సభ్యత్వాలను నిర్వహించవచ్చు లేదా రద్దు చేయవచ్చు.</string>
+    <string name="s_per_week">వారానికి %s</string>
+    <string name="google_play_settings">Google Play సెట్టింగ్‌లలో</string>
+    <string name="label_start">ప్రారంభించండి</string>
 </resources>

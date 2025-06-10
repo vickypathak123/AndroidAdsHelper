@@ -90,4 +90,12 @@
     <string name="write_your_suggestions">ଦୟାକରି ଆପଣଙ୍କର ପରାମର୍ଶଗୁଡିକ ପ୍ରବେଶ କରନ୍ତୁ |</string>
     <string name="feedback_response_success">ମତାମତ ସଫଳତାର ସହିତ ଦାଖଲ ହେଲା |</string>
     <string name="feedback_response_error">କିଛି ଭୁଲ ହୋଇଗଲା, ଦୟାକରି ପରେ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |</string>
+    <string name="try_free_nwithout_ads">ମାଗଣାରେ ଚେଷ୍ଟା କରନ୍ତୁ\n<font color="#36C6FF">ବିଜ୍ଞାପନ ବିନା</font></string>
+    <string name="after_free_trial_period_s_per_week">ମାଗଣା ପରୀକ୍ଷା ଅବଧି ପରେ ସପ୍ତାହରେ% s |</string>
+    <string name="s_free_trial">% s ମାଗଣା ପରୀକ୍ଷା |</string>
+    <string name="no_payment_required_now">ବର୍ତ୍ତମାନ କ payment ଣସି ଦେୟ ଆବଶ୍ୟକ ନାହିଁ |</string>
+    <string name="desc_google_play_settings">ସମାନ ମୂଲ୍ୟରେ ଏବଂ ସମାନ ଅବଧି ପାଇଁ ସଦସ୍ୟତା ସ୍ୱୟଂଚାଳିତ ଭାବରେ ନବୀକରଣ ହେବ | ଆପଣ ଆପଣଙ୍କର ଗୁଗୁଲ୍ ପ୍ଲେ ସେଟିଂସମୂ ହରେ ଯେକ time ଣସି ସମୟରେ ଆପଣଙ୍କର ସଦସ୍ୟତା ପରିଚାଳନା କିମ୍ବା ବାତିଲ କରିପାରିବେ |</string>
+    <string name="s_per_week">ସପ୍ତାହରେ% s |</string>
+    <string name="google_play_settings">ଗୁଗୁଲ୍ ପ୍ଲେ ସେଟିଂସମୂ</string>
+    <string name="label_start">ଆରମ୍ଭ କରନ୍ତୁ |</string>
 </resources>

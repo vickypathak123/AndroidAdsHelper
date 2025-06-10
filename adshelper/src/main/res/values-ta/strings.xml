@@ -90,4 +90,12 @@
     <string name="write_your_suggestions">உங்கள் பரிந்துரைகளை உள்ளிடவும்.</string>
     <string name="feedback_response_success">கருத்து வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது</string>
     <string name="feedback_response_error">ஏதோ தவறாகிவிட்டது, பிறகு முயற்சிக்கவும்.</string>
+    <string name="try_free_nwithout_ads">இலவசமாக முயற்சிக்கவும்\n<font color="#36C6FF">விளம்பரங்கள் இல்லாமல்</font></string>
+    <string name="after_free_trial_period_s_per_week">வாரத்திற்கு %s இலவச சோதனைக் காலத்திற்குப் பிறகு</string>
+    <string name="s_free_trial">%s இலவச சோதனை</string>
+    <string name="no_payment_required_now">இப்போது கட்டணம் செலுத்த தேவையில்லை</string>
+    <string name="desc_google_play_settings">சந்தா தானாகவே அதே விலையில் மற்றும் அதே காலத்திற்கு புதுப்பிக்கப்படும். உங்கள் Google Play அமைப்புகளில் எந்த நேரத்திலும் உங்கள் சந்தாக்களை நிர்வகிக்கலாம் அல்லது ரத்து செய்யலாம்.</string>
+    <string name="s_per_week">வாரத்திற்கு %s</string>
+    <string name="google_play_settings">Google Play அமைப்புகளில்</string>
+    <string name="label_start">தொடங்கு</string>
 </resources>

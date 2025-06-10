@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">제안 사항을 입력하세요.</string>
     <string name="feedback_response_success">피드백이 성공적으로 제출되었습니다.</string>
     <string name="feedback_response_error">문제가 발생했습니다. 나중에 다시 시도하세요.</string>
+    <string name="try_free_nwithout_ads">무료로 사용해보기\n<font color="#36C6FF">광고 없음</font></string>
+    <string name="after_free_trial_period_s_per_week">무료 체험 기간 이후 주당 %s</string>
+    <string name="s_free_trial">%s 무료 체험</string>
+    <string name="no_payment_required_now">지금은 결제가 필요하지 않습니다</string>
+    <string name="desc_google_play_settings">구독은 동일한 가격과 기간으로 자동 갱신됩니다. Google Play 설정에서 언제든지 구독을 관리하거나 취소할 수 있습니다.</string>
+    <string name="s_per_week">주당 %s</string>
+    <string name="google_play_settings">Google Play 설정에서</string>
+    <string name="label_start">시작</string>
 </resources>

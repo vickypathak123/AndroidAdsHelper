@@ -10,8 +10,8 @@ import android.util.Log
  * @updated 24 Jun 2024
  */
 
-internal var isEnableDebugMode: Boolean = false
-internal var isPurchaseHistoryLogEnable: Boolean = false
+internal var isEnableDebugMode: Boolean = true
+internal var isPurchaseHistoryLogEnable: Boolean = true
 
 fun getDebugModeStatus(): Boolean = isEnableDebugMode
 fun getPurchaseHistoryLogStatus(): Boolean = isPurchaseHistoryLogEnable

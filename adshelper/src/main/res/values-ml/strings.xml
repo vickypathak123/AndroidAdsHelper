@@ -89,4 +89,12 @@
     <string name="write_your_suggestions">നിങ്ങളുടെ നിർദ്ദേശങ്ങൾ നൽകുക.</string>
     <string name="feedback_response_success">ഫീഡ്‌ബാക്ക് വിജയകരമായി സമർപ്പിച്ചു</string>
     <string name="feedback_response_error">എന്തോ കുഴപ്പം സംഭവിച്ചു, ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.</string>
+    <string name="try_free_nwithout_ads">സൗജന്യമായി പരീക്ഷിക്കുക\n<font color="#36C6FF">പരസ്യങ്ങളില്ലാതെ</font></string>
+    <string name="after_free_trial_period_s_per_week">സൗജന്യ ട്രയൽ കാലയളവിന് ശേഷം ആഴ്ചയിൽ %s</string>
+    <string name="s_free_trial">%s സൗജന്യ ട്രയൽ</string>
+    <string name="no_payment_required_now">ഇപ്പോൾ പണമടയ്ക്കേണ്ടതില്ല</string>
+    <string name="desc_google_play_settings">സബ്‌സ്‌ക്രിപ്‌ഷൻ അതേ വിലയിലും അതേ കാലയളവിലും സ്വയമേവ പുതുക്കും. നിങ്ങളുടെ Google Play ക്രമീകരണത്തിൽ നിങ്ങൾക്ക് എപ്പോൾ വേണമെങ്കിലും സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ നിയന്ത്രിക്കാനോ റദ്ദാക്കാനോ കഴിയും.</string>
+    <string name="s_per_week">ആഴ്ചയിൽ %s</string>
+    <string name="google_play_settings">Google Play ക്രമീകരണത്തിൽ</string>
+    <string name="label_start">ആരംഭിക്കുക</string>
 </resources>

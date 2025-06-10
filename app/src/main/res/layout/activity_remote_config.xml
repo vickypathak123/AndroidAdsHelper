@@ -354,7 +354,7 @@
                 android:layout_height="wrap_content"
                 android:hint="ratting_bar_slider_timing"
                 android:textColorHint="@android:color/black"
-                app:layout_constraintBottom_toTopOf="@+id/txt_playIntegrity"
+                app:layout_constraintBottom_toTopOf="@+id/til_weekly_close_timing"
                 app:layout_constraintEnd_toEndOf="@id/switch_need_to_show_banner_ad"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@id/switch_need_to_show_banner_ad"
@@ -370,7 +370,29 @@
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_weekly_close_timing"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="weekly_close_timing"
+                android:textColorHint="@android:color/black"
+                app:layout_constraintBottom_toTopOf="@+id/txt_playIntegrity"
+                app:layout_constraintEnd_toEndOf="@id/switch_need_to_show_banner_ad"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/switch_need_to_show_banner_ad"
+                app:layout_constraintTop_toBottomOf="@+id/til_ratting_bar_slider_timing"
+                app:placeholderTextAppearance="@style/TextAppearance.Material3.TitleMedium">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_weekly_close_timing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:id="@+id/txt_playIntegrity"
                 android:layout_width="0dp"
@@ -383,7 +405,7 @@
                 app:layout_constraintEnd_toEndOf="@id/txt_googleAds"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@id/txt_googleAds"
-                app:layout_constraintTop_toBottomOf="@+id/til_ratting_bar_slider_timing" />
+                app:layout_constraintTop_toBottomOf="@+id/til_weekly_close_timing" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/switch_error_hide"

@@ -110,4 +110,17 @@
     <string name="write_your_suggestions">Please enter your suggestions.</string>
     <string name="feedback_response_success">Feedback submitted successfully</string>
     <string name="feedback_response_error">Something went wrong, Please try again later.</string>
+
+    <string name="try_free_nwithout_ads">Try Free\n<font color="#36C6FF">Without Ads</font></string>
+
+    <string name="after_free_trial_period_s_per_week">After free trial period %s per week</string>
+    <string name="s_free_trial">%s Free Trial</string>
+    <string name="no_payment_required_now">No payment required now</string>
+    <string name="desc_google_play_settings">The subscription will renew automatically at the same price and for the same period. You can manage or cancel your subscriptions at any time in your\nGoogle Play settings.</string>
+    <string name="s_per_week">%s per week</string>
+    <string name="google_play_settings">Google Play settings.</string>
+    <string name="label_start">Start</string>
+
+    <string name="four_plan_1">Clap To Find</string>
+
 </resources>
