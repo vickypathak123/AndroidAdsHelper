@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">请输入您的建议。</string>
     <string name="feedback_response_success">反馈已成功提交</string>
     <string name="feedback_response_error">出现错误，请稍后重试。</string>
+    <string name="try_free_nwithout_ads">免费试用\n<font color="#36C6FF">无广告</font></string>
+    <string name="after_free_trial_period_s_per_week">免费试用期结束后每周 %s</string>
+    <string name="s_free_trial">%s 免费试用</string>
+    <string name="no_payment_required_now">现在无需付款</string>
+    <string name="desc_google_play_settings">订阅将以相同的价格和期限自动续订。您可以随时在 Google Play 设置 中管理或取消订阅。</string>
+    <string name="s_per_week">每周 %s</string>
+    <string name="google_play_settings">Google Play 设置</string>
+    <string name="label_start">开始</string>
 </resources>

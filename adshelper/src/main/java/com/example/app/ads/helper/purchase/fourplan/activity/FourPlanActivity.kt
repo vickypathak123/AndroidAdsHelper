@@ -1039,9 +1039,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
             }
         }
     }
-    //</editor-fold>
 
-    //<editor-fold desc="Override Functions">
     override fun onScreenFinishing() {
         super.onScreenFinishing()
         onScreenFinish.invoke(isUserPurchaseAnyPlan)

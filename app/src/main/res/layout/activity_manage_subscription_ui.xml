@@ -52,7 +52,7 @@
                     android:text="Language :-"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="@android:color/black"
-                    app:layout_constraintBottom_toTopOf="@id/txt_screen_type"
+                    app:layout_constraintBottom_toTopOf="@id/txt_timeline_screen_type"
                     app:layout_constraintEnd_toStartOf="@id/sp_language"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_chainStyle="packed"
@@ -77,6 +77,38 @@
                     app:layout_constraintTop_toTopOf="@id/txt_language" />
 
                 <TextView
+                    android:id="@+id/txt_timeline_screen_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="8dp"
+                    android:text="TimeLine Screen Type :-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/txt_screen_type"
+                    app:layout_constraintEnd_toStartOf="@id/sp_timeline_screen_type"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_language" />
+
+                <Spinner
+                    android:id="@+id/sp_timeline_screen_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:entries="@array/timeline_screen_type"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dialog"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_timeline_screen_type"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/txt_timeline_screen_type"
+                    app:layout_constraintTop_toTopOf="@id/txt_timeline_screen_type" />
+
+
+                <TextView
                     android:id="@+id/txt_screen_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -90,7 +122,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txt_language" />
+                    app:layout_constraintTop_toBottomOf="@id/txt_timeline_screen_type" />
 
                 <Spinner
                     android:id="@+id/sp_screen_type"

@@ -639,11 +639,14 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View.OnClickL
             backgroundColor = R.color.exit_background,
             iconColor = R.color.exit_icon,
             iconLineColor = R.color.exit_icon_line,
-            titleTextColor = R.color.exit_title_text,
-            subTitleTextColor = R.color.exit_sub_title_text,
-            buttonTextColor = R.color.exit_button_text,
-            buttonBackgroundColor = R.color.exit_button_background,
-            buttonStrokeColor = R.color.exit_button_text
+            titleTextColor = R.color.exit_title,
+            subTitleTextColor = R.color.exit_sub_title,
+            positiveButtonTextColor = R.color.exit_positive_button_text,
+            positiveButtonBackgroundColor = R.color.exit_positive_button_bg,
+            positiveButtonStrokeColor = R.color.exit_positive_button_stroke,
+            negativeButtonTextColor = R.color.exit_negative_button_text,
+            negativeButtonBackgroundColor = R.color.exit_negative_button_bg,
+            negativeButtonStrokeColor = R.color.exit_negative_button_stroke,
         )
     }
 

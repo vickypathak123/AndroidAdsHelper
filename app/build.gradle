@@ -10,6 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.vasu.ads.helper.demo"
+//        applicationId "bubble.laser.level.angle.finder.tool"
 //        applicationId "com.contacts.number.add.sim.phone.recent.details"
 //        applicationId "com.gps.photo.geo.capture.location.map.time.stamp"
 //        applicationId "com.voice.gps.navigation.map.location.route"

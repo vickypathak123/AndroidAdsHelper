@@ -89,4 +89,12 @@
     <string name="write_your_suggestions">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಲಹೆಗಳನ್ನು ನಮೂದಿಸಿ.</string>
     <string name="feedback_response_success">ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಸಲ್ಲಿಸಲಾಗಿದೆ</string>
     <string name="feedback_response_error">ಏನೋ ತಪ್ಪಾಗಿದೆ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="try_free_nwithout_ads">ಉಚಿತವಾಗಿ ಪ್ರಯತ್ನಿಸಿ\n<font color="#36C6FF">ಜಾಹೀರಾತುಗಳಿಲ್ಲದೆ</font></string>
+    <string name="after_free_trial_period_s_per_week">ಉಚಿತ ಪ್ರಯೋಗ ಅವಧಿಯ ನಂತರ ಪ್ರತಿ ವಾರಕ್ಕೆ %s</string>
+    <string name="s_free_trial">%s ಉಚಿತ ಪ್ರಯೋಗ</string>
+    <string name="no_payment_required_now">ಈಗ ಯಾವುದೇ ಪಾವತಿ ಅಗತ್ಯವಿಲ್ಲ</string>
+    <string name="desc_google_play_settings">ಚಂದಾದಾರಿಕೆಯು ಅದೇ ಬೆಲೆಗೆ ಮತ್ತು ಅದೇ ಅವಧಿಗೆ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಿಸಲ್ಪಡುತ್ತದೆ. ನಿಮ್ಮ Google Play ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ಚಂದಾದಾರಿಕೆಗಳನ್ನು ನಿರ್ವಹಿಸಬಹುದು ಅಥವಾ ರದ್ದುಗೊಳಿಸಬಹುದು.</string>
+    <string name="s_per_week">ಪ್ರತಿ ವಾರಕ್ಕೆ %s</string>
+    <string name="google_play_settings">Google Play ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ</string>
+    <string name="label_start">ಪ್ರಾರಂಭಿಸಿ</string>
 </resources>

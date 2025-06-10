@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/NewLightColor"
+    >
+
+    <ImageView
+        android:id="@+id/ivBgMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivSubClose"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_margin="@dimen/_20sdp"
+                android:src="@drawable/ic_close_sub_week"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:clickable="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/avenir_black"
+                android:textAllCaps="true"
+                android:lineHeight="@dimen/_45sdp"
+                android:textSize="@dimen/_32ssp"
+                android:layout_marginTop="@dimen/_22sdp"
+                android:text="@string/try_free_nwithout_ads"
+                app:layout_constraintTop_toBottomOf="@id/ivSubClose" />
+
+            <TableLayout
+                android:id="@+id/tlFeatures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                android:layout_marginTop="@dimen/_22sdp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        android:src="@drawable/ic_sub_week_check" />
+
+                    <TextView
+                        android:id="@+id/tvFeature1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/avenir_medium"
+                        android:textAllCaps="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="@string/four_plan_1"
+                        android:textDirection="ltr"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:layout_weight="1"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        android:src="@drawable/ic_sub_week_check" />
+
+                    <TextView
+                        android:id="@+id/tvFeature2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/avenir_medium"
+                        android:textAllCaps="true"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:layout_weight="1"
+                        android:textDirection="ltr"
+
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="@string/four_plan_1"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        android:src="@drawable/ic_sub_week_check" />
+
+                    <TextView
+                        android:id="@+id/tvFeature3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/avenir_medium"
+                        android:textAllCaps="true"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:layout_weight="1"
+                        android:textDirection="ltr"
+
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="@string/four_plan_1"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        android:src="@drawable/ic_sub_week_check" />
+
+                    <TextView
+                        android:id="@+id/tvFeature4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/avenir_medium"
+                        android:textAllCaps="true"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:layout_weight="1"
+                        android:textDirection="ltr"
+
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="@string/four_plan_1"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        android:src="@drawable/ic_sub_week_check" />
+
+                    <TextView
+                        android:id="@+id/tvFeature5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/avenir_medium"
+                        android:textAllCaps="true"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:layout_weight="1"
+                        android:textDirection="ltr"
+
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="@string/four_plan_1"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        android:src="@drawable/ic_sub_week_check" />
+
+                    <TextView
+                        android:id="@+id/tvFeature6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/avenir_medium"
+                        android:textAllCaps="true"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:layout_weight="1"
+                        android:textDirection="ltr"
+
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="@string/four_plan_1"
+                        />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <View
+                android:id="@+id/viewSpacer1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                app:layout_constraintTop_toBottomOf="@id/tlFeatures" />
+
+            <TextView
+                android:id="@+id/tvFreeTrial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:alpha="0.5"
+                android:fontFamily="@font/avenir_medium"
+                android:textSize="@dimen/_11ssp"
+                android:text="@string/after_free_trial_period_s_per_week"
+                app:layout_constraintTop_toBottomOf="@id/viewSpacer1" />
+
+            <LinearLayout
+                android:id="@+id/flFreeTrial"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:background="@drawable/ic_sub_week_free_trial_bg"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="16dp"
+                android:clipToPadding="false"
+
+                app:layout_constraintTop_toBottomOf="@id/tvFreeTrial">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/ic_sub_week_free_trial_check"
+                    android:layout_marginEnd="8dp"
+                    android:adjustViewBounds="true" />
+
+                <TextView
+                    android:id="@+id/tvFreeTrialPeriod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/s_free_trial"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/_17ssp"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:fontFamily="@font/avenir_black"
+                    android:textColor="#252525"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/viewSpacer2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+                app:layout_constraintTop_toBottomOf="@id/flFreeTrial" />
+
+            <TextView
+                android:id="@+id/tvNoPaymentRequired"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_sub_week_check_white"
+                android:drawablePadding="@dimen/_8sdp"
+                android:fontFamily="@font/avenir_black"
+                android:gravity="center"
+                android:text="@string/no_payment_required_now"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewSpacer2" />
+
+            <FrameLayout
+                android:id="@+id/flStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-5dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvNoPaymentRequired">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_sub_week_start_bg"
+                    android:adjustViewBounds="true" />
+
+                <TextView
+                    android:id="@+id/tvStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_start"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:textSize="@dimen/_18ssp"
+                    android:fontFamily="@font/avenir_black"
+                    android:textColor="@color/white" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvPlaySetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-25dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:fontFamily="@font/avenir_medium"
+                android:gravity="center"
+                android:text="@string/desc_google_play_settings"
+                android:textColor="#53595c"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintTop_toBottomOf="@id/flStart" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvPlaySetting" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>

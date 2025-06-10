@@ -39,6 +39,7 @@ private fun Context.saveRemoteConfig(jsonString: String, action: () -> Unit) {
 }
 
 private fun Context.initRemoteConfig(jsonString: String, action: () -> Unit) {
+    Log.i(TAG, "initRemoteConfig: jsonString ===> $jsonString" )
     newRemoteConfigModel = Gson().fromJson(jsonString, AppRemoteConfigModel::class.java)
     Log.i(TAG, "initRemoteConfig: \n$remoteConfigModel")
     this.initSubscriptionRemoteConfig(jsonString = this.remoteConfigModel.toString())

@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">કૃપા કરીને તમારા સૂચનો દાખલ કરો.</string>
     <string name="feedback_response_success">પ્રતિસાદ સફળતાપૂર્વક સબમિટ કરો</string>
     <string name="feedback_response_error">કંઈક ખોટું થયું, કૃપા કરીને પછીથી ફરી પ્રયાસ કરો.</string>
+    <string name="try_free_nwithout_ads">મફતમાં અજમાવો\n<font color="#36C6FF">જાહેરાતો વગર</font></string>
+    <string name="after_free_trial_period_s_per_week">મફત અજમાયશ અવધિ પછી %s દર અઠવાડિયે</string>
+    <string name="s_free_trial">%s મફત અજમાયશ</string>
+    <string name="no_payment_required_now">હવે કોઈ ચુકવણીની જરૂર નથી</string>
+    <string name="desc_google_play_settings">સબ્સ્ક્રિપ્શન સમાન કિંમતે અને તે જ સમયગાળા માટે આપમેળે રિન્યૂ થશે. તમે તમારી Google Play સેટિંગ્સ માં કોઈપણ સમયે તમારા સબ્સ્ક્રિપ્શન્સને મેનેજ અથવા રદ કરી શકો છો.</string>
+    <string name="s_per_week">અઠવાડિયે %s</string>
+    <string name="google_play_settings">Google Play સેટિંગ્સ</string>
+    <string name="label_start">શરૂ કરો</string>
 </resources>

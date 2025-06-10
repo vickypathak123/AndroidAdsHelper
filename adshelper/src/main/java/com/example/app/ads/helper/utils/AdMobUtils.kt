@@ -5,7 +5,11 @@ package com.example.app.ads.helper.utils
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Color
+import android.text.SpannableString
+import android.text.Spanned
 import android.text.TextUtils
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
@@ -102,6 +106,35 @@ internal fun Activity.exitTheApp() {
 //    exitProcess(0)
 }
 
+fun getFormattedTwoLineString(context: Context, @StringRes resourceId: Int): CharSequence {
+    // Get the raw string with HTML tags
+    val htmlString = getLocalizedString<String>(context = context, resourceId = resourceId)
+
+    // Remove HTML tags to get plain text
+    val plainText = htmlString.replace(Regex("<[^>]*>"), "")
+
+    // Split by newline to get the two lines
+    val lines = plainText.split("\n")
+    if (lines.size < 2) {
+        return plainText // Return as is if there's only one line
+    }
+
+    // Create a SpannableString with the plain text
+    val spannableString = SpannableString(plainText)
+
+    // Find the starting position of the second line
+    val secondLineStart = lines[0].length + 1 // +1 for the newline character
+
+    // Apply blue color to the second line
+    spannableString.setSpan(
+        ForegroundColorSpan(Color.parseColor("#36C6FF")),
+        secondLineStart,
+        plainText.length,
+        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+    )
+
+    return spannableString
+}
 
 
 

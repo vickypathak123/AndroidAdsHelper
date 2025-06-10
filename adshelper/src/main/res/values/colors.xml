@@ -47,4 +47,7 @@
     <color name="default_feedback_screen_answer_text_background_color">#F8F8F8</color>
     <color name="default_feedback_screen_submit_button_text_color">#9798A5</color>
 
+    <color name="NewLightColor">#010203</color>
+    <color name="white">#ffffff</color>
+
 </resources>

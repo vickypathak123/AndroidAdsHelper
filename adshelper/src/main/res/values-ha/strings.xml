@@ -107,4 +107,12 @@
     <string name="write_your_suggestions"> Da fatan za a shigar da shawarwarinku.</string>
     <string name="feedback_response_success">An ƙaddamar da martani cikin nasara</string>
     <string name="feedback_response_error">Wani abu yayi kuskure, Da fatan za a sake gwadawa daga baya.</string>
+    <string name="try_free_nwithout_ads">Gwada kyauta\n<font color="#36C6FF">Ba tare da talla ba</font></string>
+    <string name="after_free_trial_period_s_per_week">Bayan lokacin gwaji kyauta %s kowane mako</string>
+    <string name="s_free_trial">%s Gwajin Kyauta</string>
+    <string name="no_payment_required_now">Babu biyan kuɗi da ake buƙata yanzu</string>
+    <string name="desc_google_play_settings">Biyan kuɗin zai sabunta ta atomatik a farashi ɗaya kuma na tsawon lokaci guda. Kuna iya sarrafa ko soke biyan kuɗin ku a kowane lokaci a cikin Saitunan Google Play.</string>
+    <string name="s_per_week">%s a kowane mako</string>
+    <string name="google_play_settings">Saitunan Google Play.</string>
+    <string name="label_start">Fara</string>
 </resources>

@@ -89,4 +89,12 @@
     <string name="write_your_suggestions">আপনার পরামর্শ লিখুন.</string>
     <string name="feedback_response_success">প্রতিক্রিয়া সফলভাবে জমা দেওয়া হয়েছে</string>
     <string name="feedback_response_error">কিছু ভুল হয়েছে, অনুগ্রহ করে পরে আবার চেষ্টা করুন।</string>
+    <string name="try_free_nwithout_ads">বিনামূল্যে চেষ্টা করুন\n<font color="#36C6FF">বিজ্ঞাপন ছাড়া</font></string>
+    <string name="after_free_trial_period_s_per_week">প্রতি সপ্তাহে %s বিনামূল্যে ট্রায়াল সময়ের পরে</string>
+    <string name="s_free_trial">%s বিনামূল্যে ট্রায়াল</string>
+    <string name="no_payment_required_now">এখন কোনো অর্থপ্রদানের প্রয়োজন নেই</string>
+    <string name="desc_google_play_settings">সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে একই মূল্যে এবং একই সময়ের জন্য পুনর্নবীকরণ হবে। আপনি আপনার Google Play সেটিংস। যেকোনো সময় আপনার সদস্যতাগুলি পরিচালনা বা বাতিল করতে পারেন৷</string>
+    <string name="s_per_week">প্রতি সপ্তাহে %s</string>
+    <string name="google_play_settings">Google Play সেটিংস।</string>
+    <string name="label_start">শুরু করুন</string>
 </resources>

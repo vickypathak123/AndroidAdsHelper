@@ -35,7 +35,7 @@ class RemoteConfigActivity : BaseBindingActivity<ActivityRemoteConfigBinding>() 
         super.initView()
 
         with(mBinding) {
-            val screenItems = listOf(MorePlanScreenType.FOUR_PLAN_SCREEN.value, MorePlanScreenType.SIX_BOX_SCREEN.value)
+            val screenItems = listOf(MorePlanScreenType.FOUR_PLAN_SCREEN.value, MorePlanScreenType.SIX_BOX_SCREEN.value,MorePlanScreenType.WEEKLY_SCREEN.value)
             val screenAdapter = ArrayAdapter(mActivity, R.layout.list_item, screenItems)
             (tilMorePlanScreenType.editText as? AutoCompleteTextView)?.setAdapter(screenAdapter)
 
@@ -63,6 +63,7 @@ class RemoteConfigActivity : BaseBindingActivity<ActivityRemoteConfigBinding>() 
                     etMorePlanScreenType.setText(vasuSubscriptionConfig.morePlanScreenType, false)
                     etLifeTimePlanDiscountPercentage.text = vasuSubscriptionConfig.lifeTimePlanDiscountPercentage.toString().toEditable
                     etRattingBarSliderTiming.text = vasuSubscriptionConfig.rattingBarSliderTiming.toString().toEditable
+                    etWeeklyCloseTiming.text = vasuSubscriptionConfig.subscriptionCloseIconShowTime.toString().toEditable
 
                     switchErrorHide.isChecked = playIntegrity.errorHide
                     etVerdictsResponseCodes.text = playIntegrity.verdictsResponseCodes.joinToString(", ").toEditable
@@ -99,6 +100,7 @@ class RemoteConfigActivity : BaseBindingActivity<ActivityRemoteConfigBinding>() 
                             morePlanScreenType = etMorePlanScreenType.text?.toString()?.trim() ?: MorePlanScreenType.SIX_BOX_SCREEN.value,
                             lifeTimePlanDiscountPercentage = etLifeTimePlanDiscountPercentage.text?.toString()?.trim()?.toIntOrNull() ?: 90,
                             rattingBarSliderTiming = etRattingBarSliderTiming.text?.toString()?.trim()?.toIntOrNull() ?: 5000,
+                            subscriptionCloseIconShowTime = etWeeklyCloseTiming.text?.toString()?.trim()?.toLongOrNull() ?: 3000L
                         ),
                         playIntegrity = PlayIntegrityModel(
                             errorHide = switchErrorHide.isChecked,

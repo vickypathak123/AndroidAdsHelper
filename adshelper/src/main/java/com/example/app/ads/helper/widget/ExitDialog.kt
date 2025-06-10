@@ -49,11 +49,17 @@ class ExitDialog(
     @ColorRes
     private val subTitleTextColor: Int,
     @ColorRes
-    private val buttonTextColor: Int,
+    private val positiveButtonTextColor: Int,
     @ColorRes
-    private val buttonBackgroundColor: Int,
+    private val positiveButtonBackgroundColor: Int,
     @ColorRes
-    private val buttonStrokeColor: Int,
+    private val positiveButtonStrokeColor: Int,
+    @ColorRes
+    private val negativeButtonTextColor: Int,
+    @ColorRes
+    private val negativeButtonBackgroundColor: Int,
+    @ColorRes
+    private val negativeButtonStrokeColor: Int,
 ) : BottomSheetDialog(fActivity, R.style.theme_exit_dialog) {
     private val mBinding: DialogExitBinding = DialogExitBinding.inflate(fActivity.layoutInflater)
 
@@ -98,9 +104,9 @@ class ExitDialog(
 
             btnNegative.apply {
                 isSelected = true
-                setTextColor(fActivity.getColorRes(buttonTextColor))
-                setBackgroundColor(fActivity.getColorRes(buttonBackgroundColor))
-                strokeColor = ColorStateList.valueOf(fActivity.getColorRes(buttonStrokeColor))
+                setTextColor(fActivity.getColorRes(negativeButtonTextColor))
+                setBackgroundColor(fActivity.getColorRes(negativeButtonBackgroundColor))
+                strokeColor = ColorStateList.valueOf(fActivity.getColorRes(negativeButtonStrokeColor))
 
                 setOnClickListener {
                     this@ExitDialog.dismiss()
@@ -109,9 +115,9 @@ class ExitDialog(
 
             btnPositive.apply {
                 isSelected = true
-                setTextColor(fActivity.getColorRes(buttonTextColor))
-                setBackgroundColor(fActivity.getColorRes(buttonBackgroundColor))
-                strokeColor = ColorStateList.valueOf(fActivity.getColorRes(buttonStrokeColor))
+                setTextColor(fActivity.getColorRes(positiveButtonTextColor))
+                setBackgroundColor(fActivity.getColorRes(positiveButtonBackgroundColor))
+                strokeColor = ColorStateList.valueOf(fActivity.getColorRes(positiveButtonStrokeColor))
 
                 setOnClickListener {
                     this@ExitDialog.dismiss()

@@ -107,4 +107,13 @@
     <string name="write_your_suggestions">يرجى إدخال اقتراحاتك.</string>
     <string name="feedback_response_success">تم إرسال التعليقات بنجاح</string>
     <string name="feedback_response_error">حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا.</string>
+
+    <string name="try_free_nwithout_ads">جرب مجانًا\n<font color="#36C6FF">بدون إعلانات</font></string>
+    <string name="after_free_trial_period_s_per_week">بعد فترة التجربة المجانية %s في الأسبوع</string>
+    <string name="s_free_trial">%s نسخة تجريبية مجانية</string>
+    <string name="no_payment_required_now">لا حاجة للدفع الآن</string>
+    <string name="desc_google_play_settings">سيتم تجديد الاشتراك تلقائيًا بنفس السعر وللمدة نفسها. يمكنك إدارة اشتراكاتك أو إلغاؤها في أي وقت من إعدادات Google Play.</string>
+    <string name="s_per_week">%s في الأسبوع</string>
+    <string name="google_play_settings">إعدادات Google Play.</string>
+    <string name="label_start">يبدأ</string>
 </resources>

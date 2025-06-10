@@ -110,4 +110,12 @@
     <string name="write_your_suggestions">Εισαγάγετε τις προτάσεις σας.</string>
     <string name="feedback_response_success">Τα σχόλια υποβλήθηκαν με επιτυχία</string>
     <string name="feedback_response_error">Κάτι πήγε στραβά. Δοκιμάστε ξανά αργότερα.</string>
+    <string name="try_free_nwithout_ads">Δοκιμάστε δωρεάν\n<font color="#36C6FF">Χωρίς διαφημίσεις</font></string>
+    <string name="after_free_trial_period_s_per_week">Μετά από δωρεάν δοκιμαστική περίοδο %s ανά εβδομάδα</string>
+    <string name="s_free_trial">%s Δωρεάν δοκιμή</string>
+    <string name="no_payment_required_now">Δεν απαιτείται πληρωμή τώρα</string>
+    <string name="desc_google_play_settings">Η συνδρομή θα ανανεώνεται αυτόματα στην ίδια τιμή και για την ίδια περίοδο. Μπορείτε να διαχειριστείτε ή να ακυρώσετε τις συνδρομές σας ανά πάσα στιγμή στις ρυθμίσεις σας στο Google Play.</string>
+    <string name="s_per_week">%s την εβδομάδα</string>
+    <string name="google_play_settings">ρυθμίσεις σας στο Google Play.</string>
+    <string name="label_start">Αρχή</string>
 </resources>

@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">กรุณาป้อนคำแนะนำของคุณ</string>
     <string name="feedback_response_success">ส่งคำติชมเรียบร้อยแล้ว</string>
     <string name="feedback_response_error">มีบางอย่างผิดพลาด โปรดลองอีกครั้งในภายหลัง</string>
+    <string name="try_free_nwithout_ads">ทดลองฟรี\n<font color="#36C6FF">ไม่มีโฆษณา</font></string>
+    <string name="after_free_trial_period_s_per_week">หลังจากช่วงทดลองใช้ฟรี %s ต่อสัปดาห์</string>
+    <string name="s_free_trial">%s ทดลองใช้งานฟรี</string>
+    <string name="no_payment_required_now">ไม่ต้องชำระเงินอีกต่อไป</string>
+    <string name="desc_google_play_settings">การสมัครสมาชิกจะต่ออายุโดยอัตโนมัติในราคาและระยะเวลาเท่ากัน คุณสามารถจัดการหรือยกเลิกการสมัครสมาชิกได้ตลอดเวลาใน การตั้งค่า Google Play</string>
+    <string name="s_per_week">%s ต่อสัปดาห์</string>
+    <string name="google_play_settings">การตั้งค่า Google Play</string>
+    <string name="label_start">เริ่ม</string>
 </resources>

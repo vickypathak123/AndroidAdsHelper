@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">Voer asseblief jou voorstelle in.</string>
     <string name="feedback_response_success">Terugvoer suksesvol ingedien</string>
     <string name="feedback_response_error">Iets het verkeerd geloop. Probeer asseblief later weer.</string>
+    <string name="try_free_nwithout_ads">Probeer gratis\n<font color="#36C6FF">Sonder advertensies</font></string>
+    <string name="after_free_trial_period_s_per_week">Na gratis proeftydperk %s per week</string>
+    <string name="s_free_trial">%s Gratis proeftydperk</string>
+    <string name="no_payment_required_now">Geen betaling word nou vereis nie</string>
+    <string name="desc_google_play_settings">Die intekening sal outomaties teen dieselfde prys en vir dieselfde tydperk hernu word. Jy kan jou intekeninge enige tyd in jou Google Play-instellings bestuur of kanselleer.</string>
+    <string name="s_per_week">%s per week</string>
+    <string name="google_play_settings">Google Play-instellings</string>
+    <string name="label_start">Begin</string>
 </resources>

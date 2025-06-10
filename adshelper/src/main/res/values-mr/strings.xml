@@ -89,4 +89,12 @@
     <string name="write_your_suggestions">कृपया तुमच्या सूचना प्रविष्ट करा.</string>
     <string name="feedback_response_success">अभिप्राय यशस्वीरित्या सबमिट केला</string>
     <string name="feedback_response_error">काहीतरी चूक झाली, कृपया नंतर पुन्हा प्रयत्न करा.</string>
+    <string name="try_free_nwithout_ads">मोफत वापरून पहा\n<font color="#36C6FF">जाहिराती शिवाय</font></string>
+    <string name="after_free_trial_period_s_per_week">विनामूल्य चाचणी कालावधीनंतर %s दर आठवड्याला</string>
+    <string name="s_free_trial">%s विनामूल्य चाचणी</string>
+    <string name="no_payment_required_now">आता कोणतेही पेमेंट आवश्यक नाही</string>
+    <string name="desc_google_play_settings">सदस्यता त्याच किंमतीवर आणि त्याच कालावधीसाठी स्वयंचलितपणे नूतनीकरण होईल. तुम्ही तुमच्या Google Play सेटिंग्ज मध्ये कधीही तुमचे सदस्यत्व व्यवस्थापित किंवा रद्द करू शकता.</string>
+    <string name="s_per_week">दर आठवड्याला %s</string>
+    <string name="google_play_settings">Google Play सेटिंग्ज</string>
+    <string name="label_start">सुरू करा</string>
 </resources>

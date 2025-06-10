@@ -107,6 +107,14 @@
     <string name="write_your_suggestions">Bitte geben Sie Ihre Vorschläge ein.</string>
     <string name="feedback_response_success">Feedback erfolgreich übermittelt</string>
     <string name="feedback_response_error">Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.</string>
+    <string name="try_free_nwithout_ads">Kostenlos testen\n<font color="#36C6FF">Ohne Werbung</font></string>
+    <string name="after_free_trial_period_s_per_week">Nach der kostenlosen Testphase %s pro Woche</string>
+    <string name="s_free_trial">%s Kostenlose Testversion</string>
+    <string name="no_payment_required_now">Keine Zahlung erforderlich</string>
+    <string name="desc_google_play_settings">Das Abonnement verlängert sich automatisch zum gleichen Preis und für den gleichen Zeitraum. Sie können Ihre Abonnements jederzeit in Ihren Google Play-Einstellungen verwalten oder kündigen.</string>
+    <string name="s_per_week">%s pro Woche</string>
+    <string name="google_play_settings">Google Play-Einstellungen</string>
+    <string name="label_start">Start</string>
 
 
 </resources>

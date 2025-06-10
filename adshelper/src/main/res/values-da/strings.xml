@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">Angiv venligst dine forslag.</string>
     <string name="feedback_response_success">Feedback indsendt</string>
     <string name="feedback_response_error">Noget gik galt. Prøv venligst igen senere.</string>
+    <string name="try_free_nwithout_ads">Prøv gratis\n<font color="#36C6FF">Uden reklamer</font></string>
+    <string name="after_free_trial_period_s_per_week">Efter gratis prøveperiode %s om ugen</string>
+    <string name="s_free_trial">%s gratis prøveperiode</string>
+    <string name="no_payment_required_now">Der kræves ingen betaling nu</string>
+    <string name="desc_google_play_settings">Abonnementet fornyes automatisk til samme pris og for samme periode. Du kan til enhver tid administrere eller annullere dine abonnementer i dine Google Play-indstillinger.</string>
+    <string name="s_per_week">%s om ugen</string>
+    <string name="google_play_settings">Google Play-indstillinger.</string>
+    <string name="label_start">Starte</string>
 </resources>

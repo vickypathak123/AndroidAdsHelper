@@ -107,6 +107,14 @@
     <string name="write_your_suggestions">Pakilagay ang iyong mga mungkahi.</string>
     <string name="feedback_response_success">Matagumpay na naisumite ang feedback</string>
     <string name="feedback_response_error">May nangyaring mali, Pakisubukang muli sa ibang pagkakataon.</string>
+    <string name="try_free_nwithout_ads">Subukan nang libre\n<font color="#36C6FF">Walang mga ad</font></string>
+    <string name="after_free_trial_period_s_per_week">Pagkatapos ng panahon ng libreng pagsubok %s bawat linggo</string>
+    <string name="s_free_trial">%s Libreng Pagsubok</string>
+    <string name="no_payment_required_now">Walang kailangang bayaran ngayon</string>
+    <string name="desc_google_play_settings">Awtomatikong magre-renew ang subscription sa parehong presyo at para sa parehong panahon. Maaari mong pamahalaan o kanselahin ang iyong mga subscription anumang oras sa iyong Mga setting ng Google Play.</string>
+    <string name="s_per_week">%s bawat linggo</string>
+    <string name="google_play_settings">Mga setting ng Google Play.</string>
+    <string name="label_start">Magsimula</string>
 
 
 </resources>

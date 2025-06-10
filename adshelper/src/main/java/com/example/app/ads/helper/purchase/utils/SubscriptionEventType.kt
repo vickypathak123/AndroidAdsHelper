@@ -37,6 +37,8 @@ sealed class SubscriptionEventType {
     data object TIME_LINE_SCREEN_CLOSE : SubscriptionEventType()
     data object VIEW_ALL_PLANS_SCREEN_CLOSE : SubscriptionEventType()
     data object VIEW_MORE_PLANS_CLICK : SubscriptionEventType()
+    data object WEEKLY_PLANS_SCREEN_CLOSE : SubscriptionEventType()
+    data object WEEKLY_CLICK_OPEN : SubscriptionEventType()
 
     data class MONTHLY_SUBSCRIBE(val paramBundle: Bundle) : SubscriptionEventType()
     data class WEEKLY_SUBSCRIBE(val paramBundle: Bundle) : SubscriptionEventType()

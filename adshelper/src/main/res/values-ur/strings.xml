@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">براہ کرم اپنی تجاویز درج کریں۔</string>
     <string name="feedback_response_success">فیڈ بیک کامیابی سے جمع کرایا گیا</string>
     <string name="feedback_response_error">کچھ غلط ہو گیا، براہ کرم بعد میں دوبارہ کوشش کریں۔</string>
+    <string name="try_free_nwithout_ads">مفت میں آزمائیں\n<font color="#36C6FF">اشتہارات کے بغیر</font></string>
+    <string name="after_free_trial_period_s_per_week">مفت آزمائشی مدت کے بعد %s فی ہفتہ</string>
+    <string name="s_free_trial">%s مفت آزمائش</string>
+    <string name="no_payment_required_now">اب ادائیگی کی ضرورت نہیں ہے۔</string>
+    <string name="desc_google_play_settings">سبسکرپشن خود بخود اسی قیمت پر اور اسی مدت کے لیے تجدید ہو جائے گی۔ آپ اپنی Google Play کی ترتیبات میں کسی بھی وقت اپنی سبسکرپشنز کا نظم یا منسوخ کر سکتے ہیں۔</string>
+    <string name="s_per_week">%s فی ہفتہ</string>
+    <string name="google_play_settings">اپنی Google Play</string>
+    <string name="label_start">شروع کریں۔</string>
 </resources>

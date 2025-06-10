@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">कृपया अपने सुझाव दर्ज करें।</string>
     <string name="feedback_response_success">फ़ीडबैक सफलतापूर्वक सबमिट किया गया</string>
     <string name="feedback_response_error">कुछ गलत हो गया, कृपया बाद में पुनः प्रयास करें।</string>
+    <string name="try_free_nwithout_ads">मुफ्त आज़माएं\n<font color="#36C6FF">बिना विज्ञापनों के</font></string>
+    <string name="after_free_trial_period_s_per_week">निःशुल्क परीक्षण अवधि के बाद %s प्रति सप्ताह</string>
+    <string name="s_free_trial">%s निःशुल्क परीक्षण</string>
+    <string name="no_payment_required_now">अब कोई भुगतान आवश्यक नहीं</string>
+    <string name="desc_google_play_settings">सदस्यता स्वचालित रूप से उसी कीमत पर और उसी अवधि के लिए नवीनीकृत हो जाएगी। आप अपनी Google Play सेटिंग में किसी भी समय अपनी सदस्यताएँ प्रबंधित या रद्द कर सकते हैं।</string>
+    <string name="s_per_week">%s प्रति सप्ताह</string>
+    <string name="google_play_settings">Google Play सेटिंग</string>
+    <string name="label_start">शुरू</string>
 </resources>

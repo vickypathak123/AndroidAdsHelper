@@ -107,4 +107,12 @@
     <string name="write_your_suggestions">Por favor, insira suas sugestões.</string>
     <string name="feedback_response_success">Feedback enviado com sucesso</string>
     <string name="feedback_response_error">Algo deu errado, tente novamente mais tarde.</string>
+    <string name="try_free_nwithout_ads">Experimente grátis\n<font color="#36C6FF">Sem anúncios</font></string>
+    <string name="after_free_trial_period_s_per_week">Após o período de teste gratuito %s por semana</string>
+    <string name="s_free_trial">%s Teste grátis</string>
+    <string name="no_payment_required_now">Nenhum pagamento é necessário agora</string>
+    <string name="desc_google_play_settings">A assinatura será renovada automaticamente pelo mesmo preço e pelo mesmo período. Você pode gerenciar ou cancelar suas assinaturas a qualquer momento nas Configurações do Google Play.</string>
+    <string name="s_per_week">%s por semana</string>
+    <string name="google_play_settings">Configurações do Google Play.</string>
+    <string name="label_start">Começar</string>
 </resources>
