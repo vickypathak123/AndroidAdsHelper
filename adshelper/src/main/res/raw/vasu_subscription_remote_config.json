@@ -10,6 +10,8 @@
     "_timeline_comment":  "\"timeline_screen_type\": \"timeline / weekly_screen\"",
     "timeline_screen_type": "weekly_screen",
     "life_time_plan_discount_percentage": 90,
-    "ratting_bar_slider_timing": 5000
+    "ratting_bar_slider_timing": 5000,
+    "subscription_close_icon_show_time" : 3000,
+    "is_show_review_dialog" : false
   }
 }
