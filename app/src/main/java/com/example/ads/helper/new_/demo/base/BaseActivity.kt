@@ -647,6 +647,7 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope, View.OnClickL
             negativeButtonTextColor = R.color.exit_negative_button_text,
             negativeButtonBackgroundColor = R.color.exit_negative_button_bg,
             negativeButtonStrokeColor = R.color.exit_negative_button_stroke,
+            true
         )
     }
 

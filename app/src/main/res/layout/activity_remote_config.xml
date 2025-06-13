@@ -18,8 +18,8 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:layout_marginBottom="@dimen/_8sdp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/btn_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -225,9 +225,9 @@
                     android:id="@+id/et_initial_subscription_open_flow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="0123456789,"
                     android:imeOptions="actionDone"
                     android:inputType="number|numberDecimal"
-                    android:digits="0123456789,"
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -292,11 +292,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:text="In App Subscription Ad Close"
-                app:layout_constraintBottom_toTopOf="@+id/til_more_plan_screen_type"
+                app:layout_constraintBottom_toTopOf="@+id/switch_show_review_dialog"
                 app:layout_constraintEnd_toEndOf="@id/switch_need_to_show_banner_ad"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@id/switch_need_to_show_banner_ad"
                 app:layout_constraintTop_toBottomOf="@+id/switch_initial_subscription_more_plan_close_ad"
+                app:useMaterialThemeColors="false" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switch_show_review_dialog"
+                style="@style/custom_material_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Is Show Review Dialog"
+                app:layout_constraintBottom_toTopOf="@+id/til_more_plan_screen_type"
+                app:layout_constraintEnd_toEndOf="@id/switch_need_to_show_banner_ad"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/switch_need_to_show_banner_ad"
+                app:layout_constraintTop_toBottomOf="@+id/switch_in_app_subscription_ad_close"
                 app:useMaterialThemeColors="false" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -310,7 +324,7 @@
                 app:layout_constraintEnd_toEndOf="@id/switch_need_to_show_banner_ad"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@id/switch_need_to_show_banner_ad"
-                app:layout_constraintTop_toBottomOf="@+id/switch_in_app_subscription_ad_close"
+                app:layout_constraintTop_toBottomOf="@+id/switch_show_review_dialog"
                 app:placeholderTextAppearance="@style/TextAppearance.Material3.TitleMedium">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -370,6 +384,7 @@
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_weekly_close_timing"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -393,6 +408,7 @@
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:id="@+id/txt_playIntegrity"
                 android:layout_width="0dp"

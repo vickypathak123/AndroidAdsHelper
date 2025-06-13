@@ -20,11 +20,14 @@ import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItem
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanRattingItemType
 import com.example.app.ads.helper.purchase.fourplan.utils.FourPlanUserItem
 import com.example.app.ads.helper.purchase.utils.MorePlanScreenType
-import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.purchase.utils.TimeLineScreenType
+import com.example.app.ads.helper.purchase.weekly.utill.WeeklyPlanUserItem
 
-class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscriptionUiBinding>(), CompoundButton.OnCheckedChangeListener {
+class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscriptionUiBinding>(),
+    CompoundButton.OnCheckedChangeListener {
 
-    override fun setBinding(): ActivityManageSubscriptionUiBinding = ActivityManageSubscriptionUiBinding.inflate(layoutInflater)
+    override fun setBinding(): ActivityManageSubscriptionUiBinding =
+        ActivityManageSubscriptionUiBinding.inflate(layoutInflater)
 
     override fun getActivityContext(): BaseActivity = this@ManageSubscriptionUiActivity
 
@@ -41,25 +44,39 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
             lyTimeLineCloseIconColor.switchItem.text = "Time Line Close Icon Color :-"
             lyTimeLineTrackInactiveColor.switchItem.text = "Time Line Track Inactive Color :-"
             lyTimeLineHintTextColor.switchItem.text = "Time Line Hint Text Color :-"
-            lyTimeLineInstantAccessHintTextColor.switchItem.text = "Time Line Instant Access Hint Text Color :-"
-            lyTimeLineSecureWithPlayStoreTextColor.switchItem.text = "Time Line Secure With Play Store Text Color :-"
-            lyTimeLineSecureWithPlayStoreBackgroundColor.switchItem.text = "Time Line Secure With Play Store Background Color :-"
-            lyTimeLineButtonContinueTextColor.switchItem.text = "Time Line Button Continue Text Color :-"
+            lyTimeLineInstantAccessHintTextColor.switchItem.text =
+                "Time Line Instant Access Hint Text Color :-"
+            lyTimeLineSecureWithPlayStoreTextColor.switchItem.text =
+                "Time Line Secure With Play Store Text Color :-"
+            lyTimeLineSecureWithPlayStoreBackgroundColor.switchItem.text =
+                "Time Line Secure With Play Store Background Color :-"
+            lyTimeLineButtonContinueTextColor.switchItem.text =
+                "Time Line Button Continue Text Color :-"
 
             lyViewAllPlansHeaderColor.switchItem.text = "View All Plans Header Color :-"
             lyViewAllPlansSubHeaderColor.switchItem.text = "View All Plans Sub Header Color :-"
             lyViewAllPlansCloseIconColor.switchItem.text = "View All Plans Close Icon Color :-"
             lyViewAllPlansRatingColor.switchItem.text = "View All Plans Rating Color :-"
-            lyViewAllPlansRatingPlaceHolderColor.switchItem.text = "View All Plans Rating Place Holder Color :-"
-            lyViewAllPlansRatingIndicatorColor.switchItem.text = "View All Plans Rating Indicator Color :-"
-            lyViewAllPlansUnselectedItemDataColor.switchItem.text = "View All Plans Unselected Item Data Color :-"
-            lyViewAllPlansSelectedItemDataColor.switchItem.text = "View All Plans Selected Item Data Color :-"
-            lyViewAllPlansPayNothingNowColor.switchItem.text = "View All Plans Pay Nothing Now Color :-"
-            lyViewAllPlansSecureWithPlayStoreTextColor.switchItem.text = "View All Plans Secure With Play Store Text Color :-"
-            lyViewAllPlansSecureWithPlayStoreBackgroundColor.switchItem.text = "View All Plans Secure With Play Store Background Color :-"
-            lyViewAllPlansItemBoxBackgroundColor.switchItem.text = "View All Plans Item Box Background Color :-"
-            lyViewAllPlansSelectedSkuBackgroundColor.switchItem.text = "View All Plans Selected SKU Background Color :-"
-            lyViewAllPlansUnselectedSkuBackgroundColor.switchItem.text = "View All Plans Unselected SKU Background Color :-"
+            lyViewAllPlansRatingPlaceHolderColor.switchItem.text =
+                "View All Plans Rating Place Holder Color :-"
+            lyViewAllPlansRatingIndicatorColor.switchItem.text =
+                "View All Plans Rating Indicator Color :-"
+            lyViewAllPlansUnselectedItemDataColor.switchItem.text =
+                "View All Plans Unselected Item Data Color :-"
+            lyViewAllPlansSelectedItemDataColor.switchItem.text =
+                "View All Plans Selected Item Data Color :-"
+            lyViewAllPlansPayNothingNowColor.switchItem.text =
+                "View All Plans Pay Nothing Now Color :-"
+            lyViewAllPlansSecureWithPlayStoreTextColor.switchItem.text =
+                "View All Plans Secure With Play Store Text Color :-"
+            lyViewAllPlansSecureWithPlayStoreBackgroundColor.switchItem.text =
+                "View All Plans Secure With Play Store Background Color :-"
+            lyViewAllPlansItemBoxBackgroundColor.switchItem.text =
+                "View All Plans Item Box Background Color :-"
+            lyViewAllPlansSelectedSkuBackgroundColor.switchItem.text =
+                "View All Plans Selected SKU Background Color :-"
+            lyViewAllPlansUnselectedSkuBackgroundColor.switchItem.text =
+                "View All Plans Unselected SKU Background Color :-"
         }
     }
 
@@ -121,32 +138,79 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                 layoutHeader.ivHeaderBack -> customOnBackPressed()
 
                 btnUpdate -> {
-                    VasuSubscriptionConfig.with(fActivity = mActivity, fAppPackageName = mActivity.packageName, fAppVersionName = BuildConfig.VERSION_NAME)
+
+                    Log.e(TAG, "onClick: ===== spScreenType.selectedItem  ${spScreenType.selectedItem}" )
+                    VasuSubscriptionConfig.with(
+                        fActivity = mActivity,
+                        fAppPackageName = mActivity.packageName,
+                        fAppVersionName = BuildConfig.VERSION_NAME
+                    )
                         .enableTestPurchase(isEnableTestPurchase)
-                        .setAppLanguageCode(fCode = spLanguage.selectedItem.toString().substringAfter("(").substringBefore(")").takeIf { it.isNotEmpty() } ?: "en")
-                        .setPrivacyPolicy(fLink = etPrivacyPolicy.text.toString().trim().takeIf { it.isNotEmpty() && switchPrivacyPolicy.isChecked } ?: "https://www.freeprivacypolicy.com/blog/privacy-policy-url/")
-                        .setTermsOfUse(fLink = etTermsOfUse.text.toString().trim().takeIf { it.isNotEmpty() && switchTermsOfUse.isChecked } ?: "https://policies.google.com/privacy?hl=en-US")
-                        .setNotificationData(fNotificationData = VasuSubscriptionConfig.NotificationData(intentClass = StartupActivity::class.java).apply {
-                            this.setNotificationIcon(id = R.drawable.ic_share_blue)
+                        .setAppLanguageCode(
+                            fCode = spLanguage.selectedItem.toString().substringAfter("(")
+                                .substringBefore(")").takeIf { it.isNotEmpty() } ?: "en")
+                        .setPrivacyPolicy(
+                            fLink = etPrivacyPolicy.text.toString().trim()
+                                .takeIf { it.isNotEmpty() && switchPrivacyPolicy.isChecked }
+                                ?: "https://www.freeprivacypolicy.com/blog/privacy-policy-url/")
+                        .setTermsOfUse(
+                            fLink = etTermsOfUse.text.toString().trim()
+                                .takeIf { it.isNotEmpty() && switchTermsOfUse.isChecked }
+                                ?: "https://policies.google.com/privacy?hl=en-US")
+                        .setNotificationData(
+                            fNotificationData = VasuSubscriptionConfig.NotificationData(
+                                intentClass = StartupActivity::class.java
+                            ).apply {
+                                this.setNotificationIcon(id = R.drawable.ic_share_blue)
 //                            this.setNotificationId(id = 100)
 //                            this.setNotificationChannelId(channelId = "channelId = ")
 //                            this.setNotificationChannelName(channelName = "channelName = ")
-                        })
+                            })
                         .setTimeLineScreenData { fTimeLineScreenData ->
                             with(fTimeLineScreenData) {
 //                                this.setInstantAccessHint(R.string.dialog_title, R.string.no, R.string.yes, R.string.app_name, R.string.banner_ads)
 //                                this.setInstantAccessLottieFile(fLottieFile = R.raw.blast_gift)
                                 this.setWithInstantAccessAnimation(isAnimated = switchTimeLineInstantAccessAnimation.isChecked)
                                 this.setWithSliderAnimation(isAnimated = switchTimeLineSliderAnimation.isChecked)
-                                this.mainColor(fColors = ColorStateList.valueOf(lyTimeLineMainColor.colorSlider.selectedColor).takeIf { lyTimeLineMainColor.switchItem.isChecked })
-                                this.headerColor(fColors = ColorStateList.valueOf(lyTimeLineHeaderColor.colorSlider.selectedColor).takeIf { lyTimeLineHeaderColor.switchItem.isChecked })
-                                this.closeIconColor(fColors = ColorStateList.valueOf(lyTimeLineCloseIconColor.colorSlider.selectedColor).takeIf { lyTimeLineCloseIconColor.switchItem.isChecked })
-                                this.trackInactiveColor(fColors = ColorStateList.valueOf(lyTimeLineTrackInactiveColor.colorSlider.selectedColor).takeIf { lyTimeLineTrackInactiveColor.switchItem.isChecked })
-                                this.hintTextColor(fColors = ColorStateList.valueOf(lyTimeLineHintTextColor.colorSlider.selectedColor).takeIf { lyTimeLineHintTextColor.switchItem.isChecked })
-                                this.instantAccessHintTextColor(fColors = ColorStateList.valueOf(lyTimeLineInstantAccessHintTextColor.colorSlider.selectedColor).takeIf { lyTimeLineInstantAccessHintTextColor.switchItem.isChecked })
-                                this.secureWithPlayStoreTextColor(fColors = ColorStateList.valueOf(lyTimeLineSecureWithPlayStoreTextColor.colorSlider.selectedColor).takeIf { lyTimeLineSecureWithPlayStoreTextColor.switchItem.isChecked })
-                                this.secureWithPlayStoreBackgroundColor(fColors = ColorStateList.valueOf(lyTimeLineSecureWithPlayStoreBackgroundColor.colorSlider.selectedColor).takeIf { lyTimeLineSecureWithPlayStoreBackgroundColor.switchItem.isChecked })
-                                this.buttonContinueTextColor(fColors = ColorStateList.valueOf(lyTimeLineButtonContinueTextColor.colorSlider.selectedColor).takeIf { lyTimeLineButtonContinueTextColor.switchItem.isChecked })
+                                this.mainColor(
+                                    fColors = ColorStateList.valueOf(lyTimeLineMainColor.colorSlider.selectedColor)
+                                        .takeIf { lyTimeLineMainColor.switchItem.isChecked })
+                                this.headerColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyTimeLineHeaderColor.colorSlider.selectedColor
+                                    ).takeIf { lyTimeLineHeaderColor.switchItem.isChecked })
+                                this.closeIconColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyTimeLineCloseIconColor.colorSlider.selectedColor
+                                    ).takeIf { lyTimeLineCloseIconColor.switchItem.isChecked })
+                                this.trackInactiveColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyTimeLineTrackInactiveColor.colorSlider.selectedColor
+                                    ).takeIf { lyTimeLineTrackInactiveColor.switchItem.isChecked })
+                                this.hintTextColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyTimeLineHintTextColor.colorSlider.selectedColor
+                                    ).takeIf { lyTimeLineHintTextColor.switchItem.isChecked })
+                                this.instantAccessHintTextColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyTimeLineInstantAccessHintTextColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyTimeLineInstantAccessHintTextColor.switchItem.isChecked })
+                                this.secureWithPlayStoreTextColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyTimeLineSecureWithPlayStoreTextColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyTimeLineSecureWithPlayStoreTextColor.switchItem.isChecked })
+                                this.secureWithPlayStoreBackgroundColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyTimeLineSecureWithPlayStoreBackgroundColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyTimeLineSecureWithPlayStoreBackgroundColor.switchItem.isChecked })
+                                this.buttonContinueTextColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyTimeLineButtonContinueTextColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyTimeLineButtonContinueTextColor.switchItem.isChecked })
                             }
                         }
                         .setViewAllPlansScreenData { fViewAllPlansScreenData ->
@@ -164,20 +228,72 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
 //                                this.setPlanTitleTextColorSelector(fSelectorItem = SelectorColorItem())
 //                                this.setPlanTrialPeriodTextColorSelector(fSelectorItem = SelectorColorItem())
 //                                this.setPlanPriceTextColorSelector(fSelectorItem = SelectorColorItem())
-                                this.headerColor(fColors = ColorStateList.valueOf(lyViewAllPlansHeaderColor.colorSlider.selectedColor).takeIf { lyViewAllPlansHeaderColor.switchItem.isChecked })
-                                this.subHeaderColor(fColors = ColorStateList.valueOf(lyViewAllPlansSubHeaderColor.colorSlider.selectedColor).takeIf { lyViewAllPlansSubHeaderColor.switchItem.isChecked })
-                                this.closeIconColor(fColors = ColorStateList.valueOf(lyViewAllPlansCloseIconColor.colorSlider.selectedColor).takeIf { lyViewAllPlansCloseIconColor.switchItem.isChecked })
-                                this.ratingColor(fColors = ColorStateList.valueOf(lyViewAllPlansRatingColor.colorSlider.selectedColor).takeIf { lyViewAllPlansRatingColor.switchItem.isChecked })
-                                this.ratingPlaceHolderColor(fColors = ColorStateList.valueOf(lyViewAllPlansRatingPlaceHolderColor.colorSlider.selectedColor).takeIf { lyViewAllPlansRatingPlaceHolderColor.switchItem.isChecked })
-                                this.ratingIndicatorColor(fColors = ColorStateList.valueOf(lyViewAllPlansRatingIndicatorColor.colorSlider.selectedColor).takeIf { lyViewAllPlansRatingIndicatorColor.switchItem.isChecked })
-                                this.unselectedItemDataColor(fColors = ColorStateList.valueOf(lyViewAllPlansUnselectedItemDataColor.colorSlider.selectedColor).takeIf { lyViewAllPlansUnselectedItemDataColor.switchItem.isChecked })
-                                this.selectedItemDataColor(fColors = ColorStateList.valueOf(lyViewAllPlansSelectedItemDataColor.colorSlider.selectedColor).takeIf { lyViewAllPlansSelectedItemDataColor.switchItem.isChecked })
-                                this.payNothingNowColor(fColors = ColorStateList.valueOf(lyViewAllPlansPayNothingNowColor.colorSlider.selectedColor).takeIf { lyViewAllPlansPayNothingNowColor.switchItem.isChecked })
-                                this.secureWithPlayStoreTextColor(fColors = ColorStateList.valueOf(lyViewAllPlansSecureWithPlayStoreTextColor.colorSlider.selectedColor).takeIf { lyViewAllPlansSecureWithPlayStoreTextColor.switchItem.isChecked })
-                                this.secureWithPlayStoreBackgroundColor(fColors = ColorStateList.valueOf(lyViewAllPlansSecureWithPlayStoreBackgroundColor.colorSlider.selectedColor).takeIf { lyViewAllPlansSecureWithPlayStoreBackgroundColor.switchItem.isChecked })
-                                this.itemBoxBackgroundColor(fColors = ColorStateList.valueOf(lyViewAllPlansItemBoxBackgroundColor.colorSlider.selectedColor).takeIf { lyViewAllPlansItemBoxBackgroundColor.switchItem.isChecked })
-                                this.selectedSkuBackgroundColor(fColors = ColorStateList.valueOf(lyViewAllPlansSelectedSkuBackgroundColor.colorSlider.selectedColor).takeIf { lyViewAllPlansSelectedSkuBackgroundColor.switchItem.isChecked })
-                                this.unselectedSkuBackgroundColor(fColors = ColorStateList.valueOf(lyViewAllPlansUnselectedSkuBackgroundColor.colorSlider.selectedColor).takeIf { lyViewAllPlansUnselectedSkuBackgroundColor.switchItem.isChecked })
+                                this.headerColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansHeaderColor.colorSlider.selectedColor
+                                    ).takeIf { lyViewAllPlansHeaderColor.switchItem.isChecked })
+                                this.subHeaderColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansSubHeaderColor.colorSlider.selectedColor
+                                    ).takeIf { lyViewAllPlansSubHeaderColor.switchItem.isChecked })
+                                this.closeIconColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansCloseIconColor.colorSlider.selectedColor
+                                    ).takeIf { lyViewAllPlansCloseIconColor.switchItem.isChecked })
+                                this.ratingColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansRatingColor.colorSlider.selectedColor
+                                    ).takeIf { lyViewAllPlansRatingColor.switchItem.isChecked })
+                                this.ratingPlaceHolderColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansRatingPlaceHolderColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansRatingPlaceHolderColor.switchItem.isChecked })
+                                this.ratingIndicatorColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansRatingIndicatorColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansRatingIndicatorColor.switchItem.isChecked })
+                                this.unselectedItemDataColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansUnselectedItemDataColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansUnselectedItemDataColor.switchItem.isChecked })
+                                this.selectedItemDataColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansSelectedItemDataColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansSelectedItemDataColor.switchItem.isChecked })
+                                this.payNothingNowColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansPayNothingNowColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansPayNothingNowColor.switchItem.isChecked })
+                                this.secureWithPlayStoreTextColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansSecureWithPlayStoreTextColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansSecureWithPlayStoreTextColor.switchItem.isChecked })
+                                this.secureWithPlayStoreBackgroundColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansSecureWithPlayStoreBackgroundColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansSecureWithPlayStoreBackgroundColor.switchItem.isChecked })
+                                this.itemBoxBackgroundColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansItemBoxBackgroundColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansItemBoxBackgroundColor.switchItem.isChecked })
+                                this.selectedSkuBackgroundColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansSelectedSkuBackgroundColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansSelectedSkuBackgroundColor.switchItem.isChecked })
+                                this.unselectedSkuBackgroundColor(
+                                    fColors = ColorStateList.valueOf(
+                                        lyViewAllPlansUnselectedSkuBackgroundColor.colorSlider.selectedColor
+                                    )
+                                        .takeIf { lyViewAllPlansUnselectedSkuBackgroundColor.switchItem.isChecked })
                             }
                         }
                         .setFourPlanScreenData { fFourPlanScreenData ->
@@ -254,8 +370,28 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                                 )
                             }
                         }
+                        .setWeeklyPlanScreenData { fWeeklyPlanScreenData ->
+                            with(fWeeklyPlanScreenData) {
+                                this.setWeeklyPointItems(
+                                    WeeklyPlanUserItem(com.example.app.ads.helper.R.string.rating_header),
+                                    WeeklyPlanUserItem(com.example.app.ads.helper.R.string.rating_header),
+                                    WeeklyPlanUserItem(com.example.app.ads.helper.R.string.rating_header),
+                                    WeeklyPlanUserItem(com.example.app.ads.helper.R.string.rating_header),
+                                    WeeklyPlanUserItem(com.example.app.ads.helper.R.string.rating_header),
+                                    WeeklyPlanUserItem(com.example.app.ads.helper.R.string.rating_header)
+                                )
+
+                                this.setWeeklyBackground(R.drawable.ic_sub_weekly_bg)
+                                this.setWeeklyScreenCloseIconTime(3000)
+                            }
+                        }
                         .launchScreen(
-                            fPlanScreenType = MorePlanScreenType.fromName(value = spScreenType.selectedItem.toString().takeIf { it.isNotEmpty() } ?: "six_box_screen"),
+                            fPlanScreenType = MorePlanScreenType.fromName(
+                                value = spScreenType.selectedItem.toString()
+                                    .takeIf { it.isNotEmpty() } ?: "six_box_screen"),
+                            fTimeLineScreenType= TimeLineScreenType.fromName(
+                                    value = spTimelineScreenType.selectedItem.toString()
+                                        .takeIf { it.isNotEmpty() } ?: "timeline"),
                             isFromSplash = switchIsFromSplash.isChecked,
 //                            showCloseAdForTimeLineScreen = switchCloseAdForTimeLineScreen.isChecked,
 //                            showCloseAdForViewAllPlanScreenOpenAfterSplash = switchCloseAdForViewAllPlansScreenAfterSplash.isChecked,
@@ -281,7 +417,10 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
 //                                }
                             },
                             onScreenFinish = { isUserPurchaseAnyPlan ->
-                                Log.e(TAG, "onClick: Screen Finished isUserPurchaseAnyPlan::-> $isUserPurchaseAnyPlan")
+                                Log.e(
+                                    TAG,
+                                    "onClick: Screen Finished isUserPurchaseAnyPlan::-> $isUserPurchaseAnyPlan"
+                                )
                             },
                             onOpeningError = {
                                 mActivity.makeText("Error")
@@ -331,7 +470,8 @@ class ManageSubscriptionUiActivity : BaseBindingActivity<ActivityManageSubscript
                         lyViewAllPlansSelectedItemDataColor.switchItem.isChecked = false
                         lyViewAllPlansPayNothingNowColor.switchItem.isChecked = false
                         lyViewAllPlansSecureWithPlayStoreTextColor.switchItem.isChecked = false
-                        lyViewAllPlansSecureWithPlayStoreBackgroundColor.switchItem.isChecked = false
+                        lyViewAllPlansSecureWithPlayStoreBackgroundColor.switchItem.isChecked =
+                            false
                         lyViewAllPlansItemBoxBackgroundColor.switchItem.isChecked = false
                         lyViewAllPlansSelectedSkuBackgroundColor.switchItem.isChecked = false
                         lyViewAllPlansUnselectedSkuBackgroundColor.switchItem.isChecked = false

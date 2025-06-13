@@ -40,7 +40,11 @@ data class VasuSubscriptionRemoteConfigModel(
 
     @SerializedName("subscription_close_icon_show_time")
     @Expose
-    val subscriptionCloseIconShowTime: Long = 3000
+    val subscriptionCloseIconShowTime: Long = 3000,
+
+    @SerializedName("is_show_review_dialog")
+    @Expose
+    val isShowReviewDialog: Boolean = true
 ) : Parcelable {
 
     override fun toString(): String {
@@ -55,7 +59,8 @@ data class VasuSubscriptionRemoteConfigModel(
             append("\nmore_plan_screen_type : '${morePlanScreenType}', ")
             append("\nlife_time_plan_discount_percentage : '${lifeTimePlanDiscountPercentage}',")
             append("\nratting_bar_slider_timing : '${rattingBarSliderTiming}',")
-            append("\nsubscription_close_icon_show_time : '${subscriptionCloseIconShowTime}'")
+            append("\nsubscription_close_icon_show_time : '${subscriptionCloseIconShowTime}',")
+            append("\nis_show_review_dialog : '${isShowReviewDialog}'")
             append("}")
         }.toString()
     }

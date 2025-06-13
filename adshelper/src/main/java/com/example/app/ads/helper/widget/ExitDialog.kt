@@ -1,9 +1,15 @@
 package com.example.app.ads.helper.widget
 
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
+import android.view.OrientationEventListener
+import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.FrameLayout
 import androidx.activity.ComponentActivity
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
@@ -17,6 +23,7 @@ import com.example.app.ads.helper.utils.exitTheApp
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.is_exit_dialog_opened
 import com.example.app.ads.helper.utils.setIncludeFontPaddingFlag
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.Locale
 
@@ -60,7 +67,8 @@ class ExitDialog(
     private val negativeButtonBackgroundColor: Int,
     @ColorRes
     private val negativeButtonStrokeColor: Int,
-) : BottomSheetDialog(fActivity, R.style.theme_exit_dialog) {
+    private val isForceExitApp: Boolean
+) : BottomSheetDialog(fActivity, R.style.Transparent) {
     private val mBinding: DialogExitBinding = DialogExitBinding.inflate(fActivity.layoutInflater)
 
     private var isTestNeedToShowAds = false
@@ -71,8 +79,8 @@ class ExitDialog(
     init {
         this.setContentView(mBinding.root)
         window?.let {
-            it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            it.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+//            it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            it.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
         }
         this.setCancelable(false)
         this.setCanceledOnTouchOutside(false)
@@ -81,9 +89,33 @@ class ExitDialog(
             mBinding.clExitIconContainer.beVisibleIf(!mBinding.nativeAdView.isVisible)
         }
 
+        val orientationEventListener = object : OrientationEventListener(context) {
+            private var lastOrientation = context.resources.configuration.orientation
+
+            override fun onOrientationChanged(orientation: Int) {
+                val currentOrientation = context.resources.configuration.orientation
+
+                // Check if orientation has actually changed
+                if (currentOrientation != lastOrientation) {
+                    Log.e(TAG, "onOrientationChanged: ", )
+                    lastOrientation = currentOrientation
+
+                    // Update bottom sheet width based on new orientation
+                    updateBottomSheetWidth()
+                }
+            }
+        }
+
+        // Enable the orientation listener
+        if (orientationEventListener.canDetectOrientation()) {
+            orientationEventListener.enable()
+        }
+
         setOnShowListener {
             is_exit_dialog_opened = true
+            updateBottomSheetWidth()
         }
+
 
         setOnDismissListener {
             is_exit_dialog_opened = false
@@ -94,7 +126,10 @@ class ExitDialog(
         }
 
         with(mBinding) {
-            clExitMain.setBackgroundColor(fActivity.getColorRes(backgroundColor))
+//            clExitMain.setBackgroundColor(fActivity.getColorRes(backgroundColor))
+            clExitMain.backgroundTintList = ColorStateList.valueOf(fActivity.getColorRes(backgroundColor))
+//            materialCardViewRoot.setCardBackgroundColor(fActivity.getColorRes(backgroundColor))
+
             backgroundViewExitIcon.setBackgroundColor(fActivity.getColorRes(backgroundColor))
             ivExitIconMain.setColorFilter(fActivity.getColorRes(iconColor), android.graphics.PorterDuff.Mode.SRC_IN)
             ivExitIconLine.setColorFilter(fActivity.getColorRes(iconLineColor), android.graphics.PorterDuff.Mode.SRC_IN)
@@ -121,9 +156,56 @@ class ExitDialog(
 
                 setOnClickListener {
                     this@ExitDialog.dismiss()
-                    fActivity.exitTheApp()
+                    fActivity.exitTheApp(isForceExitApp)
                 }
             }
+            scrollView.post {
+
+                scrollView.isSmoothScrollingEnabled = true
+                scrollView.fullScroll(View.FOCUS_DOWN)
+
+            }
+
+        }
+    }
+
+
+
+    private fun updateBottomSheetWidth() {
+        // Get the BottomSheet view
+        val bottomSheet = findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
+
+        bottomSheet?.let {
+            // Get the behavior
+            val behavior = BottomSheetBehavior.from(it)
+
+            // Check for landscape orientation
+            val configuration = context.resources.configuration
+            if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                // Set width to 80% of screen width
+                val displayMetrics = context.resources.displayMetrics
+                val width = (displayMetrics.widthPixels * 0.6).toInt()
+                it.layoutParams.width = width
+
+                // Center the bottom sheet
+                (it.layoutParams as? ViewGroup.MarginLayoutParams)?.apply {
+                    val margin = (displayMetrics.widthPixels - width) / 2
+                    marginStart = margin
+                    marginEnd = margin
+                }
+
+                // Request layout to apply changes
+                it.requestLayout()
+            }
+
+            // Configure behavior
+            behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+            // Calculate appropriate peek height
+            val peekHeight = context.resources.displayMetrics.heightPixels /*/ 3*/
+            behavior.peekHeight = peekHeight
+
+
         }
     }
 

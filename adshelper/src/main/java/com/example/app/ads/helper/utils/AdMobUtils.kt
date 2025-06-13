@@ -21,6 +21,7 @@ import com.google.android.gms.ads.RequestConfiguration
 import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.system.exitProcess
 
 /**
  * @author Akshay Harsoda
@@ -53,7 +54,10 @@ internal fun ArrayList<*>.clearAll() {
 }
 
 
-internal fun setColorAlpha(@FloatRange(from = 0.0, to = 1.0) alpha: Float = 0.3f, @ColorInt baseColor: Int = 0x4cffffff): Int {
+internal fun setColorAlpha(
+    @FloatRange(from = 0.0, to = 1.0) alpha: Float = 0.3f,
+    @ColorInt baseColor: Int = 0x4cffffff
+): Int {
     val value: Float = alpha
     val clamp = min(1f.toDouble(), max(0f.toDouble(), value.toDouble())).toFloat()
     val intAlpha = (clamp * 255f).toInt()
@@ -77,9 +81,13 @@ internal val String.toCamelCase: String
         return builder.toString()
     }
 
-internal inline val dataLocale: Locale get() = Locale(SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en")
+internal inline val dataLocale: Locale
+    get() = Locale(SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en")
 
-internal val isRTLDirectionFromLocale: Boolean get() = TextUtils.getLayoutDirectionFromLocale(dataLocale) == View.LAYOUT_DIRECTION_RTL
+internal val isRTLDirectionFromLocale: Boolean
+    get() = TextUtils.getLayoutDirectionFromLocale(
+        dataLocale
+    ) == View.LAYOUT_DIRECTION_RTL
 
 internal inline val isEnglishLanguage: Boolean get() = dataLocale.language == "en"
 
@@ -99,12 +107,15 @@ internal inline fun <reified T> getLocalizedString(
     }
 }
 
-internal fun Activity.exitTheApp() {
+internal fun Activity.exitTheApp(isForceExitApp: Boolean = false) {
     this.setResult(Activity.RESULT_CANCELED)
     this.finishAffinity()
     this.finishAfterTransition()
-//    exitProcess(0)
+    if (isForceExitApp) {
+        exitProcess(0)
+    }
 }
+
 
 fun getFormattedTwoLineString(context: Context, @StringRes resourceId: Int): CharSequence {
     // Get the raw string with HTML tags

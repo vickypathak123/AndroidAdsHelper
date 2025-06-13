@@ -1,239 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clRoot"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:theme="@style/Theme.Material3.DayNight"
-    app:cardBackgroundColor="@android:color/white"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="false"
-    app:contentPadding="0dp"
-    app:shapeAppearance="@style/top_round_16_dp"
-    app:shapeAppearanceOverlay="@style/top_round_16_dp"
-    app:strokeColor="@android:color/transparent"
-    app:strokeWidth="0dp"
-    tools:cardBackgroundColor="@android:color/holo_orange_dark">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_exit_main"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:layoutDirection="ltr">
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:background="@android:color/holo_purple">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier_exit_ad_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="native_ad_view, cl_exit_icon_container" />
-
-        <com.example.app.ads.helper.nativead.NativeAdView
-            android:id="@+id/native_ad_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_7sdp"
-            app:cardElevation="@dimen/_1sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:native_ad_type="big"
-            app:native_placeholder_type="shimmer"
-            app:native_show_placeholder="false" />
+        <!--    <com.google.android.material.card.MaterialCardView-->
+        <!--        android:id="@+id/materialCardViewRoot"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:theme="@style/Theme.Material3.DayNight"-->
+        <!--        app:cardBackgroundColor="@android:color/white"-->
+        <!--        app:cardPreventCornerOverlap="false"-->
+        <!--        app:cardUseCompatPadding="false"-->
+        <!--        app:contentPadding="0dp"-->
+        <!--        app:shapeAppearance="@style/top_round_16_dp"-->
+        <!--        app:shapeAppearanceOverlay="@style/top_round_16_dp"-->
+        <!--        app:strokeColor="@android:color/transparent"-->
+        <!--        app:strokeWidth="0dp"-->
+        <!--        tools:cardBackgroundColor="@android:color/holo_orange_dark">-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_exit_icon_container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/_12sdp"
-            app:layout_constraintDimensionRatio="426:352"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.5"
-            tools:background="@android:color/holo_green_light">
+            android:id="@+id/cl_exit_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/exit_new_bg"
+            tools:backgroundTint="@color/default_view_more_plan_header_color"
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_exit_icon_start"
+            >
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_exit_ad_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.24" />
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="native_ad_view, cl_exit_icon_container" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_exit_icon_end"
-                android:layout_width="wrap_content"
+            <com.example.app.ads.helper.nativead.NativeAdView
+                android:id="@+id/native_ad_view"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.76" />
+                android:layout_margin="@dimen/_7sdp"
+                app:cardElevation="@dimen/_1sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:native_ad_type="big"
+                app:native_placeholder_type="shimmer"
+                app:native_show_placeholder="false" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_exit_icon_top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.32" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_exit_icon_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.75" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_exit_icon_line"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_exit_icon_container"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/bg_exit_icon_line"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="@dimen/_12sdp"
+                app:layout_constraintDimensionRatio="426:352"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                tools:background="@android:color/holo_green_light">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_exit_icon_shapes"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/bg_exit_icon_shapes"
-                app:layout_constraintBottom_toBottomOf="@id/iv_exit_icon_line"
-                app:layout_constraintEnd_toEndOf="@id/iv_exit_icon_line"
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_exit_icon_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.24" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_exit_icon_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.76" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_exit_icon_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.32" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_exit_icon_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.75" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_exit_icon_line"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/bg_exit_icon_line"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_exit_icon_shapes"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/bg_exit_icon_shapes"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_exit_icon_line"
+                    app:layout_constraintEnd_toEndOf="@id/iv_exit_icon_line"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/iv_exit_icon_line"
+                    app:layout_constraintTop_toTopOf="@id/iv_exit_icon_line" />
+
+                <View
+                    android:id="@+id/background_view_exit_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/holo_purple"
+                    app:layout_constraintBottom_toBottomOf="@id/gl_exit_icon_bottom"
+                    app:layout_constraintEnd_toEndOf="@id/gl_exit_icon_end"
+                    app:layout_constraintStart_toStartOf="@id/gl_exit_icon_start"
+                    app:layout_constraintTop_toTopOf="@id/gl_exit_icon_top" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_exit_icon_main"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/bg_exit_icon_main"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_exit_icon_line"
+                    app:layout_constraintEnd_toEndOf="@id/iv_exit_icon_line"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/iv_exit_icon_line"
+                    app:layout_constraintTop_toTopOf="@id/iv_exit_icon_line" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/ads_metropolis_semi_bold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:text="@string/exit_dialog_title"
+                android:textColor="#192045"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toTopOf="@+id/txt_sub_title"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/iv_exit_icon_line"
-                app:layout_constraintTop_toTopOf="@id/iv_exit_icon_line" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier_exit_ad_icon"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-            <View
-                android:id="@+id/background_view_exit_icon"
+            <TextView
+                android:id="@+id/txt_sub_title"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@android:color/holo_purple"
-                app:layout_constraintBottom_toBottomOf="@id/gl_exit_icon_bottom"
-                app:layout_constraintEnd_toEndOf="@id/gl_exit_icon_end"
-                app:layout_constraintStart_toStartOf="@id/gl_exit_icon_start"
-                app:layout_constraintTop_toTopOf="@id/gl_exit_icon_top" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_exit_icon_main"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/bg_exit_icon_main"
-                app:layout_constraintBottom_toBottomOf="@id/iv_exit_icon_line"
-                app:layout_constraintEnd_toEndOf="@id/iv_exit_icon_line"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/ads_metropolis_regular"
+                android:gravity="center"
+                android:maxLines="3"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:textColor="#6D7172"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_negative"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/iv_exit_icon_line"
-                app:layout_constraintTop_toTopOf="@id/iv_exit_icon_line" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title"
+                tools:text="@string/rating_sub_header" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_negative"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:elevation="0dp"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/ads_metropolis_semi_bold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLines="1"
+                android:paddingVertical="@dimen/_10sdp"
+                android:singleLine="true"
+                android:text="@string/exit_dialog_negative_button_text"
+                android:textAllCaps="false"
+                android:textColor="#0299A7"
+                android:textSize="@dimen/_14ssp"
+                app:backgroundTint="#E8FDFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_positive"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_sub_title"
+                app:shapeAppearance="@style/full_round_38"
+                app:strokeColor="#0299A7"
+                app:strokeWidth="1.5dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_positive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:elevation="0dp"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/ads_metropolis_semi_bold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLines="1"
+                android:paddingVertical="@dimen/_10sdp"
+                android:singleLine="true"
+                android:text="@string/exit_dialog_positive_button_text"
+                android:textAllCaps="false"
+                android:textColor="#0299A7"
+                android:textSize="@dimen/_14ssp"
+                app:backgroundTint="#E8FDFF"
+                app:layout_constraintBaseline_toBaselineOf="@id/btn_negative"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/btn_negative"
+                app:shapeAppearance="@style/full_round_38"
+                app:strokeColor="#0299A7"
+                app:strokeWidth="1.5dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!--    </com.google.android.material.card.MaterialCardView>-->
 
-        <TextView
-            android:id="@+id/txt_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:fontFamily="@font/ads_metropolis_semi_bold"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:paddingHorizontal="@dimen/_12sdp"
-            android:text="@string/exit_dialog_title"
-            android:textColor="#192045"
-            android:textSize="@dimen/_14ssp"
-            app:layout_constraintBottom_toTopOf="@+id/txt_sub_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barrier_exit_ad_icon"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/txt_sub_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_4sdp"
-            android:ellipsize="end"
-            android:fontFamily="@font/ads_metropolis_regular"
-            android:gravity="center"
-            android:maxLines="3"
-            android:paddingHorizontal="@dimen/_12sdp"
-            android:textColor="#6D7172"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_negative"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_title"
-            tools:text="@string/rating_sub_header" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_negative"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_6sdp"
-            android:layout_marginBottom="@dimen/_8sdp"
-            android:elevation="0dp"
-            android:ellipsize="marquee"
-            android:fontFamily="@font/ads_metropolis_semi_bold"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:maxLines="1"
-            android:paddingVertical="@dimen/_10sdp"
-            android:singleLine="true"
-            android:text="@string/exit_dialog_negative_button_text"
-            android:textAllCaps="false"
-            android:textColor="#0299A7"
-            android:textSize="@dimen/_14ssp"
-            app:backgroundTint="#E8FDFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_positive"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_sub_title"
-            app:shapeAppearance="@style/full_round_38"
-            app:strokeColor="#0299A7"
-            app:strokeWidth="1.5dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_positive"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_6sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:elevation="0dp"
-            android:ellipsize="marquee"
-            android:fontFamily="@font/ads_metropolis_semi_bold"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:maxLines="1"
-            android:paddingVertical="@dimen/_10sdp"
-            android:singleLine="true"
-            android:text="@string/exit_dialog_positive_button_text"
-            android:textAllCaps="false"
-            android:textColor="#0299A7"
-            android:textSize="@dimen/_14ssp"
-            app:backgroundTint="#E8FDFF"
-            app:layout_constraintBaseline_toBaselineOf="@id/btn_negative"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/btn_negative"
-            app:shapeAppearance="@style/full_round_38"
-            app:strokeColor="#0299A7"
-            app:strokeWidth="1.5dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</com.google.android.material.card.MaterialCardView>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

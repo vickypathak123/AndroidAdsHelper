@@ -59,6 +59,7 @@ class RemoteConfigActivity : BaseBindingActivity<ActivityRemoteConfigBinding>() 
                     etPurchaseButtonTextIndex.text = vasuSubscriptionConfig.purchaseButtonTextIndex.toString().toEditable
                     switchInitialSubscriptionTimeLineCloseAd.isChecked = vasuSubscriptionConfig.initialSubscriptionTimeLineCloseAd
                     switchInitialSubscriptionMorePlanCloseAd.isChecked = vasuSubscriptionConfig.initialSubscriptionMorePlanCloseAd
+                    switchShowReviewDialog.isChecked = vasuSubscriptionConfig.isShowReviewDialog
                     switchInAppSubscriptionAdClose.isChecked = vasuSubscriptionConfig.inAppSubscriptionAdClose
                     etMorePlanScreenType.setText(vasuSubscriptionConfig.morePlanScreenType, false)
                     etLifeTimePlanDiscountPercentage.text = vasuSubscriptionConfig.lifeTimePlanDiscountPercentage.toString().toEditable
@@ -100,7 +101,8 @@ class RemoteConfigActivity : BaseBindingActivity<ActivityRemoteConfigBinding>() 
                             morePlanScreenType = etMorePlanScreenType.text?.toString()?.trim() ?: MorePlanScreenType.SIX_BOX_SCREEN.value,
                             lifeTimePlanDiscountPercentage = etLifeTimePlanDiscountPercentage.text?.toString()?.trim()?.toIntOrNull() ?: 90,
                             rattingBarSliderTiming = etRattingBarSliderTiming.text?.toString()?.trim()?.toIntOrNull() ?: 5000,
-                            subscriptionCloseIconShowTime = etWeeklyCloseTiming.text?.toString()?.trim()?.toLongOrNull() ?: 3000L
+                            subscriptionCloseIconShowTime = etWeeklyCloseTiming.text?.toString()?.trim()?.toLongOrNull() ?: 3000L,
+                            isShowReviewDialog = switchShowReviewDialog.isChecked
                         ),
                         playIntegrity = PlayIntegrityModel(
                             errorHide = switchErrorHide.isChecked,

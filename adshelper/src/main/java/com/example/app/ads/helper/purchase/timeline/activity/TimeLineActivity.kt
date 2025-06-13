@@ -624,7 +624,7 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
     }
 
     override fun needToShowReviewDialog(): Boolean {
-        return !isUserPurchaseAnyPlan && isOnline && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return !isUserPurchaseAnyPlan && isOnline && mVasuSubscriptionRemoteConfigModel.isShowReviewDialog && (!AdsManager(context = mActivity).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false

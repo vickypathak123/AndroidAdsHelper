@@ -62,7 +62,7 @@
         <activity
             android:name=".activitys.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="sensor">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -90,7 +90,8 @@
             android:name=".newdemo.activity.RemoteConfigActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
