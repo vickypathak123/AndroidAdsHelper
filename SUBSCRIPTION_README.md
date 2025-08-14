@@ -11,18 +11,24 @@ All type of Subscription Screen UI, Opening flow, and Product Details using Goog
 - Make your app remote config JSON, for example:
 
     ```json
-      {
+        {
         "vasu_subscription_config": {
-          "initial_subscription_open_flow": [1, 2, 3],
-          "purchase_button_text_index": 0,
-          "initial_subscription_time_line_close_ad": true,
-          "initial_subscription_more_plan_close_ad": true,
-          "in_app_subscription_ad_close": true,
-          "more_plan_screen_type": "six_box_screen / four_plan_screen",
-          "life_time_plan_discount_percentage": 80,
-          "ratting_bar_slider_timing": 5000
-        }
-      }
+           "initial_subscription_open_flow": [1],
+           "purchase_button_text_index": 0,
+           "initial_subscription_time_line_close_ad": true,
+           "initial_subscription_more_plan_close_ad": true,
+           "in_app_subscription_ad_close": true,
+           "_comment":  "\"more_plan_screen_type\": \"six_box_screen / four_plan_screen /weekly_screen\"",
+           "more_plan_screen_type": "four_plan_screen",
+           "_timeline_comment":  "\"timeline_screen_type\": \"timeline / weekly_screen\"",
+           "timeline_screen_type": "weekly_screen",
+           "life_time_plan_discount_percentage": 90,
+           "ratting_bar_slider_timing": 5000,
+           "subscription_close_icon_show_time": 3000,
+           "is_show_review_dialog": false
+         }
+       }    
+
     ```
 
 - #### Note: in all apps, subscription-related JSON must look like this, no need to remove old remote config data just add this new one and use it.
@@ -54,8 +60,18 @@ All type of Subscription Screen UI, Opening flow, and Product Details using Goog
     - "more_plan_screen_type" :- more plan screen name.
         1. `six_box_screen` : open six box type of screen.
         2. `four_plan_screen` : open four plan type of screen.
+        3. `weekly_screen` : open weekly type of screen.
 
+    - "timeline_screen_type" :- timeline screen name.
+        1. `timeline` : open timeline type of screen.
+        2. `weekly_screen` : open weekly type of screen.
+  
     - "life_time_plan_discount_percentage" :- It indicates the % discount you give to your customer.
+    - "subscription_close_icon_show_time" :- It indicates time to show cloase button in weekly screen.
+
+    - "is_show_review_dialog" :- show review dialog at splash flow.
+        1. `true` : show review dialog.
+        2. `false` : do not show review dialog.
 
 ## Usage
 
