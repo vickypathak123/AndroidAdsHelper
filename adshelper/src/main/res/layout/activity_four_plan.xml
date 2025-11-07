@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:layoutDirection="ltr"
     tools:context=".purchase.fourplan.activity.FourPlanActivity">
 
     <ScrollView
@@ -13,6 +14,7 @@
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:fillViewport="true"
+        android:layoutDirection="ltr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +22,10 @@
         tools:background="@android:color/holo_green_light">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_content_root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
             android:background="@android:color/transparent"
             tools:background="@android:color/holo_blue_light">
 
@@ -69,6 +73,7 @@
                 app:layout_constraintGuide_begin="@dimen/_40sdp" />
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_header_background"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/bg_four_plan_header"
@@ -102,6 +107,7 @@
                 android:marqueeRepeatLimit="marquee_forever"
                 android:maxLines="1"
                 android:singleLine="true"
+                android:textDirection="ltr"
                 android:text="@string/unlock_all_features"
                 android:textColor="#FFFFFF"
                 android:textSize="@dimen/_18ssp"
@@ -126,6 +132,7 @@
                 app:layout_constraintTop_toTopOf="@id/txt_unlock_all_features">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cll11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -143,6 +150,7 @@
                         tools:targetApi="o" />
 
                     <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/im11"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_margin="@dimen/_2sdp"
@@ -164,6 +172,7 @@
                 android:includeFontPadding="false"
                 android:text="@string/payment_is_charged_after_period_cancel_anytime"
                 android:textColor="#FFFFFF"
+                android:textDirection="ltr"
                 android:textSize="@dimen/_11ssp"
                 app:layout_constraintEnd_toEndOf="@id/gl_end_2"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -296,6 +305,7 @@
                 android:fontFamily="@font/ads_plus_jakarta_sans_regular"
                 android:gravity="center"
                 android:includeFontPadding="false"
+                android:textDirection="ltr"
                 android:maxLines="1"
                 android:textColor="#24272C"
                 android:textSize="@dimen/_11ssp"
@@ -326,6 +336,7 @@
                 android:fontFamily="@font/ads_plus_jakarta_sans_semi_bold"
                 android:gravity="center"
                 android:includeFontPadding="false"
+                android:textDirection="ltr"
                 android:maxLines="1"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_14ssp"
@@ -355,6 +366,7 @@
                 android:fontFamily="@font/ads_plus_jakarta_sans_regular"
                 android:gravity="center_vertical|start"
                 android:includeFontPadding="false"
+                android:textDirection="ltr"
                 android:maxLines="1"
                 android:paddingHorizontal="@dimen/_16sdp"
                 android:paddingVertical="@dimen/_10sdp"
@@ -368,6 +380,7 @@
                 tools:text="@string/terms_of_use" />
 
             <View
+                android:id="@+id/divider_privacy"
                 android:layout_width="@dimen/_1sdp"
                 android:layout_height="0dp"
                 android:background="#7C8184"
@@ -386,6 +399,7 @@
                 android:maxLines="1"
                 android:paddingHorizontal="@dimen/_16sdp"
                 android:textColor="#7C8184"
+                android:textDirection="ltr"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/txt_terms_of_use"
                 app:layout_constraintEnd_toStartOf="@+id/txt_terms_of_use"

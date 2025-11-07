@@ -1,6 +1,6 @@
 [versions]
-agp = "8.7.0"
-kotlin = "1.9.23"
+agp = "8.7.3"
+kotlin = "2.2.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -12,25 +12,25 @@ constraintlayout = "2.1.4"
 multidex = "2.0.1"
 googleGson = "2.10.1"
 playServicesAds = "23.5.0"
-lottie = "6.4.1"
+lottie = "6.5.2"
 sdp = "1.1.1"
 ssp = "1.1.1"
 androidxLifecycleExtensions = "2.2.0"
 shimmer = "0.5.0"
 akspermissionAndroid = "v1.1.0"
 colorslider = "2.0.6"
-android-billing = "7.1.1"
+android-billing = "8.0.0"
 androidx-browser = "1.8.0"
 zhpanvip-dotsindicator = "1.2.3"
-revenuecat = "8.4.0"
+revenuecat = "9.0.0"
 integrity = "1.4.0"
 googleAuthLibraryOauth2Http = "1.24.1"
 googleApiClientJackson2 = "1.20.0"
 googleApiServicesPlayintegrity = "v1-rev20231109-2.0.0"
-userMessagingPlatform = "3.0.0"
+userMessagingPlatform = "3.2.0"
 retrofit = "2.11.0"
-loggingInterceptor = "5.0.0-alpha.11"
-#vasuAdsHelper = "1.0.5"
+loggingInterceptor = "5.0.0-alpha.12"
+vasuAdsHelper = "1.2.2"
 glide = "5.0.0-rc01"
 
 
@@ -42,7 +42,7 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 [libraries]
 
 #vasu-android-ads-helper  = { group = "com.github.vickypathak123", name = "AndroidAdsHelper", version.ref = "vasuAdsHelper" }
-#vasu-revenueCat  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "revenueCat", version.ref = "vasuAdsHelper" }
+vasu-revenueCat  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "revenueCat", version.ref = "vasuAdsHelper" }
 #vasu-ads-helper  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "adshelper", version.ref = "vasuAdsHelper" }
 #vasu-integrity-check  = { group = "com.github.vickypathak123.AndroidAdsHelper", name = "integritycheck", version.ref = "vasuAdsHelper" }
 

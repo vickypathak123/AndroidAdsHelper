@@ -17,17 +17,16 @@ import com.android.billingclient.api.ConsumeParams
 import com.android.billingclient.api.PendingPurchasesParams
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
-import com.android.billingclient.api.PurchaseHistoryRecord
 import com.android.billingclient.api.QueryProductDetailsParams
-import com.android.billingclient.api.QueryPurchaseHistoryParams
 import com.android.billingclient.api.QueryPurchasesParams
 import com.android.billingclient.api.acknowledgePurchase
 import com.android.billingclient.api.consumePurchase
 import com.android.billingclient.api.queryProductDetails
-import com.android.billingclient.api.queryPurchaseHistory
+import com.android.billingclient.api.queryPurchasesAsync
 import com.example.app.ads.helper.R
 import com.example.app.ads.helper.base.utils.getStringRes
 import com.example.app.ads.helper.purchase.getCurrencySymbol
+import com.example.app.ads.helper.purchase.utils.TimeLinePlanType
 import com.example.app.ads.helper.utils.clearAll
 import com.example.app.ads.helper.utils.getLocalizedString
 import com.example.app.ads.helper.utils.isPurchaseHistoryLogEnable
@@ -299,36 +298,45 @@ object ProductPurchaseHelper {
                 CoroutineScope(Dispatchers.IO).launch {
                     mBillingClient?.let { billingClient ->
                         if (billingClient.isReady) {
-                            val historyParams = QueryPurchaseHistoryParams.newBuilder()
+                            val params = QueryPurchasesParams.newBuilder()
                                 .setProductType(BillingClient.ProductType.INAPP)
                                 .build()
 
-                            billingClient.queryPurchaseHistory(historyParams).let { purchasesHistoryResult ->
-                                if (purchasesHistoryResult.billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                                    purchasesHistoryResult.purchaseHistoryRecordList?.let { listOfHistoryProducts ->
-                                        val idList = listOfHistoryProducts.flatMap { it.products } as ArrayList<String>
-                                        initProducts(
+                            billingClient.queryPurchasesAsync(params) { billingResult, purchasesList ->
+                                // This block is the callback that executes when the query is complete.
+                                // It runs on the main thread, so move heavy work to a coroutine if needed.
+                                CoroutineScope(Dispatchers.IO).launch {
+                                    if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                                        purchasesList?.let { listOfOwnedProducts ->
+                                            val idList = listOfOwnedProducts.flatMap { it.products } as ArrayList<String>
+
+                                            // Your recursive call to the next init step
+                                            initProducts(
+                                                context = context,
+                                                historyList = idList,
+                                                onComplete = onComplete
+                                            )
+
+                                            // IMPORTANT: You must update logPurchaseHistory to accept List<Purchase>
+                                            logPurchaseHistory(
+                                                fMethodName = "initProducts",
+                                                purchaseHistoryRecordList = listOfOwnedProducts
+                                            )
+
+                                        } ?: initProducts(
                                             context = context,
-                                            historyList = idList,
+                                            historyList = ArrayList(),
                                             onComplete = onComplete
                                         )
-
-                                        logPurchaseHistory(
-                                            fMethodName = "initProducts",
-                                            purchaseHistoryRecordList = listOfHistoryProducts
+                                    } else {
+                                        // Handle error case
+                                        logResponseCode("queryPurchasesAsync (in-app): ", billingResult)
+                                        initProducts(
+                                            context = context,
+                                            historyList = ArrayList(),
+                                            onComplete = onComplete
                                         )
-
-                                    } ?: initProducts(
-                                        context = context,
-                                        historyList = ArrayList(),
-                                        onComplete = onComplete
-                                    )
-                                } else {
-                                    initProducts(
-                                        context = context,
-                                        historyList = ArrayList(),
-                                        onComplete = onComplete
-                                    )
+                                    }
                                 }
                             }
                         } else {
@@ -389,13 +397,13 @@ object ProductPurchaseHelper {
                 CoroutineScope(Dispatchers.IO).launch {
                     mBillingClient?.let { billingClient ->
                         if (billingClient.isReady) {
-                            val historyParams = QueryPurchaseHistoryParams.newBuilder()
+                            val historyParams = QueryPurchasesParams.newBuilder()
                                 .setProductType(BillingClient.ProductType.SUBS)
                                 .build()
 
-                            billingClient.queryPurchaseHistory(historyParams).let { purchasesHistoryResult ->
+                            billingClient.queryPurchasesAsync(historyParams).let { purchasesHistoryResult ->
                                 if (purchasesHistoryResult.billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                                    purchasesHistoryResult.purchaseHistoryRecordList?.let { listOfHistoryProducts ->
+                                    purchasesHistoryResult.purchasesList?.let { listOfHistoryProducts ->
                                         val idList = listOfHistoryProducts.flatMap { it.products } as ArrayList<String>
                                         initSubscription(
                                             context = context,
@@ -1128,7 +1136,7 @@ object ProductPurchaseHelper {
         }
     }
 
-    private fun logPurchaseHistory(fMethodName: String, purchaseHistoryRecordList: List<PurchaseHistoryRecord>) {
+    private fun logPurchaseHistory(fMethodName: String, purchaseHistoryRecordList: List<Purchase>) {
         if (isPurchaseHistoryLogEnable) {
             logW(tag = TAG, message = "\n")
             logW(tag = TAG, message = "$fMethodName: <<<-----------------   Purchase History Product Details   ----------------->>>")
@@ -1168,12 +1176,32 @@ object ProductPurchaseHelper {
         fun onBillingKeyNotFound(productId: String) {}
     }
 
-    val isNeedToLaunchTimeLineScreen: Boolean
-        get() {
-            val isFreeTrialPeriod: Boolean = (PRODUCT_LIST.any { it.planOfferType == PlanOfferType.FREE_TRIAL })
-            return isFreeTrialPeriod
+//    val isNeedToLaunchTimeLineScreen: Boolean
+//        get() {
+//            val isFreeTrialPeriod: Boolean = (PRODUCT_LIST.any { it.planOfferType == PlanOfferType.FREE_TRIAL })
+//            return isFreeTrialPeriod
+//        }
+fun isNeedToLaunchTimeLineScreen(timeLinePlanType: TimeLinePlanType): Boolean {
+    val isFreeTrialPeriod = (PRODUCT_LIST.firstOrNull() { it.planOfferType == PlanOfferType.FREE_TRIAL })
+    Log.e(TAG, "isFreeTrialPeriod: $isFreeTrialPeriod", )
+    when (timeLinePlanType) {
+        TimeLinePlanType.LIFETIME -> {
+            return getLifeTimeProductInfo?.planOfferType == PlanOfferType.FREE_TRIAL
         }
 
+        TimeLinePlanType.YEARLY -> {
+            return getYearlyProductInfo?.planOfferType == PlanOfferType.FREE_TRIAL
+        }
+
+        TimeLinePlanType.MONTHLY -> {
+            return getMonthlyProductInfo?.planOfferType == PlanOfferType.FREE_TRIAL
+        }
+
+        TimeLinePlanType.WEEKLY -> {
+            return getWeeklyProductInfo?.planOfferType == PlanOfferType.FREE_TRIAL
+        }
+    }
+}
     private val String.isDiscountedSKU: Boolean get() = this.lowercase().contains("DISCOUNT".lowercase(), true) or this.lowercase().contains("disc".lowercase(), true)
 
     val String.isMonthlySKU: Boolean get() = this.lowercase().contains("MONTH".lowercase(), true) && (!(this.isDiscountedSKU))

@@ -37,6 +37,7 @@ import com.example.app.ads.helper.purchase.SUBSCRIPTION_TERMS_OF_USE
 import com.example.app.ads.helper.purchase.VasuSubscriptionConfig.NotificationData
 import com.example.app.ads.helper.purchase.fireSubscriptionEvent
 import com.example.app.ads.helper.purchase.product.AdsManager
+import com.example.app.ads.helper.purchase.product.ProductInfo
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getBillingPeriodCount
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.getBillingPeriodName
@@ -47,11 +48,15 @@ import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isWeekl
 import com.example.app.ads.helper.purchase.product.ProductPurchaseHelper.isYearlySKU
 import com.example.app.ads.helper.purchase.timeline.utils.TimeLineScreenDataModel
 import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
+import com.example.app.ads.helper.purchase.utils.TimeLinePlanType
 import com.example.app.ads.helper.purchase.utils.getEventParamBundle
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isAppForeground
+import com.example.app.ads.helper.utils.isArabicLanguage
 import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
+import com.example.app.ads.helper.utils.isUrduLanguage
 import com.example.app.ads.helper.utils.logE
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -84,20 +89,46 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
     private var currentValue = 0f
     private val handler = Handler(Looper.getMainLooper())
 
-    private val mainColor: ColorStateList get() = screenDataModel?.mainColor ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_main_color))
+    private val mainColor: ColorStateList
+        get() = screenDataModel?.mainColor
+            ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_main_color))
     private val headerColor: ColorStateList get() = screenDataModel?.headerColor ?: mainColor
-    private val closeIconColor: ColorStateList get() = screenDataModel?.closeIconColor ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_close_icon_color))
-    private val trackInactiveColor: ColorStateList get() = screenDataModel?.trackInactiveColor ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_track_inactive_color))
-    private val hintTextColor: ColorStateList get() = screenDataModel?.hintTextColor ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_hint_text_color))
-    private val instantAccessHintTextColor: ColorStateList get() = screenDataModel?.instantAccessHintTextColor ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_instant_access_hint_text_color))
-    private val secureWithPlayStoreTextColor: ColorStateList get() = screenDataModel?.secureWithPlayStoreTextColor ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_secure_with_play_store_text_color))
-    private val secureWithPlayStoreBackgroundColor: ColorStateList get() = screenDataModel?.secureWithPlayStoreBackgroundColor ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_secure_with_play_store_background_color))
-    private val buttonContinueTextColor: ColorStateList get() = screenDataModel?.buttonContinueTextColor ?: ColorStateList.valueOf(Color.WHITE)
+    private val closeIconColor: ColorStateList
+        get() = screenDataModel?.closeIconColor
+            ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_close_icon_color))
+    private val trackInactiveColor: ColorStateList
+        get() = screenDataModel?.trackInactiveColor ?: ColorStateList.valueOf(
+            mActivity.getColorRes(
+                R.color.default_time_line_track_inactive_color
+            )
+        )
+    private val hintTextColor: ColorStateList
+        get() = screenDataModel?.hintTextColor
+            ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_hint_text_color))
+    private val instantAccessHintTextColor: ColorStateList
+        get() = screenDataModel?.instantAccessHintTextColor
+            ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_time_line_instant_access_hint_text_color))
+    private val secureWithPlayStoreTextColor: ColorStateList
+        get() = screenDataModel?.secureWithPlayStoreTextColor
+            ?: ColorStateList.valueOf(mActivity.getColorRes(R.color.default_secure_with_play_store_text_color))
+    private val secureWithPlayStoreBackgroundColor: ColorStateList
+        get() = screenDataModel?.secureWithPlayStoreBackgroundColor ?: ColorStateList.valueOf(
+            mActivity.getColorRes(R.color.default_secure_with_play_store_background_color)
+        )
+    private val buttonContinueTextColor: ColorStateList
+        get() = screenDataModel?.buttonContinueTextColor ?: ColorStateList.valueOf(Color.WHITE)
 
     @get:RawRes
-    private val instantAccessLottieFile: Int get() = screenDataModel?.instantAccessLottieFileRawRes ?: R.raw.lottie_subscription_unlock_today_bg
-    private val isWithInstantAccessAnimation: Boolean get() = screenDataModel?.isWithInstantAccessAnimation ?: false
-    private val isWithSliderAnimation: Boolean get() = screenDataModel?.isWithSliderAnimation ?: false
+    private val instantAccessLottieFile: Int
+        get() = screenDataModel?.instantAccessLottieFileRawRes
+            ?: R.raw.lottie_subscription_unlock_today_bg
+    private val isWithInstantAccessAnimation: Boolean
+        get() = screenDataModel?.isWithInstantAccessAnimation ?: false
+    private val isWithSliderAnimation: Boolean
+        get() = screenDataModel?.isWithSliderAnimation ?: false
+
+    private val timelinePlanType: TimeLinePlanType
+        get() = TimeLinePlanType.fromName(intent?.getIntExtra("timelinePlanType", 1) ?: 1)
 
     companion object {
         private var screenDataModel: TimeLineScreenDataModel? = null
@@ -106,15 +137,19 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         private var onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
 
         private var reviewDialogData: Pair<String, String> = Pair("", "")
+        private var onBackShowInterAd: (fContext: Activity, () -> Unit) -> Unit =
+            { _, next -> next() }
 
         internal var onPurchaseFromMorePlanScreen: () -> Unit = {}
 
         internal fun launchScreen(
             fActivity: Activity,
+            timelinePlanType: TimeLinePlanType,
             screenDataModel: TimeLineScreenDataModel,
             notificationData: NotificationData,
             reviewDialogData: Pair<String, String>,
             onViewAllPlans: () -> Unit = {},
+            onBackShowInterAd: (fContext: Activity, () -> Unit) -> Unit = { _, next -> next() },
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
         ) {
             Companion.onViewAllPlans = onViewAllPlans
@@ -122,15 +157,17 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
             Companion.screenDataModel = screenDataModel
             Companion.notificationData = notificationData
             Companion.reviewDialogData = reviewDialogData
+            Companion.onBackShowInterAd = onBackShowInterAd
 
             val lIntent = Intent(fActivity, TimeLineActivity::class.java)
-
+            lIntent.putExtra("timelinePlanType", timelinePlanType.value)
             @AnimatorRes @AnimRes val lEnterAnimId: Int = android.R.anim.fade_in
             @AnimatorRes @AnimRes val lExitAnimId: Int = android.R.anim.fade_out
 
             fActivity.runOnUiThread {
                 if (isTiramisuPlus) {
-                    val options = ActivityOptions.makeCustomAnimation(fActivity, lEnterAnimId, lExitAnimId)
+                    val options =
+                        ActivityOptions.makeCustomAnimation(fActivity, lEnterAnimId, lExitAnimId)
                     fActivity.startActivity(lIntent, options.toBundle())
                 } else {
                     fActivity.startActivity(lIntent)
@@ -145,7 +182,8 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         return SUBSCRIPTION_DATA_LANGUAGE_CODE.takeIf { it.isNotEmpty() } ?: "en"
     }
 
-    override fun setBinding(): ActivityTimeLineBinding = ActivityTimeLineBinding.inflate(layoutInflater)
+    override fun setBinding(): ActivityTimeLineBinding =
+        ActivityTimeLineBinding.inflate(layoutInflater)
 
     override fun getActivityContext(): BaseActivity = this@TimeLineActivity
 
@@ -168,7 +206,8 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
     private fun setBillingListener(fWhere: String): Job {
         val job: Job = CoroutineScope(Dispatchers.IO).launch {
             logE(TAG, "$fWhere: Set Listener")
-            ProductPurchaseHelper.setPurchaseListener(object : ProductPurchaseHelper.ProductPurchaseListener {
+            ProductPurchaseHelper.setPurchaseListener(object :
+                ProductPurchaseHelper.ProductPurchaseListener {
                 override fun onBillingSetupFinished() {
                     ProductPurchaseHelper.initProductsKeys(fContext = mActivity) {
                         setProductData()
@@ -182,19 +221,37 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                         mActivity.runOnUiThread {
                             ProductPurchaseHelper.getFreeTrialProductInfo?.let { productInfo ->
                                 when {
-                                    productInfo.id.getSKU.isMonthlySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo)))
-                                    productInfo.id.getSKU.isWeeklySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo)))
-                                    productInfo.id.getSKU.isYearlySKU -> fireSubscriptionEvent(fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo)))
+                                    productInfo.id.getSKU.isMonthlySKU -> fireSubscriptionEvent(
+                                        fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE(
+                                            paramBundle = getEventParamBundle(productInfo = productInfo)
+                                        )
+                                    )
+
+                                    productInfo.id.getSKU.isWeeklySKU -> fireSubscriptionEvent(
+                                        fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(
+                                            paramBundle = getEventParamBundle(productInfo = productInfo)
+                                        )
+                                    )
+
+                                    productInfo.id.getSKU.isYearlySKU -> fireSubscriptionEvent(
+                                        fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE(
+                                            paramBundle = getEventParamBundle(productInfo = productInfo)
+                                        )
+                                    )
                                 }
 
                                 notificationData?.let { data ->
-                                    val freeTrialPeriodCount = productInfo.actualFreeTrialPeriod.getBillingPeriodCount()
-                                    val periodCount: Int = (freeTrialPeriodCount - (2.takeIf { freeTrialPeriodCount <= 3 } ?: 5))
+                                    val freeTrialPeriodCount =
+                                        productInfo.actualFreeTrialPeriod.getBillingPeriodCount()
+                                    val periodCount: Int =
+                                        (freeTrialPeriodCount - (2.takeIf { freeTrialPeriodCount <= 3 }
+                                            ?: 5))
 
                                     val periodString: String = getLocalizedString<String>(
                                         context = mActivity,
                                         fLocale = Locale("en"),
-                                        resourceId = R.string.period_days.takeIf { periodCount > 1 } ?: R.string.period_day,
+                                        resourceId = R.string.period_days.takeIf { periodCount > 1 }
+                                            ?: R.string.period_day,
                                     )
 
                                     AdsManager(mActivity).notificationData = NotificationDataModel(
@@ -211,8 +268,12 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                                         ),
                                     )
 
-                                    scheduleNotification(intervalMillis = ((2.takeIf { freeTrialPeriodCount <= 3 } ?: 5) - 1) * DateUtils.DAY_IN_MILLIS)
-                                    logE(TAG, "Saved Notification Data::-> \n${AdsManager(mActivity).notificationData}")
+                                    scheduleNotification(intervalMillis = ((2.takeIf { freeTrialPeriodCount <= 3 }
+                                        ?: 5) - 1) * DateUtils.DAY_IN_MILLIS)
+                                    logE(
+                                        TAG,
+                                        "Saved Notification Data::-> \n${AdsManager(mActivity).notificationData}"
+                                    )
                                 }
 
                             }
@@ -258,20 +319,34 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         }
 
         with(mBinding) {
-            root.layoutDirection = View.LAYOUT_DIRECTION_RTL.takeIf { isRTLDirectionFromLocale } ?: View.LAYOUT_DIRECTION_LTR
-            root.textDirection = View.LAYOUT_DIRECTION_RTL.takeIf { isRTLDirectionFromLocale } ?: View.LAYOUT_DIRECTION_LTR
+            root.layoutDirection = View.LAYOUT_DIRECTION_RTL.takeIf { isRTLDirectionFromLocale }
+                ?: View.LAYOUT_DIRECTION_LTR
+            root.textDirection = View.LAYOUT_DIRECTION_RTL.takeIf { isRTLDirectionFromLocale }
+                ?: View.LAYOUT_DIRECTION_LTR
 
-            timeLineSlider.rotation = 270f.takeIf { isRTLDirectionFromLocale } ?: 90f
-            lySubscribeButton.lottieBtnContinue.scaleX = (-1f).takeIf { isRTLDirectionFromLocale } ?: 1f
+            if (isArabicLanguage || isUrduLanguage) {
+                timeLineSlider.rotation = 90f
+            } else {
+                timeLineSlider.rotation = 270f.takeIf { isRTLDirectionFromLocale } ?: 90f
+            }
+//            timeLineSlider.rotation = 90f.takeIf { isArabicLanguage && isUrduLanguage } ?: 180f
+            lySubscribeButton.lottieBtnContinue.scaleX =
+                (-1f).takeIf { isRTLDirectionFromLocale } ?: 1f
 
             txtHaveDoubts.apply {
                 this.setTextColor(headerColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.have_doubts)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.have_doubts
+                )
             }
 
             txtStartWithAFreeTrial.apply {
                 this.setTextColor(mainColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.start_with_a_free_trial)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.start_with_a_free_trial
+                )
             }
 
             timeLineSlider.apply {
@@ -285,7 +360,8 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
             txtNow.apply {
                 this.setTextColor(mainColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.now)
+                this.text =
+                    getLocalizedString<String>(context = mActivity, resourceId = R.string.now)
             }
 
             ivUnlockToday.apply {
@@ -299,7 +375,10 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
             txtTodayGetInstantAccess.apply {
                 this.setTextColor(mainColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.today_get_instant_access)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.today_get_instant_access
+                )
             }
 
             ivTrialReminder.apply {
@@ -330,41 +409,65 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
             txtPayNothingNow.apply {
                 this.setTextColor(mainColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.pay_nothing_now)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.pay_nothing_now
+                )
             }
 
             ivClose.apply {
-                this.setColorFilter(closeIconColor.defaultColor, android.graphics.PorterDuff.Mode.SRC_IN)
+                this.setColorFilter(
+                    closeIconColor.defaultColor,
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
 
             txtUnlockAllTheFeatures.apply {
                 this.setTextColor(hintTextColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.unlock_all_the_features)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.unlock_all_the_features
+                )
             }
 
             txtTrialReminderHint.apply {
                 this.setTextColor(hintTextColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.trial_reminder_hint)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.trial_reminder_hint
+                )
             }
 
             txtPremiumBeginsHint.apply {
                 this.setTextColor(hintTextColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.premium_begins_hint)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.premium_begins_hint
+                )
             }
 
             txtViewAllPlans.apply {
                 this.setTextColor(hintTextColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.view_all_plans).withUnderLine
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.view_all_plans
+                ).withUnderLine
             }
 
             txtTermsOfUse.apply {
                 this.setTextColor(hintTextColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.terms_of_use)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.terms_of_use
+                )
             }
 
             txtPrivacyPolicy.apply {
                 this.setTextColor(hintTextColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.privacy_policy)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.privacy_policy
+                )
             }
 
             txtInstantAccessHint.apply {
@@ -394,12 +497,18 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
             }
 
             lySecureWithPlayStore.ivSecureWithPlayStore.apply {
-                this.setColorFilter(secureWithPlayStoreTextColor.defaultColor, android.graphics.PorterDuff.Mode.SRC_IN)
+                this.setColorFilter(
+                    secureWithPlayStoreTextColor.defaultColor,
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
 
             lySecureWithPlayStore.txtSecureWithPlayStore.apply {
                 this.setTextColor(secureWithPlayStoreTextColor)
-                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.cancel_anytime_secure_with_play_store)
+                this.text = getLocalizedString<String>(
+                    context = mActivity,
+                    resourceId = R.string.cancel_anytime_secure_with_play_store
+                )
                 this.isSelected = true
             }
 
@@ -432,7 +541,10 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                 }
                 ivUnlockToday.apply {
                     this.setBackgroundColor(trackInactiveColor.defaultColor)
-                    this.setColorFilter(mainColor.defaultColor, android.graphics.PorterDuff.Mode.SRC_IN)
+                    this.setColorFilter(
+                        mainColor.defaultColor,
+                        android.graphics.PorterDuff.Mode.SRC_IN
+                    )
                 }
                 updateSlider()
             }
@@ -492,7 +604,10 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                         if (IS_ENABLE_TEST_PURCHASE) {
                             ProductPurchaseHelper.fireTestingPurchase(context = mActivity)
                         } else {
-                            ProductPurchaseHelper.purchase(activity = mActivity, productId = productInfo.id)
+                            ProductPurchaseHelper.purchase(
+                                activity = mActivity,
+                                productId = productInfo.id
+                            )
                         }
                     }
                 }
@@ -512,7 +627,10 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
                         with(mBinding) {
                             ivUnlockToday.apply {
                                 this.setBackgroundColor(mainColor.defaultColor)
-                                this.setColorFilter(Color.WHITE, android.graphics.PorterDuff.Mode.SRC_IN)
+                                this.setColorFilter(
+                                    Color.WHITE,
+                                    android.graphics.PorterDuff.Mode.SRC_IN
+                                )
                             }
                             ivUnlockTodayBg.apply {
                                 this.setBackgroundColor(mainColor.defaultColor)
@@ -530,82 +648,112 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
 
     private fun setProductData() {
         CoroutineScope(Dispatchers.IO).launch {
-            ProductPurchaseHelper.getFreeTrialProductInfo?.let { productInfo ->
-                CoroutineScope(Dispatchers.Main).launch {
-                    mActivity.runOnUiThread {
-                        with(mBinding) {
-                            val freeTrialPeriodCount = productInfo.actualFreeTrialPeriod.getBillingPeriodCount()
+            when (timelinePlanType) {
+                TimeLinePlanType.LIFETIME -> {
+                    ProductPurchaseHelper.getLifeTimeProductInfo?.let { lifetimeProductInfo ->
+                        setPlanInfo(productInfo = lifetimeProductInfo)
+                    }
+                }
 
-                            txtFreeThenPerPeriod.apply {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.free_then_per_period,
-                                    formatArgs = arrayOf(
-                                        productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity),
-                                        productInfo.formattedPrice,
-                                        productInfo.actualBillingPeriod.getBillingPeriodName(context = mActivity)
-                                    )
-                                ).lowercase()
-                            }
+                TimeLinePlanType.YEARLY -> {
+                    ProductPurchaseHelper.getYearlyProductInfo?.let { lifetimeProductInfo ->
+                        setPlanInfo(productInfo = lifetimeProductInfo)
+                    }
+                }
 
-                            lySubscribeButton.txtBtnContinue.apply {
-//                                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.start_my_free_trial)
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.try_period_for_price.takeIf {
-                                        mPurchaseButtonTextIndex == 2
-                                    } ?: R.string.start_my_free_trial.takeIf {
-                                        mPurchaseButtonTextIndex == 1
-                                    } ?: R.string.continue_,
-                                    formatArgs = arrayOf(
-                                        productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity).lowercase(),
-                                        "${productInfo.priceCurrencySymbol}0"
-                                    )
-                                )
+                TimeLinePlanType.MONTHLY -> {
+                    ProductPurchaseHelper.getMonthlyProductInfo?.let { lifetimeProductInfo ->
+                        setPlanInfo(productInfo = lifetimeProductInfo)
+                    }
+                }
 
-                                this.isAllCaps = (mPurchaseButtonTextIndex != 2)
-                            }
-
-                            txtTrialReminder.apply {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.str_1_str_2,
-                                    formatArgs = arrayOf(
-                                        getLocalizedString<String>(
-                                            context = mActivity,
-                                            resourceId = R.string.day_title,
-                                            formatArgs = arrayOf("2".takeIf { freeTrialPeriodCount <= 3 } ?: "5")
-                                        ),
-                                        getLocalizedString<String>(
-                                            context = mActivity,
-                                            resourceId = R.string.trial_reminder
-                                        ),
-                                    )
-                                )
-                            }
-
-                            txtPremiumBegins.apply {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.str_1_str_2,
-                                    formatArgs = arrayOf(
-                                        getLocalizedString<String>(
-                                            context = mActivity,
-                                            resourceId = R.string.day_title,
-                                            formatArgs = arrayOf("$freeTrialPeriodCount")
-                                        ),
-                                        getLocalizedString<String>(
-                                            context = mActivity,
-                                            resourceId = R.string.premium_begins
-                                        ),
-                                    )
-                                )
-                            }
-                        }
+                TimeLinePlanType.WEEKLY -> {
+                    ProductPurchaseHelper.getWeeklyProductInfo?.let { lifetimeProductInfo ->
+                        setPlanInfo(productInfo = lifetimeProductInfo)
                     }
                 }
             }
         }
+    }
+
+    private fun setPlanInfo(productInfo: ProductInfo) {
+        CoroutineScope(Dispatchers.Main).launch {
+            mActivity.runOnUiThread {
+                with(mBinding) {
+                    val freeTrialPeriodCount =
+                        productInfo.actualFreeTrialPeriod.getBillingPeriodCount()
+
+                    txtFreeThenPerPeriod.apply {
+                        this.text = getLocalizedString<String>(
+                            context = mActivity,
+                            resourceId = R.string.free_then_per_period,
+                            formatArgs = arrayOf(
+                                productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity),
+                                productInfo.formattedPrice,
+                                productInfo.actualBillingPeriod.getBillingPeriodName(context = mActivity)
+                            )
+                        ).lowercase()
+                    }
+
+                    lySubscribeButton.txtBtnContinue.apply {
+//                                this.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.start_my_free_trial)
+                        this.text = getLocalizedString<String>(
+                            context = mActivity,
+                            resourceId = R.string.try_period_for_price.takeIf {
+                                mPurchaseButtonTextIndex == 2
+                            } ?: R.string.start_my_free_trial.takeIf {
+                                mPurchaseButtonTextIndex == 1
+                            } ?: R.string.continue_,
+                            formatArgs = arrayOf(
+                                productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity)
+                                    .lowercase(),
+                                "${productInfo.priceCurrencySymbol}0"
+                            )
+                        )
+
+                        this.isAllCaps = (mPurchaseButtonTextIndex != 2)
+                    }
+
+                    txtTrialReminder.apply {
+                        this.text = getLocalizedString<String>(
+                            context = mActivity,
+                            resourceId = R.string.str_1_str_2,
+                            formatArgs = arrayOf(
+                                getLocalizedString<String>(
+                                    context = mActivity,
+                                    resourceId = R.string.day_title,
+                                    formatArgs = arrayOf("2".takeIf { freeTrialPeriodCount <= 3 }
+                                        ?: "5")
+                                ),
+                                getLocalizedString<String>(
+                                    context = mActivity,
+                                    resourceId = R.string.trial_reminder
+                                ),
+                            )
+                        )
+                    }
+
+                    txtPremiumBegins.apply {
+                        this.text = getLocalizedString<String>(
+                            context = mActivity,
+                            resourceId = R.string.str_1_str_2,
+                            formatArgs = arrayOf(
+                                getLocalizedString<String>(
+                                    context = mActivity,
+                                    resourceId = R.string.day_title,
+                                    formatArgs = arrayOf("$freeTrialPeriodCount")
+                                ),
+                                getLocalizedString<String>(
+                                    context = mActivity,
+                                    resourceId = R.string.premium_begins
+                                ),
+                            )
+                        )
+                    }
+                }
+            }
+        }
+
     }
 
     override fun onScreenFinishing() {
@@ -624,7 +772,9 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
     }
 
     override fun needToShowReviewDialog(): Boolean {
-        return !isUserPurchaseAnyPlan && isOnline && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return !isUserPurchaseAnyPlan && isOnline && mVasuSubscriptionRemoteConfigModel.isShowReviewDialog && (!AdsManager(
+            context = mActivity
+        ).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false
@@ -642,6 +792,17 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
         )
     }
 
+    //    override fun customOnBackPressed() {
+//        if (needToShowReviewDialog()) {
+//            super.customOnBackPressed()
+//        } else {
+//            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
+//                fireSubscriptionEvent(fEventType = SubscriptionEventType.TIME_LINE_SCREEN_CLOSE)
+//            }
+//            super.customOnBackPressed()
+//            isSystemBackButtonPressed = false
+//        }
+//    }
     override fun customOnBackPressed() {
         if (needToShowReviewDialog()) {
             super.customOnBackPressed()
@@ -649,7 +810,15 @@ internal class TimeLineActivity : BaseBindingActivity<ActivityTimeLineBinding>()
             if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
                 fireSubscriptionEvent(fEventType = SubscriptionEventType.TIME_LINE_SCREEN_CLOSE)
             }
-            super.customOnBackPressed()
+            //            super.customOnBackPressed()
+            if (isAppForeground && needToShowBackAd()) {
+                onBackShowInterAd.invoke(mActivity) {
+                    directBack()
+                }
+
+            } else {
+                directBack()
+            }
             isSystemBackButtonPressed = false
         }
     }

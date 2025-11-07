@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_secure_with_play_store_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F1F5F4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/full_round" />
+
+    <com.example.app.ads.helper.purchase.widget.SquareLayout
+        android:id="@+id/sl_secure_with_play_store"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:src="@drawable/ic_secure_with_play_store"
+        app:layout_constraintBottom_toBottomOf="@id/txt_secure_with_play_store"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txt_secure_with_play_store"
+        tools:tint="@color/default_secure_with_play_store_text_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_secure_with_play_store"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_secure_with_play_store"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/default_secure_with_play_store_text_color"
+                tools:tint="@color/default_secure_with_play_store_text_color" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.example.app.ads.helper.purchase.widget.SquareLayout>
+
+    <TextView
+        android:id="@+id/txt_secure_with_play_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_4sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:background="@android:color/transparent"
+        android:ellipsize="marquee"
+        android:fontFamily="@font/ads_outfit_regular"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="#424A4E"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/sl_secure_with_play_store"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/cancel_anytime_secure_with_play_store" />
+    <!--        tools:text="@tools:sample/lorem/random" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

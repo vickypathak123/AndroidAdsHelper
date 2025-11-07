@@ -9,12 +9,14 @@ import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.AnimRes
 import androidx.annotation.AnimatorRes
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
@@ -63,6 +65,7 @@ import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.purchase.utils.getEventParamBundle
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isAppForeground
 import com.example.app.ads.helper.utils.isEnglishLanguage
 import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
@@ -89,6 +92,38 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
             }
         }
     }
+
+    fun getValidatedOrderOrFallback(remoteOrder: List<Int>, defaultOrder: List<Int>): List<Int> {
+        // Take the first 4 items from the remote config.
+        val candidate = remoteOrder.take(4)
+
+        // Check for all three conditions of a "perfect" list.
+        val isPerfect = candidate.size == 4 &&                  // Condition 1: Must have exactly 4 items.
+                candidate.all { it in 0..3 } &&         // Condition 2: All numbers must be valid (0-3).
+                candidate.toSet().size == 4             // Condition 3: All numbers must be unique.
+
+        // If the candidate list is perfect, return it. Otherwise, return the default.
+        return if (isPerfect) {
+            candidate
+        } else {
+            defaultOrder
+        }
+    }
+
+//    private val planOrder: List<Int>
+//        get() = (mVasuSubscriptionRemoteConfigModel.fourPlanScreenPlanFlow.takeIf { it.isNotEmpty() }
+//            ?: listOf(1, 2, 0, 3))     // 1. Initial List
+//            .filter { it in 0..3 }    // 2. Filter
+//            .distinct()               // 3. Distinct
+//            .take(4)
+
+    private val planOrder: List<Int>
+        get() {
+            val remoteList = mVasuSubscriptionRemoteConfigModel.fourPlanScreenPlanFlow
+            val defaultOrder = listOf(0, 1, 2, 3)
+
+            return getValidatedOrderOrFallback(remoteList, defaultOrder)
+        }
 
     private var mTimer: AdTimer? = null
 
@@ -228,16 +263,22 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
         private var onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
         private var reviewDialogData: Pair<String, String> = Pair("", "")
 
+        private var onBackShowInterAd: (fContext: Activity, () -> Unit) -> Unit =
+            { _, next -> next() }
+
+
         internal fun launchScreen(
             fActivity: Activity,
             isFromTimeLine: Boolean,
             screenDataModel: FourPlanScreenDataModel,
             reviewDialogData: Pair<String, String>,
+            onBackShowInterAd: (fContext: Activity, () -> Unit) -> Unit = { _, next -> next() },
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
         ) {
             Companion.screenDataModel = screenDataModel
             Companion.onScreenFinish = onScreenFinish
             Companion.reviewDialogData = reviewDialogData
+            Companion.onBackShowInterAd = onBackShowInterAd
 
             val lIntent = Intent(fActivity, FourPlanActivity::class.java)
             lIntent.putExtra("isFromTimeLine", isFromTimeLine)
@@ -289,7 +330,8 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                     if (!isYearlyPrizeSated || !isWeeklyPrizeSated || !isMonthlyPrizeSated || !isLifeTimePrizeSated) {
                         ProductPurchaseHelper.initProductsKeys(fContext = mActivity) {
                             if (!isYearlyPrizeSated || !isWeeklyPrizeSated || !isMonthlyPrizeSated || !isLifeTimePrizeSated) {
-                                setProductData()
+//                                setProductData()
+                                initializeAndDisplayPlans()
                             }
                         }
                     }
@@ -400,7 +442,8 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            setProductData()
+//            setProductData()
+            initializeAndDisplayPlans()
         }
     }
 
@@ -778,6 +821,166 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
         }
     }
 
+    private fun initializeAndDisplayPlans() {
+        CoroutineScope(Dispatchers.IO).launch {
+            // Step 1: Fetch all product info in the background first.
+            // This is crucial because discount calculations depend on multiple plans being available.
+            mLifetimePlanProductInfo = ProductPurchaseHelper.getLifeTimeProductInfo
+            mYearlyPlanProductInfo = ProductPurchaseHelper.getYearlyProductInfo
+            mMonthlyPlanProductInfo = ProductPurchaseHelper.getMonthlyProductInfo
+            mWeeklyPlanProductInfo = ProductPurchaseHelper.getWeeklyProductInfo
+
+            // Step 2: Switch to the Main thread to update the UI based on the fetched data and planOrder.
+            CoroutineScope(Dispatchers.Main).launch {
+                managePlanViews()
+            }
+        }
+    }
+
+    private fun managePlanViews() {
+        with(mBinding) {
+            // Step 1: Create a detailed map of all views associated with each plan type.
+            val planViewMap = mapOf(
+                0 to Pair(lyLifetimePlan.root, lyLifetimePlanTag.root),
+                1 to Pair(lyYearlyPlan.root, lyYearlyPlanTag.root),
+                2 to Pair(lyMonthlyPlan.root, lyMonthlyPlanTag.root),
+                3 to Pair(lyWeeklyPlan.root, null) // Weekly plan has no tag view
+            )
+
+            // Step 2: Start with a clean slate. Hide all plan views and their tags.
+            planViewMap.values.forEach { (plan, tag) ->
+                plan.gone
+                tag?.gone // The '?' safely handles the null tag for the weekly plan
+            }
+
+            val visiblePlanIds = mutableListOf<Int>()
+            var firstAvailablePlanView: View? = null
+
+            // --- PASS 1: Determine which plans are available and populate their data ---
+            planOrder.forEach { planTypeIndex ->
+                when (planTypeIndex) {
+                    0 -> mLifetimePlanProductInfo?.let {
+                        setLifeTimeProductData(it)
+                        visiblePlanIds.add(lyLifetimePlan.root.id)
+                        if (firstAvailablePlanView == null) firstAvailablePlanView = lyLifetimePlan.root
+                    }
+                    1 -> mYearlyPlanProductInfo?.let { yearlyInfo ->
+                        mWeeklyPlanProductInfo?.let { weeklyInfo ->
+                            ProductPurchaseHelper.getWeekBaseYearlyDiscount(weeklyInfo.formattedPrice, yearlyInfo.formattedPrice) { p, dp ->
+                                setYearlyProductData(yearlyInfo, p, dp)
+                            }
+                        } ?: setYearlyProductData(yearlyInfo, 0, "")
+                        visiblePlanIds.add(lyYearlyPlan.root.id)
+                        if (firstAvailablePlanView == null) firstAvailablePlanView = lyYearlyPlan.root
+                    }
+                    2 -> mMonthlyPlanProductInfo?.let { monthlyInfo ->
+                        mWeeklyPlanProductInfo?.let { weeklyInfo ->
+                            ProductPurchaseHelper.getWeekBaseMonthlyDiscount(weeklyInfo.formattedPrice, monthlyInfo.formattedPrice) { p, dp ->
+                                setMonthlyProductData(monthlyInfo, p, dp)
+                            }
+                        } ?: setMonthlyProductData(monthlyInfo, 0, "")
+                        visiblePlanIds.add(lyMonthlyPlan.root.id)
+                        if (firstAvailablePlanView == null) firstAvailablePlanView = lyMonthlyPlan.root
+                    }
+                    3 -> mWeeklyPlanProductInfo?.let {
+                        setWeeklyProductData(it)
+                        visiblePlanIds.add(lyWeeklyPlan.root.id)
+                        if (firstAvailablePlanView == null) firstAvailablePlanView = lyWeeklyPlan.root
+                    }
+                }
+            }
+
+            // --- PASS 2: If we found any plans, re-chain them programmatically ---
+            if (visiblePlanIds.isNotEmpty()) {
+                val constraintSet = ConstraintSet()
+                // Clone constraints from the inner layout (which now has all children with IDs)
+                constraintSet.clone(clContentRoot)
+
+                // Rebuild the vertical chain
+                for (i in visiblePlanIds.indices) {
+                    val currentPlanId = visiblePlanIds[i]
+                    constraintSet.clear(currentPlanId, ConstraintSet.TOP)
+
+                    if (i == 0) {
+                        constraintSet.connect(currentPlanId, ConstraintSet.TOP, dotsIndicator.id, ConstraintSet.BOTTOM, resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._14sdp))
+                    } else {
+                        val previousPlanId = visiblePlanIds[i - 1]
+                        constraintSet.connect(currentPlanId, ConstraintSet.TOP, previousPlanId, ConstraintSet.BOTTOM, resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._14sdp))
+                    }
+                }
+
+                constraintSet.clear(txtFreeThenPerPeriod.id, ConstraintSet.TOP)
+                constraintSet.connect(txtFreeThenPerPeriod.id, ConstraintSet.TOP, visiblePlanIds.last(), ConstraintSet.BOTTOM, resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._14sdp))
+
+                // Apply the new constraints to the layout
+                constraintSet.applyTo(clContentRoot)
+
+                // Now make the relevant views visible
+                visiblePlanIds.forEach { id ->
+                    val viewPair = planViewMap.values.firstOrNull { it.first.id == id }
+                    viewPair?.let { (plan, tag) ->
+                        plan.visible
+                        tag?.visible
+                    }
+                }
+
+//                firstAvailablePlanView?.performClick()
+
+//                val yearlyPlanView = lyYearlyPlan.root
+//                if (mYearlyPlanProductInfo != null && visiblePlanIds.contains(yearlyPlanView.id)) {
+//                    yearlyPlanView.performClick()
+//                } else {
+//                    firstAvailablePlanView?.performClick()
+//                }
+
+                // --- Default Selection Logic: Select the SECOND visible plan ---
+//                if (visiblePlanIds.size >= 2) {
+//                    // If there are at least two plans, get the ID of the second one.
+//                    val secondPlanId = visiblePlanIds[1] // Index 1 is the second item
+//
+//                    // Find the view associated with that ID from our map.
+//                    val secondPlanView = planViewMap.values.firstOrNull { it.first.id == secondPlanId }?.first
+//
+//                    // Perform the click on the second plan.
+//                    secondPlanView?.performClick()
+//                } else {
+//                    // FALLBACK: If there's only one plan (or none), select the first one to avoid a crash.
+//                    firstAvailablePlanView?.performClick()
+//                }
+
+                val desiredPlanType = mVasuSubscriptionRemoteConfigModel.fourPlanDefaultSkuSelection
+
+                // 2. Try to find the view for the desired plan using our map.
+                val targetPlanView = planViewMap[desiredPlanType]?.first
+
+                // 3. Check if the desired plan is valid AND is actually visible on the screen.
+                if (targetPlanView != null && visiblePlanIds.contains(targetPlanView.id)) {
+                    // SUCCESS: The desired plan exists and is visible. Select it.
+                    targetPlanView.performClick()
+                } else {
+                    // FALLBACK: The desired plan is invalid or not visible.
+                    // Default to the Yearly plan (planType 1) if it's available.
+                    val yearlyPlanView = lyYearlyPlan.root
+                    if (visiblePlanIds.contains(yearlyPlanView.id)) {
+                        yearlyPlanView.performClick()
+                    } else {
+                        // SUPER FALLBACK: If even the Yearly plan isn't visible,
+                        // select the very first available plan to be safe.
+                        firstAvailablePlanView?.performClick()
+                    }
+                }
+
+            } else {
+                // This runs if NO plans were available to show.
+                Log.e(TAG, "No valid subscription plans found to display.")
+                lySubscribeButton.root.disable
+                lySubscribeButton.root.gone
+                txtFreeThenPerPeriod.text = "hello"
+                txtFreeThenPerPeriod.visible
+            }
+        }
+    }
+
     //<editor-fold desc="get & set all plan data with UI">
     private fun setProductData() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -1033,7 +1236,7 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
                         }
                     }
 
-                    lyYearlyPlan.root.performClick()
+//                    lyYearlyPlan.root.performClick()
                 }
                 isWeeklyPrizeSated = true
             }
@@ -1061,7 +1264,8 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
 
     override fun needToShowReviewDialog(): Boolean {
 //        return (!isFromTimeLine) && IS_FROM_SPLASH && (!AdsManager(context = mActivity).isReviewDialogOpened)
-        return !isUserPurchaseAnyPlan && isOnline && (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return !isUserPurchaseAnyPlan && isOnline && (!isFromTimeLine) && mVasuSubscriptionRemoteConfigModel.isShowReviewDialog
+                && (!AdsManager(context = mActivity).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false
@@ -1079,6 +1283,18 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
         )
     }
 
+//    override fun customOnBackPressed() {
+//        if (needToShowReviewDialog()) {
+//            super.customOnBackPressed()
+//        } else {
+//            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
+//                fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
+//            }
+//            super.customOnBackPressed()
+//            isSystemBackButtonPressed = false
+//        }
+//    }
+
     override fun customOnBackPressed() {
         if (needToShowReviewDialog()) {
             super.customOnBackPressed()
@@ -1086,7 +1302,15 @@ internal class FourPlanActivity : BaseBindingActivity<ActivityFourPlanBinding>()
             if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
                 fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
             }
-            super.customOnBackPressed()
+//            super.customOnBackPressed()
+            if (isAppForeground && needToShowBackAd()) {
+                onBackShowInterAd.invoke(mActivity) {
+                    directBack()
+                }
+
+            } else {
+                directBack()
+            }
             isSystemBackButtonPressed = false
         }
     }

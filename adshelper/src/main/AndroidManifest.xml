@@ -25,6 +25,16 @@
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
             tools:ignore="DiscouragedApi, LockedOrientationActivity"/>
         <activity
+            android:name=".purchase.twoplan.activity.TwoPlanActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:largeHeap="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/theme_subscription_activity"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"
+            tools:ignore="DiscouragedApi, LockedOrientationActivity" />
+        <activity
             android:name=".purchase.fourplan.activity.FourPlanActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"

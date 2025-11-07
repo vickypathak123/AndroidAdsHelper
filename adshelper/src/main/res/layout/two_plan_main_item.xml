@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/default_two_plan_selected_sku_border_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="343:60"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/full_round_11_sdp"
+        tools:background="@color/default_two_plan_selected_sku_border_color" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_foreground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_1sdp"
+        android:adjustViewBounds="true"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background"
+        app:layout_constraintEnd_toEndOf="@id/iv_background"
+        app:layout_constraintStart_toStartOf="@id/iv_background"
+        app:layout_constraintTop_toTopOf="@id/iv_background"
+        app:shapeAppearance="@style/full_round_10_sdp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background"
+        app:layout_constraintEnd_toEndOf="@id/iv_background"
+        app:layout_constraintStart_toStartOf="@id/iv_background"
+        app:layout_constraintTop_toTopOf="@id/iv_background">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <include
+            android:id="@+id/ly_tag_hint"
+            layout="@layout/two_plan_tag_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/gl_end"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/ly_tag_hint_1"
+            app:layout_constraintEnd_toStartOf="@id/layReference"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@id/ly_tag_hint"
+            tools:background="@android:color/holo_orange_dark">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/txt_plan_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ads_outfit_semibold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="0dp"
+                    android:maxLines="1"
+                    android:textAllCaps="true"
+                    android:textColor="#121212"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toTopOf="@+id/txt_plan_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:background="@android:color/holo_purple"
+                    tools:text="@string/yearly" />
+
+                <!--            <TextView-->
+                <!--                android:id="@+id/txt_plan_discount"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginHorizontal="@dimen/_4sdp"-->
+                <!--                android:fontFamily="@font/ads_plus_jakarta_sans_bold"-->
+                <!--                android:gravity="center_vertical"-->
+                <!--                android:includeFontPadding="false"-->
+                <!--                android:maxLines="1"-->
+                <!--                android:textSize="@dimen/_11ssp"-->
+                <!--                app:layout_constraintBaseline_toBaselineOf="@+id/txt_plan_title"-->
+                <!--                app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                app:layout_constraintHorizontal_bias="0.5"-->
+                <!--                app:layout_constraintStart_toEndOf="@+id/txt_plan_title"-->
+                <!--                tools:text="80% OFF"-->
+                <!--                tools:textColor="@color/default_four_plan_selected_life_time_sku_border_color" />-->
+
+                <TextView
+                    android:id="@+id/txt_plan_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:fontFamily="@font/ads_outfit_regular"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="0dp"
+                    android:maxLines="1"
+                    android:textColor="#3F3F3F"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_plan_title"
+                    tools:background="@android:color/holo_purple"
+                    tools:text="@string/lifetime_purchase" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layReference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txt_plan_reference_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ads_outfit_semibold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="#121212"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintBottom_toTopOf="@id/txtPerWeek"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="₹29,000" />
+
+            <TextView
+                android:id="@+id/txtPerWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ads_outfit_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@string/per_week"
+                android:textColor="#3F3F3F"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/txt_plan_reference_price"
+                app:layout_constraintStart_toStartOf="@id/txt_plan_reference_price"
+                app:layout_constraintTop_toBottomOf="@id/txt_plan_reference_price" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/ly_tag_hint_1"
+            layout="@layout/two_plan_tag_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/gl_end"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

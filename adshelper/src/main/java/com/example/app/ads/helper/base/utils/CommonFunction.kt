@@ -3,6 +3,12 @@
 package com.example.app.ads.helper.base.utils
 
 import android.content.Context
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.AbsoluteSizeSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -160,5 +166,94 @@ internal fun View.addMargin(
     return v
 }
 
+
+fun TextView.setTrialPeriodStyle(
+    trialPeriod: String,
+    fullText: String,
+    @ColorRes trialPeriodColor: Int,
+    trialPeriodFontSizeSp: Int = 18,
+    makeTrialPeriodBold: Boolean = true
+) {
+    val spannableString = SpannableString(fullText)
+
+    // Style ONLY the trial period (%1s)
+    val trialPeriodIndex = fullText.indexOf(trialPeriod, ignoreCase = true)
+    if (trialPeriodIndex != -1) {
+        val trialPeriodEnd = trialPeriodIndex + trialPeriod.length
+
+        // Color
+        spannableString.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(context, trialPeriodColor)),
+            trialPeriodIndex,
+            trialPeriodEnd,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Font size
+        spannableString.setSpan(
+            AbsoluteSizeSpan(trialPeriodFontSizeSp, true),
+            trialPeriodIndex,
+            trialPeriodEnd,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Bold style
+        if (makeTrialPeriodBold) {
+            spannableString.setSpan(
+                StyleSpan(Typeface.BOLD),
+                trialPeriodIndex,
+                trialPeriodEnd,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+    }
+
+    this.text = spannableString
+}
+
+
+fun TextView.setPriceStyle(
+    price: String,
+    fullText: String,
+    @ColorRes priceColor: Int,
+    priceFontSizeSp: Int = 18,
+    makePriceBold: Boolean = true
+) {
+    val spannableString = SpannableString(fullText)
+
+    // Style ONLY the price (%1s)
+    val priceIndex = fullText.indexOf(price, ignoreCase = true)
+    if (priceIndex != -1) {
+        val priceEnd = priceIndex + price.length
+
+        // Color
+        spannableString.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(context, priceColor)),
+            priceIndex,
+            priceEnd,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Font size
+        spannableString.setSpan(
+            AbsoluteSizeSpan(priceFontSizeSp, true),
+            priceIndex,
+            priceEnd,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Bold style
+        if (makePriceBold) {
+            spannableString.setSpan(
+                StyleSpan(Typeface.BOLD),
+                priceIndex,
+                priceEnd,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+    }
+
+    this.text = spannableString
+}
 
 

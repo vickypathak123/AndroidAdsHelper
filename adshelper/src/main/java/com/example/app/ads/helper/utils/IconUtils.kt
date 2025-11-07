@@ -47,7 +47,7 @@ internal fun View.onGlobalLayout(callback: () -> Unit) {
 
 fun setCloseIconPosition(
     fParentLayout: ConstraintLayout,
-    fCloseIcon: ImageView,
+    fCloseIcon: View,
     fIconPosition: IconPosition
 ) {
     if (isPiePlus) {

@@ -46,6 +46,15 @@
 
     <style name="theme_bottom_sheet_shape_appearance" parent="Widget.MaterialComponents.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/top_round_16_dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Transparent">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent_black_45</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:colorForeground">@android:color/transparent</item>
     </style>
 
     <style name="dialog_animation_bottom_to_top">
@@ -164,7 +173,7 @@
 
     <style name="LightAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- Customize colors if needed -->
-<!--        <item name="colorPrimary">#6200EE</item> &lt;!&ndash; Primary color &ndash;&gt;-->
-<!--        <item name="colorAccent">#03DAC5</item> &lt;!&ndash; Accent color &ndash;&gt;-->
+        <!--        <item name="colorPrimary">#6200EE</item> &lt;!&ndash; Primary color &ndash;&gt;-->
+        <!--        <item name="colorAccent">#03DAC5</item> &lt;!&ndash; Accent color &ndash;&gt;-->
     </style>
 </resources>

@@ -29,7 +29,7 @@ object VasuSplashConfig {
         onNextAction: () -> Unit,
     ) {
 
-        val listOfInitialSubscriptionOpenFlow = mVasuSubscriptionRemoteConfigModel.initialSubscriptionOpenFlow
+        val listOfInitialSubscriptionOpenFlow = mVasuSubscriptionRemoteConfigModel.initialSubscriptionOpenFlow.ifEmpty { listOf(1) }
 
         val oldIndex: Int = AdsManager(context = fActivity).initialSubscriptionOpenFlowIndex
 
@@ -70,5 +70,28 @@ object VasuSplashConfig {
 
             else -> onAction.invoke(false)
         }
+    }
+
+    fun getNextShowIndex(fActivity: Activity): Int {
+        val listOfInitialSubscriptionOpenFlow =
+            mVasuSubscriptionRemoteConfigModel.initialSubscriptionOpenFlow.ifEmpty { listOf(1) }
+
+        val oldIndex: Int = AdsManager(context = fActivity).initialSubscriptionOpenFlowIndex
+
+        val showIndex = if (oldIndex >= 0 && oldIndex < listOfInitialSubscriptionOpenFlow.size) {
+            oldIndex
+        } else {
+            0
+        }
+
+        // Calculate next index safely (wrap around if needed)
+        val nextIndex = if (showIndex + 1 < listOfInitialSubscriptionOpenFlow.size) {
+            showIndex + 1
+        } else {
+            0 // or keep last index, depends on your requirement
+        }
+
+        return (0).takeIf { !AdsManager(fActivity).isNeedToShowAds }
+            ?: listOfInitialSubscriptionOpenFlow[nextIndex]
     }
 }

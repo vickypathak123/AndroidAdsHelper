@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.example.app.ads.helper.revenuecat'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdk 23
         //noinspection OldTargetApi
-        targetSdk 34
+        targetSdk 35
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

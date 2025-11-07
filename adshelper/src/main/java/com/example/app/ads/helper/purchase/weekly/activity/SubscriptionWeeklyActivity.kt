@@ -54,6 +54,7 @@ import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigMode
 import com.example.app.ads.helper.utils.IconPosition
 import com.example.app.ads.helper.utils.getFormattedTwoLineString
 import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isAppForeground
 import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.utils.logE
 import com.example.app.ads.helper.utils.setCloseIconPosition
@@ -100,17 +101,21 @@ internal class SubscriptionWeeklyActivity :
         private var screenDataModel: WeeklyPlanScreenDataModel? = null
         private var onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
         private var reviewDialogData: Pair<String, String> = Pair("", "")
+        private var onBackShowInterAd: (fContext: Activity, () -> Unit) -> Unit =
+            { _, next -> next() }
 
         internal fun launchScreen(
             fActivity: Activity,
             isFromTimeLine: Boolean,
             screenDataModel: WeeklyPlanScreenDataModel,
             reviewDialogData: Pair<String, String>,
+            onBackShowInterAd: (fContext: Activity, () -> Unit) -> Unit = { _, next -> next() },
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
         ) {
             Companion.screenDataModel = screenDataModel
             Companion.onScreenFinish = onScreenFinish
             Companion.reviewDialogData = reviewDialogData
+            Companion.onBackShowInterAd = onBackShowInterAd
 
             val lIntent = Intent(fActivity, SubscriptionWeeklyActivity::class.java)
             lIntent.putExtra("isFromTimeLine", isFromTimeLine)
@@ -349,7 +354,8 @@ internal class SubscriptionWeeklyActivity :
 
     override fun needToShowReviewDialog(): Boolean {
 //        return (!isFromTimeLine) && IS_FROM_SPLASH && (!AdsManager(context = mActivity).isReviewDialogOpened)
-        return !isUserPurchaseAnyPlan && isOnline && (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
+
+        return !isUserPurchaseAnyPlan && isOnline /*&& (!isFromTimeLine)*/ && mVasuSubscriptionRemoteConfigModel.isShowReviewDialog &&  (!AdsManager(context = mActivity).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false
@@ -395,14 +401,40 @@ internal class SubscriptionWeeklyActivity :
         }
     }
 
+//    override fun customOnBackPressed() {
+//        if (needToShowReviewDialog()) {
+//            super.customOnBackPressed()
+//        } else {
+//            if (mBinding.ivSubClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
+//                fireSubscriptionEvent(fEventType = SubscriptionEventType.WEEKLY_PLANS_SCREEN_CLOSE)
+//            }
+//            super.customOnBackPressed()
+//            isSystemBackButtonPressed = false
+//        }
+//    }
+
     override fun customOnBackPressed() {
         if (needToShowReviewDialog()) {
             super.customOnBackPressed()
         } else {
+            if (mBinding.ivSubClose.visibility != View.VISIBLE)
+                return
+
             if (mBinding.ivSubClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
                 fireSubscriptionEvent(fEventType = SubscriptionEventType.WEEKLY_PLANS_SCREEN_CLOSE)
             }
-            super.customOnBackPressed()
+
+//            super.customOnBackPressed()
+            if (isAppForeground && needToShowBackAd()) {
+                logE("CRASH_CHECK_1", "8")
+                onBackShowInterAd.invoke(mActivity) {
+                    directBack()
+                }
+
+            } else {
+                logE("CRASH_CHECK_1", "9")
+                directBack()
+            }
             isSystemBackButtonPressed = false
         }
     }
@@ -435,6 +467,67 @@ internal class SubscriptionWeeklyActivity :
         }
     }
 
+//    private fun setWeeklyProductData(productInfo: ProductInfo) {
+//        CoroutineScope(Dispatchers.Main).launch {
+//            mActivity.runOnUiThread {
+//                val offer = productInfo.planOfferType
+//
+//                if (offer != null) {
+//
+//                    when (productInfo.planOfferType) {
+//
+//                        PlanOfferType.FREE_TRIAL -> {
+//
+//                            Log.e("Subscription", "WEEK => OfferType.FreeTrial ====== $productInfo")
+//
+////                            val period =
+////                                getBillingPeriod(offer.pricingPhases.first().billingPeriod.iso8601)
+//
+//                            mBinding.tvFreeTrial.visible
+//                            mBinding.tvNoPaymentRequired.visible
+//
+////                            mBinding.tvFreeTrial.text = String.format(
+////                                getString(R.string.after_free_trial_period_s_per_week),
+////                                productInfo.formattedPrice
+////                            )
+//                            mBinding.tvFreeTrial.text = getLocalizedString(mActivity, resourceId = R.string.after_free_trial_period_s_per_week , formatArgs = arrayOf(productInfo.formattedPrice))
+//
+//
+////                            mBinding.tvFreeTrialPeriod.text = String.format(
+////                                getString(R.string.s_free_trial),
+////                                productInfo.freeTrialPeriod
+////                            )
+//                            mBinding.tvFreeTrialPeriod.text = getLocalizedString(mActivity, resourceId = R.string.s_free_trial , formatArgs = arrayOf(productInfo.freeTrialPeriod))
+//                        }
+//
+//                        PlanOfferType.INTRO_OFFER -> {
+//
+//                        }
+//
+//                        else -> {
+//
+//                            Log.e("Subscription", "WEEK => else")
+//
+//                            mBinding.tvFreeTrial.gone
+//                            mBinding.tvNoPaymentRequired.gone
+//
+//                            val regularPrice = productInfo.formattedPrice
+//
+////                            mBinding.tvFreeTrialPeriod.text = String.format(
+////                                getString(R.string.s_per_week),
+////                                regularPrice
+////                            )
+//                            mBinding.tvFreeTrialPeriod.text = getLocalizedString(mActivity, resourceId = R.string.s_per_week , formatArgs = arrayOf(regularPrice))
+//
+//                        }
+//                    }
+//
+//                }
+//                isWeeklyPrizeSated = true
+//            }
+//        }
+//    }
+
     private fun setWeeklyProductData(productInfo: ProductInfo) {
         CoroutineScope(Dispatchers.Main).launch {
             mActivity.runOnUiThread {
@@ -458,7 +551,17 @@ internal class SubscriptionWeeklyActivity :
 //                                getString(R.string.after_free_trial_period_s_per_week),
 //                                productInfo.formattedPrice
 //                            )
-                            mBinding.tvFreeTrial.text = getLocalizedString(mActivity, resourceId = R.string.after_free_trial_period_s_per_week , formatArgs = arrayOf(productInfo.formattedPrice))
+
+                            val subType: Int =
+                                mVasuSubscriptionRemoteConfigModel.weeklyScreenPlanType
+                            val stringResId = when (subType) {
+                                0 -> R.string.after_free_trial_period_s_per_lifetime
+                                1 -> R.string.after_free_trial_period_s_per_yearly
+                                2 -> R.string.after_free_trial_period_s_per_monthly
+                                3 -> R.string.after_free_trial_period_s_per_week
+                                else -> R.string.after_free_trial_period_s_per_yearly // fallback
+                            }
+                            mBinding.tvFreeTrial.text = getLocalizedString(mActivity, resourceId = stringResId, formatArgs = arrayOf(productInfo.formattedPrice))
 
 
 //                            mBinding.tvFreeTrialPeriod.text = String.format(
@@ -485,7 +588,16 @@ internal class SubscriptionWeeklyActivity :
 //                                getString(R.string.s_per_week),
 //                                regularPrice
 //                            )
-                            mBinding.tvFreeTrialPeriod.text = getLocalizedString(mActivity, resourceId = R.string.s_per_week , formatArgs = arrayOf(regularPrice))
+                            val subType: Int =
+                                mVasuSubscriptionRemoteConfigModel.weeklyScreenPlanType
+                            val stringResId = when (subType) {
+                                0 -> R.string.s_per_lifetime
+                                1 -> R.string.s_per_yearly
+                                2 -> R.string.s_per_monthly
+                                3 -> R.string.s_per_week
+                                else -> R.string.s_per_yearly // fallback
+                            }
+                            mBinding.tvFreeTrialPeriod.text = getLocalizedString(mActivity, resourceId = stringResId , formatArgs = arrayOf(regularPrice))
 
                         }
                     }
@@ -496,13 +608,53 @@ internal class SubscriptionWeeklyActivity :
         }
     }
 
+//    private fun setProductData() {
+//        CoroutineScope(Dispatchers.IO).launch {
+//
+//
+//            ProductPurchaseHelper.getWeeklyProductInfo?.let { weeklyProductInfo ->
+//                mWeeklyPlanProductInfo = weeklyProductInfo
+//                setWeeklyProductData(productInfo = weeklyProductInfo)
+//            }
+//        }
+//    }
+
     private fun setProductData() {
         CoroutineScope(Dispatchers.IO).launch {
+            var subType: Int =
+                mVasuSubscriptionRemoteConfigModel.weeklyScreenPlanType
+            when (subType) {
+                0-> {
+                    ProductPurchaseHelper.getLifeTimeProductInfo?.let { weeklyProductInfo ->
+                        mWeeklyPlanProductInfo = weeklyProductInfo
+                        setWeeklyProductData(productInfo = weeklyProductInfo)
+                    }
+                }
+                1 -> {
+                    ProductPurchaseHelper.getYearlyProductInfo?.let { weeklyProductInfo ->
+                        mWeeklyPlanProductInfo = weeklyProductInfo
+                        setWeeklyProductData(productInfo = weeklyProductInfo)
+                    }
+                }
 
+                2 -> {
+                    ProductPurchaseHelper.getMonthlyProductInfo?.let { weeklyProductInfo ->
+                        mWeeklyPlanProductInfo = weeklyProductInfo
+                        setWeeklyProductData(productInfo = weeklyProductInfo)
+                    }
+                }
 
-            ProductPurchaseHelper.getWeeklyProductInfo?.let { weeklyProductInfo ->
-                mWeeklyPlanProductInfo = weeklyProductInfo
-                setWeeklyProductData(productInfo = weeklyProductInfo)
+                3 -> {
+                    ProductPurchaseHelper.getWeeklyProductInfo?.let { weeklyProductInfo ->
+                        mWeeklyPlanProductInfo = weeklyProductInfo
+                        setWeeklyProductData(productInfo = weeklyProductInfo)
+                    }
+                }
+
+                else -> ProductPurchaseHelper.getYearlyProductInfo?.let { weeklyProductInfo ->
+                    mWeeklyPlanProductInfo = weeklyProductInfo
+                    setWeeklyProductData(productInfo = weeklyProductInfo)
+                }
             }
         }
     }
@@ -528,19 +680,102 @@ internal class SubscriptionWeeklyActivity :
                     Log.e(TAG, "onPurchasedSuccess:  === $mActivity" )
                     CoroutineScope(Dispatchers.Main).launch {
                         mActivity.runOnUiThread {
-                            mWeeklyPlanProductInfo?.let { productInfo ->
-                                fireSubscriptionEvent(
-                                    fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(
-                                        paramBundle = getEventParamBundle(productInfo = productInfo)
-                                    )
-                                        .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
-                                        ?: SubscriptionEventType.WEEKLY_SUBSCRIBE(
-                                            paramBundle = getEventParamBundle(
-                                                productInfo = productInfo
+                            val subType: Int = mVasuSubscriptionRemoteConfigModel.weeklyScreenPlanType
+                            when (subType) {
+                                0 -> {
+                                    mWeeklyPlanProductInfo?.let { productInfo ->
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.LIFE_TIME_FREE_TRAIL_PURCHASE(
+                                                paramBundle = getEventParamBundle(productInfo = productInfo)
                                             )
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.LIFE_TIME_PURCHASE(
+                                                    paramBundle = getEventParamBundle(
+                                                        productInfo = productInfo
+                                                    )
+                                                )
                                         )
-                                )
+                                    }
+                                }
+
+                                1 -> {
+                                    mWeeklyPlanProductInfo?.let { productInfo ->
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE(
+                                                paramBundle = getEventParamBundle(productInfo = productInfo)
+                                            )
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.YEARLY_SUBSCRIBE(
+                                                    paramBundle = getEventParamBundle(
+                                                        productInfo = productInfo
+                                                    )
+                                                )
+                                        )
+                                    }
+                                }
+
+                                2 -> {
+                                    mWeeklyPlanProductInfo?.let { productInfo ->
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE(
+                                                paramBundle = getEventParamBundle(productInfo = productInfo)
+                                            )
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.MONTHLY_SUBSCRIBE(
+                                                    paramBundle = getEventParamBundle(
+                                                        productInfo = productInfo
+                                                    )
+                                                )
+                                        )
+                                    }
+                                }
+
+                                3 -> {
+                                    mWeeklyPlanProductInfo?.let { productInfo ->
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(
+                                                paramBundle = getEventParamBundle(productInfo = productInfo)
+                                            )
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.WEEKLY_SUBSCRIBE(
+                                                    paramBundle = getEventParamBundle(
+                                                        productInfo = productInfo
+                                                    )
+                                                )
+                                        )
+                                    }
+                                }
+
+                                else -> {
+                                    mWeeklyPlanProductInfo?.let { productInfo ->
+                                        fireSubscriptionEvent(
+                                            fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(
+                                                paramBundle = getEventParamBundle(productInfo = productInfo)
+                                            )
+                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+                                                ?: SubscriptionEventType.WEEKLY_SUBSCRIBE(
+                                                    paramBundle = getEventParamBundle(
+                                                        productInfo = productInfo
+                                                    )
+                                                )
+                                        )
+                                    }
+                                }
                             }
+
+//                            mWeeklyPlanProductInfo?.let { productInfo ->
+//                                fireSubscriptionEvent(
+//                                    fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(
+//                                        paramBundle = getEventParamBundle(productInfo = productInfo)
+//                                    )
+//                                        .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
+//                                        ?: SubscriptionEventType.WEEKLY_SUBSCRIBE(
+//                                            paramBundle = getEventParamBundle(
+//                                                productInfo = productInfo
+//                                            )
+//                                        )
+//                                )
+//                            }
 
 
                             isUserPurchaseAnyPlan = true

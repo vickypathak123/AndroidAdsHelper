@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/default_two_plan_selected_sku_border_color"
+        tools:background="@color/default_two_plan_selected_sku_border_color"
+        app:layout_constraintBottom_toBottomOf="@id/txt_tag"
+        app:layout_constraintEnd_toEndOf="@id/txt_tag"
+        app:layout_constraintStart_toStartOf="@id/txt_tag"
+        app:layout_constraintTop_toTopOf="@id/txt_tag"
+        app:shapeAppearance="@style/full_round" />
+
+    <TextView
+        android:id="@+id/txt_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ads_outfit_medium"
+        android:gravity="center"
+        android:text="@string/best_offer"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textAllCaps="true"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:paddingVertical="@dimen/_2sdp"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/_9ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/best_value" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

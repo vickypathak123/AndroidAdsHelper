@@ -7,7 +7,8 @@ package com.example.app.ads.helper.purchase.utils
 enum class MorePlanScreenType(var value: String) {
     SIX_BOX_SCREEN("six_box_screen"),
     WEEKLY_SCREEN("weekly_screen"),
-    FOUR_PLAN_SCREEN("four_plan_screen");
+    FOUR_PLAN_SCREEN("four_plan_screen"),
+    TWO_PLAN_SCREEN("two_plan_screen");
 
     companion object {
 

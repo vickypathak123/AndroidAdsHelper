@@ -60,6 +60,7 @@ import com.example.app.ads.helper.purchase.utils.SubscriptionEventType
 import com.example.app.ads.helper.purchase.utils.getEventParamBundle
 import com.example.app.ads.helper.remoteconfig.mVasuSubscriptionRemoteConfigModel
 import com.example.app.ads.helper.utils.getLocalizedString
+import com.example.app.ads.helper.utils.isAppForeground
 import com.example.app.ads.helper.utils.isOnline
 import com.example.app.ads.helper.utils.isRTLDirectionFromLocale
 import com.example.app.ads.helper.utils.logE
@@ -69,8 +70,116 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+
+enum class PlanPosition { LEFT, CENTER, RIGHT }
 
 internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBinding>() {
+
+    // REFACTOR: 1. Define plan types for clarity and easy management.
+    private object PlanType {
+        const val LIFETIME = 0
+        const val YEARLY = 1
+        const val MONTHLY = 2
+        const val WEEKLY = 3
+    }
+
+
+
+    // This is the new, correct sequential mapping
+    val visualLayoutOrder = listOf(
+        PlanPosition.LEFT,   // 1st plan from remote config goes to the LEFT.
+        PlanPosition.CENTER, // 2nd plan from remote config goes to the CENTER.
+        PlanPosition.RIGHT   // 3rd plan from remote config goes to the RIGHT.
+    )
+
+    // REFACTOR: 2. Get the desired plan order from your remote config.
+    // The order in this list determines the display order in the UI.
+    // Example: listOf(1, 0, 2) -> Yearly, Lifetime, Monthly
+//    private val planDisplayOrder: List<Int>
+//        get() = mVasuSubscriptionRemoteConfigModel.sixBoxScreenPlanFlow.takeIf { it.isNotEmpty() }
+//            ?: listOf(PlanType.YEARLY, PlanType.LIFETIME, PlanType.MONTHLY) // Default order
+
+    // REFACTOR: 2. Get the desired plan order from your remote config.
+    // The order in this list determines the display order in the UI.
+    // Example: listOf(1, 0, 2) -> Yearly, Lifetime, Monthly
+//    private val planDisplayOrder: List<Int>
+//        get() {
+//            val remoteList = mVasuSubscriptionRemoteConfigModel.sixBoxScreenPlanFlow
+//            val defaultOrder = listOf(PlanType.YEARLY, PlanType.LIFETIME, PlanType.MONTHLY)
+//
+//            // If the remote list is empty, just return the default.
+//            if (remoteList.isEmpty()) {
+//                return defaultOrder
+//            }
+//
+//            // Create a mutable list to build our final order
+//            val finalOrder = mutableListOf<Int>()
+//
+//            // 1. Process the first 3 items from the remote list
+//            remoteList.take(3).forEach { planType ->
+//                // Add the number if it's valid (0-3) AND not already added
+//                if (planType in 0..3 && !finalOrder.contains(planType)) {
+//                    finalOrder.add(planType)
+//                }
+//            }
+//
+//            // 2. If after processing, we still have fewer than 3 plans,
+//            //    we need to fill the gaps with default values.
+//            if (finalOrder.size < 3) {
+//                // Iterate through the default order
+//                defaultOrder.forEach { defaultPlanType ->
+//                    // If our list doesn't have this default plan yet, and we need more plans...
+//                    if (!finalOrder.contains(defaultPlanType) && finalOrder.size < 3) {
+//                        // ...add it to the end.
+//                        finalOrder.add(defaultPlanType)
+//                    }
+//                }
+//            }
+//
+//            return finalOrder
+//        }
+
+    fun getValidatedOrderOrFallback(remoteOrder: List<Int>, defaultOrder: List<Int>): List<Int> {
+        // Take the first 4 items from the remote config.
+        val candidate = remoteOrder.take(3)
+
+        // Check for all three conditions of a "perfect" list.
+        val isPerfect = candidate.size == 3 &&                  // Condition 1: Must have exactly 4 items.
+                candidate.all { it in 0..3 } &&         // Condition 2: All numbers must be valid (0-3).
+                candidate.toSet().size == 3            // Condition 3: All numbers must be unique.
+
+        // If the candidate list is perfect, return it. Otherwise, return the default.
+        return if (isPerfect) {
+            candidate
+        } else {
+            defaultOrder
+        }
+    }
+
+//    private val planOrder: List<Int>
+//        get() = (mVasuSubscriptionRemoteConfigModel.fourPlanScreenPlanFlow.takeIf { it.isNotEmpty() }
+//            ?: listOf(1, 2, 0, 3))     // 1. Initial List
+//            .filter { it in 0..3 }    // 2. Filter
+//            .distinct()               // 3. Distinct
+//            .take(4)
+
+    private val planDisplayOrder: List<Int>
+        get() {
+            val remoteList = mVasuSubscriptionRemoteConfigModel.sixBoxScreenPlanFlow
+            val defaultOrder = listOf(0, 1, 2)
+
+            return getValidatedOrderOrFallback(remoteList, defaultOrder)
+        }
+
+//    private val planDisplayOrder: List<Int>
+//        get() {
+//            val remoteList = mVasuSubscriptionRemoteConfigModel.sixBoxScreenPlanFlow
+//            return getValidatedThreePlanOrderFromFourIds(remoteList)
+//        }
+
+    // REFACTOR: 3. Create a list of UI binding slots to populate dynamically.
+    private lateinit var planViewBindings: List<LayoutSubscribeSkuItemBinding>
 
     private var isLifeTimePrizeSated: Boolean = false
     private var isAnyPlanPrizeSated: Boolean = false
@@ -467,25 +576,25 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
     companion object {
         private var screenDataModel: ViewAllPlansScreenDataModel? = null
-
         private var onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit = {}
-
         private var reviewDialogData: Pair<String, String> = Pair("", "")
 
-//        var animationDuration: Float = 500.0f
-//        var animationName: String = "DecelerateInterpolator"
-
+        private var onBackShowInterAd: (fContext: Activity, () -> Unit) -> Unit =
+            { _, next -> next() }
 
         internal fun launchScreen(
             fActivity: Activity,
             isFromTimeLine: Boolean,
             screenDataModel: ViewAllPlansScreenDataModel,
             reviewDialogData: Pair<String, String>,
+            onBackShowInterAd: (fContext: Activity, () -> Unit) -> Unit = { _, next -> next() },
             onScreenFinish: (isUserPurchaseAnyPlan: Boolean) -> Unit,
         ) {
             Companion.screenDataModel = screenDataModel
             Companion.onScreenFinish = onScreenFinish
             Companion.reviewDialogData = reviewDialogData
+            Companion.onBackShowInterAd = onBackShowInterAd
+
 
             val lIntent = Intent(fActivity, ViewAllPlansActivity::class.java)
             lIntent.putExtra("isFromTimeLine", isFromTimeLine)
@@ -549,47 +658,19 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                     logE(TAG, "onPurchasedSuccess: ")
                     CoroutineScope(Dispatchers.Main).launch {
                         mActivity.runOnUiThread {
-                            when {
-                                mBinding.lyYearlyPlan.root.isSelected -> {
-                                    mYearlyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(
-                                            fEventType = SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
-                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
-                                                ?: SubscriptionEventType.YEARLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
-                                        )
-                                    }
-                                }
+                            val selectedView = planViewBindings.firstOrNull { it.root.isSelected }
+                            val productInfo = selectedView?.root?.tag as? ProductInfo
 
-                                mBinding.lyLifetimePlan.root.isSelected -> {
-                                    mLifetimePlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(
-                                            fEventType = SubscriptionEventType.LIFE_TIME_FREE_TRAIL_PURCHASE(paramBundle = getEventParamBundle(productInfo = productInfo))
-                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
-                                                ?: SubscriptionEventType.LIFE_TIME_PURCHASE(paramBundle = getEventParamBundle(productInfo = productInfo))
-                                        )
-                                    }
+                            productInfo?.let {
+                                val eventType = when (it.id) {
+                                    mYearlyPlanProductInfo?.id -> if (it.planOfferType == PlanOfferType.FREE_TRIAL) SubscriptionEventType.YEARLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = it)) else SubscriptionEventType.YEARLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = it))
+                                    mLifetimePlanProductInfo?.id -> if (it.planOfferType == PlanOfferType.FREE_TRIAL) SubscriptionEventType.LIFE_TIME_FREE_TRAIL_PURCHASE(paramBundle = getEventParamBundle(productInfo = it)) else SubscriptionEventType.LIFE_TIME_PURCHASE(paramBundle = getEventParamBundle(productInfo = it))
+                                    mMonthlyPlanProductInfo?.id -> if (it.planOfferType == PlanOfferType.FREE_TRIAL) SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = it)) else SubscriptionEventType.MONTHLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = it))
+                                    mWeeklyPlanProductInfo?.id -> if (it.planOfferType == PlanOfferType.FREE_TRIAL) SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = it)) else SubscriptionEventType.WEEKLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = it))
+                                    else -> null
                                 }
-
-                                mBinding.lyMonthlyPlan.root.isSelected -> {
-                                    mMonthlyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(
-                                            fEventType = SubscriptionEventType.MONTHLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
-                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
-                                                ?: SubscriptionEventType.MONTHLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
-                                        )
-                                    } ?: mWeeklyPlanProductInfo?.let { productInfo ->
-                                        fireSubscriptionEvent(
-                                            fEventType = SubscriptionEventType.WEEKLY_FREE_TRAIL_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
-                                                .takeIf { productInfo.planOfferType == PlanOfferType.FREE_TRIAL }
-                                                ?: SubscriptionEventType.WEEKLY_SUBSCRIBE(paramBundle = getEventParamBundle(productInfo = productInfo))
-                                        )
-                                    }
-                                }
-
-                                else -> {}
+                                eventType?.let { e -> fireSubscriptionEvent(fEventType = e) }
                             }
-
-
 
                             isUserPurchaseAnyPlan = true
                             mBinding.ivClose.performClick()
@@ -603,11 +684,6 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
     override fun initView() {
         super.initView()
-
-//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-
-//        getEdgeToEdgeMargin()
-
         fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_OPEN)
 
         val job: Job = setBillingListener(fWhere = "initView")
@@ -620,12 +696,12 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         }
 
         with(mBinding) {
-            root.layoutDirection = View.LAYOUT_DIRECTION_RTL.takeIf { isRTLDirectionFromLocale } ?: View.LAYOUT_DIRECTION_LTR
-            root.textDirection = View.LAYOUT_DIRECTION_RTL.takeIf { isRTLDirectionFromLocale } ?: View.LAYOUT_DIRECTION_LTR
-
             lySubscribeButton.lottieBtnContinue.scaleX = (-1f).takeIf { isRTLDirectionFromLocale } ?: 1f
-
             setScreenUI()
+
+            // REFACTOR: Initialize the list of plan view bindings.
+            // The order here matches the XML, but the content will be dynamic.
+            planViewBindings = listOf(lyYearlyPlan, lyLifetimePlan, lyMonthlyPlan)
 
             setBoxItem(lyBoxItem = lyItem1, boxItem = listOfBoxItem[0].apply {
                 backgroundColor = backgroundColor.takeIf { it != 0 } ?: Color.parseColor("#F2F8FF")
@@ -654,17 +730,9 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
             setRatingViewPager()
 
-            lyYearlyPlan.apply {
-                ivPlanIcon.setImageDrawable(mYearPlanIconSelector)
-                setPlanUI(fBinding = this)
-            }
-            lyLifetimePlan.apply {
-                ivPlanIcon.setImageDrawable(mLifTimePlanIconSelector)
-                setPlanUI(fBinding = this)
-            }
-            lyMonthlyPlan.apply {
-                ivPlanIcon.setImageDrawable(mMonthPlanIconSelector)
-                setPlanUI(fBinding = this)
+            // REFACTOR: Set up common UI properties for all plan slots
+            planViewBindings.forEach { binding ->
+                setPlanUI(fBinding = binding)
             }
         }
     }
@@ -672,16 +740,16 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
     override fun initViewListener() {
         super.initViewListener()
         with(mBinding) {
-            setClickListener(
+            val clickableView = mutableListOf<View>(
                 ivClose,
                 txtPayNothingNow,
-                lyYearlyPlan.root,
-                lyLifetimePlan.root,
-                lyMonthlyPlan.root,
                 txtTermsOfUse,
                 txtPrivacyPolicy,
                 lySubscribeButton.root,
             )
+            // REFACTOR: Add all plan views to the click listener list
+            planViewBindings.forEach { clickableView.add(it.root) }
+            setClickListener(*clickableView.toTypedArray())
         }
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -691,114 +759,103 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
 
     override fun onClick(v: View) {
         super.onClick(v)
+
+        // REFACTOR: Generic click handler for all plan views.
+        if (v.tag is ProductInfo) {
+            planViewBindings.forEach { binding ->
+                updateSelectedPlanUI(fBinding = binding, isPlanSelected = (v == binding.root))
+            }
+
+            val lProductInfo = v.tag as? ProductInfo
+            logE(TAG, "onClick: Selected Plan ID: ${lProductInfo?.id}")
+
+            lProductInfo?.let { productInfo ->
+                when (productInfo.planOfferType) {
+                    PlanOfferType.FREE_TRIAL -> {
+                        mBinding.txtFreeThenPerPeriod.apply {
+                            this.text = getLocalizedString<String>(
+                                context = mActivity,
+                                resourceId = R.string.free_then_per_period,
+                                formatArgs = arrayOf(
+                                    productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity),
+                                    productInfo.formattedPrice,
+                                    productInfo.actualBillingPeriod.getBillingPeriodName(context = mActivity)
+                                )
+                            ).lowercase()
+                            this.visible
+                        }
+                        mBinding.txtStartWithAFreeTrial.apply {
+                            this.text = getLocalizedString<String>(
+                                context = mActivity,
+                                resourceId = R.string.payment_is_charged_after_period_cancel_anytime,
+                                formatArgs = arrayOf(
+                                    productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity).lowercase()
+                                )
+                            )
+                            this.visible
+                        }
+
+                        setDefaultButtonText(
+                            buttonTextIndex = mPurchaseButtonTextIndex,
+                            period = productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity),
+                            price = "${productInfo.priceCurrencySymbol}0",
+                            isNeedToUpdateTopHeader = false
+                        )
+                    }
+                    PlanOfferType.INTRO_OFFER -> {
+                        mBinding.txtFreeThenPerPeriod.apply {
+                            this.text = getLocalizedString<String>(
+                                context = mActivity,
+                                resourceId = R.string.price_upto_period_then_price_slash_period,
+                                formatArgs = arrayOf(
+                                    productInfo.offerFormattedPrice,
+                                    productInfo.offerActualBillingPeriod.getFullBillingPeriod(context = mActivity),
+                                    getLocalizedString<String>(
+                                        context = mActivity,
+                                        resourceId = R.string.price_slash_period,
+                                        formatArgs = arrayOf(
+                                            productInfo.formattedPrice,
+                                            productInfo.offerActualBillingPeriod.getBillingPeriodName(context = mActivity)
+                                        )
+                                    )
+                                )
+                            ).lowercase()
+                            this.visible
+                        }
+                        setDefaultButtonText(buttonTextIndex = 0, period = "", price = "")
+                    }
+                    else -> {
+                        mBinding.txtFreeThenPerPeriod.apply {
+                            val periodNameRes = when (productInfo) {
+                                mLifetimePlanProductInfo -> R.string.lifetime
+                                mYearlyPlanProductInfo -> R.string.yearly
+                                mMonthlyPlanProductInfo -> R.string.monthly
+                                else -> R.string.weekly
+                            }
+                            this.text = getLocalizedString<String>(
+                                context = mActivity,
+                                resourceId = R.string.price_for_period_use,
+                                formatArgs = arrayOf(
+                                    productInfo.formattedPrice,
+                                    getLocalizedString<String>(context = mActivity, resourceId = periodNameRes)
+                                )
+                            ).lowercase()
+                            this.visible
+                        }
+                        setDefaultButtonText(buttonTextIndex = 0, period = "", price = "")
+                    }
+                }
+            } ?: run {
+                setDefaultButtonText(buttonTextIndex = 0, period = "", price = "")
+            }
+            return
+        }
+
+
         with(mBinding) {
             when (v) {
                 txtPayNothingNow,
                 ivClose -> customOnBackPressed()
-
-                lyYearlyPlan.root,
-                lyLifetimePlan.root,
-                lyMonthlyPlan.root -> {
-                    updateSelectedPlanUI(fBinding = lyYearlyPlan, isPlanSelected = (v == lyYearlyPlan.root))
-                    updateSelectedPlanUI(fBinding = lyLifetimePlan, isPlanSelected = (v == lyLifetimePlan.root))
-                    updateSelectedPlanUI(fBinding = lyMonthlyPlan, isPlanSelected = (v == lyMonthlyPlan.root))
-
-                    val lProductInfo: ProductInfo? = when {
-                        lyYearlyPlan.root.isSelected -> mYearlyPlanProductInfo
-                        lyLifetimePlan.root.isSelected -> mLifetimePlanProductInfo
-                        lyMonthlyPlan.root.isSelected -> mMonthlyPlanProductInfo ?: mWeeklyPlanProductInfo
-                        else -> null
-                    }
-
-                    logE(TAG, "onClick: ${lProductInfo?.id}")
-
-                    lProductInfo?.let { productInfo ->
-                        when (productInfo.planOfferType) {
-                            PlanOfferType.FREE_TRIAL -> {
-                                txtFreeThenPerPeriod.apply {
-                                    this.text = getLocalizedString<String>(
-                                        context = mActivity,
-                                        resourceId = R.string.free_then_per_period,
-                                        formatArgs = arrayOf(
-                                            productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity),
-                                            productInfo.formattedPrice,
-                                            productInfo.actualBillingPeriod.getBillingPeriodName(context = mActivity)
-                                        )
-                                    ).lowercase()
-                                    this.visible
-                                }
-                                txtStartWithAFreeTrial.apply {
-                                    this.text = getLocalizedString<String>(
-                                        context = mActivity,
-                                        resourceId = R.string.payment_is_charged_after_period_cancel_anytime,
-                                        formatArgs = arrayOf(
-                                            productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity).lowercase()
-                                        )
-                                    )
-                                    this.visible
-                                }
-
-                                setDefaultButtonText(
-                                    buttonTextIndex = mPurchaseButtonTextIndex,
-                                    period = productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity),
-                                    price = "${productInfo.priceCurrencySymbol}0",
-                                    isNeedToUpdateTopHeader = false
-                                )
-                            }
-
-                            PlanOfferType.INTRO_OFFER -> {
-                                txtFreeThenPerPeriod.apply {
-                                    this.text = getLocalizedString<String>(
-                                        context = mActivity,
-                                        resourceId = R.string.price_upto_period_then_price_slash_period,
-                                        formatArgs = arrayOf(
-                                            productInfo.offerFormattedPrice,
-                                            productInfo.offerActualBillingPeriod.getFullBillingPeriod(context = mActivity),
-                                            getLocalizedString<String>(
-                                                context = mActivity,
-                                                resourceId = R.string.price_slash_period,
-                                                formatArgs = arrayOf(
-                                                    productInfo.formattedPrice,
-                                                    productInfo.offerActualBillingPeriod.getBillingPeriodName(context = mActivity)
-                                                )
-                                            )
-                                        )
-                                    ).lowercase()
-                                    this.visible
-                                }
-
-                                setDefaultButtonText(buttonTextIndex = 0, period = "", price = "")
-                            }
-
-                            else -> {
-                                txtFreeThenPerPeriod.apply {
-                                    this.text = getLocalizedString<String>(
-                                        context = mActivity,
-                                        resourceId = R.string.price_for_period_use,
-                                        formatArgs = arrayOf(
-                                            productInfo.formattedPrice,
-                                            getLocalizedString<String>(
-                                                context = mActivity,
-                                                resourceId = R.string.lifetime.takeIf {
-                                                    lyLifetimePlan.root.isSelected
-                                                } ?: R.string.yearly.takeIf {
-                                                    lyYearlyPlan.root.isSelected
-                                                } ?: R.string.monthly.takeIf {
-                                                    lyMonthlyPlan.root.isSelected && mMonthlyPlanProductInfo != null
-                                                } ?: R.string.weekly
-                                            )
-                                        )
-                                    ).lowercase()
-                                    this.visible
-                                }
-
-                                setDefaultButtonText(buttonTextIndex = 0, period = "", price = "")
-                            }
-                        }
-                    } ?: kotlin.run {
-                        setDefaultButtonText(buttonTextIndex = 0, period = "", price = "")
-                    }
-                }
 
                 txtTermsOfUse -> {
                     if (SUBSCRIPTION_TERMS_OF_USE.isNotEmpty()) {
@@ -808,10 +865,8 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                             toolbarColor = headerColor.defaultColor,
                             isNightMode = false
                         )
-                    } else {
                     }
                 }
-
                 txtPrivacyPolicy -> {
                     if (SUBSCRIPTION_PRIVACY_POLICY.isNotEmpty()) {
                         Launcher.openPrivacyPolicy(
@@ -820,33 +875,26 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
                             toolbarColor = headerColor.defaultColor,
                             isNightMode = false
                         )
-                    } else {
                     }
                 }
-
                 lySubscribeButton.root -> {
-                    val selectedSKU: String = when {
-                        lyYearlyPlan.root.isSelected -> mYearlyPlanProductInfo?.id ?: ""
-                        lyLifetimePlan.root.isSelected -> mLifetimePlanProductInfo?.id ?: ""
-                        lyMonthlyPlan.root.isSelected -> mMonthlyPlanProductInfo?.id ?: mWeeklyPlanProductInfo?.id ?: ""
-                        else -> ""
-                    }
+                    val selectedView = planViewBindings.firstOrNull { it.root.isSelected }
+                    val selectedProductInfo = selectedView?.root?.tag as? ProductInfo
 
-                    if (selectedSKU.isNotEmpty()) {
+                    if (selectedProductInfo != null) {
                         lySubscribeButton.root.disable
                         if (IS_ENABLE_TEST_PURCHASE) {
                             ProductPurchaseHelper.fireTestingPurchase(context = mActivity)
                         } else {
-                            ProductPurchaseHelper.purchase(activity = mActivity, productId = selectedSKU)
+                            ProductPurchaseHelper.purchase(activity = mActivity, productId = selectedProductInfo.id)
                         }
-                    } else {
                     }
                 }
-
                 else -> {}
             }
         }
     }
+
 
     private fun setDefaultButtonText(buttonTextIndex: Int, period: String, price: String, isNeedToUpdateTopHeader: Boolean = true) {
         with(mBinding) {
@@ -871,10 +919,12 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
             }
 
             if (isNeedToUpdateTopHeader) {
+                val selectedView = planViewBindings.firstOrNull { it.root.isSelected }
+                val isLifetime = (selectedView?.root?.tag as? ProductInfo) == mLifetimePlanProductInfo
                 txtStartWithAFreeTrial.apply {
                     this.text = getLocalizedString<String>(
                         context = mActivity,
-                        resourceId = R.string.lifetime_purchase.takeIf { lyLifetimePlan.root.isSelected } ?: R.string.subscription_will_auto_renew_cancel_anytime,
+                        resourceId = R.string.lifetime_purchase.takeIf { isLifetime } ?: R.string.subscription_will_auto_renew_cancel_anytime,
                     )
                     this.visible
                 }
@@ -983,6 +1033,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
             ).also { infiniteViewPager.adapter = it }
 
             infiniteViewPager.apply {
+                layoutDirection = View.LAYOUT_DIRECTION_LTR
                 this.setCurrentItem(1, false)
                 this.offscreenPageLimit = listSize // For Make Parent Height of Max Height of Child View
 
@@ -1006,10 +1057,11 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
             }
 
             dotsIndicator.apply {
+                layoutDirection = View.LAYOUT_DIRECTION_LTR
                 setPageSize(listOfRattingItem.size)
                 setCheckedColor(ratingIndicatorColor.defaultColor)
                 setNormalColor(ratingPlaceHolderColor.defaultColor)
-                setOrientation(IndicatorOrientation.INDICATOR_RTL.takeIf { isRTLDirectionFromLocale } ?: IndicatorOrientation.INDICATOR_HORIZONTAL)
+//                setOrientation(IndicatorOrientation.INDICATOR_RTL.takeIf { isRTLDirectionFromLocale } ?: IndicatorOrientation.INDICATOR_HORIZONTAL)
                 notifyDataChanged()
             }
 
@@ -1133,240 +1185,251 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         }
     }
 
+    // REFACTOR: This is the completely new, dynamic data population logic.
+//    private fun setProductData() {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            // 1. Fetch all available product info first
+//            mLifetimePlanProductInfo = ProductPurchaseHelper.getLifeTimeProductInfo
+//            mYearlyPlanProductInfo = ProductPurchaseHelper.getYearlyProductInfo
+//            mMonthlyPlanProductInfo = ProductPurchaseHelper.getMonthlyProductInfo
+//            mWeeklyPlanProductInfo = ProductPurchaseHelper.getWeeklyProductInfo
+//
+//            val productMap = mapOf(
+//                PlanType.LIFETIME to mLifetimePlanProductInfo,
+//                PlanType.YEARLY to mYearlyPlanProductInfo,
+//                PlanType.MONTHLY to mMonthlyPlanProductInfo,
+//                PlanType.WEEKLY to mWeeklyPlanProductInfo
+//            )
+//
+//            // Hide all plan slots initially
+//            withContext(Dispatchers.Main) {
+//                planViewBindings.forEach { it.root.gone }
+//            }
+//
+//            // 2. Iterate through the display order and populate the visible UI slots
+//            planDisplayOrder.forEachIndexed { index, planType ->
+//                if (index >= planViewBindings.size) return@forEachIndexed // Safety break if order has > 3 items
+//
+//                // Monthly SKU can fall back to Weekly SKU if it doesn't exist
+//                val productInfo = productMap[planType]
+//                    ?: if (planType == PlanType.MONTHLY) productMap[PlanType.WEEKLY] else null
+//
+//                val viewBinding = planViewBindings[index]
+//
+//                if (productInfo != null) {
+//                    withContext(Dispatchers.Main) {
+//                        populatePlanView(viewBinding, productInfo, planType)
+//                        viewBinding.root.visible
+//                    }
+//                }
+//            }
+//
+//            isLifeTimePrizeSated = mLifetimePlanProductInfo != null
+//            isAnyPlanPrizeSated = mYearlyPlanProductInfo != null && (mMonthlyPlanProductInfo != null || mWeeklyPlanProductInfo != null)
+//
+//
+//            // 3. Set a default selection on the main thread (e.g., the first visible plan)
+//            withContext(Dispatchers.Main) {
+//                planViewBindings.firstOrNull { it.root.visibility == View.VISIBLE }?.root?.performClick()
+//            }
+//        }
+//    }
+
+    // REFACTOR: This is the completely new, dynamic data population logic.
     private fun setProductData() {
         CoroutineScope(Dispatchers.IO).launch {
-            ProductPurchaseHelper.getLifeTimeProductInfo?.let { productInfo ->
-                mLifetimePlanProductInfo = productInfo
-                CoroutineScope(Dispatchers.Main).launch {
-                    mActivity.runOnUiThread {
-                        with(mBinding.lyLifetimePlan) {
-                            txtPlanPricePercentage.apply {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.best_value,
-                                )
-                            }
-                            txtPlanTitle.apply {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.lifetime,
-                                )
-                            }
-                            txtPlanTrialPeriod.apply {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.purchase_1,
-                                )
-                            }
-                            txtPlanReferencePrice.apply {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.price_slash_period,
-                                )
-                                this.gone
-                            }
-                            txtPlanPrice.apply {
-                                this.text = productInfo.formattedPrice
-                            }
+            mLifetimePlanProductInfo = ProductPurchaseHelper.getLifeTimeProductInfo
+            mYearlyPlanProductInfo = ProductPurchaseHelper.getYearlyProductInfo
+            mMonthlyPlanProductInfo = ProductPurchaseHelper.getMonthlyProductInfo
+            mWeeklyPlanProductInfo = ProductPurchaseHelper.getWeeklyProductInfo
 
-                            isLifeTimePrizeSated = true
-                        }
+            val productMap = mapOf(
+                PlanType.LIFETIME to mLifetimePlanProductInfo,
+                PlanType.YEARLY to mYearlyPlanProductInfo,
+                PlanType.MONTHLY to mMonthlyPlanProductInfo,
+                PlanType.WEEKLY to mWeeklyPlanProductInfo
+            )
+
+            withContext(Dispatchers.Main) {
+                planViewBindings.forEach { it.root.gone }
+            }
+
+
+            val visualLayoutOrder = listOf(
+                PlanPosition.CENTER,
+                PlanPosition.LEFT,
+                PlanPosition.RIGHT
+            )
+
+            val viewBindingMap = mapOf(
+                PlanPosition.LEFT to planViewBindings[0],
+                PlanPosition.CENTER to planViewBindings[1],
+                PlanPosition.RIGHT to planViewBindings[2]
+            )
+
+            planDisplayOrder.take(3).forEachIndexed { index, planType ->
+                val targetPosition = visualLayoutOrder.getOrNull(index) ?: return@forEachIndexed
+
+                val viewBinding = viewBindingMap[targetPosition]
+
+                val productInfo = productMap[planType]
+                    ?: if (planType == PlanType.MONTHLY) productMap[PlanType.WEEKLY] else null
+
+                if (productInfo != null && viewBinding != null) {
+                    withContext(Dispatchers.Main) {
+                        populatePlanView(viewBinding, productInfo, planType)
+                        viewBinding.root.visible
                     }
                 }
             }
 
-            ProductPurchaseHelper.getMonthlyProductInfo?.let { monthlyProductInfo ->
-                ProductPurchaseHelper.getYearlyProductInfo?.let { yearlyProductInfo ->
-                    mMonthlyPlanProductInfo = monthlyProductInfo
-                    mYearlyPlanProductInfo = yearlyProductInfo
-                    setAnyPlanBaseYearlyProductInfoUI(
-                        firstPlanProductInfo = monthlyProductInfo,
-                        yearlyProductInfo = yearlyProductInfo,
-                        isMonthlySKU = true
-                    )
+            isLifeTimePrizeSated = mLifetimePlanProductInfo != null
+            isAnyPlanPrizeSated = mYearlyPlanProductInfo != null && (mMonthlyPlanProductInfo != null || mWeeklyPlanProductInfo != null)
+
+//            withContext(Dispatchers.Main) {
+//                val centerPlanBinding = viewBindingMap[PlanPosition.LEFT]
+//
+//                if (centerPlanBinding != null && centerPlanBinding.root.visibility == View.VISIBLE) {
+//                    centerPlanBinding.root.performClick()
+//                } else {
+//                    planViewBindings.firstOrNull { it.root.visibility == View.VISIBLE }?.root?.performClick()
+//                }
+//            }
+
+            // ====================================================================
+            withContext(Dispatchers.Main) {
+                // 1. Get the desired default plan type from the remote config flag.
+                val defaultPlanType = mVasuSubscriptionRemoteConfigModel.sixBoxDefaultSkuSelection
+
+                // 2. Create a map of plan types to their loaded ProductInfo objects.
+                //    This makes it easy to find the data for the desired plan type.
+                val typeToProductMap = mapOf(
+                    PlanType.LIFETIME to mLifetimePlanProductInfo,
+                    PlanType.YEARLY to mYearlyPlanProductInfo,
+                    PlanType.MONTHLY to mMonthlyPlanProductInfo,
+                    PlanType.WEEKLY to mWeeklyPlanProductInfo
+                )
+
+                // 3. Find the ProductInfo that corresponds to the default plan type.
+                //    It also correctly handles the Monthly -> Weekly fallback case.
+                val targetProduct = typeToProductMap[defaultPlanType]
+                    ?: if (defaultPlanType == PlanType.MONTHLY) typeToProductMap[PlanType.WEEKLY] else null
+
+                // 4. Find the specific UI view (`LayoutSubscribeSkuItemBinding`) that is
+                //    currently displaying this target product's data. We check the view's tag.
+                val targetBinding = if (targetProduct != null) {
+                    planViewBindings.firstOrNull { binding ->
+                        // Check if the view is visible and its tag matches the target product ID
+                        binding.root.visibility == View.VISIBLE &&
+                                (binding.root.tag as? ProductInfo)?.id == targetProduct.id
+                    }
+                } else {
+                    null
                 }
-            } ?: kotlin.run {
-                ProductPurchaseHelper.getWeeklyProductInfo?.let { weeklyProductInfo ->
-                    ProductPurchaseHelper.getYearlyProductInfo?.let { yearlyProductInfo ->
-                        mWeeklyPlanProductInfo = weeklyProductInfo
-                        mYearlyPlanProductInfo = yearlyProductInfo
-                        setAnyPlanBaseYearlyProductInfoUI(
-                            firstPlanProductInfo = weeklyProductInfo,
-                            yearlyProductInfo = yearlyProductInfo,
-                            isMonthlySKU = false
-                        )
+
+
+                // 5. Decide which plan to select and perform the click.
+                if (targetBinding != null) {
+                    // SUCCESS: The desired default plan is valid and visible on screen. Select it.
+                    targetBinding.root.performClick()
+                } else {
+                    // FALLBACK: The desired default is invalid or not displayed.
+                    // Select the leftmost visible plan as requested.
+                    val leftPlanBinding = viewBindingMap[PlanPosition.LEFT]
+
+                    if (leftPlanBinding != null && leftPlanBinding.root.visibility == View.VISIBLE) {
+                        leftPlanBinding.root.performClick()
+                    } else {
+                        // SUPER-FALLBACK: If even the left plan isn't visible for some reason,
+                        // just select the very first visible plan we can find.
+                        planViewBindings.firstOrNull { it.root.visibility == View.VISIBLE }?.root?.performClick()
                     }
                 }
             }
         }
     }
 
-    private fun setAnyPlanBaseYearlyProductInfoUI(firstPlanProductInfo: ProductInfo, yearlyProductInfo: ProductInfo, isMonthlySKU: Boolean) {
-        CoroutineScope(Dispatchers.Main).launch {
-            mActivity.runOnUiThread {
-                with(mBinding.lyMonthlyPlan) {
-                    txtPlanPricePercentage.apply {
-                        this.text = getLocalizedString<String>(
-                            context = mActivity,
-                            resourceId = R.string.most_popular,
-                        )
-                    }
-                    txtPlanTitle.apply {
-                        this.text = getLocalizedString<String>(
-                            context = mActivity,
-                            resourceId = R.string.monthly.takeIf { isMonthlySKU } ?: R.string.weekly,
-                        )
-                    }
-                    txtPlanTrialPeriod.apply {
-                        when (firstPlanProductInfo.planOfferType) {
-                            PlanOfferType.FREE_TRIAL -> {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.period_free,
-                                    formatArgs = arrayOf(
-                                        firstPlanProductInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity)
-                                    )
-                                )
-                            }
+    // REFACTOR: A new generalized function to populate any plan view.
+    private fun populatePlanView(binding: LayoutSubscribeSkuItemBinding, productInfo: ProductInfo, planType: Int) {
+        binding.root.tag = productInfo // IMPORTANT: Store ProductInfo for easy access in onClick
 
-                            PlanOfferType.INTRO_OFFER -> {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.upto_period,
-                                    formatArgs = arrayOf(
-                                        firstPlanProductInfo.offerActualBillingPeriod.getFullBillingPeriod(context = mActivity)
-                                    )
-                                )
-                            }
-
-                            else -> {}
-                        }
-                        this.beVisibleIf(firstPlanProductInfo.planOfferType != PlanOfferType.BASE_PLAN)
-                    }
-                    txtPlanReferencePrice.apply {
-                        this.text = getLocalizedString<String>(
-                            context = mActivity,
-                            resourceId = R.string.price_slash_period,
-                        )
-                        this.gone
-                    }
-                    txtPlanPrice.apply {
-                        this.text = firstPlanProductInfo.offerFormattedPrice.takeIf { firstPlanProductInfo.planOfferType == PlanOfferType.INTRO_OFFER } ?: firstPlanProductInfo.formattedPrice
-                    }
+        with(binding) {
+            when (planType) {
+                PlanType.LIFETIME -> {
+                    ivPlanIcon.setImageDrawable(mLifTimePlanIconSelector)
+                    txtPlanPricePercentage.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.best_value)
+                    txtPlanTitle.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.lifetime)
+                    txtPlanTrialPeriod.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.purchase_1)
+                    txtPlanReferencePrice.gone
+                    txtPlanPrice.text = productInfo.formattedPrice
                 }
+                PlanType.YEARLY -> {
+                    ivPlanIcon.setImageDrawable(mYearPlanIconSelector)
+                    txtPlanTitle.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.yearly)
+                    txtPlanPrice.text = productInfo.formattedPrice
 
-                with(mBinding.lyYearlyPlan) {
-                    if (isMonthlySKU) {
-                        ProductPurchaseHelper.getMonthBaseYearlyDiscount(
-                            monthPrice = firstPlanProductInfo.formattedPrice,
-                            yearPrice = yearlyProductInfo.formattedPrice,
-                            onDiscountCalculated = { discountPercentage, discountPrice ->
-                                if (discountPercentage > 0) {
-                                    txtPlanPricePercentage.apply {
-                                        this.text = getLocalizedString<String>(
-                                            context = mActivity,
-                                            resourceId = R.string.save_percentage,
-                                            formatArgs = arrayOf(discountPercentage.toString())
-                                        )
-                                    }
-                                } else {
-                                    txtPlanPricePercentage.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.recommend)
+                    // Discount calculation logic (remains the same, just generalized)
+                    val basePlanProductInfo = mMonthlyPlanProductInfo ?: mWeeklyPlanProductInfo
+                    if (basePlanProductInfo != null) {
+                        if (mMonthlyPlanProductInfo != null) {
+                            ProductPurchaseHelper.getMonthBaseYearlyDiscount(
+                                monthPrice = basePlanProductInfo.formattedPrice,
+                                yearPrice = productInfo.formattedPrice,
+                                onDiscountCalculated = { discountPercentage, discountPrice ->
+                                    setDiscountText(binding, discountPercentage, discountPrice)
                                 }
-
-                                txtPlanReferencePrice.apply {
-                                    this.text = getLocalizedString<String>(
-                                        context = mActivity,
-                                        resourceId = R.string.price_slash_period,
-                                        formatArgs = arrayOf(
-                                            discountPrice,
-                                            getLocalizedString<String>(
-                                                context = mActivity,
-                                                resourceId = R.string.period_month,
-                                            )
-                                        )
-                                    )
-                                    this.visible
+                            )
+                        } else {
+                            ProductPurchaseHelper.getWeekBaseYearlyDiscount(
+                                weekPrice = basePlanProductInfo.formattedPrice,
+                                yearPrice = productInfo.formattedPrice,
+                                onDiscountCalculated = { discountPercentage, discountPrice ->
+                                    setDiscountText(binding, discountPercentage, discountPrice)
                                 }
-                            }
-                        )
+                            )
+                        }
                     } else {
-                        ProductPurchaseHelper.getWeekBaseYearlyDiscount(
-                            weekPrice = firstPlanProductInfo.formattedPrice,
-                            yearPrice = yearlyProductInfo.formattedPrice,
-                            onDiscountCalculated = { discountPercentage, discountPrice ->
-                                if (discountPercentage > 0) {
-                                    txtPlanPricePercentage.apply {
-                                        this.text = getLocalizedString<String>(
-                                            context = mActivity,
-                                            resourceId = R.string.save_percentage,
-                                            formatArgs = arrayOf(discountPercentage.toString())
-                                        )
-                                    }
-                                } else {
-                                    txtPlanPricePercentage.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.recommend)
-                                }
-
-                                txtPlanReferencePrice.apply {
-                                    this.text = getLocalizedString<String>(
-                                        context = mActivity,
-                                        resourceId = R.string.price_slash_period,
-                                        formatArgs = arrayOf(
-                                            discountPrice,
-                                            getLocalizedString<String>(
-                                                context = mActivity,
-                                                resourceId = R.string.period_month,
-                                            )
-                                        )
-                                    )
-                                    this.visible
-                                }
-                            }
-                        )
-                    }
-
-
-                    txtPlanTitle.apply {
-                        this.text = getLocalizedString<String>(
-                            context = mActivity,
-                            resourceId = R.string.yearly,
-                        )
-                    }
-                    txtPlanTrialPeriod.apply {
-                        when (yearlyProductInfo.planOfferType) {
-                            PlanOfferType.FREE_TRIAL -> {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.period_free,
-                                    formatArgs = arrayOf(
-                                        yearlyProductInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity)
-                                    )
-                                )
-                            }
-
-                            PlanOfferType.INTRO_OFFER -> {
-                                this.text = getLocalizedString<String>(
-                                    context = mActivity,
-                                    resourceId = R.string.upto_period,
-                                    formatArgs = arrayOf(
-                                        yearlyProductInfo.offerActualBillingPeriod.getFullBillingPeriod(context = mActivity)
-                                    )
-                                )
-                            }
-
-                            else -> {}
-                        }
-                        this.beVisibleIf(yearlyProductInfo.planOfferType != PlanOfferType.BASE_PLAN)
-                    }
-
-                    txtPlanPrice.apply {
-                        this.text = yearlyProductInfo.formattedPrice
+                        txtPlanPricePercentage.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.recommend)
+                        txtPlanReferencePrice.gone
                     }
                 }
-
-                isAnyPlanPrizeSated = true
-
-                mBinding.lyYearlyPlan.root.performClick()
+                PlanType.MONTHLY, PlanType.WEEKLY -> {
+                    ivPlanIcon.setImageDrawable(mMonthPlanIconSelector)
+                    txtPlanPricePercentage.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.most_popular)
+                    txtPlanTitle.text = getLocalizedString<String>(context = mActivity, resourceId = if (planType == PlanType.MONTHLY) R.string.monthly else R.string.weekly)
+                    txtPlanReferencePrice.gone
+                    txtPlanPrice.text = productInfo.offerFormattedPrice.takeIf { productInfo.planOfferType == PlanOfferType.INTRO_OFFER } ?: productInfo.formattedPrice
+                }
             }
+
+            // Common logic for trial period display
+            txtPlanTrialPeriod.apply {
+                when (productInfo.planOfferType) {
+                    PlanOfferType.FREE_TRIAL -> {
+                        text = getLocalizedString(context = mActivity, resourceId = R.string.period_free, formatArgs = arrayOf(productInfo.actualFreeTrialPeriod.getFullBillingPeriod(context = mActivity)))
+                    }
+                    PlanOfferType.INTRO_OFFER -> {
+                        text = getLocalizedString(context = mActivity, resourceId = R.string.upto_period, formatArgs = arrayOf(productInfo.offerActualBillingPeriod.getFullBillingPeriod(context = mActivity)))
+                    }
+                    else -> {
+                        // For Lifetime, text is set in its own block. For others, hide if no trial/intro.
+                        if (planType != PlanType.LIFETIME) this.gone
+                    }
+                }
+                beVisibleIf(this.text.isNotEmpty())
+            }
+        }
+    }
+
+    private fun setDiscountText(binding: LayoutSubscribeSkuItemBinding, discountPercentage: Int, discountPrice: String) {
+        if (discountPercentage > 0) {
+            binding.txtPlanPricePercentage.text = getLocalizedString(context = mActivity, resourceId = R.string.save_percentage, formatArgs = arrayOf(discountPercentage.toString()))
+        } else {
+            binding.txtPlanPricePercentage.text = getLocalizedString<String>(context = mActivity, resourceId = R.string.recommend)
+        }
+        binding.txtPlanReferencePrice.apply {
+            text = getLocalizedString(context = mActivity, resourceId = R.string.price_slash_period, formatArgs = arrayOf(discountPrice, getLocalizedString<String>(context = mActivity, resourceId = R.string.period_month)))
+            visible
         }
     }
 
@@ -1396,8 +1459,7 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
     }
 
     override fun needToShowReviewDialog(): Boolean {
-//        return (!isFromTimeLine) && IS_FROM_SPLASH && (!AdsManager(context = mActivity).isReviewDialogOpened)
-        return !isUserPurchaseAnyPlan && isOnline && (!isFromTimeLine) && (!AdsManager(context = mActivity).isReviewDialogOpened)
+        return !isUserPurchaseAnyPlan && isOnline && (!isFromTimeLine) && mVasuSubscriptionRemoteConfigModel.isShowReviewDialog && (!AdsManager(context = mActivity).isReviewDialogOpened)
     }
 
     private var isFromReviewDialog: Boolean = false
@@ -1415,15 +1477,35 @@ internal class ViewAllPlansActivity : BaseBindingActivity<ActivityViewAllPlansBi
         )
     }
 
+//    override fun customOnBackPressed() {
+//        if (needToShowReviewDialog()) {
+//            super.customOnBackPressed()
+//        } else {
+//            if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
+//                fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
+//            }
+//            super.customOnBackPressed()
+//            isSystemBackButtonPressed = false
+//        }
+//    }
+
     override fun customOnBackPressed() {
         if (needToShowReviewDialog()) {
             super.customOnBackPressed()
         } else {
             if (mBinding.ivClose.isPressed || isSystemBackButtonPressed || isFromReviewDialog) {
                 fireSubscriptionEvent(fEventType = SubscriptionEventType.VIEW_ALL_PLANS_SCREEN_CLOSE)
-//                fireSubscriptionEvent(fEventType = SubscriptionEventType.ViewAllPlansScreenClose)
             }
-            super.customOnBackPressed()
+
+            //            super.customOnBackPressed()
+            if (isAppForeground && needToShowBackAd()) {
+                onBackShowInterAd.invoke(mActivity) {
+                    directBack()
+                }
+
+            } else {
+                directBack()
+            }
             isSystemBackButtonPressed = false
         }
     }
